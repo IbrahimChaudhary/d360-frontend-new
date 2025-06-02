@@ -64,7 +64,6 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-4xl sm:text-5xl lg:text-6xl font-[800] mb-2 md:mb-6 text-[#263244] leading-tight">
-              {/* Optionally add a hero description here if needed */}
             </p>
 
             <div
