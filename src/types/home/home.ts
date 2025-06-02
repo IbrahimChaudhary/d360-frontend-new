@@ -1,0 +1,63 @@
+
+export interface HomePageData {
+  id: number
+  documentId: string
+  Hero:string
+  HeroDescription:string
+  Heading: string
+  HeadingB: string
+  Description: string
+
+  Title1: string
+  Description1: string
+
+  Title2: string
+  Description2: string
+
+  Title3: string
+  Description3: string
+
+  Title4: string
+
+  Title5: string
+  Description5: string
+
+  Title6: string
+  Description6: string
+
+  Title7: string
+  Description7: string
+
+  Title8: string
+  Description8: string
+
+  PhysicalCard: string
+  PhysicalCardDescription: string
+
+  DigitalCard: string
+  DigitalCardDescription: string
+
+  TransferHeading: string
+  TransferSubHeading: string
+  TransferDescription: string
+
+  Sender: string
+  Recipient: string
+  Fee: string
+  Conversion: string
+
+  Shariah: string
+  ShariahDescription: string
+  PhysicalCardCTA:string
+  DigitalCardCTA:string
+  SarihaBTN:string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  locale: string
+}
+
+export interface HomePageResponse {
+  data: HomePageData
+  meta: Record<string, unknown>
+}

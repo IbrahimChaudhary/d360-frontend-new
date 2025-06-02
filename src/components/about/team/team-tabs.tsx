@@ -1,0 +1,293 @@
+"use client"
+
+import type React from "react"
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { TeamMemberCarousel } from "./team-member-carousel"
+import { useState } from "react"
+import type { BoardMember, ExecutiveMember, ShariahMember, Position } from "@/types/team"
+import { TeamMemberCard } from "./team-member-card"
+import { motion, AnimatePresence } from "framer-motion"
+import { useStore } from "@/store/toggle-store"
+import {
+  boardMembers as enBoardMembers,
+  executiveMembers as enExecutiveMembers,
+  shariahMembers as enShariahMembers,
+} from "@/data/team-member"
+import {
+  boardMembersAr as arBoardMembers,
+  executiveMembersAr as arExecutiveMembers,
+  shariahMembersAr as arShariahMembers,
+} from "@/data/team-member-ar"
+import { useCallback } from "react"
+
+interface TeamTabsProps {
+  boardMembers: (BoardMember & { image?: string })[]
+  executiveMembers: (ExecutiveMember & { image?: string })[]
+  shariahMembers: (ShariahMember & { image?: string })[]
+}
+
+export function TeamTabs({
+  boardMembers: initialBoardMembers,
+  executiveMembers: initialExecutiveMembers,
+  shariahMembers: initialShariahMembers,
+}: TeamTabsProps) {
+  console.log(initialBoardMembers)
+  console.log(initialExecutiveMembers)
+  console.log(initialShariahMembers)
+  const { language } = useStore()
+  const isRTL = language === "ar"
+
+  // Get translated content
+  const translatedBoardMembers = isRTL ? arBoardMembers : enBoardMembers
+  const translatedExecutiveMembers = isRTL ? arExecutiveMembers : enExecutiveMembers
+  const translatedShariahMembers = isRTL ? arShariahMembers : enShariahMembers
+
+  // Merge translated content with initial members to keep images
+  const boardMembers = initialBoardMembers.map((member) => {
+    const translatedMember = translatedBoardMembers.find((tm) => tm.id === member.id)
+    return { ...member, ...translatedMember }
+  })
+
+  const executiveMembers = initialExecutiveMembers.map((member) => {
+    const translatedMember = translatedExecutiveMembers.find((tm) => tm.id === member.id)
+    return { ...member, ...translatedMember }
+  })
+
+  const shariahMembers = initialShariahMembers.map((member) => {
+    const translatedMember = translatedShariahMembers.find((tm) => tm.id === member.id)
+    return { ...member, ...translatedMember }
+  })
+
+  const [selectedMember, setSelectedMember] = useState<(BoardMember | ExecutiveMember | ShariahMember) | null>(null)
+
+  const handleSelect = useCallback((member: BoardMember | ExecutiveMember | ShariahMember) => {
+    setSelectedMember((prev) => (prev?.id === member.id ? null : member))
+  }, [])
+
+  const handleClose = useCallback((e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setSelectedMember(null)
+  }, [])
+
+  // Helper function to render positions list
+  const renderPositions = (title: string, positions?: Position[]) => {
+    if (!positions || positions.length === 0) return null
+
+    const positionTitles = {
+      Chairman: isRTL ? "رئيس" : "Chairman",
+      "Vice Chairman": isRTL ? "نائب الرئيس" : "Vice Chairman",
+      "Board Member": isRTL ? "عضو مجلس الإدارة" : "Board Member",
+      CEO: isRTL ? "الرئيس التنفيذي" : "CEO",
+      Member: isRTL ? "عضو" : "Member",
+    }
+
+    return (
+      <div key={title} className="mb-4">
+        <h4 className={`font-bold text-[#293242] text-[20px] mb-1 ${isRTL ? "text-right" : "text-left"}`}>
+          {positionTitles[title as keyof typeof positionTitles]}:
+        </h4>
+        <ul
+          className={`list-disc text-[#293242] text-[20px] leading-relaxed ${
+            isRTL ? "list-inside text-right pr-3 [&>li]:text-right" : "list-inside text-left pl-3"
+          }`}
+          style={isRTL ? { direction: "rtl" } : {}}
+        >
+          {positions.map((position, index) => (
+            <li key={index}>
+              {position.company}
+              {position.endDate && (
+                <span className="text-[#6D809C] text-sm ml-1">
+                  ({isRTL ? "حتى" : "Until"} {position.endDate})
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  const renderTabContent = (
+    tabKey: string,
+    members: ((BoardMember | ExecutiveMember | ShariahMember) & {
+      image?: string
+    })[],
+  ) => (
+    <TabsContent value={tabKey} className="">
+      {/* Mobile and Tablet: Use Carousel */}
+      <div className="block lg:hidden">
+        {/* Mobile Details Panel with Animation */}
+        <AnimatePresence mode="wait">
+          {selectedMember && (
+            <motion.div
+              key="mobile-details-panel"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut",
+              }}
+              className="p-4 mb-6 bg-[#F8F8F8] shadow-md rounded-xl"
+            >
+              <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row-reverse" : "flex-row"}`}>
+                <button
+                  onClick={handleClose}
+                  className="text-[#E74529] text-2xl font-bold hover:text-red-600 transition-colors z-10 cursor-pointer"
+                  aria-label="Close details"
+                >
+                  ×
+                </button>
+
+                <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                  <h3 className="text-[20px]  lg:text-[26px] font-extrabold text-[#293242]">{selectedMember.name}</h3>
+                  <p className="text-[#293242] font-light text-[18px] mb-4">{selectedMember.position}</p>
+                </div>
+              </div>
+
+              <p className={`text-[#293242] leading-tight text-[20px] mb-4 ${isRTL ? "text-right" : "text-left"}`}>
+                {selectedMember.biography}
+              </p>
+
+              {selectedMember.currentPositions && (
+                <div className="mt-3">
+                  {renderPositions("Chairman", selectedMember.currentPositions.chairman)}
+                  {renderPositions("Vice Chairman", selectedMember.currentPositions.viceChairman)}
+                  {renderPositions("Board Member", selectedMember.currentPositions.boardMember)}
+                  {renderPositions("CEO", selectedMember.currentPositions.ceo)}
+                  {renderPositions("Member", selectedMember.currentPositions.member)}
+                </div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <TeamMemberCarousel teamMembers={members} selectedMember={selectedMember} onSelect={handleSelect} />
+      </div>
+
+      {/* Desktop: Grid with sliding sidebar */}
+      <div className="hidden lg:block">
+        <div className="flex gap-6 relative overflow-hidden">
+          {/* Cards Grid - positioned first for RTL, second for LTR */}
+          <div className={`flex-1 min-w-0 ${isRTL ? "order-1" : "order-2"}`}>
+            <motion.div
+              layout
+              dir={isRTL ? "rtl" : "ltr"}
+              className={`grid gap-4 ${
+                selectedMember ? "grid-cols-3" : "grid-cols-4"
+              } ${isRTL ? "text-right" : "text-left"}`}
+              transition={{
+                layout: { duration: 0.5, ease: "easeInOut" },
+              }}
+            >
+              {members.map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  layout="position"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    layout: { duration: 0.5, ease: "easeInOut" },
+                    opacity: { duration: 0.3 },
+                  }}
+                >
+                  <TeamMemberCard
+                    member={member}
+                    index={index}
+                    selectedMember={selectedMember}
+                    onSelect={handleSelect}
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Details Panel - positioned second for RTL, first for LTR */}
+          <AnimatePresence mode="wait">
+            {selectedMember && (
+              <motion.div
+                key="details-panel"
+                initial={{
+                  x: isRTL ? 320 : -320,
+                  opacity: 0,
+                }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{
+                  x: isRTL ? 320 : -320,
+                  opacity: 0,
+                }}
+                transition={{
+                  duration: 0,
+                  ease: "easeInOut",
+                }}
+                className={`w-[300px] p-6 bg-[#F8F8F8] rounded-xl h-fit flex-shrink-0 ${isRTL ? "order-2" : "order-1"}`}
+              >
+                <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row-reverse" : "flex-row"}`}>
+                  <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                    <h3 className="text-[26px] font-extrabold text-[#293242]">{selectedMember.name}</h3>
+                    <p className="text-[#293242] font-light text-[18px] mb-4">{selectedMember.position}</p>
+                  </div>
+                  <button
+                    onClick={handleClose}
+                    className="text-[#E74529] text-2xl font-bold hover:text-red-600 transition-colors z-10 cursor-pointer ml-2"
+                    aria-label="Close details"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className={`text-[#293242] leading-tight text-[20px] mb-4 ${isRTL ? "text-right" : "text-left"}`}>
+                  {selectedMember.biography}
+                </p>
+
+                {selectedMember.currentPositions && (
+                  <div className="mt-4">
+                    {renderPositions("Chairman", selectedMember.currentPositions.chairman)}
+                    {renderPositions("Vice Chairman", selectedMember.currentPositions.viceChairman)}
+                    {renderPositions("Board Member", selectedMember.currentPositions.boardMember)}
+                    {renderPositions("CEO", selectedMember.currentPositions.ceo)}
+                    {renderPositions("Member", selectedMember.currentPositions.member)}
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </TabsContent>
+  )
+
+  return (
+    <Tabs defaultValue="board" className="w-full px-0 md:px-12 relative ">
+      <div className={`mb-8  flex ${language === "ar" ? "flex-row-reverse" : "flex-row"} `}>
+        <TabsList
+          className={`grid w-full  max-w-lg grid-cols-3 bg-transparent p-0 gap-2 lg:gap- ${language == "ar" ? "" : ""} `}
+        >
+          <TabsTrigger
+            value="board"
+            className="rounded-lg lg:px-20 md:py-0 text-[8px] md:text-[15px] font-bold transition-all duration-200 data-[state=active]:bg-[#E74529] data-[state=active]:text-white data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:bg-gray-200"
+          >
+            {isRTL ? "مجلس الإدارة" : "Board of Directors"}
+          </TabsTrigger>
+          <TabsTrigger
+            value="management"
+            className="rounded-lg md:px-20 md:py-3 text-[8px] md:text-sm font-bold transition-all duration-200 data-[state=active]:bg-[#E74529] data-[state=active]:text-white data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:bg-gray-200"
+          >
+            {isRTL ? "الفريق الإداري" : "Management Team"}
+          </TabsTrigger>
+          <TabsTrigger
+            value="advisors"
+            className="rounded-lg md:px-20 md:py-3 text-[8px] md:text-sm font-bold transition-all duration-200 data-[state=active]:bg-[#E74529] data-[state=active]:text-white data-[state=inactive]:bg-gray-100 data-[state=inactive]:text-gray-700 data-[state=inactive]:hover:bg-gray-200"
+          >
+            {isRTL ? "اللجنة الشرعية" : "Shariah"}
+          </TabsTrigger>
+        </TabsList>
+      </div>
+
+      {renderTabContent("board", boardMembers)}
+      {renderTabContent("management", executiveMembers)}
+      {renderTabContent("advisors", shariahMembers)}
+    </Tabs>
+  )
+}
