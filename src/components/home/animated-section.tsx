@@ -530,7 +530,7 @@ export default function InteractiveCardHero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[74px]  font-extrabold"
+                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold"
               >
                 {content.sections.digitalCard.title}
               </motion.div>
@@ -565,10 +565,10 @@ export default function InteractiveCardHero() {
                   transition={{ delay: 0.4 }}
                   className="absolute top-[50%] w-full px-6 text-center text-white"
                 >
-                  <h2 className="text-2xl font-bold mb-2">
+                  <h2 className="text-[42.75px] font-bold ">
                     {content.sections.digitalCard.title}
                   </h2>
-                  <p className="text-sm mt-2 mb-4 w-[80%] mx-auto text-center leading-relaxed">
+                  <p className="text-[21px] px-1 mb-4  mx-auto text-center ">
                     {content.sections.digitalCard.description}
                   </p>
                   <button

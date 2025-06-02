@@ -47,14 +47,14 @@ export function Investors() {
             alt="PIF Logo"
             width={360}
             height={161}
-            className="object-contain w-[120px] h-[60px]  md:w-[20%] md:h-[20%]"
+            className="object-contain w-[120px] h-[60px]  md:w-[15%] md:h-[15%]"
           />
           <Image
             src="/about/investor1.png"
             alt="Dirayah Logo"
             width={242}
             height={220}
-            className="object-contain w-[100px] h-[90px]  md:w-[20%] md:h-[20%]"
+            className="object-contain w-[100px] h-[90px]  md:w-[15%] md:h-[15%]"
           />
         </div>
       </AnimatedSection>

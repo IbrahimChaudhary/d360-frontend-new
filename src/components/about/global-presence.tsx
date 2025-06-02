@@ -42,10 +42,10 @@ export function GlobalCTA({
         transition={{ duration: 0.6 }}
         className="relative z-10 px-4 max-w-6xl mx-auto"
       >
-        <h2 className="text-3xl md:text-[80px] font-extrabold text-[#263244]  mb-4">
+        <h2 className="text-3xl md:text-[60px] px- font-extrabold text-[#263244]  mb-4">
           {title}
         </h2>
-        <p className="text-md md:text-[25px] lg:px-40 text-[#263244]  mb-8">
+        <p className="text-md md:text-[20px] lg:px-60 text-[#263244]  mb-8">
           {subtitle}
         </p>
         <Button

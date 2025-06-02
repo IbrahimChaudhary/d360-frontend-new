@@ -7,19 +7,24 @@ export default {
         "Bank seamlessly across borders and currencies, wherever you go",
     },
     bankAnytime: {
-      title: "Bank Anytime, Anywhere",
+      title1: "Bank Anytime,",
+      title2: "Anywhere",
+
       subtitle: "Because your world never stops, and neither should your bank",
     },
     security: {
-      title: "Security You Can Trust",
+      title1: "Security You ",
+      title2: "Can Trust",
       subtitle: "Your money and data are protected with top-tier security",
     },
     direct: {
-      title: "DIRECT & Transparent",
+      title1: "DIRECT &",
+      title2: "Transparent",
       subtitle: "No hidden fees—what you see is what you get",
     },
     blink: {
-      title: "Banking in a Blink",
+      title1: "Banking in ",
+      title2: "a Blink",
       subtitle: "All your banking services are completed in minutes",
     },
     shariah: {

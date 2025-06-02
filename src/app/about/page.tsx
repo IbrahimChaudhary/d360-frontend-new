@@ -80,11 +80,11 @@ export default function AboutPage() {
             </div>
           </div>
         </Hero>
-
+{/* 
         <StatsCounter
           container=" lg:pt-22 grid grid-cols-3"
           stats={stats}
-        />
+        /> */}
 
         <OurStory />
         <Investors />
