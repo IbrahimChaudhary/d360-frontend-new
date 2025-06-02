@@ -7,13 +7,8 @@ import { useStore } from "@/store/toggle-store";
 import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { DownloadModal } from "./download-modal";
-import { HomePageData } from "@/types/home/home";
-interface InteractiveCardHeroProps {
-  data?: HomePageData;
-}
-export default function InteractiveCardHero({
-  data,
-}: InteractiveCardHeroProps) {
+
+export default function InteractiveCardHero() {
   const [hoveredSide, setHoveredSide] = useState<"left" | "right" | null>(null);
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
@@ -341,7 +336,7 @@ export default function InteractiveCardHero({
                 exit={{ opacity: 0 }}
                 className="absolute bottom-5 w-full text-center text-white text-[75px] z-10 font-extrabold"
               >
-                {data?.PhysicalCard}{" "}
+                {content.sections.physicalCard.title}
               </motion.div>
             )}
           </AnimatePresence>
@@ -356,16 +351,16 @@ export default function InteractiveCardHero({
               className="absolute inset-0 top-[65%] flex flex-col items-center  text-white text-center px-4"
             >
               <h2 className="text-[42.75px] font-extrabold mb-2">
-                {data?.PhysicalCard}
+                {content.sections.physicalCard.title}
               </h2>
               <p className="text-[22px] max-w-md leading-tight">
-                {data?.PhysicalCardDescription}
+                {content.sections.physicalCard.description}
               </p>
               <button
                 className="mt-2 bg-white text-[#E74529] px-22 py-2 rounded-lg font-bold text-sm shadow-md"
                 onClick={() => setModalOpen(true)}
               >
-                {data?.PhysicalCardCTA}
+                {content.instructions.physicalCardCTA}
               </button>
               <div
                 onMouseEnter={() => handleAreaHover("right")}
@@ -537,7 +532,7 @@ export default function InteractiveCardHero({
                 exit={{ opacity: 0 }}
                 className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[74px]  font-extrabold"
               >
-                {data?.DigitalCard}
+                {content.sections.digitalCard.title}
               </motion.div>
             )}
           </AnimatePresence>
@@ -571,16 +566,16 @@ export default function InteractiveCardHero({
                   className="absolute top-[50%] w-full px-6 text-center text-white"
                 >
                   <h2 className="text-2xl font-bold mb-2">
-                    {data?.DigitalCard}
+                    {content.sections.digitalCard.title}
                   </h2>
                   <p className="text-sm mt-2 mb-4 w-[80%] mx-auto text-center leading-relaxed">
-                    {data?.DigitalCardDescription}
+                    {content.sections.digitalCard.description}
                   </p>
                   <button
                     className="bg-white font-bold text-[#E74529] text-sm  rounded-lg px-12 py-3 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
-                    {data?.DigitalCardCTA}
+                    {language === "ar" ? "أنشئ بطاقة" : "Create a Card"}
                   </button>
                 </motion.div>
               )}

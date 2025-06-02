@@ -9,7 +9,6 @@ import { useInView } from 'react-intersection-observer';
 import { useStore } from '@/store/toggle-store';
 import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
-import { HomePageData } from '@/types/home/home';
 
 const iconFadeIn = {
   hidden: { opacity: 1, y: 20 },
@@ -26,23 +25,19 @@ const statCardVariant = {
   exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
 };
 
-interface ScrollSectionProps{
-  data:HomePageData
-}
-export default function ScrollSection({data}:ScrollSectionProps) {
+export default function ScrollSection() {
   const { language } = useStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollLockRef = useRef(false);
-  console.log("dtaa",data)
   
   const content = language === "en" ? englishContent : arabicContent;
   const [ref, inView] = useInView({ threshold: 0.5 });
 
   const sections = [
     {
-      title: data.Title1,
-      description: data.Description1,
+      title: content.sections.bankAnytime.title,
+      description: content.sections.bankAnytime.subtitle,
       image: '/card/red.png',
       rotate: 20,
       icons: language === 'ar'
@@ -60,8 +55,8 @@ export default function ScrollSection({data}:ScrollSectionProps) {
           ],
     },
     {
-      title: data.Title2,
-      description: data.Description2,
+      title: content.sections.security.title,
+      description: content.sections.security.subtitle,
       image: '/card/red.png',
       rotate: -10,
       icons: language === 'ar'
@@ -79,8 +74,8 @@ export default function ScrollSection({data}:ScrollSectionProps) {
           ],
     },
     {
-      title: data.Title3,
-      description: data.Description3,
+      title: content.sections.blink.title,
+      description: content.sections.blink.subtitle,
       image: '/card/red.png',
       rotate: 10,
       icons: language === 'ar'
@@ -98,8 +93,8 @@ export default function ScrollSection({data}:ScrollSectionProps) {
           ],
     },
     {
-      title: data.Title8,
-      description: data.Description8,
+      title: content.sections.direct.title,
+      description: content.sections.direct.subtitle,
       image: '/card/red.png',
       rotate: 20,
       icons: language === 'ar'

@@ -8,11 +8,8 @@ import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { useState } from "react";
 import { DownloadModal } from "./download-modal";
-import { HomePageData } from "@/types/home/home";
-interface ShariahSectionProps {
-  data?: HomePageData;
-}
-export function ShariahSection({data}:ShariahSectionProps) {
+
+export function ShariahSection() {
   const [isModalOpen, setModalOpen] = useState(false);
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
@@ -42,10 +39,10 @@ export function ShariahSection({data}:ShariahSectionProps) {
         }`}
       >
         <h2 className={`text-[30px]  md:text-[100px] uppercase font-extrabold leading-tight mb-6 ${isRTL?"lg:text-right text-center" : "lg:text-left text-center"}`}>
-        {data?.Shariah}
+          {content.sections.shariahCommittee.title}
         </h2>
         <p className={ `text-[14px]   md:text-[31px]   mb-8 ${isRTL?"lg:text-right text-center":"lg:text-left text-center"}`}>
-        {data?.ShariahDescription}
+          {content.sections.shariahCommittee.description}
         </p>
         <div className={`flex  ${isRTL ? "justify-end" : "justify-start"}`}>
           <Link
@@ -55,7 +52,7 @@ export function ShariahSection({data}:ShariahSectionProps) {
               isRTL ? "flex-row-reverse" : "flex-row"
             } justify-between lg:gap-3 px-7 mx-auto lg:mx-0 font-bold lg:px-5 py-2 border border-white rounded-lg hover:bg-white hover:text-[#0B1B2B] transition text-[8px] lg:text-[20px]`}
           >
-            {data?.SarihaBTN}
+            {content.sections.shariahCommittee.read}
             {isRTL ? (
               <ChevronLeft className="lg:w-6 lg:h-6 hidden lg:block" />
             ) : (

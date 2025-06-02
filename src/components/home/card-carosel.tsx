@@ -6,11 +6,8 @@ import { useStore } from "@/store/toggle-store";
 import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { HomePageData } from "@/types/home/home";
-interface CardCaroselsProps{
-  data:HomePageData
-}
-export function CardCarosels({data}:CardCaroselsProps) {
+
+export function CardCarosels() {
   const [current, setCurrent] = useState(0);
   const { language } = useStore();
   const isRTL = language === "ar";
@@ -18,23 +15,18 @@ export function CardCarosels({data}:CardCaroselsProps) {
 
   const slides = [
     {
-      heading: data.Title1,
-      paragraph: data.Description1,
+      heading: content.sections.blink.title,
+      paragraph: content.sections.blink.subtitle,
       image: "/home/slide1.png",
     },
     {
-      heading: data.Title2,
-      paragraph: data.Description2,
+      heading: content.sections.inMotion.title,
+      paragraph: content.sections.inMotion.subtitle,
       image: "/home/slide2.png",
     },
     {
-      heading: data.Title3,
-      paragraph: data.Description3,
-      image: "/home/slide3.png",
-    },
-    {
-      heading: data.Title8,
-      paragraph: data.Description8,
+      heading: content.sections.bankAnytime.title,
+      paragraph: content.sections.bankAnytime.subtitle,
       image: "/home/slide3.png",
     },
   ];

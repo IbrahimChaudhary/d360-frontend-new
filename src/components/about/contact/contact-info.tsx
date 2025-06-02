@@ -6,9 +6,8 @@ import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 import { useState } from "react";
 import { DownloadModal } from "@/components/home/download-modal";
-import { AboutD360Data } from "@/types/about/about";
+
 interface ContactInfoProps {
-  data?: AboutD360Data;
   title?: string;
   subtitle?: string;
   showPhone?: boolean;
@@ -28,7 +27,6 @@ interface ContactInfoProps {
 }
 
 export function ContactInfo({
-  data,
   title = "",
   subtitle = "",
   showPhone = true,
@@ -61,68 +59,74 @@ export function ContactInfo({
             language === "ar" ? "right" : "left"
           }`}
         >
-          {data?.Title6}
+          {title}
         </h3>
       )}
+      {subtitle && <p className="text-base text-[#263244]">{subtitle}</p>}
 
       <div className="grid grid-cols-2 md:grid-cols-3  text-[24px]">
         {showPhone && (
           <>
             <div>
-              <h4 className="text-[#6D809C] font-bold ">{data?.inside}</h4>
-              <p>{data?.insideDes}</p>
+              <h4 className="text-[#6D809C] font-bold ">
+                {content.data.contact.phone1.insideSaudi}
+              </h4>
+              <p>{insideSaudi}</p>
             </div>
             <div>
-              <h4 className="text-[#6D809C] font-bold">{data?.outside}</h4>
-              <p>{data?.outsideDes}</p>
+              <h4 className="text-[#6D809C] font-bold">
+                {content.data.contact.phone2.outsideSaudi}
+              </h4>
+              <p>{outsideSaudi}</p>
             </div>
           </>
         )}
         {showEmail && (
           <div>
-            <h4 className="text-[#6D809C] font-bold">{data?.email}</h4>
-            <p>{data?.emailDes}</p>
+            <h4 className="text-[#6D809C] font-bold">
+              {content.data.contact.phone3.email}
+            </h4>
+            <p>{content.data.contact.phone3.value}</p>
           </div>
         )}
       </div>
 
       <div>
         <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
-          {data?.Title7}
+          {content.data.contact.appTitle}
         </h4>
-        <p className="text-[#293242] mb-2 text-[25px]">{data?.viaDes}</p>
+        <p className="text-[#293242] mb-2 text-[25px]">
+          {content.data.contact.viaApp}
+        </p>
         <ul className="list-disc list-inside space-y-1 hidden">
-          <li>{data?.viaApp1}</li>
-          <li>{data?.viaApp2}</li>
+          <li>{content.data.contact.viaApp1}</li>
+          <li>{content.data.contact.viaApp2}</li>
         </ul>
       </div>
 
       {language === "ar" && (
-        <div className="space-y-2 text-sm">
-          <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
-            {data?.complaint}
-          </h4>
-          <p className="text-[20px] leading-relaxed">
-            {data?.complaintDes}
-          </p>
-        </div>
-      )}
+  <div className="space-y-2 text-sm">
+    <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
+      {content.data.contact.complaint.title}
+    </h4>
+    <p className="text-[20px] leading-relaxed">
+      {content.data.contact.complaint.body}
+    </p>
+  </div>
+)}
+
 
       {showButton && (
-        <div
-          className={`w-full flex justify-start ${
-            language === "ar" ? "justify-end" : "justify-start"
-          }`}
-        >
-          <Button
-            onClick={() => setModalOpen(true)}
-            size="lg"
-            className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
-          >
-            {data?.download}
-          </Button>
-        </div>
-      )}
+  <div className={`w-full flex justify-start ${language === "ar" ? "justify-end" : "justify-start"}`}>
+    <Button
+      onClick={() => setModalOpen(true)}
+      size="lg"
+      className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
+    >
+      {language === "ar" ? "حمّل التطبيق" : buttonText}
+    </Button>
+  </div>
+)}
 
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>

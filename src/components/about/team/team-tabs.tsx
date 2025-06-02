@@ -32,9 +32,6 @@ export function TeamTabs({
   executiveMembers: initialExecutiveMembers,
   shariahMembers: initialShariahMembers,
 }: TeamTabsProps) {
-  console.log(initialBoardMembers)
-  console.log(initialExecutiveMembers)
-  console.log(initialShariahMembers)
   const { language } = useStore()
   const isRTL = language === "ar"
 

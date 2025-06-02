@@ -8,12 +8,8 @@ import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { useStore } from "@/store/toggle-store";
 import { cn } from "@/lib/utils";
-import { HomePageData } from "@/types/home/home";
-interface HeroProps {
-  data:HomePageData
- }
- 
- export function HomeHero({data}:HeroProps) {
+
+export function HomeHero() {
   const [isModalOpen, setModalOpen] = useState(false);
   const { language } = useStore();
   const isRTL = language === "ar";
@@ -31,45 +27,34 @@ interface HeroProps {
         playsInline
       />
 
-      <div
+<div
         className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row ${
           isRTL ? "md:flex-row-reverse" : ""
         } lg:items-center justify-between h-full pt-28 lg:pt-10 pb-16 relative z-10`}
       >
         <motion.div
-          className={cn(
-            "lg:max-w-xl w-full",
-            isRTL ? "text-right items-end" : "text-left "
-          )}
-          initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1
-            className={`text-[25px] lg:text-[84px] font-extrabold pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${
-              language === "ar"
-                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
-                : "lg:w-full w-[70%]"
-            }`}
-          >
-            {data.Hero}
-          </h1>
-          <p
-            className={`text-sm sm:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
-              language === "ar"
-                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
-                : "lg:w-full w-[70%]"
-            }`}
-          >
-            {data.HeroDescription}
-          </p>
-          <Button
-            onClick={() => setModalOpen(true)}
-            className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 md:py-6 rounded-[14px]"
-          >
-            {isRTL ? "حمّل التطبيق" : "Download the App"}
-          </Button>
-        </motion.div>
+  className={cn(
+    "lg:max-w-xl w-full",
+    isRTL ? "text-right items-end" : "text-left "
+  )}
+  initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  <h1 className={`text-[25px] lg:text-[84px] font-extrabold pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${language==="ar"?"w-[70%] ml-[29%] lg:ml-0 lg:w-full":"lg:w-full w-[70%]"}`}>
+    {content.sections.inMotion.title}
+  </h1>
+  <p className={`text-sm sm:text-[31px] mb-4 md:mb-6 text-white leading-tight ${language==="ar"?"w-[70%] ml-[29%] lg:ml-0 lg:w-full":"lg:w-full w-[70%]"}`}>
+    {content.sections.inMotion.subtitle}
+  </p>
+  <Button
+    onClick={() => setModalOpen(true)}
+    className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 md:py-6 rounded-[14px]"
+  >
+    {isRTL ? "حمّل التطبيق" : "Download the App"}
+  </Button>
+</motion.div>
+
 
         <motion.div
           className="w-full md:w-[45%] mt-8 md:mt-0"
