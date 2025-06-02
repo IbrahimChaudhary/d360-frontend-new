@@ -6,10 +6,11 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useStore } from '@/store/toggle-store';
-import englishContent from "@/data/home-en";
-import arabicContent from "@/data/home-ar";
 import { HomePageData } from '@/types/home/home';
+
+
+
+
 
 const iconFadeIn = {
   hidden: { opacity: 1, y: 20 },
@@ -26,99 +27,54 @@ const statCardVariant = {
   exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
 };
 
+
 interface ScrollSectionProps{
   data:HomePageData
 }
 export default function ScrollSection({data}:ScrollSectionProps) {
-  const { language } = useStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollLockRef = useRef(false);
-  console.log("dtaa",data)
-  
-  const content = language === "en" ? englishContent : arabicContent;
-  const [ref, inView] = useInView({ threshold: 0.5 });
 
+  const [ref, inView] = useInView({ threshold: 0.5 });
   const sections = [
     {
-      title: data.Title1,
-      description: data.Description1,
+      title: `${data?.Title1}`,
+      description: `${data?.Description1}`,
       image: '/card/red.png',
       rotate: 20,
-      icons: language === 'ar'
-        ? [
-            { src: '/home/card-icons/plane.png', className: 'top-5 left-40' },
-            { src: '/home/card-icons/location.png', className: '-bottom-10 right-20' },
-            { src: '/home/card-icons/coin.png', className: 'top-30 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card-ar.png', className: 'top-70 -left-10' },
-          ]
-        : [
-            { src: '/home/card-icons/plane.png', className: 'top-5 left-40' },
-            { src: '/home/card-icons/location.png', className: '-bottom-10 right-20' },
-            { src: '/home/card-icons/coin.png', className: 'top-30 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card.png', className: 'top-70 -left-10' },
-          ],
+      icons: [
+        { src: '/home/card-icons/plane.png', className: '-top-7 left-80' },
+        { src: '/home/card-icons/location.png', className: ' right-20 ' },
+        { src: '/home/card-icons/coin.png', className: 'top-0 -left-10 h-28 ' },
+        { src: '/home/card-icons/stat-card.png', className: 'top-50 -left-10' },
+      ],
     },
     {
-      title: data.Title2,
-      description: data.Description2,
+      title: `${data?.Title2}`,
+      description: `${data?.Description2}`,
       image: '/card/red.png',
       rotate: -10,
-      icons: language === 'ar'
-        ? [
-            { src: '/home/card-icons/lock.png', className: 'top-15 left-30' },
-            { src: '/home/card-icons/shield.png', className: 'bottom-20 -right-10' },
-            { src: '/home/card-icons/coin.png', className: 'top-50 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card2-ar.png', className: 'top-80' },
-          ]
-        : [
-            { src: '/home/card-icons/lock.png', className: 'top-5 left-30' },
-            { src: '/home/card-icons/shield.png', className: 'bottom-10 right-10' },
-            { src: '/home/card-icons/coin.png', className: 'top-50 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card2.png', className: 'top-90' },
-          ],
+      icons: [
+        { src: '/home/card-icons/lock.png', className: '-top-30 left-70' },
+        { src: '/home/card-icons/shield.png', className: '-bottom-16 right-10 rotate-340' },
+        { src: '/home/card-icons/coin.png', className: 'top-24 -left-18 h-28 ' },
+        { src: '/home/card-icons/stat-card2.png', className: 'top-50 ' },
+      ],
     },
     {
-      title: data.Title3,
-      description: data.Description3,
+      title: `${data?.Title3}`,
+      description: `${data?.Description3}`,
       image: '/card/red.png',
       rotate: 10,
-      icons: language === 'ar'
-        ? [
-            { src: '/home/card-icons/arrow.png', className: 'top-5 left-30' },
-            { src: '/home/card-icons/shield.png', className: 'bottom-10  right-10' },
-            { src: '/home/card-icons/watch.png', className: 'top-30 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card3-ar.png', className: 'top-70 -left-10' },
-          ]
-        : [
-            { src: '/home/card-icons/arrow.png', className: 'top-5 left-30' },
-            { src: '/home/card-icons/shield.png', className: 'bottom-0 right-20' },
-            { src: '/home/card-icons/watch.png', className: 'top-30 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card3.png', className: 'top-70 -left-10' },
-          ],
-    },
-    {
-      title: data.Title8,
-      description: data.Description8,
-      image: '/card/red.png',
-      rotate: 20,
-      icons: language === 'ar'
-        ? [
-            { src: '/home/card-icons/diamond.png', className: 'top-5 left-30' },
-            { src: '/home/card-icons/coin.png', className: 'bottom-5 left-50 ' },
-            { src: '/home/card-icons/mag.png', className: 'top-30 -left-16 ' },
-            { src: '/home/card-icons/stat-card4-ar.png', className: 'top-60 -left-30' },
-          ]
-        : [
-            { src: '/home/card-icons/diamond.png', className: 'top-5 left-30' },
-            { src: '/home/card-icons/coin.png', className: 'bottom-0 right-20' },
-            { src: '/home/card-icons/mag.png', className: 'top-30 -left-16 h-28' },
-            { src: '/home/card-icons/stat-card4.png', className: 'top-70 -left-10' },
-          ],
+      icons: [
+        { src: '/home/card-icons/arrow.png', className: '-top-20 left-80' },
+        { src: '/home/card-icons/shield.png', className: '-bottom-29 right-10' },
+        { src: '/home/card-icons/watch.png', className: 'top-10 -left-17 h-28 ' },
+        { src: '/home/card-icons/stat-card3.png', className: 'top-50' },
+      ],
     },
   ];
-  
-
   // Scroll logic
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -162,17 +118,14 @@ export default function ScrollSection({data}:ScrollSectionProps) {
 
   return (
     <div ref={ref} className="relative h-screen w-full overflow-hidden bg-[#FDF0ED]">
-      <div ref={containerRef} className={cn(
-    "absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-16 gap-14",
-     language === 'ar' ? "md:flex-row-reverse gap-[300px]" : "md:flex-row"
-  )}>
-        <div className=" text-start">
+      <div ref={containerRef} className="absolute inset-0 flex flex-col md:flex-row items-center justify-center px-6 lg:px-24">
+        <div className="max-w-md text-left">
           <motion.h2
             key={current.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`text-3xl md:text-[80px] uppercase font-extrabold text-[#E74529] ${language==="ar" ? "text-right" : "text-left"} `}
+            className="text-3xl md:text-5xl font-bold text-[#E74529] leading-snug"
           >
             {current.title}
           </motion.h2>
@@ -182,7 +135,7 @@ export default function ScrollSection({data}:ScrollSectionProps) {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`mt-4 text-[#263244] text-base md:text-[31px] ${language==="ar" ? "text-right" : "text-left"}`}
+            className="mt-4 text-[#263244] text-base md:text-lg w-[60%]"
           >
             {current.description}
           </motion.p>
@@ -200,7 +153,7 @@ export default function ScrollSection({data}:ScrollSectionProps) {
               alt={current.title}
               width={550}
               height={350}
-              className="object-contain w-[734px] h-[486px]"
+              className="object-contain w-full h-auto"
             />
           </motion.div>
 
@@ -245,5 +198,6 @@ export default function ScrollSection({data}:ScrollSectionProps) {
       </div>
     </div>
   );
+
 }
 

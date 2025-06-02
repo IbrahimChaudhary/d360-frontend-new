@@ -1,61 +1,36 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { Section } from "@/components/ui/section";
-import { AnimatedSection } from "@/components/ui/animated-section";
-import { useStore } from "@/store/toggle-store";
-import { englishContent } from "@/data/about-en";
-import { arabicContent } from "@/data/about-ar";
-import { AboutD360Data } from "@/types/about/about";
+import Image from "next/image"
+import { Section } from "@/components/ui/section"
+import { AnimatedSection } from "@/components/ui/animated-section"
+import { useTranslations } from "@/lib/i18n"
+import { AboutD360Data } from "@/types/about/about"
+
 interface OurStoryProps {
-  data?: AboutD360Data;
+  data?: AboutD360Data
 }
 
-export function OurStory({ data }: OurStoryProps) {
-  const { language } = useStore();
-  const content = language === "en" ? englishContent : arabicContent;
+export function OurStory({data}:OurStoryProps) {
+  const { t } = useTranslations()
 
   return (
-    <Section className="bg-white flex flex-row lg:justify-center items-center">
-      <div
-        className={`flex flex-col  ${
-          language === "ar" ? "md:flex-row-reverse" : "md:flex-row"
-        }   items-center justify-center lg:px-24 `}
-      >
-        <AnimatedSection direction="right" className="lg:w-[50%]">
+    <Section className="bg-white">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+        <AnimatedSection direction="right" className="">
           <Image
             src="/about/our-story.png"
             alt="Decorative pyramid illustration"
-            width={700}
-            height={700}
-            className="rounded-lg lg:block hidden"
-          />
-          <Image
-            src="/about/our-story-mob.png"
-            alt=""
-            className="rounded-lg block lg:hidden h-[200px] w-[293px]"
-            width={630}
-            height={430}
+            width={300}
+            height={300}
+            className="rounded-lg"
           />
         </AnimatedSection>
 
-        <AnimatedSection direction="up" className="lg:w-[40%]">
-          <h2
-            className={`lg:text-[60px] text-[30px] font-extrabold mb-3 lg:mb-6 mt-4 lg:mt-0 text-[#293242] text-left ${
-              language === "ar" ? "text-right" : "text-left"
-            }`}
-          >
-            {data?.Title3}
-          </h2>
-          <p
-            className={`text-[#293242] text-[14px] lg:text-[20px] font-normal mb-4 text-left ${
-              language === "ar" ? "text-right" : "text-left"
-            }`}
-          >
-            {data?.Description3}{" "}
-          </p>
+        <AnimatedSection direction="up" className="md:w-[33%]">
+          <h2 className="text-5xl font-[800] mb-6 text-[#293242]">{data?.Title3}</h2>
+          <p className="text-`[#293242]` font-[400]  mb-4">{data?.Description3}</p>
         </AnimatedSection>
       </div>
     </Section>
-  );
+  )
 }

@@ -5,7 +5,7 @@ export interface Leader {
   role: string;
   description: string;
   position: string;
-  image: string;
+  image:string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -14,12 +14,7 @@ export interface Leader {
 export interface AboutD360Data {
   id: number;
   documentId: string;
-  value1: string;
-  value2: string;
-  value3: string;
-  value1Des: string;
-  value2Des: string;
-  value3Des: string;
+
   Title1: string;
   Title2: string;
   Description2: string;
@@ -52,19 +47,7 @@ export interface AboutD360Data {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  download: string;
-  contact: string;
-  inside: string;
-  outside: string;
-  email: string;
-  insideDes: string;
-  outsideDes: string;
-  emailDes: string;
-  viaDes: string;
-  complaintDes: string;
-  complaint: string;
-  viaApp1: string;
-  viaApp2: string;
+
   leaders: Leader[];
 }
 

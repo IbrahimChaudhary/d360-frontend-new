@@ -2,8 +2,7 @@
 export interface HomePageData {
   id: number
   documentId: string
-  Hero:string
-  HeroDescription:string
+
   Heading: string
   HeadingB: string
   Description: string
@@ -48,9 +47,7 @@ export interface HomePageData {
 
   Shariah: string
   ShariahDescription: string
-  PhysicalCardCTA:string
-  DigitalCardCTA:string
-  SarihaBTN:string
+
   createdAt: string
   updatedAt: string
   publishedAt: string

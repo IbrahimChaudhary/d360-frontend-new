@@ -3,25 +3,29 @@
 import { motion } from "framer-motion"
 import { FaGlobe, FaExchangeAlt } from "react-icons/fa"
 import Image from "next/image"
+import { PersonalServiceData } from "@/types/personal-service/personal-service"
 
-const items = [
-  {
-    icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full  " />,
-    title: "Send money abroad safely and swiftly.",
-    button: "Explore",
-    image: "/personal/mob-right.png", // adjust path
-    reverse: false,
-  },
-  {
-    icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full " />,
-    title: "Transfers that are simple fast and secure",
-    button: "Explore",
-    image: "/personal/mob-left.png", // adjust path
-    reverse: true,
-  },
-]
 
-export default function TransfersFeatureSection() {
+interface TransfersFeatureSectionProps{
+  data:PersonalServiceData
+}
+export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
+  const items = [
+    {
+      icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full  " />,
+      title: `${data.Title12} ${data.Title13}`,
+      button: "Explore",
+      image: "/personal/mob-right.png", // adjust path
+      reverse: false,
+    },
+    {
+      icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full " />,
+      title: `${data.Title14} ${data.Title15}`,
+      button: "Explore",
+      image: "/personal/mob-left.png", // adjust path
+      reverse: true,
+    },
+  ]
   return (
     <section className="bg-white px-6 lg:px-0 lg:w-[65%] mx-auto">
       <div className="space-y-20 max-w-7xl mx-auto">

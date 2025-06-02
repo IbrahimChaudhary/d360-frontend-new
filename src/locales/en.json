@@ -74,7 +74,7 @@
       }
     }
   },
-
+  
   "faqs": {
     "title": "FAQs",
     "items": {
@@ -109,22 +109,43 @@
   },
   "footer": {
     "columns": {
-      "links": {
-        "securityAwareness": "Security Awareness",
-        "privacyNotice": "Privacy Notice",
-        "contactUs": "Contact Us",
-        "customerCare": "Customer Care",
-        "applePay": "Apple Pay",
-        "careers": "Careers",
-        "customerProtection": "Customer Protection Principles",
-        "productFees": "Products and Services Fees"
+      "about": {
+        "title": "About Us",
+        "links": {
+          "story": "Our Story",
+          "team": "Our Team",
+          "careers": "Careers",
+          "news": "News"
+        }
+      },
+      "contact": {
+        "title": "Contact US",
+        "links": {
+          "support": "Customer Support",
+          "branches": "Branches",
+          "faqs": "FAQs",
+          "feedback": "Feedback"
+        }
+      },
+      "help": {
+        "title": "Help & Support",
+        "links": {
+          "security": "Security",
+          "terms": "Terms & Conditions",
+          "privacy": "Privacy Policy",
+          "howTo": "How to use the app"
+        }
       },
       "follow": {
         "title": "Follow US"
       }
     },
     "legal": {
-      "copyright": "All rights reserved © D360 Bank | Regulated by the Saudi Central Bank | Closed Joint Stock Company with a Capital of SAR 1,650,000,000 |CR No. 1010822737 Licensed in accordance with the Council of Ministers decree No. 389 dated 14/07/1443H corresponding to 15/02/2022G | Subject to the supervision of the Saudi Central Bank | 3074 Prince Mohammed bin Abdulaziz Rd. Al Olaya Dist. 12213 Riyadh, Saudi Arabia | www.D360.com"
+      "moneyTransfers": "International Money Transfers",
+      "moneyTransfersText": "Send Money to India | Send Money to Nigeria | Send Money to Poland | Send Money to Ghana | Send Money to Dubai | Send Money to the UK from India | Send Money to Saudi Arabia | Send Money to North Macedonia | Send Money to Kazakhstan",
+      "exchangeRates": "Exchange Rates",
+      "exchangeRatesText": "Convert SAR to GBP | Convert GBP to SAR | Convert SAR to CAD | Convert SAR to JPY | Convert SAR to SEK | Convert SAR to EGP | Convert 100 SAR to GBP | Convert 1000 SAR to CAD | Convert 100 SAR to INR | Convert 1000 SAR to GBP | Convert 1000 SAR to GBP | Compare Exchange Rates",
+      "copyright": "All rights reserved © D360 Bank | Regulated by the Saudi Central Bank | Closed Joint Stock Company with a Capital of SAR 1,650,000,000 |CR No. 1010822737 Licensed in accordance with the Council of Ministers decree No. 389 dated 14/07/1443H corresponding to 15/02/2022G | Subject to the supervision of the Saudi Central Bank | 3074 Prince Mohammed bin Abdulaziz Rd. Al Olaya Dist. 12213 Riyadh, Saudi Arabia | www.D360.com"
     }
   }
 }

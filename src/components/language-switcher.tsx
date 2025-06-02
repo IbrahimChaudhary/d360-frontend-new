@@ -1,31 +1,27 @@
-'use client';
+"use client"
 
-import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { useCallback } from 'react';
-import { useStore } from '@/store/toggle-store'
+import { useLanguage } from "@/context/language-context"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { useCallback } from "react"
 
 export function LanguageSwitcher() {
-  const { language, toggleLanguage } = useStore(); 
+  const { language, setLanguage } = useLanguage()
 
-  const handleToggle = useCallback(() => {
-    toggleLanguage();
-  }, [toggleLanguage]);
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === "en" ? "ar" : "en")
+  }, [language, setLanguage])
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3 }}
-    >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
       <Button
-        variant="default"
-        onClick={handleToggle}
-        className="font-semibold text-[26px] bg-none"
-        aria-label={language === 'en' ? 'Switch to Arabic' : 'Switch to English'}
+        variant="ghost"
+        onClick={toggleLanguage}
+        className="font-medium"
+        aria-label={language === "en" ? "Switch to Arabic" : "Switch to English"}
       >
-        {language === 'en' ? 'عربي' : 'English'}
+        {language === "en" ? "عربي" : "English"}
       </Button>
     </motion.div>
-  );
+  )
 }

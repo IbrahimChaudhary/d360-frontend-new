@@ -16,7 +16,7 @@ interface StatsCounterProps {
 
 export function StatsCounter({ stats,container }: StatsCounterProps) {
   return (
-    <div className={cn(` md:px-18 text-center pt-10 gap-y-7  pb-8`,container)}>
+    <div className={cn(`grid grid-cols-2 md:grid-cols-4 md:px-18 text-center pt-10 gap-y-7  pb-8`,container)}>
       {stats.map((stat, index) => (
         <motion.div
           key={index}
@@ -26,8 +26,8 @@ export function StatsCounter({ stats,container }: StatsCounterProps) {
           viewport={{ once: true }}
           className="flex flex-col items-center"
         >
+          <span className="text-md text-[#293242] mb-1">{stat.label}</span>
           <CountUp end={stat.value} suffix={stat.suffix || ""} />
-          <span className="text-[14px] lg:text-[30px] text-center text-[#293242] mb-1">{stat.label}</span>
         </motion.div>
       ))}
     </div>
@@ -54,7 +54,7 @@ function CountUp({ end, suffix }: { end: number; suffix?: string }) {
   }, [end])
 
   return (
-    <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529]">
+    <span className="text-2xl md:text-5xl font-bold text-[#E74529]">
       +{count.toLocaleString()}
       {suffix}
     </span>

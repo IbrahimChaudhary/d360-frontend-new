@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import Image from "next/image"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { PersonalServiceData } from "@/types/personal-service/personal-service"
 
 const cards = [
   {
@@ -16,16 +16,16 @@ const cards = [
     image: "/personal/green-card.png",
     alt: "D360 Mada Card",
   },
-];
-
-export default function D360Cards() {
-  const [activeIndex, setActiveIndex] = useState(0);
+]
+interface D360CardsProps{
+  data:PersonalServiceData
+}
+export default function D360Cards({data}:D360CardsProps) {
+  const [activeIndex, setActiveIndex] = useState(0)
 
   return (
     <section className="py-28 bg-white text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-[#263244] mb-10">
-        D360 Cards
-      </h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-[#263244] mb-10">{data.Title16}</h2>
 
       <div className="relative w-[300px] md:w-[360px] h-[200px] mx-auto mb-6 ">
         <AnimatePresence mode="wait">
@@ -58,12 +58,10 @@ export default function D360Cards() {
           />
         ))}
       </div>
-      <Link href="/card">
-        
-        <button className="bg-[#263244] text-white py-2 px-6 rounded-lg text-sm font-medium hover:bg-[#1e2d3b] transition">
-          Explore Cards
-        </button>
-      </Link>
+
+      <button className="bg-[#263244] text-white py-2 px-6 rounded-lg text-sm font-medium hover:bg-[#1e2d3b] transition">
+        Explore Cards
+      </button>
     </section>
-  );
+  )
 }

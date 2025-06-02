@@ -131,18 +131,3 @@
     }
   }
 }
-
-
-:root {
-  --font-default: var(--font-lato);
-}
-
-html[lang="ar"] {
-  --font-default: var(--font-tajawal);
-}
-
-@layer tokens {
-  :root {
-    --font-family-sans: var(--font-default); /* Tailwind's `font-sans` points here */
-  }
-}

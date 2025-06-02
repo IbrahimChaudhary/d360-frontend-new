@@ -1,151 +1,145 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { DesktopDropdownMenu } from "./dropdown-menu";
 import { cn } from "@/lib/utils";
-import { useStore } from "@/store/toggle-store";
+import { X } from "lucide-react";
+
+const aboutSections = [
+  {
+    items: [
+      { label: "About D360", href: "/about" },
+      { label: "Media Center", href: "/media-center" },
+      { label: "Shariah Committee", href: "/shariah" },
+      { label: "Investor Relations", href: "/investors" },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      { label: "Security Awareness", href: "/security-awareness" },
+      { label: "Privacy Notice", href: "/privacy-notice" },
+      {
+        label: "Customer Protection Principles",
+        href: "/protection-principles",
+      },
+      { label: "Customer Care", href: "/customer-care" },
+      { label: "Products & Services Fees", href: "/products-fees" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+];
+
+const personalSections = [
+  {
+    items: [
+      { label: "Personal Services", href: "/personal-services" },
+      { label: "Savings Accounts", href: "/savings" },
+      { label: "Payments", href: "/payments" },
+      { label: "International Transfers", href: "/international-transfers" },
+      { label: "Cards", href: "/cards" },
+      { label: "Offers", href: "/offers" },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      { label: "Security Awareness", href: "/security-awareness" },
+      { label: "Privacy Notice", href: "/privacy-notice" },
+      {
+        label: "Customer Protection Principles",
+        href: "/protection-principles",
+      },
+      { label: "Customer Care", href: "/customer-care" },
+      { label: "Products & Services Fees", href: "/products-fees" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+];
 
 interface HeaderProps {
   fixed?: boolean;
-  variant?: "default" | "about";
 }
 
-export function Header({ variant = "default" }: HeaderProps) {
-  const { language, toggleLanguage } = useStore();
-  const isRTL = language === "ar";
-
-  const handleToggle = useCallback(() => {
-    toggleLanguage();
-  }, [toggleLanguage]);
-
-  const [scrollY, setScrollY] = useState(0);
-  const [scrollDir, setScrollDir] = useState<"up" | "down" | null>(null);
+export function Header({ fixed = false }: HeaderProps) {
+  const [openMenu, setOpenMenu] = useState<"about" | "personal" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Close dropdown on scroll
   useEffect(() => {
-    let lastY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      setScrollY(currentY);
-
-      if (currentY > lastY && currentY > 80) {
-        setScrollDir("down");
-      } else if (currentY < lastY) {
-        setScrollDir("up");
-      }
-
-      lastY = currentY;
-    };
-
+    const handleScroll = () => setOpenMenu(null);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll-based styles (same for both variants)
-  const isBlur = scrollY > 50 && scrollY < 500;
-  const isWhite = scrollY >= 500;
-  const isHidden = scrollDir === "down" && isWhite;
+  const toggleMenu = (menu: "about" | "personal") => {
+    setOpenMenu((prev) => (prev === menu ? null : menu));
+  };
 
-  // Logic for changing logo and nav color (only for 'default')
-  const shouldChangeAssets = variant === "default";
+  const isDropdownOpen = openMenu !== null;
 
-  const logoSrc = shouldChangeAssets
-    ? isWhite
-      ? isRTL
-        ? "/arabic-logo-black.png"
-        : "/footer-logo.png"
-      : isRTL
-      ? "/arabic-logo.png"
-      : "/logo2.png"
-    : isRTL
-    ? "/arabic-logo-black.png"
-    : "/footer-logo.png";
-
-  const navColor = shouldChangeAssets
-    ? isWhite
-      ? "text-[#293242]"
-      : "text-white"
-    : "text-[#293242]"; // 'about' stays white
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 lg:px-9",
-        isHidden ? "-translate-y-full" : "translate-y-0",
-        isWhite
-          ? "bg-white shadow-md"
-          : isBlur
-          ? "bg-white/30 backdrop-blur-[2rem]"
-          : "bg-transparent"
-      )}
-    >
-      <div
-        className={cn(
-          "w-full flex items-center justify-between px-4",
-          isRTL ? "flex-row-reverse" : "flex-row"
-        )}
-      >
+    className={cn(
+      "transition-colors duration-300",
+      "py-4 px-4 md:px-9",
+      "top-0 left-0 right-0 z-50",
+      fixed ? "fixed" : "absolute",
+      isDropdownOpen ? "bg-white shadow" : "bg-transparent"
+    )}
+  >
+  
+  
+      <div className="w-full   flex items-center justify-between px-4">
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/">
-            <Image
-              src={logoSrc}
-              width={isRTL ? 80 : 65}
-              height={isRTL ? 80 : 105}
-              alt="Logo"
-              className={cn(
-                "transition-all duration-300",
-                isRTL
-                  ? "lg:w-[65px] lg:h-[105px] w-[50px] h-[80px]"
-                  : "lg:w-[65px] lg:h-[105px] w-[50px] h-[80px]"
-              )}
-            />
+          <Link href="/" >
+           <img src="/footer-logo.png" className="hidden lg:flex h-[105px] w-[65px]" alt="" />
+           <img src="/logo2.png" className=" lg:hidden h-[55px] w-[34px]" alt="" />
           </Link>
         </motion.div>
 
         {/* Desktop Nav */}
         <motion.nav
-          className={cn(
-            "hidden md:flex items-center gap-6 text-[22px] font-semibold transition-colors duration-300",
-            navColor,
-            isRTL ? "flex-row-reverse" : "flex-row"
-          )}
+          className="hidden md:flex items-center space-x-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <Link href="/about" className="hover:text-[#E74529]">
-            {isRTL ? "عن D360" : "About D360"}
-          </Link>
-          <div
-            onClick={handleToggle}
-            className="cursor-pointer hover:text-[#E74529]"
-          >
-            {isRTL ? "English" : "عربي"}
-          </div>
+          <DesktopDropdownMenu
+            label="About D360"
+            active={openMenu === "about"}
+            onToggle={() => toggleMenu("about")}
+            sections={aboutSections}
+          />
+          <DesktopDropdownMenu
+            label="Personal"
+            active={openMenu === "personal"}
+            onToggle={() => toggleMenu("personal")}
+            sections={personalSections}
+          />
+          <LanguageSwitcher />
         </motion.nav>
 
-        {/* Mobile Toggle */}
+        {/* Mobile toggle */}
         <div className="block md:hidden z-[100]">
-          <button onClick={() => setMobileOpen(!mobileOpen)}>
-            <img
-            
-              src={
-                variant === "about"
-                  ? "/hambar.svg"
-                  : isWhite
-                  ? "/hambar.svg"
-                  : "/hambar-white.svg"
-              }
-              alt="menu"
-            />
+          <button
+            onClick={() => setMobileOpen((prev) => !prev)}
+            aria-label="Toggle Menu"
+          >
+            {mobileOpen ? (
+              <X className="w-7 h-7 text-[#263244]" />
+            ) : (
+              <img src="/hambar.svg" alt="menu" />
+            )}
           </button>
         </div>
       </div>
@@ -154,37 +148,30 @@ export function Header({ variant = "default" }: HeaderProps) {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-[70px] left-4 right-4 mx-auto bg-white rounded-2xl shadow-xl z-40 px-6 py-6"
+            className="absolute top-full left-0 w-full bg-white shadow-md py-6 px-6 md:hidden z-40"
           >
-            <div className={`flex justify-${isRTL ? "start" : "end"}`}>
-              <button onClick={() => setMobileOpen(false)}>
-                <X className="w-6 h-6 text-[#E74529]" />
-              </button>
-            </div>
-
-            <nav
-              className={cn(
-                "mt-4 flex flex-col gap-6 text-[20px] font-semibold",
-                isRTL ? "items-end text-right" : "items-start text-left"
-              )}
-            >
+            <nav className="flex flex-col space-y-4">
               <Link
                 href="/about"
+                className="text-slate-800 text-lg font-medium"
                 onClick={() => setMobileOpen(false)}
-                className="text-[#293242] hover:text-[#E74529]"
               >
-                {isRTL ? "عن D360" : "About D360"}
+                About D360
               </Link>
-              <button
-                onClick={handleToggle}
-                className="text-[#293242] hover:text-[#E74529]"
+              <Link
+                href="/personal"
+                className="text-slate-800 text-lg font-medium"
+                onClick={() => setMobileOpen(false)}
               >
-                {isRTL ? "English" : "عربي"}
-              </button>
+                Personal
+              </Link>
+              <div className="mt-2">
+                <LanguageSwitcher />
+              </div>
             </nav>
           </motion.div>
         )}

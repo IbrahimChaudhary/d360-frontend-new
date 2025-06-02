@@ -1,14 +1,17 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ContactPageData } from "@/types/contact-us/contact-us";
 
-export function AppSupportSection() {
+interface AppSupportSectionProps {
+  data: ContactPageData;
+}
+export function AppSupportSection({ data }: AppSupportSectionProps) {
   return (
     <section className="py-20 px-4 bg-white">
       <div className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-12">
-        
         {/* Image on Left */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -34,7 +37,7 @@ export function AppSupportSection() {
           className="max-w-lg text-center md:text-left"
         >
           <h3 className="text-[20px] md:text-2xl font-semibold text-[#263244] mb-6">
-            Feel free to connect with us directly for any assistance or inquiries in our app
+            {data.Title1}
           </h3>
 
           <Button className="bg-[#E74529] hover:bg-[#e93d20] text-white rounded-md px-6 py-2 text-sm">
@@ -43,5 +46,5 @@ export function AppSupportSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
