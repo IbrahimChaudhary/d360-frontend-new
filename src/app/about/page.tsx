@@ -24,20 +24,23 @@ export default function AboutPage() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const stats = [
-    {
-      label: isRTL ? "بنك سعودي رقمي" : "Saudi Digital Bank",
-      value: 1,
-      suffix: "st",
+    { 
+      label: isRTL ? "بنك سعودي رقمي" : "Saudi Digital Bank", 
+      value: isRTL ? "اول" : "1st", 
+      animated: false 
     },
-    {
-      label: isRTL ? "المستخدمين" : "Users",
-      value: 1,
-      suffix: "M",
+    { 
+      label: isRTL ? "المستخدمين" : "Users", 
+      value: 1, 
+      prefix: "+", 
+      suffix: "M", 
+      animated: true 
     },
-    {
-      label: isRTL ? "الدول" : "Countries",
-      value: 70,
-      suffix: "",
+    { 
+      label: isRTL ? "الدول" : "Countries", 
+      value: 70, 
+      prefix: "+", 
+      animated: true 
     },
   ];
 

@@ -337,7 +337,7 @@ export const executiveMembers: ExecutiveMember[] = [
     category: "executive",
     department: "Executive Leadership",
     biography:
-      "Dr. Szafir is the CEO of D360 Bank. Before joining D360, he was the CEO of Openbank, the digital bank of Santander Group, with presence in 4 European countries and the US and Mexico. Openbank also offers Buy Now Pay Later (BNPL) and co-Branded credit cards, being the partner of Amazon, Apple, and other retail giants, with a total balance sheet across all markets of USD 25 billion.",
+      "Dr. Szafir is the CEO of D360 Bank. He previously led Openbank and Santander Consumer Bank, overseeing global operations and a $150B+ balance sheet. He also held executive roles at Amazon Europe, Liberty Global, and McKinsey. Ezequiel holds a PhD from Tilburg University, an MSc from Boston College, and a BSc from UADE. He was also a Research Fellow at MIT.",
     education: [
       {
         degree: "Ph.D.",
@@ -370,7 +370,7 @@ export const executiveMembers: ExecutiveMember[] = [
     isFoundingMember: true,
     yearsOfExperience: 10,
     biography:
-      "Faisal is a founding member of D360 Bank and serves as the Chief Business Officer. He oversees the bank-wide business and long-term strategy, covering Retail, BaaS and SME segments. Faisal has over a decade of experience in banking and business consulting. Prior to D360, Faisal held consulting roles, mainly at McKinsey & Co as business consultant serving a wide set of clients in the GCC and the region with a focus on Banking and Investments.",
+      "Faisal is a founding member of D360 Bank and leads strategy across Retail, BaaS, and SME. He previously worked at McKinsey & Co, advising regional banks on transformation. Faisal holds a degree in Industrial Engineering from Alfaisal University, graduating with highest distinction.",
     education: [
       {
         degree: "Industrial Engineering",
@@ -380,13 +380,13 @@ export const executiveMembers: ExecutiveMember[] = [
   },
   {
     id: "mohammed-alkhomashi",
-    name: "Mohammed Abdullah Alkhomashi",
+    name: "Mohammed Alkhomashi",
     position: "Chief Compliance Officer",
     category: "executive",
     department: "Compliance",
     yearsOfExperience: 19,
     biography:
-      "Mohammed Alkhomashi is the Chief Compliance Officer of D360 Bank; leading the Compliance function including Anti-Money Laundry and Counter Terrorism Financing. With over 19 years of experience, Mohammed has experience in regulatory fields as he has worked for more than 11 years for the Saudi Central Bank (SAMA).",
+      "Mohammed leads Compliance and Financial Crimes at D360 Bank. He previously worked at SAMA for over a decade, and held leadership roles at Banque Saudi Fransi and Aljazira Bank. Mohammed holds a Master’s in Strategic Information Systems from the University of East Anglia.",
     education: [
       {
         degree: "Master's Degree",
@@ -397,13 +397,13 @@ export const executiveMembers: ExecutiveMember[] = [
   },
   {
     id: "ayman-alhabib",
-    name: "Ayman Abdullah Alhabib",
+    name: "Ayman Alhabib",
     position: "Chief Risk Officer",
     category: "executive",
     department: "Risk Management",
     isFoundingMember: true,
     biography:
-      "Ayman is a founding member of D360 Bank and serves as its Chief Risk Officer, leading the implementation of the Bank's risk management strategy and overseeing the risk management function. Ayman has played a pivotal role in establishing and executing the Bank's risk framework, encompassing credit risk, market risk, operational risk, cybersecurity, business continuity, and anti-fraud measures.",
+      "Ayman is a founding member of D360 Bank, overseeing the Bank’s risk strategy. He was Chief Risk Officer at Emkan Finance and held senior roles at Al Rajhi Bank. Ayman holds a bachelor’s degree in MIS from KFUPM and an MBA from King Saud University, where he graduated top of his class.",
     education: [
       {
         degree: "Bachelor's degree",
@@ -423,7 +423,7 @@ export const executiveMembers: ExecutiveMember[] = [
     category: "executive",
     department: "Technology",
     biography:
-      "Ale de la Viña is a hands-on Chief Technology Officer specializing in cloud-native digital banking. He has led technology functions across architecture, engineering, core banking, and wealth management, delivering scalable, secure, and resilient platforms in complex regulatory environments.",
+      "Ale is CTO of D360 Bank, specializing in digital banking platforms and cloud-native architecture. He has led technology functions in banking, streaming, and consulting across complex environments. Ale studied Systems Engineering and has deep expertise in big data and microservices.",
   },
   {
     id: "rayan-alturki",
@@ -433,7 +433,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Commercial",
     yearsOfExperience: 19,
     biography:
-      "As the Chief Commercial Officer (CCO) of D360 Bank, Rayan Alturki spearheads marketing, growth initiatives, and partnerships. Prior to his role at D360, Rayan was the CCO at Zain KSA, where he managed marketing, corporate communications, branding, investor relations, and corporate sustainability.",
+      "Rayan leads marketing, growth, and partnerships at D360 Bank. He was formerly CCO of Zain KSA, where he led marketing, corporate communications, branding, investor relations. Rayan is a graduate of Harvard Business School and the Misk 2030 Leaders Program, and holds a bachelor’s in Computer Science and an MBA.",
     education: [
       {
         degree: "Bachelor's degree",
@@ -454,7 +454,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Operations",
     yearsOfExperience: 24,
     biography:
-      "Sadeq leads D360 Bank's Operations, and enterprise project management functions. As an early joiner to D360, he played a pivotal role in the development and establishment of the product function. Sadeq has over 24 years of banking experience where he was leading consumer assets for BSF prior to joining D360.",
+      "Sadeq oversees Operations and EPMO at D360 Bank. He previously led consumer assets at BSF and worked with ANB, Visa, NCB, and SAB. Sadeq holds a B.S. in Marketing from KFUPM, a digital business diploma from Columbia, and completed the CTO program at UC Berkeley.",
     education: [
       {
         degree: "B.S.",
@@ -475,7 +475,7 @@ export const executiveMembers: ExecutiveMember[] = [
     category: "executive",
     department: "Human Resources",
     biography:
-      "Akram Alahmadi is the Chief Corporate Officer at D360 Bank, where he has played a key role in disrupting the financial sector by attracting top global talent, shaping corporate strategy, and fostering an agile, high-performance culture.",
+      "Akram leads corporate strategy and talent at D360 Bank. He held senior roles at P&G, Bupa Arabia, and Mobily, and is a board member and NRC advisor. Akram holds a bachelor’s in Psychology from King AbdulAziz University and an MBA from the University of Wisconsin.",
     education: [
       {
         degree: "MBA",
@@ -496,7 +496,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Internal Audit",
     yearsOfExperience: 16,
     biography:
-      "Nouf Alyousef is the Executive Director for Internal Audit of D360 Bank, which she took on from February 2023 till present. She has more than 16 years of banking and digital experience in Governance, Risk Management, Internal Audit, Cyber Security, BCM and Technology.",
+      "Nouf oversees Internal Audit at D360 Bank, with 16+ years of experience in governance, risk, and cybersecurity. She holds a BS in Computer Information Systems from Prince Sultan University and an MBA from the University of Manchester, along with 10 professional certifications.",
     education: [
       {
         degree: "B.S",
@@ -537,7 +537,7 @@ export const executiveMembers: ExecutiveMember[] = [
     category: "executive",
     department: "Finance",
     biography:
-      "Mr. Mohammed Nazer is the Chief Financial Officer at D360 and is responsible for the finance department at the bank. Prior to joining D360 Bank, he served as the CFO and CIO of SRMG, the largest publicly-listed media company in Saudi.",
+      "Mohammed oversees Finance at D360 Bank. He was CFO & CIO at SRMG and held roles at Goldman Sachs, J.P. Morgan, and Barclays. He serves on several company boards. Mohammed holds an MBA from The Wharton School and a bachelor’s degree from New York University.",
     education: [
       {
         degree: "MBA",

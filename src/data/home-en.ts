@@ -24,12 +24,12 @@ export default {
     },
     shariah: {
       title:
-        "A shariah-compliant Saudi Digital Bank that aims to provide the best financial experience in the Kingdom.",
+        "A shariah-compliant Saudi Digital Bank that aims to provide the best banking experience in the Kingdom.",
     },
     digitalCard: {
       title: "Digital Card",
       description:
-        "Create a virtual card instantly and add it to Apple Pay or madaPay to start spending right away",
+        "Create a virtual card instantly and add it to Apple Pay or mada Pay to start spending right away",
     },
     physicalCard: {
       title: "Physical Card",

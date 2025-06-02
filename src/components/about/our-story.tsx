@@ -32,7 +32,7 @@ export function OurStory() {
         </AnimatedSection>
 
         <AnimatedSection direction="up" className="lg:w-[40%]">
-  <h2 className={`lg:text-[60px] text-[30px] font-extrabold mb-3 lg:mb-6 mt-4 lg:mt-0 text-[#293242] text-left ${language === 'ar'? 'text-right' : 'text-left'}`} >
+  <h2 className={`lg:text-[60px] hidden text-[30px] font-extrabold mb-3 lg:mb-6 mt-4 lg:mt-0 text-[#293242] text-left ${language === 'ar'? 'text-right' : 'text-left'}`} >
     {content.data.about.header}
   </h2>
   {content.data.about.body.map((paragraph: string, idx: number) => (

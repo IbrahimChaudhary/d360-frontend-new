@@ -159,7 +159,7 @@ export default function ScrollSection() {
     <div ref={ref} className="relative h-screen w-full overflow-hidden bg-[#FDF0ED]">
       <div ref={containerRef} className={cn(
     "absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-16 gap-14",
-     language === 'ar' ? "md:flex-row-reverse gap-[300px]" : "md:flex-row"
+     language === 'ar' ? "md:flex-row-reverse gap-[200px]" : "md:flex-row"
   )}>
         <div className=" text-start">
           <motion.h2
@@ -167,9 +167,10 @@ export default function ScrollSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`text-3xl md:text-[80px] uppercase font-extrabold text-[#E74529] ${language==="ar" ? "text-right" : "text-left"} `}
+            className={`text-3xl w-full md:text-[80px] uppercase font-extrabold text-[#E74529] ${language==="ar" ? "text-right" : "text-left"} `}
           >
             {current.title}
+
           </motion.h2>
 
           <motion.p
@@ -177,7 +178,7 @@ export default function ScrollSection() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`mt-4 text-[#263244] text-base md:text-[31px] ${language==="ar" ? "text-right" : "text-left"}`}
+            className={`mt-4 w-full text-[#263244] text-base md:text-[31px] ${language==="ar" ? "text-right" : "text-left"}`}
           >
             {current.description}
           </motion.p>

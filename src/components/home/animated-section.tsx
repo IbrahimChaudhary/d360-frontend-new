@@ -575,7 +575,7 @@ export default function InteractiveCardHero() {
                     className="bg-white font-bold text-[#E74529] text-sm  rounded-lg px-12 py-3 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
-                    {language === "ar" ? "أنشئ بطاقة" : "Create a Card"}
+                    {language === "ar" ? "أصدر بطاقتك"  : "Create a Card"}
                   </button>
                 </motion.div>
               )}
@@ -598,8 +598,8 @@ export default function InteractiveCardHero() {
         className="absolute z-20 pointer-events-none"
         animate={{
           top: hoveredSide === "right" ? "25%" : "50%",
-          left: hoveredSide === "right" ? "50%" : "50%",
-          x: hoveredSide === "right" ? "-50%" : "-50%",
+          left: "50%",
+          x: "-50%",
           y: hoveredSide === "right" ? "0%" : "-50%",
         }}
         transition={{ duration: 0, ease: "easeOut" }}
@@ -609,7 +609,9 @@ export default function InteractiveCardHero() {
         }}
       >
         <Image
-          src="/home/card.png"
+          src={
+            hoveredSide === "right" ? "/home/card-digital.png" : "/home/card.png"
+          }
           alt="Center Card"
           fill
           className="object-contain"

@@ -122,7 +122,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <Link href="/about" className="hover:text-[#E74529]">
-            {isRTL ? "عن D360" : "About D360"}
+            {isRTL ? "D360 عن" : "About D360"}
           </Link>
           <div
             onClick={handleToggle}

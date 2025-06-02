@@ -1,8 +1,8 @@
 export const arabicContent = {
   data: {
     head: {
-      head1: "عن",
-      head2: "D360",
+      head1: "عن بنك ",
+      head2: "D360 ",
     },
     about: {
       header: "قصتنا",

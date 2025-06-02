@@ -25,20 +25,25 @@ export default function HomePage() {
   const stats = [
     { 
       label: isRTL ? "بنك سعودي رقمي" : "Saudi Digital Bank", 
-      value: 1, 
-      suffix:"st" 
+      value: isRTL ? "اول" : "1st", 
+      animated: false 
     },
     { 
       label: isRTL ? "المستخدمين" : "Users", 
       value: 1, 
-      suffix:  "M" 
+      prefix: "+", 
+      suffix: "M", 
+      animated: true 
     },
     { 
       label: isRTL ? "الدول" : "Countries", 
       value: 70, 
-      suffix: "" 
+      prefix: "+", 
+      animated: true 
     },
-  ]
+  ];
+  
+  
 
   return (
     <div className={`flex min-h-screen flex-col font-sans`}>

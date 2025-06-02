@@ -21,13 +21,14 @@ export function ShariahSection() {
         isRTL ? "flex-row-reverse" : "flex-row"
       } items-center justify-start text-white overflow-hidden`}
     >
-      <Image
-        src="/home/shariah-bg.png"
-        alt="Shariah background"
-        fill
-        priority
-        className="object-cover object-center z-10"
-      />
+    <Image
+  src="/home/shariah-bg.png"
+  alt="Shariah background"
+  fill
+  priority
+  className={`object-cover object-center z-10 ${isRTL ? "scale-x-[-1]" : ""}`}
+/>
+
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40" />
