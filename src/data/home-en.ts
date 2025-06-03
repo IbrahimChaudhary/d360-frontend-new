@@ -44,7 +44,7 @@ export default {
     shariahCommittee: {
       title: "Shariah COMPLIANT",
       description:
-        "D360 Bank is committed to the principles of Islamic Shariah and ensuring compliance in all its banking transactions. To achieve this, an independent Shariah committee has been established to oversee all the bank's operations, products, and services.",
+        "D360 Bank is committed to the principles of Islamic Shariah and ensuring compliance in all its banking transactions. To achieve this, an independent Shariah committee has been established to oversee all the bank's operations, products, and services",
         read:"Read More"
     },
     internationalTransfers: {

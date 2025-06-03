@@ -4,12 +4,12 @@ import { FooterContent } from "@/types";
 
 export const footerData: FooterContent = {
   aboutLinks: [
-    { label: { en: "Security Awareness", ar: "التوعية الأمنية" }, href: "#" },
-    { label: { en: "Privacy Notice", ar: "إشعار الخصوصية" }, href: "#" },
+    { label: { en: "Security Awareness", ar: "لوعي الأمني" }, href: "#" },
+    { label: { en: "Privacy Notice", ar: "سياسة الخصوصية" }, href: "#" },
     { label: { en: "Contact Us", ar: "اتصل بنا" }, href: "#" },
     { label: { en: "Customer Care", ar: "خدمة العملاء" }, href: "#" },
-    { label: { en: "Apple Pay", ar: "آبل باي" }, href: "#" },
-    { label: { en: "Careers", ar: "الوظائف" }, href: "#" },
+    { label: { en: "Apple Pay", ar: "Apple Pay" }, href: "#" },
+    { label: { en: "Careers", ar: "التوظيف" }, href: "#" },
     {
       label: {
         en: "Customer Protection Principles",
@@ -176,7 +176,7 @@ export const footerData: FooterContent = {
   ],
 
   legalText: {
-    en: "All rights reserved © D360 Bank | Regulated by the Saudi Central Bank | Closed Joint Stock Company with a Capital of SAR 1,650,000,000 (CR No. 1010822737) Licensed in accordance with the Council of Ministers decree No. 389 dated 14/07/1443H corresponding to 15/02/2022G | Subject to the supervision of the Saudi Central Bank | 3074 Prince Mohammed bin Abdulaziz Rd, Al Olaya Dist. 12213 Riyadh, Saudi Arabia | www.D360.com",
-    ar: "جميع الحقوق محفوظة © بنك D360 | خاضع لرقابة البنك المركزي السعودي | شركة مساهمة مقفلة برأس مال قدره 1,650,000,000 ريال سعودي (سجل تجاري رقم 1010822737) مرخصة بموجب قرار مجلس الوزراء رقم 389 بتاريخ 14/07/1443هـ الموافق 15/02/2022م | خاضعة لإشراف البنك المركزي السعودي | 3074 طريق الأمير محمد بن عبدالعزيز، حي العليا 12213 الرياض، المملكة العربية السعودية | www.D360.com",
+    en: "All rights reserved © D360 Bank | Regulated by the Saudi Central Bank | Closed Joint Stock Company with a Capital of SAR 1,650,000,000 CR No. 1010822737 Licensed in accordance with the Council of Ministers decree No. 389 dated 14/07/1443H corresponding to 15/02/2022G | Subject to the supervision of the Saudi Central Bank | 3074 Prince Mohammed bin Abdulaziz Rd, Al Olaya Dist. 12213 Riyadh, Saudi Arabia | www.D360.com",
+    ar: "جميع الحقوق محفوظة © بنك D360 | خاضع لرقابة البنك المركزي السعودي | شركة مساهمة مقفلة برأس مال قدره 1,650,000,000 ريال سعودي  سجل تجاري رقم 1010822737  مرخصة بموجب قرار مجلس الوزراء رقم 389 بتاريخ 14/07/1443هـ الموافق 15/02/2022م | خاضعة لإشراف البنك المركزي السعودي | 3074 طريق الأمير محمد بن عبدالعزيز، حي العليا 12213 الرياض، المملكة العربية السعودية | www.D360.com",
   },
 };
