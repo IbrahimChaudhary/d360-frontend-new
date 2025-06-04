@@ -48,16 +48,9 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
   });
 
   return (
-<<<<<<< HEAD
     <section className="py-16 bg-white px-4 md:px-32">
       <SectionHeading>
         {data.Title1} {data.Title2} {data.Title3}
-=======
-    <section className="py-16  bg-white px-4 md:px-32">
-        <SectionHeading className="text-xl lg:text-3xl font-extrabold">
-        Your Everyday and Travel Companion!
-        Experience banking excellence with every detail designed for you.
->>>>>>> 47b4fb9b36ba4d0d6e3d3b7ca38ab2fe3eedf6e8
       </SectionHeading>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
