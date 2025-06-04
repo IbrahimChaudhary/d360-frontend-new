@@ -1,7 +1,7 @@
-// next.config.js
-module.exports = {
-  i18n: {
-    locales: ['en', 'ar'],
-    defaultLocale: 'en',
-  },
-};
+// // next.config.js
+// module.exports = {
+//   i18n: {
+//     locales: ['en', 'ar'],
+//     defaultLocale: 'en',
+//   },
+// };
