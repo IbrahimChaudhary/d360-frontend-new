@@ -3,92 +3,110 @@ import { Header } from "@/components/layout/header";
 import { Hero } from "@/components/layout/page-hero";
 import { OurStory } from "@/components/about/our-story";
 import { Investors } from "@/components/about/investors";
-import { FAQs } from "@/components/about/faqs/faq";
 import { ContactImage } from "@/components/about/contact/contact-image";
 import { ContactContent } from "@/components/about/contact/contact-content";
 import { Footer } from "@/components/layout/footer/footer";
 import { GlobalCTA } from "@/components/about/global-presence";
 import { StatsCounter } from "@/components/about/stats-counter";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "@/lib/i18n";
 import { MergedFAQAccordion } from "@/components/faq-merged";
-import { FAQsAbout } from "@/data/about";
-import { useEffect, useState } from "react";
-import { AboutD360Data } from "@/types/about/about";
-import { fetchAboutD360 } from "@/api/about";
-import { AboutFAQAccordion } from "@/components/about/faq-about";
+import { useState } from "react";
+import { DownloadModal } from "@/components/home/download-modal";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
+
 
 export default function AboutPage() {
-  const { t } = useTranslations();
-  const [about, setAbout] = useState<AboutD360Data | null>(null);
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
-    fetchAboutD360()
-      .then(setAbout)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
-  const raw = about?.Description2 ?? "";
-  const cleaned = raw.startsWith("+") ? raw.slice(1) : raw;
-  const parsed = parseInt(cleaned, 10);
-  const numericPart = Number.isNaN(parsed) ? 0 : parsed;
-  const suffixPart = cleaned.replace(/\d+/g, "");
+  const stats = [
+    { 
+      label: isRTL ? "بنك سعودي رقمي" : "Saudi Digital Bank", 
+      value: isRTL ? "اول" : "1st", 
+      animated: false 
+    },
+    { 
+      label: isRTL ? "المستخدمين" : "Users", 
+      value: 1, 
+      prefix: "+", 
+      suffix: "M", 
+      animated: true 
+    },
+    { 
+      label: isRTL ? "الدول" : "Countries", 
+      value: 70, 
+      prefix: "+", 
+      animated: true 
+    },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-        <Hero backgroundImage="/about/about-hero.png">
-          <h1 className="text-4xl sm:text-5xl  lg:text-6xl font-[800] text-[#263244] leading-tight">
-            {about?.Title1}
-          </h1>
-          <Button
-            className="bg-[#EB644C] text-white text-[10px] md:px-8 md:py-4 rounded-[14px]"
-            size="sm"
-          >
-            {t("hero.downloadApp")}
-          </Button>
-        </Hero>
-        <StatsCounter
-          stats={[
-            {
-              label: `${about?.Title2}`,
-              value: numericPart,
-              suffix: `${suffixPart}`,
-            },
-            {
-              label: `${about?.Title2}`,
-              value: numericPart,
-              suffix: `${suffixPart}`,
-            },
-            {
-              label: `${about?.Title2}`,
-              value: numericPart,
-              suffix: `${suffixPart}`,
-            },
-            {
-              label: `${about?.Title2}`,
-              value: numericPart,
-              suffix: `${suffixPart}`,
-            },
-          ]}
-        />
+      <Header variant="about" />
 
-        {about && <OurStory data={about} />}
-        {about && <Investors data={about} />}
-        {about && <AboutFAQAccordion data={about} />}
-        {about && (
-          <GlobalCTA
-            title={about?.HelpingTitle}
-            subtitle1={about.HelpingDescription}
-            subtitle2={about.HelpingDescription1}
-            ctaText="Contact Us"
-            backgroundImage="/about/contact-cta.png"
-          />
-        )}
-        <div className="md:flex flex-col md:flex-row items-center justify-center gap-10">
+      <main className="flex-1">
+        <Hero
+          backgroundImage={
+            isRTL ? "/about/about-hero-arabic.png" : "/about/about-hero.png"
+          }
+          direction={isRTL ? "rtl" : "ltr"}
+        >
+          <div
+            className={`flex w-full flex-col ${
+              isRTL ? " items-start text-right" : "items-start text-left"
+            }`}
+          >
+            <h1 className={`text-[25px] flex items-center  uppercase lg:text-[140px] font-extrabold text-[#263244] lg:leading-33 ${isRTL?"justify-end":" justify-center"}`}>
+              {content.data.head.head1}
+              <br />
+              {content.data.head.head2}
+            </h1>
+
+            <p className="text-4xl sm:text-5xl lg:text-6xl font-[800] mb-2 md:mb-6 text-[#263244] leading-tight">
+            </p>
+
+            <div
+              onClick={() => setModalOpen(true)}
+              className={`bg-[#EB644C] text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+                isRTL ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30" : "lg:px-16"
+              }`}
+              
+            >
+              {isRTL ? "حمل التطبيق" : "Download the App"}
+            </div>
+          </div>
+        </Hero>
+{/* 
+        <StatsCounter
+          container=" lg:pt-22 grid grid-cols-3"
+          stats={stats}
+        /> */}
+
+        <OurStory />
+        <Investors />
+        <MergedFAQAccordion
+          faqItems={content.data.faq}
+          title={content.data.faqHead.head}
+        />
+        <GlobalCTA
+          title={content.data.contact.heading}
+          subtitle={content.data.contact.body}
+          ctaText={content.data.contact.contact}
+          backgroundImage="/about/contact-cta.png"
+        />
+        <div
+          className={`lg:flex hidden flex-col  items-center justify-center ${
+            language === "ar" ? "flex-row" : "flex-row"
+          } `}
+        >
           <ContactImage />
-          {about && <ContactContent data={about}/>}
+          <ContactContent />
         </div>
+        <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
       </main>
       <Footer />
     </div>

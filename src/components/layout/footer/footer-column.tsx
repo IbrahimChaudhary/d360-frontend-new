@@ -1,29 +1,26 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import { useTranslations } from "@/lib/i18n"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react";
+import Link from "next/link";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FooterLink {
-  href: string
-  key: string
+  href: string;
+  label: string;
 }
 
 interface FooterColumnProps {
-  titleKey: string
-  links: FooterLink[]
+  links: FooterLink[];
 }
 
-export function FooterColumn({ titleKey, links }: FooterColumnProps) {
-  const { t } = useTranslations()
-  const [isOpen, setIsOpen] = useState(false)
+export function FooterColumn({ links }: FooterColumnProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="w-full">
       {/* Mobile: Accordion */}
-      <div className="block md:hidden w-full   py-2">
+      {/* <div className="block md:hidden w-full   py-2">
         <button
           className="flex justify-between items-center w-full text-[#EB644C] font-bold text-sm"
           onClick={() => setIsOpen(!isOpen)}
@@ -55,21 +52,23 @@ export function FooterColumn({ titleKey, links }: FooterColumnProps) {
             </motion.ul>
           )}
         </AnimatePresence>
-      </div>
+      </div> */}
 
       {/* Desktop: Static */}
-      <div className="hidden md:block">
-        <h3 className="text-coral-500 font-bold mb-3 text-[#EB644C]">{t(titleKey as any)}</h3>
+      <div className="w-full block">
         <ul className="space-y-2">
           {links.map((link, index) => (
             <li key={index}>
-              <Link href={link.href} className="text-sm text-slate-600 hover:text-slate-900">
-                {t(link.key as any)}
+              <Link
+                href={link.href}
+                className="text-sm text-[#C0C6D0] font-extrabold"
+              >
+                {link.label}
               </Link>
             </li>
           ))}
         </ul>
       </div>
     </div>
-  )
+  );
 }

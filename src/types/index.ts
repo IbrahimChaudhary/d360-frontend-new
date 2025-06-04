@@ -56,8 +56,8 @@ export type TeamMemberId =
   }
   
   type SocialLink = {
-    icon: React.ComponentType
-    href: string
+    icon: string
+    // href: string
   }
   
   export type FooterContent = {

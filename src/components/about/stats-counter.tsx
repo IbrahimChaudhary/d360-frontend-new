@@ -4,9 +4,11 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 interface StatItem {
-  label: string
-  value: number
-  suffix?: string //oprnsjndjsnr
+  label: string;
+  value: number | string;
+  suffix?: string;
+  animated: boolean;
+  prefix?:string
 }
 
 interface StatsCounterProps {
@@ -14,9 +16,9 @@ interface StatsCounterProps {
   container?:string
 }
 
-export function StatsCounter({ stats,container }: StatsCounterProps) {
+export function StatsCounter({ stats, container }: StatsCounterProps) {
   return (
-    <div className={cn(`grid grid-cols-2 md:grid-cols-4 md:px-18 text-center pt-10 gap-y-7  pb-8`,container)}>
+    <div className={cn(`md:px-18 text-center pt-10 gap-y-7 pb-8`, container)}>
       {stats.map((stat, index) => (
         <motion.div
           key={index}
@@ -26,37 +28,49 @@ export function StatsCounter({ stats,container }: StatsCounterProps) {
           viewport={{ once: true }}
           className="flex flex-col items-center"
         >
-          <span className="text-md text-[#293242] mb-1">{stat.label}</span>
-          <CountUp end={stat.value} suffix={stat.suffix || ""} />
+          {stat.animated ? (
+            <CountUp
+              end={stat.value as number}
+              prefix={stat.prefix || ""}
+              suffix={stat.suffix || ""}
+            />
+          ) : (
+            <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529]">
+              {stat.value}
+            </span>
+          )}
+          <span className="text-[14px] lg:text-[30px] text-center text-[#293242] mb-1">{stat.label}</span>
         </motion.div>
       ))}
     </div>
-  )
+  );
 }
 
-function CountUp({ end, suffix }: { end: number; suffix?: string }) {
-  const [count, setCount] = useState(0)
+
+
+function CountUp({ end, prefix = "", suffix = "" }: { end: number; prefix?: string; suffix?: string }) {
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0
-    const duration = 1200 // milliseconds
-    const increment = end / (duration / 16) // update every ~16ms
+    let start = 0;
+    const duration = 1200; 
+    const increment = end / (duration / 16);
     const step = () => {
-      start += increment
+      start += increment;
       if (start < end) {
-        setCount(Math.round(start))
-        requestAnimationFrame(step)
+        setCount(Math.round(start));
+        requestAnimationFrame(step);
       } else {
-        setCount(end)
+        setCount(end);
       }
-    }
-    requestAnimationFrame(step)
-  }, [end])
+    };
+    requestAnimationFrame(step);
+  }, [end]);
 
   return (
-    <span className="text-2xl md:text-5xl font-bold text-[#E74529]">
-      +{count.toLocaleString()}
-      {suffix}
+    <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529]">
+      {prefix}{count.toLocaleString()}{suffix}
     </span>
-  )
+  );
 }
+
