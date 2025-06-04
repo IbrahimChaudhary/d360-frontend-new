@@ -30,7 +30,7 @@ export const boardMembers: BoardMember[] = [
     category: "board",
     boardRole: "vice-chairman",
     biography:
-      "Mr. Alshowaier is the Vice Chairman at D360. He has extensive experience in the financial, industrial, and real estate sectors.",
+      "Mr. Zaki has extensive experience in the financial, industrial, and real estate sectors, he is currently the Vice Chairman and Managing Director at Alshowaier Investment and Real Estate Development Company. He serves on the boards of several companies, including Derayah Financial and Alamar foods.",
     currentPositions: {
       chairman: [
         { title: "Chairman", company: "Vision Development Company (Bahrain)" },
@@ -313,7 +313,7 @@ export const shariahMembers: ShariahMember[] = [
     position: "Shariah Committee Member",
     category: "shariah",
     biography:
-      "Dr. Bilqasim is a professor of Islamic Commercial Jurisprudence at King Abdulaziz University. He holds a Ph.D. in Jurisprudence and its Principles from Umm Al-Qura University. He is a member of the Shariah committee in several financial institutions and has presented numerous research papers in specialized conferences and seminars in the Islamic financial industry.",
+      "Dr. Bilqasim is a professor of Islamic Commercial Jurisprudence at King Abdulaziz University. He holds a Ph.D. in Jurisprudence and its Principles from Umm Al-Qura University. He is a member of the Shariah committee in several financial institutions and has presented numerous research papers in specialized conferences and seminars in the Islamic financial industry",
     education: [
       {
         degree: "Ph.D.",
@@ -370,7 +370,7 @@ export const executiveMembers: ExecutiveMember[] = [
     isFoundingMember: true,
     yearsOfExperience: 10,
     biography:
-      "Faisal is a founding member of D360 Bank and leads strategy across Retail, BaaS, and SME. He previously worked at McKinsey & Co, advising regional banks on transformation. Faisal holds a degree in Industrial Engineering from Alfaisal University, graduating with highest distinction.",
+      "Faisal is a founding member of D360 Bank and leads strategy across Retail, BaaS, and SME. He previously worked at McKinsey & Co, advising regional banks on transformation. Faisal holds a degree in Industrial Engineering from Alfaisal University, graduating with highest distinction",
     education: [
       {
         degree: "Industrial Engineering",
@@ -386,7 +386,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Compliance",
     yearsOfExperience: 19,
     biography:
-      "Mohammed leads Compliance and Financial Crimes at D360 Bank. He previously worked at SAMA for over a decade, and held leadership roles at Banque Saudi Fransi and Aljazira Bank. Mohammed holds a Master’s in Strategic Information Systems from the University of East Anglia.",
+      "Mohammed leads Compliance and Financial Crimes at D360 Bank. He previously worked at SAMA for over a decade, and held leadership roles at Banque Saudi Fransi and Aljazira Bank. Mohammed holds a Master’s in Strategic Information Systems from the University of East Anglia",
     education: [
       {
         degree: "Master's Degree",
@@ -403,7 +403,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Risk Management",
     isFoundingMember: true,
     biography:
-      "Ayman is a founding member of D360 Bank, overseeing the Bank’s risk strategy. He was Chief Risk Officer at Emkan Finance and held senior roles at Al Rajhi Bank. Ayman holds a bachelor’s degree in MIS from KFUPM and an MBA from King Saud University, where he graduated top of his class.",
+      "Ayman is a founding member of D360 Bank, overseeing the Bank’s risk strategy. He was Chief Risk Officer at Emkan Finance and held senior roles at Al Rajhi Bank. Ayman holds a bachelor’s degree in MIS from KFUPM and an MBA from King Saud University, where he graduated top of his class",
     education: [
       {
         degree: "Bachelor's degree",
@@ -433,7 +433,7 @@ export const executiveMembers: ExecutiveMember[] = [
     department: "Commercial",
     yearsOfExperience: 19,
     biography:
-      "Rayan leads marketing, growth, and partnerships at D360 Bank. He was formerly CCO of Zain KSA, where he led marketing, corporate communications, branding, investor relations. Rayan is a graduate of Harvard Business School and the Misk 2030 Leaders Program, and holds a bachelor’s in Computer Science and an MBA.",
+      "Rayan leads marketing, growth, and partnerships at D360 Bank. He was formerly CCO of Zain KSA, where he led marketing, corporate communications, branding, investor relations. Rayan is a graduate of Harvard Business School and the Misk 2030 Leaders Program, and holds a bachelor’s in Computer Science and an MBA",
     education: [
       {
         degree: "Bachelor's degree",

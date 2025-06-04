@@ -43,7 +43,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
     >
       <AccordionTrigger
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex  ${language === "ar" ? "flex-row-reverse text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[40px] [&>svg]:hidden`}
+        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[40px] [&>svg]:hidden`}
       >
         {item.question}
         <span className="ml-4 shrink-0 relative md:w-[38px] md:h-[39px] w-[24px] h-[24px] flex items-center justify-center">
@@ -85,7 +85,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
-            <AccordionContent className={`overflow-hidden  flex ${language === 'ar' ? "flex-row-reverse" : "flex-row"}`}>
+            <AccordionContent className={`overflow-hidden  flex ${language === 'ar' ? "flex-row" : "flex-row"}`}>
               <p className={`text-[10px] lg:text-lg text-[#263244] mt-2 leading-relaxed ${ language==="ar"?"text-right":"text-left"}`}>
                 {item.answer}
               </p>
@@ -102,7 +102,7 @@ export function MergedFAQAccordion({
   faqItems,
   title = "FAQs",
   sectionClassName = "w-full flex justify-center ",
-  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8 lg:px-14 text-[#293242]",
+  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242]",
 }: MergedFAQAccordionProps) {
   const {language} = useStore()
   return (

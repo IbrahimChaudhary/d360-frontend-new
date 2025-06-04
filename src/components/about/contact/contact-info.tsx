@@ -117,7 +117,7 @@ export function ContactInfo({
 
 
       {showButton && (
-  <div className={`w-full flex justify-start ${language === "ar" ? "justify-end" : "justify-start"}`}>
+  <div className={`w-full flex justify-start ${language === "ar" ? "justify-start" : "justify-start"}`}>
     <Button
       onClick={() => setModalOpen(true)}
       size="lg"

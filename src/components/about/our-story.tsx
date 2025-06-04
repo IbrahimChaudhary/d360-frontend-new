@@ -13,7 +13,7 @@ export function OurStory() {
 
   return (
     <Section className="bg-white flex flex-row lg:justify-center items-center">
-      <div className={`flex flex-col  ${language === 'ar' ? "md:flex-row-reverse": 'md:flex-row'}   items-center justify-center lg:px-24 `}>
+      <div className={`flex flex-col  ${language === 'ar' ? "md:flex-row": 'md:flex-row'}   items-center justify-center lg:px-24 `}>
         <AnimatedSection direction="right" className="lg:w-[50%]">
           <Image
             src="/about/our-story.png"

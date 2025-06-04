@@ -21,7 +21,7 @@ export function Hero({ backgroundImage, children, direction = "ltr" }: HeroProps
       
       <div
         className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row ${
-          isRTL ? "md:flex-row-reverse" : ""
+          isRTL ? "" : ""
         } lg:items-center justify-between h-full pt-28 lg:pt-52 pb-16 relative z-10`}
       >
         <motion.div

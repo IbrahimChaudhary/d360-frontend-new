@@ -13,7 +13,7 @@ export default {
       subtitle: "Because your world never stops, and neither should your bank",
     },
     security: {
-      title1: "Security You ",
+      title1: "Security You",
       title2: "Can Trust",
       subtitle: "Your money and data are protected with top-tier security",
     },
@@ -29,7 +29,7 @@ export default {
     },
     shariah: {
       title:
-        "A shariah-compliant Saudi Digital Bank that aims to provide the best banking experience in the Kingdom.",
+        "A shariah-compliant Saudi Digital Bank that aims to provide the best banking experience in the Kingdom",
     },
     digitalCard: {
       title: "Digital Card",

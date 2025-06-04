@@ -18,10 +18,8 @@ export default function InteractiveCardHero() {
   const resetHover = () => setHoveredSide(null);
 
   return (
-    <div
-      className="lg:flex hidden relative w-full mt-10 h-[650px] overflow-hidden bg-black"
-      onMouseLeave={resetHover}
-    >
+    <div className="lg:flex hidden relative w-full mt-10 h-[650px] overflow-hidden bg-black"  onMouseLeave={resetHover}>
+
       {/* Panels Container */}
       <div className="absolute top-0 left-0 w-full h-full flex z-10">
         {/* LEFT SIDE (PHYSICAL) */}
@@ -353,7 +351,7 @@ export default function InteractiveCardHero() {
               <h2 className="text-[42.75px] font-extrabold mb-2">
                 {content.sections.physicalCard.title}
               </h2>
-              <p className="text-[22px] max-w-md leading-tight">
+              <p className="text-[18px] max-w-md leading-tight">
                 {content.sections.physicalCard.description}
               </p>
               <button
@@ -530,7 +528,7 @@ export default function InteractiveCardHero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold"
+                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold rtl:text-left rtl:left-[-2px]"
               >
                 {content.sections.digitalCard.title}
               </motion.div>
@@ -539,48 +537,55 @@ export default function InteractiveCardHero() {
 
           {/* Mobile Mockup (Always Visible, But Moves) */}
           <motion.div
-            className="absolute w-[400px] h-[700px] top-18 z-10"
-            animate={{
-              left: hoveredSide === "right" ? "50%" : "-20%",
-              x: hoveredSide === "right" ? "-50%" : "0%",
-              opacity: 1,
-            }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <Image
-              src="/home/mobile-mockup.png"
-              alt="Mobile Phone"
-              fill
-              className="object-contain"
-            />
+  className="absolute w-[400px] h-[700px] top-18 z-10"
+  animate={{
+    left:
+      hoveredSide === "right"
+        ? "50%"
+        : language === "ar"
+        ? "80%"
+        : "-20%",
+    x: hoveredSide === "right" ? "-50%" : "0%",
+    opacity: 1,
+  }}
+  transition={{ duration: 0.6, ease: "easeOut" }}
+>
+  <Image
+    src="/home/mobile-mockup.png"
+    alt="Mobile Phone"
+    fill
+    className="object-contain"
+  />
 
-            {/* Only show content when fully open */}
-            <AnimatePresence>
-              {hoveredSide === "right" && (
-                <motion.div
-                  key="mobile-content"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ delay: 0.4 }}
-                  className="absolute top-[50%] w-full px-6 text-center text-white"
-                >
-                  <h2 className="text-[42.75px] font-bold ">
-                    {content.sections.digitalCard.title}
-                  </h2>
-                  <p className="text-[21px] px-1 mb-4  mx-auto text-center ">
-                    {content.sections.digitalCard.description}
-                  </p>
-                  <button
-                    className="bg-white font-bold text-[#E74529] text-sm  rounded-lg px-12 py-3 mx-auto block"
-                    onClick={() => setModalOpen(true)}
-                  >
-                    {language === "ar" ? "أصدر بطاقتك"  : "Create a Card"}
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
+  {/* Only show content when fully open */}
+  <AnimatePresence>
+    {hoveredSide === "right" && (
+      <motion.div
+        key="mobile-content"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ delay: 0.4 }}
+        className="absolute top-[50%] w-full px-6 text-center text-white"
+      >
+        <h2 className="text-[42.75px] font-bold ">
+          {content.sections.digitalCard.title}
+        </h2>
+        <p className="text-[18px] px-1 mb-4 rtl:px-6 mx-auto text-center ">
+          {content.sections.digitalCard.description}
+        </p>
+        <button
+          className="bg-white font-bold text-[#E74529] text-sm rounded-lg px-12 py-3 mx-auto block"
+          onClick={() => setModalOpen(true)}
+        >
+          {language === "ar" ? "أصدر بطاقتك" : "Create a Card"}
+        </button>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.div>
+
+
 
           {/* Trigger Red from left */}
           {hoveredSide === "right" && (

@@ -60,7 +60,7 @@ export function Investors() {
       </AnimatedSection>
 
       <div className="mt-10 lg:mt-20 ">
-        <h2 className={`text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242]  lg:px-12 flex ${language === "ar"?'flex-row-reverse': "flex-row"}`}>{content.data.investors.meet}</h2>
+        <h2 className={`text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242]  lg:px-12 flex ${language === "ar"?'flex-row': "flex-row"}`}>{content.data.investors.meet}</h2>
 
         <TeamTabs
           boardMembers={boardMembersWithImages}

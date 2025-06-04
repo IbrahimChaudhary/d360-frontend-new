@@ -13,7 +13,7 @@ export default function FontSwitcher({ children }: { children: React.ReactNode }
 
     // Optionally update lang & dir attributes too
     document.documentElement.lang = language
-    // document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
   }, [language])
 
   return <>{children}</>

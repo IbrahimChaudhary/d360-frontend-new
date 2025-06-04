@@ -31,9 +31,9 @@ export function Footer() {
 
   return (
     <footer className={`px-4 md:px-14 md:py-10 text-[20px] text-[#C0C6D0] bg-white ${isRTL ? 'text-right' : 'text-left'}`}>
-      <div className={`mx-auto lg:mx-0 flex ${isRTL ? 'flex-row-reverse' : 'flex-row'} md:justify-between md:items-center`}>
+      <div className={`mx-auto lg:mx-0 flex ${isRTL ? 'flex-row' : 'flex-row'} md:justify-between md:items-center`}>
         <div className="md:w-[80%]">
-          <div className={`mb-6 flex  md:hidden ${isRTL ? 'justify-end' : 'justify-start'}`}>
+          <div className={`mb-6 flex  md:hidden ${isRTL ? 'justify-start' : 'justify-start'}`}>
             <Image
               src= {isRTL ? "/arabic-logo-black.png" : "/footer-logo.png"} 
               alt="D360 Bank Logo"
@@ -44,10 +44,10 @@ export function Footer() {
           </div>
 
           {/* Columns + Social */}
-          <div className={`w-full flex  justify-normal items-start gap-6 md:flex-row lg:justify-between md:gap-30 ${language==="ar" ?"flex-col-reverse":"flex-col"}`}>
+          <div className={`w-full flex flex-col lg:flex-row  justify-normal items-start gap-6  lg:justify-between md:gap-30 `}>
             {/* Follow Us - Will be on left in English, right in Arabic */}
-            <div className={`flex w-full md:w-auto mb-6 md:mb-0 ${isRTL ? 'order-1' : 'order-2'}  gap-10 md:justify-between`}>
-              <div className={`flex flex-col w-full ${isRTL ? 'justify-end' : 'justify-start'}`}>
+            <div className={`flex w-full md:w-auto mb-6 md:mb-0 ${isRTL ? 'order-2' : 'order-2'}  gap-10 md:justify-between`}>
+              <div className={`flex flex-col w-full  `}>
                 <h3 className="font-extrabold  text-[#E74529] mb-2">
                   {language === "en" ? "Follow Us" : "تابعنا"}
                 </h3>
@@ -56,7 +56,7 @@ export function Footer() {
             </div>
 
             {/* Accordion Group - Will be on right in English, left in Arabic */}
-            <div className={`mt-4 md:mt-0 grid grid-cols-2 md:grid-cols-4 gap-3 ${isRTL ? 'order-2' : 'order-1'}`}>
+            <div className={`mt-4 md:mt-0 grid grid-cols-2 md:grid-cols-4 gap-3 `}>
               {footerColumns.map((column, index) => (
                 <FooterColumn key={index} links={column.links} />
               ))}
@@ -64,7 +64,7 @@ export function Footer() {
           </div>
 
           {/* Legal Info */}
-          <div className="mt-10 md:flex hidden">
+          <div className="mt-10 md:flex">
             <FooterLegal />
           </div>
         </div>

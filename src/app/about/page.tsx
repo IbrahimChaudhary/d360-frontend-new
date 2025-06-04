@@ -57,7 +57,7 @@ export default function AboutPage() {
         >
           <div
             className={`flex w-full flex-col ${
-              isRTL ? "  text-right" : "items-start text-left"
+              isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
             <h1 className={`text-[25px] flex items-center  uppercase lg:text-[140px] font-extrabold text-[#263244] lg:leading-33 ${isRTL?"justify-end":" justify-center"}`}>
@@ -100,7 +100,7 @@ export default function AboutPage() {
         />
         <div
           className={`lg:flex hidden flex-col  items-center justify-center ${
-            language === "ar" ? "flex-row-reverse" : "flex-row"
+            language === "ar" ? "flex-row" : "flex-row"
           } `}
         >
           <ContactImage />

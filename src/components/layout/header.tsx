@@ -86,7 +86,7 @@ export function Header({ variant = "default" }: HeaderProps) {
       <div
         className={cn(
           "w-full flex items-center justify-between px-4",
-          isRTL ? "flex-row-reverse" : "flex-row"
+          isRTL ? "flex-row" : "flex-row"
         )}
       >
         <motion.div
@@ -115,14 +115,14 @@ export function Header({ variant = "default" }: HeaderProps) {
           className={cn(
             "hidden md:flex items-center gap-6 text-[22px] font-semibold transition-colors duration-300",
             navColor,
-            isRTL ? "flex-row-reverse" : "flex-row"
+            isRTL ? "flex-row" : "flex-row"
           )}
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <Link href="/about" className="hover:text-[#E74529]">
-            {isRTL ? "D360 عن" : "About D360"}
+            {isRTL ? " عن  D360" : "About D360"}
           </Link>
           <div
             onClick={handleToggle}
@@ -177,7 +177,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                 onClick={() => setMobileOpen(false)}
                 className="text-[#293242] hover:text-[#E74529]"
               >
-                {isRTL ? "عن D360" : "About D360"}
+                {isRTL ? " عن  D360" : "About D360"}
               </Link>
               <button
                 onClick={handleToggle}

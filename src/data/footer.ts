@@ -4,10 +4,10 @@ import { FooterContent } from "@/types";
 
 export const footerData: FooterContent = {
   aboutLinks: [
-    { label: { en: "Security Awareness", ar: "لوعي الأمني" }, href: "#" },
+    { label: { en: "Security Awareness", ar: "الوعي الأمني" }, href: "#" },
     { label: { en: "Privacy Notice", ar: "سياسة الخصوصية" }, href: "#" },
     { label: { en: "Contact Us", ar: "اتصل بنا" }, href: "#" },
-    { label: { en: "Customer Care", ar: "خدمة العملاء" }, href: "#" },
+    { label: { en: "Customer Care", ar: "العناية بالعميل" }, href: "#" },
     { label: { en: "Apple Pay", ar: "Apple Pay" }, href: "#" },
     { label: { en: "Careers", ar: "التوظيف" }, href: "#" },
     {

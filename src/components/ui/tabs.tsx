@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { useStore } from "@/store/toggle-store";
 
 import { cn } from "@/lib/utils"
 
@@ -9,9 +10,15 @@ function Tabs({
   className,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
+
+  const { language } = useStore();
+  const isRTL = language === "ar";
+  const orderedTabs = isRTL ? "rtl" : "ltr";
+
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
+      dir={orderedTabs}
       className={cn("flex flex-col gap-2", className)}
       {...props}
     />

@@ -9,7 +9,7 @@ export function SocialLinks() {
   const { language } = useStore();
   const isRTL = language === "ar";
   return (
-    <div className={`flex space-x-3  items-center gap-1 ${isRTL?"justify-end":"justify-normal"}`}>
+    <div className={`flex space-x-3  items-center gap-1 `}>
       {footerData.socialLinks.map((link, index) => {
        
 

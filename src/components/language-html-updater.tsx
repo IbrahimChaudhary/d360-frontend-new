@@ -9,7 +9,7 @@ export default function LanguageHTMLUpdater() {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    // document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
 
   return null;

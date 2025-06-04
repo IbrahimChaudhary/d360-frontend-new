@@ -59,9 +59,11 @@ export function TeamTabs({
     setSelectedMember((prev) => (prev?.id === member.id ? null : member));
   }, []);
 
-  const handleClose = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleClose = useCallback((e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setSelectedMember(null);
   }, []);
 
@@ -109,7 +111,7 @@ export function TeamTabs({
     { value: "advisors", label: isRTL ? "اللجنة الشرعية" : "Shariah" },
   ];
 
-  const orderedTabs = isRTL ? [...tabs].reverse() : tabs;
+  const orderedTabs = isRTL ? tabs : tabs;
 
   // TabsContent rendering
   const renderTabContent = (
@@ -129,9 +131,9 @@ export function TeamTabs({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="p-4 mb-6 bg-[#F8F8F8] shadow-md rounded-xl"
             >
-              <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row-reverse" : "flex-row"}`}>
+              <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row" : "flex-row"}`}>
                 <button
-                  onClick={handleClose}
+                  onClick={(e) => handleClose(e)}
                   className="text-[#E74529] text-2xl font-bold hover:text-red-600 transition-colors z-10 cursor-pointer"
                   aria-label="Close details"
                 >
@@ -197,19 +199,19 @@ export function TeamTabs({
             {selectedMember && (
               <motion.div
                 key="details-panel"
-                initial={{ x: isRTL ? 320 : -320, opacity: 0 }}
+                initial={{ x: isRTL ? -320 : -320, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                exit={{ x: isRTL ? 320 : -320, opacity: 0 }}
-                transition={{ duration: 0, ease: "easeInOut" }}
-                className={`w-[300px] p-6 bg-[#F8F8F8] rounded-xl h-fit flex-shrink-0 ${isRTL ? "order-2" : "order-1"}`}
+                exit={{ x: isRTL ? -320 : -320, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`w-[300px] p-6 bg-[#F8F8F8] rounded-xl h-fit flex-shrink-0 `}
               >
-                <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row-reverse" : "flex-row"}`}>
+                <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row" : "flex-row"}`}>
                   <div className={`${isRTL ? "text-right" : "text-left"}`}>
                     <h3 className="text-[26px] font-extrabold text-[#293242]">{selectedMember.name}</h3>
                     <p className="text-[#293242] font-light text-[18px] mb-4">{selectedMember.position}</p>
                   </div>
                   <button
-                    onClick={handleClose}
+                    onClick={(e) => handleClose(e)}
                     className="text-[#E74529] text-2xl font-bold hover:text-red-600 transition-colors z-10 cursor-pointer ml-2"
                     aria-label="Close details"
                   >
@@ -240,7 +242,7 @@ export function TeamTabs({
 
   return (
     <Tabs defaultValue="board" className="w-full px-0 md:px-12 relative">
-      <div className={`mb-8 flex ${isRTL ? "flex-row-reverse" : "flex-row"}`}>
+      <div className={`mb-8 flex ${isRTL ? "flex-row" : "flex-row"}`}>
         <TabsList className="grid w-full max-w-lg grid-cols-3 bg-transparent p-0 gap-2">
           {orderedTabs.map((tab) => (
             <TabsTrigger

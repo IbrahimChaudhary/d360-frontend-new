@@ -18,7 +18,7 @@ export function ShariahSection() {
   return (
     <section
       className={`relative w-full h-[500px] lg:h-full mb-6 lg:mb-0 py-20 flex ${
-        isRTL ? "flex-row-reverse" : "flex-row"
+        isRTL ? "" : "flex-row"
       } items-center justify-start text-white overflow-hidden`}
     >
     <Image
@@ -45,12 +45,12 @@ export function ShariahSection() {
         <p className={ `text-[14px]   md:text-[31px]   mb-8 ${isRTL?"lg:text-right text-center":"lg:text-left text-center"}`}>
           {content.sections.shariahCommittee.description}
         </p>
-        <div className={`flex  ${isRTL ? "justify-end" : "justify-start"}`}>
+        <div className={`flex  ${isRTL ? "justify-start" : "justify-start"}`}>
           <Link
             href=""
             onClick={()=>setModalOpen(true)}
             className={`lg:w-[50%] flex items-center ${
-              isRTL ? "flex-row-reverse" : "flex-row"
+              isRTL ? "flex-row" : "flex-row"
             } justify-between lg:gap-3 px-7 mx-auto lg:mx-0 font-bold lg:px-5 py-2 border border-white rounded-lg hover:bg-white hover:text-[#0B1B2B] transition text-[8px] lg:text-[20px]`}
           >
             {content.sections.shariahCommittee.read}
