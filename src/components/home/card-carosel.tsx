@@ -6,8 +6,11 @@ import { useStore } from "@/store/toggle-store"
 import englishContent from "@/data/home-en"
 import arabicContent from "@/data/home-ar"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-
-export function CardCarosels() {
+import { HomePageData } from "@/types/home/home"
+interface CardCaroselsProps{
+  data:HomePageData
+}
+export function CardCarosels({data}:CardCaroselsProps) {
   const [current, setCurrent] = useState(0)
   const { language } = useStore()
   const isRTL = language === "ar"
@@ -20,27 +23,27 @@ export function CardCarosels() {
 
   const slides = [
     {
-      heading: content.sections.bankAnytime.title1,
-      heading2: content.sections.bankAnytime.title2 || "",
-      paragraph: content.sections.bankAnytime.subtitle,
+      heading: data.Title1,
+      heading2: data.Title1B || "",
+      paragraph: data.Description1,
       image: slide1,
     },
     {
-      heading: content.sections.security.title1,
-      heading2: content.sections.security.title2 || "",
-      paragraph: content.sections.security.subtitle,
+      heading: data.Title2,
+      heading2: data.Title2B || "",
+      paragraph: data.Description2,
       image: slide2,
     },
     {
-      heading: content.sections.blink.title1,
-      heading2: content.sections.blink.title2 || "",
-      paragraph: content.sections.blink.subtitle,
+      heading: data.Title3,
+      heading2: data.Title3B || "",
+      paragraph: data.Description3,
       image: slide3,
     },
     {
-      heading: content.sections.direct.title1,
-      heading2: content.sections.direct.title2 || "",
-      paragraph: content.sections.direct.subtitle,
+      heading: data.Title8,
+      heading2: data.Title8B || "",
+      paragraph: data.Description8,
       image: slide4,
     },
   ]

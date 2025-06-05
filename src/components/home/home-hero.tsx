@@ -8,8 +8,11 @@ import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { useStore } from "@/store/toggle-store";
 import { cn } from "@/lib/utils";
-
-export function HomeHero() {
+import { HomePageData } from "@/types/home/home";
+interface HomeHeroProps {
+  data: HomePageData;
+}
+export function HomeHero({ data }: HomeHeroProps) {
   const [isModalOpen, setModalOpen] = useState(false);
   const { language } = useStore();
   const isRTL = language === "ar";
@@ -48,7 +51,7 @@ export function HomeHero() {
                 : "lg:w-full w-[70%]"
             }`}
           >
-            {content.sections.inMotion.title}
+            {data.Heading} {data.HeadingB}
           </h1>
           <p
             className={`text-sm sm:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
@@ -57,13 +60,13 @@ export function HomeHero() {
                 : "lg:w-full w-[70%]"
             }`}
           >
-            {content.sections.inMotion.subtitle}
+            {data.Description}{" "}
           </p>
           <Button
             onClick={() => setModalOpen(true)}
             className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 md:py-6 rounded-[14px]"
           >
-            {isRTL ? "حمّل التطبيق" : "Download the App"}
+            {data.download}
           </Button>
         </motion.div>
 

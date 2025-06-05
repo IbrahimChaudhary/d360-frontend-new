@@ -4,7 +4,12 @@ import type React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TeamMemberCarousel } from "./team-member-carousel";
 import { useState, useCallback } from "react";
-import type { BoardMember, ExecutiveMember, ShariahMember, Position } from "@/types/team";
+import type {
+  BoardMember,
+  ExecutiveMember,
+  ShariahMember,
+  Position,
+} from "@/types/team";
 import { TeamMemberCard } from "./team-member-card";
 import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@/store/toggle-store";
@@ -20,9 +25,9 @@ import {
 } from "@/data/team-member-ar";
 
 interface TeamTabsProps {
-  boardMembers: (BoardMember & { image?: string })[];
-  executiveMembers: (ExecutiveMember & { image?: string })[];
-  shariahMembers: (ShariahMember & { image?: string })[];
+  boardMembers: (BoardMember & { image?: string; fullDes?: any[] })[];
+  executiveMembers: (ExecutiveMember & { image?: string; fullDes?: any[] })[];
+  shariahMembers: (ShariahMember & { image?: string; fullDes?: any[] })[];
 }
 
 export function TeamTabs({
@@ -35,29 +40,46 @@ export function TeamTabs({
 
   // Translated members logic
   const translatedBoardMembers = isRTL ? arBoardMembers : enBoardMembers;
-  const translatedExecutiveMembers = isRTL ? arExecutiveMembers : enExecutiveMembers;
+  const translatedExecutiveMembers = isRTL
+    ? arExecutiveMembers
+    : enExecutiveMembers;
   const translatedShariahMembers = isRTL ? arShariahMembers : enShariahMembers;
 
   const boardMembers = initialBoardMembers.map((member) => {
-    const translatedMember = translatedBoardMembers.find((tm) => tm.id === member.id);
+    const translatedMember = translatedBoardMembers.find(
+      (tm) => tm.id === member.id
+    );
     return { ...member, ...translatedMember };
   });
 
   const executiveMembers = initialExecutiveMembers.map((member) => {
-    const translatedMember = translatedExecutiveMembers.find((tm) => tm.id === member.id);
+    const translatedMember = translatedExecutiveMembers.find(
+      (tm) => tm.id === member.id
+    );
     return { ...member, ...translatedMember };
   });
 
   const shariahMembers = initialShariahMembers.map((member) => {
-    const translatedMember = translatedShariahMembers.find((tm) => tm.id === member.id);
+    const translatedMember = translatedShariahMembers.find(
+      (tm) => tm.id === member.id
+    );
     return { ...member, ...translatedMember };
   });
 
-  const [selectedMember, setSelectedMember] = useState<(BoardMember | ExecutiveMember | ShariahMember) | null>(null);
+  const [selectedMember, setSelectedMember] = useState<
+    | ((BoardMember | ExecutiveMember | ShariahMember) & {
+        fullDes?: any[];
+        biography?: string;
+      })
+    | null
+  >(null);
 
-  const handleSelect = useCallback((member: BoardMember | ExecutiveMember | ShariahMember) => {
-    setSelectedMember((prev) => (prev?.id === member.id ? null : member));
-  }, []);
+  const handleSelect = useCallback(
+    (member: BoardMember | ExecutiveMember | ShariahMember) => {
+      setSelectedMember((prev) => (prev?.id === member.id ? null : member));
+    },
+    []
+  );
 
   const handleClose = useCallback((e?: React.MouseEvent) => {
     if (e) {
@@ -66,6 +88,73 @@ export function TeamTabs({
     }
     setSelectedMember(null);
   }, []);
+
+  function renderBiographyRichText(blocks: any[] = []) {
+    return blocks.map((block, idx) => {
+      switch (block.type) {
+        case "paragraph":
+          // Render each paragraph, mapping children for bold text.
+          return (
+            <p
+              key={`para-${idx}`}
+              className={`text-[#293242] text-[14px] lg:text-[20px] leading-relaxed ${
+                isRTL ? "text-right" : "text-left"
+              }`}
+            >
+              {block.children.map((child: any, cidx: number) => {
+                if (child.bold) {
+                  return (
+                    <strong key={`b-${idx}-${cidx}`} className="font-bold">
+                      {child.text}
+                    </strong>
+                  );
+                }
+                return <span key={`t-${idx}-${cidx}`}>{child.text}</span>;
+              })}
+            </p>
+          );
+
+        case "list":
+          // Only handling unordered lists here; if you have ordered lists, add that branch
+          return (
+            <ul
+              key={`list-${idx}`}
+              className={`list-disc text-[#293242] text-[14px] lg:text-[20px] leading-relaxed ${
+                isRTL
+                  ? "list-inside text-right pr-3 [&>li]:text-right"
+                  : "list-inside text-left pl-3"
+              }`}
+              style={isRTL ? { direction: "rtl" } : {}}
+            >
+              {block.children.map((listItem: any, liIdx: number) => (
+                <li key={`li-${idx}-${liIdx}`}>
+                  {listItem.children.map((child: any, cidx: number) => {
+                    if (child.bold) {
+                      return (
+                        <strong
+                          key={`lb-${idx}-${liIdx}-${cidx}`}
+                          className="font-bold"
+                        >
+                          {child.text}
+                        </strong>
+                      );
+                    }
+                    return (
+                      <span key={`lt-${idx}-${liIdx}-${cidx}`}>
+                        {child.text}
+                      </span>
+                    );
+                  })}
+                </li>
+              ))}
+            </ul>
+          );
+
+        default:
+          return null;
+      }
+    });
+  }
 
   const renderPositions = (title: string, positions?: Position[]) => {
     if (!positions || positions.length === 0) return null;
@@ -80,12 +169,18 @@ export function TeamTabs({
 
     return (
       <div key={title} className="mb-4">
-        <h4 className={`font-bold text-[#293242] text-[20px] mb-1 ${isRTL ? "text-right" : "text-left"}`}>
+        <h4
+          className={`font-bold text-[#293242] text-[20px] mb-1 ${
+            isRTL ? "text-right" : "text-left"
+          }`}
+        >
           {positionTitles[title as keyof typeof positionTitles]}:
         </h4>
         <ul
           className={`list-disc text-[#293242] text-[20px] leading-relaxed ${
-            isRTL ? "list-inside text-right pr-3 [&>li]:text-right" : "list-inside text-left pl-3"
+            isRTL
+              ? "list-inside text-right pr-3 [&>li]:text-right"
+              : "list-inside text-left pl-3"
           }`}
           style={isRTL ? { direction: "rtl" } : {}}
         >
@@ -107,7 +202,10 @@ export function TeamTabs({
   // Dynamic tabs logic
   const tabs = [
     { value: "board", label: isRTL ? "مجلس الإدارة" : "Board of Directors" },
-    { value: "management", label: isRTL ? "الفريق الإداري" : "Management Team" },
+    {
+      value: "management",
+      label: isRTL ? "الفريق الإداري" : "Management Team",
+    },
     { value: "advisors", label: isRTL ? "اللجنة الشرعية" : "Shariah" },
   ];
 
@@ -116,7 +214,9 @@ export function TeamTabs({
   // TabsContent rendering
   const renderTabContent = (
     tabKey: string,
-    members: ((BoardMember | ExecutiveMember | ShariahMember) & { image?: string })[],
+    members: ((BoardMember | ExecutiveMember | ShariahMember) & {
+      image?: string;
+    })[]
   ) => (
     <TabsContent value={tabKey}>
       {/* Mobile */}
@@ -131,7 +231,11 @@ export function TeamTabs({
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="p-4 mb-6 bg-[#F8F8F8] shadow-md rounded-xl"
             >
-              <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row" : "flex-row"}`}>
+              <div
+                className={`flex justify-between items-start mb-4 ${
+                  isRTL ? "flex-row" : "flex-row"
+                }`}
+              >
                 <button
                   onClick={(e) => handleClose(e)}
                   className="text-[#E74529] text-2xl font-bold hover:text-red-600 transition-colors z-10 cursor-pointer"
@@ -141,29 +245,60 @@ export function TeamTabs({
                 </button>
 
                 <div className={`${isRTL ? "text-right" : "text-left"}`}>
-                  <h3 className="text-[20px] lg:text-[26px] font-extrabold text-[#293242]">{selectedMember.name}</h3>
-                  <p className="text-[#293242] font-light text-[18px] mb-4">{selectedMember.position}</p>
+                  <h3 className="text-[20px] lg:text-[26px] font-extrabold text-[#293242]">
+                    {selectedMember.name}
+                  </h3>
+                  <p className="text-[#293242] font-light text-[18px] mb-4">
+                    {selectedMember.position}
+                  </p>
                 </div>
               </div>
 
-              <p className={`text-[#293242] leading-tight text-[20px] mb-4 ${isRTL ? "text-right" : "text-left"}`}>
-                {selectedMember.biography}
-              </p>
+              <div
+                className={`text-[#293242] leading-tight text-[20px] mb-4 ${
+                  isRTL ? "text-right" : "text-left"
+                }`}
+              >
+                {selectedMember.fullDes && selectedMember.fullDes.length > 0 ? (
+                  renderBiographyRichText(selectedMember.fullDes)
+                ) : (
+                  // fallback to the plain "biography" string if fullDes is missing:
+                  <p className="text-[#293242] leading-relaxed text-[20px]">
+                    {selectedMember.biography}
+                  </p>
+                )}{" "}
+              </div>
 
               {selectedMember.currentPositions && (
                 <div className="mt-3">
-                  {renderPositions("Chairman", selectedMember.currentPositions.chairman)}
-                  {renderPositions("Vice Chairman", selectedMember.currentPositions.viceChairman)}
-                  {renderPositions("Board Member", selectedMember.currentPositions.boardMember)}
+                  {renderPositions(
+                    "Chairman",
+                    selectedMember.currentPositions.chairman
+                  )}
+                  {renderPositions(
+                    "Vice Chairman",
+                    selectedMember.currentPositions.viceChairman
+                  )}
+                  {renderPositions(
+                    "Board Member",
+                    selectedMember.currentPositions.boardMember
+                  )}
                   {renderPositions("CEO", selectedMember.currentPositions.ceo)}
-                  {renderPositions("Member", selectedMember.currentPositions.member)}
+                  {renderPositions(
+                    "Member",
+                    selectedMember.currentPositions.member
+                  )}
                 </div>
               )}
             </motion.div>
           )}
         </AnimatePresence>
 
-        <TeamMemberCarousel teamMembers={members} selectedMember={selectedMember} onSelect={handleSelect} />
+        <TeamMemberCarousel
+          teamMembers={members}
+          selectedMember={selectedMember}
+          onSelect={handleSelect}
+        />
       </div>
 
       {/* Desktop */}
@@ -173,9 +308,9 @@ export function TeamTabs({
             <motion.div
               layout
               dir={isRTL ? "rtl" : "ltr"}
-              className={`grid gap-4 ${selectedMember ? "grid-cols-3" : "grid-cols-4"} ${
-                isRTL ? "text-right" : "text-left"
-              }`}
+              className={`grid gap-4 ${
+                selectedMember ? "grid-cols-3" : "grid-cols-4"
+              } ${isRTL ? "text-right" : "text-left"}`}
               transition={{ layout: { duration: 0.5, ease: "easeInOut" } }}
             >
               {members.map((member, index) => (
@@ -189,7 +324,12 @@ export function TeamTabs({
                     opacity: { duration: 0.3 },
                   }}
                 >
-                  <TeamMemberCard member={member} index={index} selectedMember={selectedMember} onSelect={handleSelect} />
+                  <TeamMemberCard
+                    member={member}
+                    index={index}
+                    selectedMember={selectedMember}
+                    onSelect={handleSelect}
+                  />
                 </motion.div>
               ))}
             </motion.div>
@@ -205,10 +345,18 @@ export function TeamTabs({
                 transition={{ duration: 0.3, ease: "easeInOut" }}
                 className={`w-[300px] p-6 bg-[#F8F8F8] rounded-xl h-fit flex-shrink-0 `}
               >
-                <div className={`flex justify-between items-start mb-4 ${isRTL ? "flex-row" : "flex-row"}`}>
+                <div
+                  className={`flex justify-between items-start mb-4 ${
+                    isRTL ? "flex-row" : "flex-row"
+                  }`}
+                >
                   <div className={`${isRTL ? "text-right" : "text-left"}`}>
-                    <h3 className="text-[26px] font-extrabold text-[#293242]">{selectedMember.name}</h3>
-                    <p className="text-[#293242] font-light text-[18px] mb-4">{selectedMember.position}</p>
+                    <h3 className="text-[26px] font-extrabold text-[#293242]">
+                      {selectedMember.name}
+                    </h3>
+                    <p className="text-[#293242] font-light text-[18px] mb-4">
+                      {selectedMember.position}
+                    </p>
                   </div>
                   <button
                     onClick={(e) => handleClose(e)}
@@ -219,17 +367,43 @@ export function TeamTabs({
                   </button>
                 </div>
 
-                <p className={`text-[#293242] leading-tight text-[20px] mb-4 ${isRTL ? "text-right" : "text-left"}`}>
-                  {selectedMember.biography}
-                </p>
+                <div
+                  className={`text-[#293242] leading-tight text-[20px] mb-4 ${
+                    isRTL ? "text-right" : "text-left"
+                  }`}
+                >
+                  {selectedMember.fullDes &&
+                  selectedMember.fullDes.length > 0 ? (
+                    renderBiographyRichText(selectedMember.fullDes)
+                  ) : (
+                    <p className="text-[#293242] leading-relaxed text-[20px]">
+                      {selectedMember.biography}
+                    </p>
+                  )}{" "}
+                </div>
 
                 {selectedMember.currentPositions && (
                   <div className="mt-4">
-                    {renderPositions("Chairman", selectedMember.currentPositions.chairman)}
-                    {renderPositions("Vice Chairman", selectedMember.currentPositions.viceChairman)}
-                    {renderPositions("Board Member", selectedMember.currentPositions.boardMember)}
-                    {renderPositions("CEO", selectedMember.currentPositions.ceo)}
-                    {renderPositions("Member", selectedMember.currentPositions.member)}
+                    {renderPositions(
+                      "Chairman",
+                      selectedMember.currentPositions.chairman
+                    )}
+                    {renderPositions(
+                      "Vice Chairman",
+                      selectedMember.currentPositions.viceChairman
+                    )}
+                    {renderPositions(
+                      "Board Member",
+                      selectedMember.currentPositions.boardMember
+                    )}
+                    {renderPositions(
+                      "CEO",
+                      selectedMember.currentPositions.ceo
+                    )}
+                    {renderPositions(
+                      "Member",
+                      selectedMember.currentPositions.member
+                    )}
                   </div>
                 )}
               </motion.div>

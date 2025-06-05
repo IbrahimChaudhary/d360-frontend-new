@@ -9,10 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { useStore } from "@/store/toggle-store";
 import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
-
-
-
-
+import { HomePageData } from "@/types/home/home";
 
 const iconFadeIn = {
   hidden: { opacity: 1, y: 20 },
@@ -28,8 +25,10 @@ const statCardVariant = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
 };
-
-export default function ScrollSection() {
+interface ScrollSectionProps {
+  data: HomePageData;
+}
+export default function ScrollSection({ data }: ScrollSectionProps) {
   const { language } = useStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -39,15 +38,15 @@ export default function ScrollSection() {
   const [ref, inView] = useInView({ threshold: 0.5 });
   const sections = [
     {
-      title1: content.sections.bankAnytime.title1,
-      title2: content.sections.bankAnytime.title2,
-      description: content.sections.bankAnytime.subtitle,
+      title1: data.Title1,
+      title2: data.Title1B,
+      description: data.Description1,
       image: "/card/red.png",
       rotate: 20,
       icons:
         language === "ar"
           ? [
-              { src: "/home/card-icons/plane.png", className: "top-5 left-40" },
+              // { src: data.Title1img1, className: "top-5 left-40" },
               {
                 src: "/home/card-icons/location.png",
                 className: "-bottom-10 right-20",
@@ -62,7 +61,7 @@ export default function ScrollSection() {
               },
             ]
           : [
-              { src: "/home/card-icons/plane.png", className: "top-5 left-40" },
+              // { src: data.Title1img1, className: "top-5 left-40" },
               {
                 src: "/home/card-icons/location.png",
                 className: "-bottom-10 right-20",
@@ -78,9 +77,9 @@ export default function ScrollSection() {
             ],
     },
     {
-      title1: content.sections.security.title1,
-      title2: content.sections.security.title2,
-      description: content.sections.security.subtitle,
+      title1: data.Title2,
+      title2: data.Title2B,
+      description: data.Description2,
       image: "/card/red.png",
       rotate: -10,
       icons:
@@ -114,9 +113,9 @@ export default function ScrollSection() {
             ],
     },
     {
-      title1: content.sections.blink.title1,
-      title2: content.sections.blink.title2,
-      description: content.sections.blink.subtitle,
+      title1: data.Title3,
+      title2: data.Title3B,
+      description: data.Description3,
       image: "/card/red.png",
       rotate: 10,
       icons:
@@ -153,9 +152,9 @@ export default function ScrollSection() {
             ],
     },
     {
-      title1: content.sections.direct.title1,
-      title2: content.sections.direct.title2,
-      description: content.sections.direct.subtitle,
+      title1: data.Title8,
+      title2: data.Title8B,
+      description: data.Description8,
       image: "/card/red.png",
       rotate: 20,
       icons:
@@ -299,7 +298,7 @@ export default function ScrollSection() {
 
           <AnimatePresence mode="wait">
             {current.icons.map((icon, i) => {
-              const isStatCard = icon.src.includes("stat-card");
+              const isStatCard = typeof icon.src === 'string' && icon.src.includes("stat-card");
               if (!isStatCard) return null;
 
               return (
@@ -323,7 +322,7 @@ export default function ScrollSection() {
           </AnimatePresence>
 
           {current.icons.map((icon, i) => {
-            const isStatCard = icon.src.includes("stat-card");
+            const isStatCard = typeof icon.src === 'string' && icon.src.includes("stat-card");
             if (isStatCard) return null;
 
             return (
@@ -348,5 +347,4 @@ export default function ScrollSection() {
       </div>
     </div>
   );
-
 }

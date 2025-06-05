@@ -31,6 +31,7 @@ export function TeamMemberCard({ member, index, selectedMember, onSelect }: Team
         <Image
           src={member.image || "/placeholder.svg"}
           alt={member.name}
+          quality={100}
           fill
           className={`
     object-contain md:object-cover w-full h-full 

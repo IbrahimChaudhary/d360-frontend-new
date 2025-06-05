@@ -6,8 +6,11 @@ import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { useState } from 'react';
 import { DownloadModal } from './download-modal';
-
-export default function MobileAnimatedSection() {
+import { HomePageData } from '@/types/home/home';
+interface MobileAnimatedSectionProps{
+  data:HomePageData
+}
+export default function MobileAnimatedSection({data}:MobileAnimatedSectionProps) {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const [isModalOpen, setModalOpen] = useState(false);
@@ -66,14 +69,14 @@ export default function MobileAnimatedSection() {
     </div>
     {/* Content inside phone */}
     <div className="absolute top-[30%] w-full text-center px-6 text-white z-20">
-      <h2 className="text-[16px] font-extrabold">{content.sections.digitalCard.title}</h2>
+      <h2 className="text-[16px] font-extrabold">{data.DigitalCard}</h2>
       <p className="text-[10px] mt-2 mb-3 w-[55%] mx-auto text-center">
-        {content.sections.digitalCard.description}
+      {data.DigitalCardDescription}
       </p>
       <button className="bg-white text-[#E74529] text-[8px] font-bold rounded-lg px-8 py-2"
       onClick={()=> setModalOpen(true)}
       >
-        {content.instructions.digitalCardCTA}
+        {data.DigitalCardCTA}
       </button>
     </div>
   </div>
@@ -147,13 +150,13 @@ export default function MobileAnimatedSection() {
  
     {/* Content */}
     <div className="absolute top-[45%] w-full text-center px-6 text-white z-20">
-      <h2 className="text-[16px] font-extrabold ">{content.sections.physicalCard.title}</h2>
+      <h2 className="text-[16px] font-extrabold ">{data.PhysicalCard}</h2>
       <p className="text-[10px] mt-2 mb-3 w-[58%] mx-auto text-center">
-        {content.sections.physicalCard.description}
+      {data.PhysicalCardDescription}
       </p>
       <button className="bg-white text-[#E74529] text-[8px] font-bold rounded-lg px-8 py-2"
       onClick={()=> setModalOpen(true)}>
-        {content.instructions.physicalCardCTA}
+        {data.PhysicalCardCTA}
       </button>
     </div>
   </div>

@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer/footer";
 import { ApplePayData } from "@/types/apple-pay/apple-pay";
 import { fetchApplePay } from "@/api/apple-pay";
+import { extractFAQItems } from "@/lib/faq-extract";
 
 function ApplePay() {
   const [activeTab, setActiveTab] = useState<"overview" | "faq">("faq");
@@ -21,12 +22,14 @@ function ApplePay() {
       .then(setApplePay)
       .catch((err) => console.error("Failed to load About D360:", err));
   }, []);
+  const faqItems = applePay ? extractFAQItems(applePay) : [];
+
   return (
     <div className="px-6 py-10 flex mt-24 flex-col justify-center items-center mx-auto">
       <Header />
 
       {activeTab === "overview" ? (
-        <div className="max-w-[1728px] flex flex-col justify-center items-start overflow-y-scroll">
+        <div className="max-w-[1728px] flex flex-col justify-center items-start">
           <div className="text-[70px] max-w-[1108px] font-extrabold">
             {applePay?.MainTitle}
           </div>
@@ -58,8 +61,8 @@ function ApplePay() {
           {applePay && <ApplePayOverview data={applePay}/>}
         </div>
       ) : (
-        <div className="flex flex-col justify-center items-start overflow-y-scroll">
-          <div className="text-[70px] max-w-[1108px] font-extrabold">
+        <div className="flex flex-col max-w-[1240px] justify-center items-start ">
+          <div className="text-[70px] font-extrabold">
             {applePay?.MainTitle}
           </div>
 
@@ -87,7 +90,7 @@ function ApplePay() {
             </button>
           </div>
 
-          {applePay && <MergedFAQAccordion data={applePay} title="" />}
+          {applePay && <MergedFAQAccordion faqItems={faqItems} title={""} />}
         </div>
       )}
       <Footer />

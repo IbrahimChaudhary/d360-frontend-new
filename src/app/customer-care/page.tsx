@@ -11,6 +11,7 @@ import { useTranslations } from "@/lib/i18n";
 import { useEffect, useState } from "react";
 import { CustomerCareData } from "@/types/customer-care/customer-care";
 import { fetchCustomerCare } from "@/api/customer-care";
+import { CustomerCareContactInfo } from "@/components/customer-care/customer-care-info";
 
 export default function AboutPage() {
   const { t } = useTranslations();
@@ -41,18 +42,11 @@ export default function AboutPage() {
             {t("hero.downloadApp")}
           </Button>
         </Hero>
-<<<<<<< HEAD
-        <SectionHeading className="mt-10">{customerCare?.Title1}</SectionHeading>
-=======
-        <SectionHeading className="text-xl lg:text-3xl font-extrabold">
-          Our commitment is to provide outstanding services and ensure an
-          exceptional banking experience. Our team is here to assist you 24/7
-        </SectionHeading>
->>>>>>> 47b4fb9b36ba4d0d6e3d3b7ca38ab2fe3eedf6e8
+        <SectionHeading className="text-xl lg:text-3xl mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
         <div className="flex flex-col md:flex-row lg:w-[70%] mx-auto lg:mb-8 items-center justify-center gap-10">
           <ContactImage />
           {customerCare && (
-            <ContactInfo
+            <CustomerCareContactInfo
               title={customerCare?.Feedbacks}
               subtitle={customerCare?.FeedbacksSub}
               showAppSection={true}

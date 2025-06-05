@@ -9,6 +9,7 @@ import Image from "next/image"
 interface CTAProps {
   title: string
   subtitle: string
+  subtitle2: string
   ctaText: string
   backgroundImage: string
   onClick?: () => void
@@ -17,6 +18,7 @@ interface CTAProps {
 export function GlobalCTA({
   title,
   subtitle,
+  subtitle2,
   ctaText,
   backgroundImage,
   onClick
@@ -45,8 +47,11 @@ export function GlobalCTA({
         <h2 className="text-3xl md:text-[60px] px- font-extrabold text-[#263244]  mb-4">
           {title}
         </h2>
-        <p className="text-md md:text-[20px] lg:px-60 text-[#263244]  mb-8">
+        <p className="text-md md:text-[20px] lg:px-52 text-[#263244] ">
           {subtitle}
+        </p>
+        <p className="text-md md:text-[20px] lg:px-52 text-[#263244]  mb-8">
+          {subtitle2}
         </p>
         <Button
           className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"

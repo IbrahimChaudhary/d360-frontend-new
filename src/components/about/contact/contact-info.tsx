@@ -6,8 +6,10 @@ import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 import { useState } from "react";
 import { DownloadModal } from "@/components/home/download-modal";
+import { AboutD360Data } from "@/types/about/about";
 
 interface ContactInfoProps {
+  data: AboutD360Data;
   title?: string;
   subtitle?: string;
   showPhone?: boolean;
@@ -27,6 +29,7 @@ interface ContactInfoProps {
 }
 
 export function ContactInfo({
+  data,
   title = "",
   subtitle = "",
   showPhone = true,
@@ -53,13 +56,13 @@ export function ContactInfo({
       dir={language === "ar" ? "rtl" : "ltr"}
       className="text-[#263244] text-sm space-y-6 lg:px-10 mb-12 lg:mb-0"
     >
-      {title && (
+      {data.Title6 && (
         <h3
           className={`text-[40px] font-extrabold text-${
             language === "ar" ? "right" : "left"
           }`}
         >
-          {title}
+          {data.Title6}
         </h3>
       )}
       {subtitle && <p className="text-base text-[#263244]">{subtitle}</p>}
@@ -68,25 +71,19 @@ export function ContactInfo({
         {showPhone && (
           <>
             <div>
-              <h4 className="text-[#6D809C] font-bold ">
-                {content.data.contact.phone1.insideSaudi}
-              </h4>
-              <p>{insideSaudi}</p>
+              <h4 className="text-[#6D809C] font-bold ">{data.inside}</h4>
+              <p>{data.insideDes}</p>
             </div>
             <div>
-              <h4 className="text-[#6D809C] font-bold">
-                {content.data.contact.phone2.outsideSaudi}
-              </h4>
-              <p>{outsideSaudi}</p>
+              <h4 className="text-[#6D809C] font-bold">{data.outside}</h4>
+              <p>{data.outsideDes}</p>
             </div>
           </>
         )}
         {showEmail && (
           <div>
-            <h4 className="text-[#6D809C] font-bold">
-              {content.data.contact.phone3.email}
-            </h4>
-            <p>{content.data.contact.phone3.value}</p>
+            <h4 className="text-[#6D809C] font-bold">{data.email}</h4>
+            <p>{data.emailDes}</p>
           </div>
         )}
       </div>
@@ -105,28 +102,29 @@ export function ContactInfo({
       </div>
 
       {language === "ar" && (
-  <div className="space-y-2 text-sm">
-    <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
-      {content.data.contact.complaint.title}
-    </h4>
-    <p className="text-[20px] leading-relaxed">
-      {content.data.contact.complaint.body}
-    </p>
-  </div>
-)}
-
+        <div className="space-y-2 text-sm">
+          <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
+            {data.Title7}
+          </h4>
+          <p className="text-[20px] leading-relaxed">{data.viaDes}</p>
+        </div>
+      )}
 
       {showButton && (
-  <div className={`w-full flex justify-start ${language === "ar" ? "justify-start" : "justify-start"}`}>
-    <Button
-      onClick={() => setModalOpen(true)}
-      size="lg"
-      className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
-    >
-      {language === "ar" ? "حمّل التطبيق" : buttonText}
-    </Button>
-  </div>
-)}
+        <div
+          className={`w-full flex justify-start ${
+            language === "ar" ? "justify-start" : "justify-start"
+          }`}
+        >
+          <Button
+            onClick={() => setModalOpen(true)}
+            size="lg"
+            className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
+          >
+            {data.download}{" "}
+          </Button>
+        </div>
+      )}
 
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
