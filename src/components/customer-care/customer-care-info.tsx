@@ -40,11 +40,11 @@ export function CustomerCareContactInfo({
   return (
     <div
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="text-[#263244] text-sm space-y-6 lg:px-10 mb-12 lg:mb-0"
+      className="text-[#263244] text-sm space-y-6 px-4 lg:px-10 mb-12 lg:mb-0"
     >
       {data.Feedbacks && (
         <h3
-          className={`text-[40px] font-extrabold text-${
+          className={`text-[14px] lg:text-[40px] max-w-4xl text-center lg:text-left  font-extrabold text-${
             language === "ar" ? "right" : "left"
           }`}
         >
@@ -57,7 +57,7 @@ export function CustomerCareContactInfo({
         </p>
       )}
 
-      <div className="grid grid-cols-2 md:grid-cols-3  text-[24px]">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-y-3 text-[14px] lg:text-[24px]">
         {showPhone && (
           <>
             <div>
@@ -77,18 +77,18 @@ export function CustomerCareContactInfo({
       </div>
 
       <div>
-        <h4 className="text-[#EB644C] font-extrabold text-[30px] mb-2">
+        <h4 className="text-[#EB644C] font-extrabold text-[14px] lg:text-[30px] mb-2">
           {data.Bank}
         </h4>
-        <p className="text-[#293242] mb-2 text-[25px]">{data.Reach}</p>
-        <ul className="list-disc text-base list-inside space-y-1">
+        <p className="text-[#293242] mb-2 text-[14px] lg:text-[25px]">{data.Reach}</p>
+        <ul className="list-disc text-[10px] lg:text-base list-inside space-y-1">
           <li>{data.ReachA}</li>
           <li>{data.ReachB}</li>
         </ul>
       </div>
 
-      <div>{data.complaint}</div>
-      <div>{data.Contact}</div>
+      <div className="lg:text-base text-[10px]">{data.complaint}</div>
+      <div className="lg:text-base text-[10px]">{data.Contact}</div>
     </div>
   );
 }

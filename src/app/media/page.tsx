@@ -8,6 +8,9 @@ import { MediaTabs } from "@/components/media/media-tabs";
 import { galleryImages } from "@/data/media"; // you can keep these static if you like
 import { useTranslations } from "@/lib/i18n";
 import { useEffect, useState, useMemo } from "react";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
 
 export default function MediaPage() {
   const { t } = useTranslations();
@@ -38,17 +41,33 @@ export default function MediaPage() {
     }));
   }, [media]);
 
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
+
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="about"/>
       <main className="flex-1">
         <Hero backgroundImage="/media/media-hero.png">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-[#293242] leading-tight">
-            {media?.Title1} <br /> {media?.Title2}
-          </h1>
+        <div
+            className={`flex w-full flex-col ${
+              isRTL ? " items-start text-right" : "items-start text-left"
+            }`}
+          >
+            <h1
+              className={`text-[25px] flex items-center lg:w-[80%] w-[60%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
+                isRTL ? "justify-end" : " justify-center"
+              }`}
+            >
+              {media?.Title1}
+              <br />
+              {media?.Title2}
+            </h1>
+            </div>
         </Hero>
 
-        <div className="bg-gray-50 py-18">
+        <div className="bg-gray-50 py-8 lg:py-18">
           <MediaTabs
             galleryImages={galleryImages}
             newsArticles={newsArticles}

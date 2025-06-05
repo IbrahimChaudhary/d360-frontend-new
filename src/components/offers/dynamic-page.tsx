@@ -14,13 +14,11 @@ interface Props {
 export default function OfferDynamicPage({ page }: Props) {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header variant="about"/>
       <main className="flex-1 lg:pt-20">
-        <div className="lg:hidden mb-8">
-          <Hero backgroundImage="/offers/offers-hero.png">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-white">
-              D360 Bank <br /> Offers
-            </h1>
+        <div className="lg:hidden mb-8 ">
+          <Hero backgroundImage="/offers/card1.png">
+            
           </Hero>
         </div>
 

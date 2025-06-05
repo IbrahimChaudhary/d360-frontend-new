@@ -25,7 +25,7 @@ export function CategoryTabs({
         <button
           onClick={() => onCategoryChange("all")}
           className={cn(
-            "px-4 py-2 rounded-full font-medium text-sm transition",
+            "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[16px] transition",
             activeCategory === "all"
               ? "bg-[#EB644C] text-white"
               : "bg-[#F4F4F4] text-[#263244]"
@@ -39,7 +39,7 @@ export function CategoryTabs({
             key={category.id}
             onClick={() => onCategoryChange(category.id)}
             className={cn(
-              "px-4 py-2 rounded-full font-medium text-sm transition",
+              "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[16px] transition",
               activeCategory === category.id
                 ? "bg-[#EB644C] text-white"
                 : "bg-[#F6F7F8] text-[#263244]"

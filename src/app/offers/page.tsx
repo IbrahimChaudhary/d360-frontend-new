@@ -16,6 +16,10 @@ import { OfferData } from "@/types/offer/offer";
 import { fetchOffer, fetchOfferCards } from "@/api/offer";
 import { OfferCategory } from "@/types/offers";
 import { OfferCardData } from "@/types/offer/offercard";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
+import { off } from "process";
 
 export default function OffersPage() {
   const { t } = useTranslations();
@@ -24,6 +28,9 @@ export default function OffersPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [offer, setOffer] = useState<OfferData | null>(null);
   const [offerCard, setOfferCard] = useState<OfferCardData[] | null>(null);
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
 
   useEffect(() => {
     fetchOffer()
@@ -71,12 +78,23 @@ export default function OffersPage() {
       <Header />
       <main className="flex-1">
         <Hero backgroundImage="/offers/offers-hero.png">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-white leading-tight">
-            {offer?.Heading} <br /> {offer?.Heading2}
-          </h1>
+       
+          <div
+            className={`flex w-full flex-col ${
+              isRTL ? " items-start text-right" : "items-start text-left"
+            }`}
+          >
+            <h1
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight${
+                isRTL ? "justify-end" : " justify-center"
+              }`}
+            >
+              {offer?.Heading} <br /> {offer?.Heading2}
+              </h1>
+            </div>
         </Hero>
 
-        <Section className="bg-gray-50 lg:px-28">
+        <Section className="bg-gray-50 flex justify-center items-center lg:px-10">
           <div className="flex flex-col md:flex-row">
             <AnimatedSection direction="right" className="md:flex-shrink-0">
               <CategoryTabs

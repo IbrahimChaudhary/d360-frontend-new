@@ -9,8 +9,8 @@ function ApplePayOverview({ data }: ApplePayProps) {
   return (
     <div className="max-w-[1228px] flex-col justify-center items-center ">
       <div className="xx mt-10">
-        <div className="text-[70px]  font-extrabold">{data.Title1}</div>
-        <div className="text-[25px]">{data.Description1}</div>
+        <div className="text-[25px] lg:text-[70px]  font-extrabold">{data.Title1}</div>
+        <div className="text-[14px] lg:text-[25px]">{data.Description1}</div>
       </div>
 
       <ContentSection heading={data.Title2}>

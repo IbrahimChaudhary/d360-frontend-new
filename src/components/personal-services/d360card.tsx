@@ -24,8 +24,8 @@ export default function D360Cards({data}:D360CardsProps) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="py-28 bg-white text-center">
-      <h2 className="text-2xl md:text-3xl font-bold text-[#263244] mb-10">{data.Title16}</h2>
+    <section className="py-16 lg:py-28 bg-white text-center">
+      <h2 className="text-[30px] md:text-[60px] font-extrabold text-[#263244] lg:mb-10">{data.Title16}</h2>
 
       <div className="relative w-[300px] md:w-[360px] h-[200px] mx-auto mb-6 ">
         <AnimatePresence mode="wait">
@@ -53,13 +53,13 @@ export default function D360Cards({data}:D360CardsProps) {
             key={index}
             onClick={() => setActiveIndex(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              activeIndex === index ? "bg-green-700" : "bg-[#F08071]"
+              activeIndex === index ? "bg-[#004119]" : "bg-[#F08071]"
             }`}
           />
         ))}
       </div>
 
-      <button className="bg-[#263244] text-white py-2 px-6 rounded-lg text-sm font-medium hover:bg-[#1e2d3b] transition">
+      <button className="bg-[#263244] text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
         Explore Cards
       </button>
     </section>

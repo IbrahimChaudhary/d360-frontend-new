@@ -71,7 +71,7 @@ export default function AboutPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[140px] font-extrabold text-[#263244] lg:leading-33 ${
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

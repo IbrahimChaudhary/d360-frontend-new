@@ -17,8 +17,8 @@ export default function PrivacyNotice() {
   }, []);
   return (
     <div className="w-full  flex flex-col justify-center items-center">
-      <Header />
-      <div className="max-w-[1728px] hidden  md:flex flex-col justify-center items-center overflow-y-scroll  ">
+      <Header variant="about" />
+      <div className="max-w-[1728px] hidden  mt-12 px-10 md:flex flex-col justify-center items-center overflow-y-scroll  ">
        {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
       </div>
       {/* mobile version  */}

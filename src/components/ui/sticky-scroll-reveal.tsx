@@ -46,33 +46,33 @@ export default function ScrollSection({ data }: ScrollSectionProps) {
       icons:
         language === "ar"
           ? [
-              // { src: data.Title1img1, className: "top-5 left-40" },
+              { src: "/home/card-icons/plane.png", className: "-top-20 left-40" },
               {
                 src: "/home/card-icons/location.png",
-                className: "-bottom-10 right-20",
+                className: "-bottom-30 right-20",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "top-30 -left-16 h-28",
+                className: "top-10 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card-ar.png",
-                className: "top-70 -left-10",
+                className: "top-50 -left-10",
               },
             ]
           : [
-              // { src: data.Title1img1, className: "top-5 left-40" },
+              { src: "/home/card-icons/plane.png", className: "-top-20 left-40" },
               {
                 src: "/home/card-icons/location.png",
-                className: "-bottom-10 right-20",
+                className: "-bottom-30 right-20",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "top-30 -left-16 h-28",
+                className: "top-10 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card.png",
-                className: "top-70 -left-10",
+                className: "top-50 -left-10",
               },
             ],
     },
@@ -85,31 +85,31 @@ export default function ScrollSection({ data }: ScrollSectionProps) {
       icons:
         language === "ar"
           ? [
-              { src: "/home/card-icons/lock.png", className: "top-15 left-30" },
+              { src: "/home/card-icons/lock.png", className: "-top-20 left-30" },
               {
                 src: "/home/card-icons/shield.png",
-                className: "bottom-20 -right-10",
+                className: "-bottom-15 right-10",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "top-50 -left-16 h-28",
+                className: "top-30 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card2-ar.png",
-                className: "top-80",
+                className: "top-60 right-69",
               },
             ]
           : [
-              { src: "/home/card-icons/lock.png", className: "top-5 left-30" },
+              { src: "/home/card-icons/lock.png", className: "-top-20 left-30" },
               {
                 src: "/home/card-icons/shield.png",
-                className: "bottom-10 right-10",
+                className: "-bottom-15 right-10",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "top-50 -left-16 h-28",
+                className: "top-30 -left-16 h-28",
               },
-              { src: "/home/card-icons/stat-card2.png", className: "top-90" },
+              { src: "/home/card-icons/stat-card2.png", className: "top-60" },
             ],
     },
     {
@@ -121,33 +121,33 @@ export default function ScrollSection({ data }: ScrollSectionProps) {
       icons:
         language === "ar"
           ? [
-              { src: "/home/card-icons/arrow.png", className: "top-5 left-30" },
+              { src: "/home/card-icons/arrow.png", className: "-top-25 left-30" },
               {
                 src: "/home/card-icons/shield.png",
-                className: "bottom-10  right-10",
+                className: "-bottom-20 right-20",
               },
               {
                 src: "/home/card-icons/watch.png",
-                className: "top-30 -left-16 h-28",
+                className: "top-10 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card3-ar.png",
-                className: "top-70 -left-10",
+                className: "top-50 -left-10",
               },
             ]
           : [
-              { src: "/home/card-icons/arrow.png", className: "top-5 left-30" },
+              { src: "/home/card-icons/arrow.png", className: "-top-25 left-30" },
               {
                 src: "/home/card-icons/shield.png",
-                className: "bottom-0 right-20",
+                className: "-bottom-20 right-20",
               },
               {
                 src: "/home/card-icons/watch.png",
-                className: "top-30 -left-16 h-28",
+                className: "top-10 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card3.png",
-                className: "top-70 -left-10",
+                className: "top-50 -left-10",
               },
             ],
     },
@@ -162,37 +162,37 @@ export default function ScrollSection({ data }: ScrollSectionProps) {
           ? [
               {
                 src: "/home/card-icons/diamond.png",
-                className: "top-5 left-30",
+                className: "-top-25 left-30",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "bottom-5 left-50 ",
+                className: "-bottom-26 right-20",
               },
               {
                 src: "/home/card-icons/mag.png",
-                className: "top-30 -left-16 ",
+                className: "top-10 -left-16 h-28 ",
               },
               {
                 src: "/home/card-icons/stat-card4-ar.png",
-                className: "top-60 -left-30",
+                className: "top-50 -left-10",
               },
             ]
           : [
               {
                 src: "/home/card-icons/diamond.png",
-                className: "top-5 left-30",
+                className: "-top-25 left-30",
               },
               {
                 src: "/home/card-icons/coin.png",
-                className: "bottom-0 right-20",
+                className: "-bottom-26 right-20",
               },
               {
                 src: "/home/card-icons/mag.png",
-                className: "top-30 -left-16 h-28",
+                className: "top-10 -left-16 h-28",
               },
               {
                 src: "/home/card-icons/stat-card4.png",
-                className: "top-70 -left-10",
+                className: "top-50 -left-10",
               },
             ],
     },

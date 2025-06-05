@@ -32,18 +32,18 @@ export function NewsArticleDetails({
 }: NewsArticleDetailsProps) {
   const { language } = useLanguage();
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return language === "en" ? article.date : article.date;
-  };
+  // const formatDate = (dateString: string) => {
+  //   const date = new Date(dateString);
+  //   return language === "en" ? article.date : article.date;
+  // };
 
-  const formatContent = (content: string) => {
-    return content.split("\n\n").map((paragraph, index) => (
-      <p key={index} className="mb-4 text-slate-700 leading-relaxed">
-        {paragraph}
-      </p>
-    ));
-  };
+  // const formatContent = (content: string) => {
+  //   return content.split("\n\n").map((paragraph, index) => (
+  //     <p key={index} className="mb-4 text-slate-700 leading-relaxed">
+  //       {paragraph}
+  //     </p>
+  //   ));
+  // };
 
   return (
     <div className="bg-white px-8 lg:px-0">
@@ -58,12 +58,12 @@ export function NewsArticleDetails({
           />
         </div>
 
-        <div className="mb-8 max-w-3xl mx-auto ">
-          <h1 className="text-xl md:text-4xl  font-bold text-slate-800 mb-4 pt-5">
+        <div className="mb-8 max-w-5xl mx-auto  px-4">
+          <h1 className="text-[16px] md:text-[60px]  font-extrabold text-[#293242] mb-4 pt-5">
             {language === "en" ? article.heading : article.heading}
           </h1>
 
-          <div className="prose prose-lg max-w-none pt-4 lg:pt-10 ">
+          <div className="prose prose-lg max-w-none pt-4 lg:pt-10 lg:text-[25px] text-base ">
             <p className="mb-3">{article.para1}</p>
             <p className="mb-3">{article.para2}</p>
             <p className="mb-3">{article.para3}</p>
@@ -71,8 +71,8 @@ export function NewsArticleDetails({
         </div>
 
         {relatedArticles.length > 0 && (
-          <div className="py-8 lg:py-16 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-slate-800 mb-6">
+          <div className="py-8 lg:py-16 lg:px-4 max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-[#293242] mb-6">
               {language === "en" ? "Other Topics" : "مواضيع أخرى"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -41,7 +41,7 @@ export function NewsCard({ article, index }: NewsCardProps) {
       className="h-full" // <--- Ensures the card fills grid height
     >
       <Link href={`/media/news/${article.slug}`}>
-        <div className="bg-[#E7E7E7] rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[320px]">
+        <div className="bg-[#E7E7E7] rounded-2xl lg:rounded-4xl transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[320px]">
           {/* Image */}
           <div className="relative h-48 w-full">
             <Image
@@ -53,12 +53,12 @@ export function NewsCard({ article, index }: NewsCardProps) {
           </div>
 
           {/* Content */}
-          <div className="flex flex-col justify-between flex-grow p-4 lg:p-6">
+          <div className="flex flex-col justify-between flex-grow p-4 lg:">
             <div>
-              <h3 className="font-bold text-lg mb-2 text-slate-800 line-clamp-2 hover:text-coral-600 transition-colors">
+              <h3 className="font-bold text-[14px] lg:text-[35px] mb-2 text-[#293242] line-clamp-2 hover:text-coral-600 transition-colors">
                 {language === "en" ? article.heading : article.heading}
               </h3>
-              <p className="text-slate-600 text-sm mb-4 line-clamp-3">
+              <p className="text-[#293242] text-[12px] lg:text-[20px] mb-4 line-clamp-3">
                 {language === "en" ? article.shortDesc : article.shortDesc}
               </p>
             </div>

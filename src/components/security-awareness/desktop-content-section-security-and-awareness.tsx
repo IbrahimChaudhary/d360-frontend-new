@@ -2,12 +2,12 @@ import React from 'react'
 import ContentSection from '../content-section'
 function DesktopContentSectionSecurityAndAwareness() {
   return (
-    <div className="max-w-[1228px] flex-col justify-center items-center overflow-scroll px-[24px]">
+    <div className="max-w-[1228px] flex-col justify-center items-center  px-[24px]">
           <div className="mt-[100px]">
-            <div className="text-[80px] text-[#E74529] font-extrabold">
+            <div className="lg:text-[80px] text-[#E74529] font-extrabold">
               Security Awareness
             </div>
-            <div className="text-[25px]">
+            <div className="lg:text-[25px]">
               At D360 bank we are committed to protecting our customers personal
               and financial information and place all the necessary and required
               security measures to secure all online transactions. <br></br>{" "}

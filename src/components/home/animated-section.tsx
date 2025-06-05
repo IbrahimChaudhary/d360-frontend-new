@@ -550,7 +550,7 @@ export default function InteractiveCardHero({
                 hoveredSide === "right"
                   ? "50%"
                   : language === "ar"
-                  ? "80%"
+                  ? "60%"
                   : "-20%",
               x: hoveredSide === "right" ? "-50%" : "0%",
               opacity: 1,
