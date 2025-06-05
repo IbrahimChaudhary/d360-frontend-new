@@ -1,16 +1,81 @@
+// types/about/about.ts
+
+/**
+ * A single uploaded file returned by Strapi’s Media Library,
+ * flattened under `data` exactly as your JSON shows.
+ */
+export interface StrapiMediaData {
+  id: number;
+  documentId: string;
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+
+  /**
+   * The “formats” object lives directly under `data`.
+   * We add thumbnail (and any other size) here.
+   */
+  formats?: {
+    thumbnail?: {
+      url: string;      // e.g. "/uploads/thumbnail_inv4_1c59f6b9ae.png"
+      width: number;
+      height: number;
+    };
+    [key: string]: {
+      url: string;
+      width: number;
+      height: number;
+    } | undefined;
+  };
+
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;         // e.g. "/uploads/inv4_1c59f6b9ae.png"
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: unknown | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+
+/**
+ * Each Leader (“director”) in the response has:
+ *  - scalar fields (name, role, description, position, etc.)
+ *  - a `fullDes` array of Portable Text blocks
+ *  - a nested `image` object with exactly `data: StrapiMediaData`
+ */
 export interface Leader {
   id: number;
   documentId: string;
   name: string;
   role: string;
   description: string;
+  fullDes: any[];                // replace with your exact Portable Text type if you have one
   position: string;
-  image:string;
+
+  /**
+   * Now matches your JSON:
+   * "image": { data: { id, documentId, name, alternativeText, caption, width, height,
+   *                    formats: { thumbnail: { url, width, height } }, hash, ext, mime, size,
+   *                    url, previewUrl, provider, provider_metadata, createdAt, updatedAt, publishedAt } }
+   */
+  image: StrapiMediaData;
+
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  locale: string;
 }
 
+/**
+ * The “about-d360” single‐type attributes exactly as your JSON shows.
+ */
 export interface AboutD360Data {
   id: number;
   documentId: string;
@@ -39,21 +104,45 @@ export interface AboutD360Data {
   HelpingDescription: string;
   HelpingDescription1: string;
 
+  // Stats fields
+  value1: string;
+  value1Des: string;
+  value2: string;
+  value2Des: string;
+  value3: string;
+  value3Des: string;
+
+  // Contact‐related fields
   Title6: string;
   Title7: string;
   Description5: string;
+  inside: string;
+  insideDes: string;
+  outside: string;
+  outsideDes: string;
+  email: string;
+  emailDes: string;
+  viaDes: string;
+  viaApp1: string;
+  viaApp2: string;
+  complaint: string;
+  complaintDes: string;
+  download: string;
+  contact: string;
+
+  /** Directors array exactly as your JSON shows it */
+  directors: Leader[];
 
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
   locale: string;
-
-  leaders: Leader[];
 }
 
-export interface About<T> {
-  data: T;
+/**
+ * Top‐level Strapi envelope for “about‐d360”.
+ */
+export interface AboutResponse {
+  data: AboutD360Data;
   meta: Record<string, unknown>;
 }
-
-export type AboutResponse = About<AboutD360Data>;

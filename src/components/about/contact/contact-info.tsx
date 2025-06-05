@@ -1,9 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CustomerCareData } from "@/types/customer-care/customer-care";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
+import { useState } from "react";
+import { DownloadModal } from "@/components/home/download-modal";
+import { AboutD360Data } from "@/types/about/about";
 
 interface ContactInfoProps {
+  data: AboutD360Data;
   title?: string;
   subtitle?: string;
   showPhone?: boolean;
@@ -12,15 +18,18 @@ interface ContactInfoProps {
   showEmail?: boolean;
   email?: string;
   showAppSection?: boolean;
+  appTitle?: string;
+  appDescription?: string;
+  appPoints?: string[];
   showComplaintText?: boolean;
+  complaintText?: string;
+  complaintEmail?: string;
   showButton?: boolean;
   buttonText?: string;
-  data?: CustomerCareData;
 }
-interface Slides {
-  heading: string;
-}
+
 export function ContactInfo({
+  data,
   title = "",
   subtitle = "",
   showPhone = true,
@@ -29,76 +38,95 @@ export function ContactInfo({
   showEmail = true,
   email = "customer.care@d360.com",
   showAppSection = true,
+  appTitle = "D360 Bank App",
+  appDescription = 'You can reach us via the "Help" section in the app:',
+  appPoints = ["Send us message through the app", "Request a Callback"],
   showComplaintText = false,
+  complaintText = "If you remain unsatisfied with the resolution, you can escalate the issue by emailing:",
+  complaintEmail = "complaints@d360.com",
   showButton = true,
   buttonText = "Download App",
-  data,
 }: ContactInfoProps) {
-  const slides: Slides[] = [
-    { heading: data?.ReachA || "" },
-    { heading: data?.ReachB || "" },
-  ];
-  return (
-    <div className="text-[#263244]  text-sm space-y-6 lg:px-0 mb-12 lg:mb-0 px-6">
-      {title && <h3 className="text-xl font-bold">{title}</h3>}
-      {subtitle && <p className="text-base font-bold text-[#E74529]">{subtitle}</p>}
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+  return (
+    <div
+      dir={language === "ar" ? "rtl" : "ltr"}
+      className="text-[#263244] text-sm space-y-6 lg:px-10 mb-12 lg:mb-0"
+    >
+      {data.Title6 && (
+        <h3
+          className={`text-[40px] font-extrabold text-${
+            language === "ar" ? "right" : "left"
+          }`}
+        >
+          {data.Title6}
+        </h3>
+      )}
+      {subtitle && <p className="text-base text-[#263244]">{subtitle}</p>}
+
+      <div className="grid grid-cols-2 md:grid-cols-3  text-[24px]">
         {showPhone && (
           <>
             <div>
-              <h4 className="text-[#6D809C] font-medium">
-                Inside Saudi Arabia
-              </h4>
-              <p>{insideSaudi}</p>
+              <h4 className="text-[#6D809C] font-bold ">{data.inside}</h4>
+              <p>{data.insideDes}</p>
             </div>
             <div>
-              <h4 className="text-[#6D809C] font-medium">
-                Outside Saudi Arabia
-              </h4>
-              <p>{outsideSaudi}</p>
+              <h4 className="text-[#6D809C] font-bold">{data.outside}</h4>
+              <p>{data.outsideDes}</p>
             </div>
           </>
         )}
         {showEmail && (
           <div>
-            <h4 className="text-[#6D809C] font-medium">Email</h4>
-            <p>{email}</p>
+            <h4 className="text-[#6D809C] font-bold">{data.email}</h4>
+            <p>{data.emailDes}</p>
           </div>
         )}
       </div>
 
-      {showAppSection && (
-        <div>
-          <h4 className="text-[#E74529] font-bold text-base mb-2">
-            {data?.Bank}
-          </h4>
-          <p className="text-[#6D809C] mb-2">{data?.Reach}</p>
-          <ul className="list-disc list-inside space-y-1">
-            {slides.map((point, i) => (
-              <li key={i}>{point.heading}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div>
+        <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
+          {content.data.contact.appTitle}
+        </h4>
+        <p className="text-[#293242] mb-2 text-[25px]">
+          {content.data.contact.viaApp}
+        </p>
+        <ul className="list-disc list-inside space-y-1 hidden">
+          <li>{content.data.contact.viaApp1}</li>
+          <li>{content.data.contact.viaApp2}</li>
+        </ul>
+      </div>
 
-      {showComplaintText && (
+      {language === "ar" && (
         <div className="space-y-2 text-sm">
-          <p>
-             {data?.Contact}{" "}
-            <span className="font-bold text-[#E74529]">{data?.Email}</span>
-          </p>
+          <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
+            {data.Title7}
+          </h4>
+          <p className="text-[20px] leading-relaxed">{data.viaDes}</p>
         </div>
       )}
 
       {showButton && (
-        <Button
-          size="lg"
-          className="bg-[#E74529] text-white rounded-[15px] hover:bg-[#e6391f]"
+        <div
+          className={`w-full flex justify-start ${
+            language === "ar" ? "justify-start" : "justify-start"
+          }`}
         >
-          {buttonText}
-        </Button>
+          <Button
+            onClick={() => setModalOpen(true)}
+            size="lg"
+            className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
+          >
+            {data.download}{" "}
+          </Button>
+        </div>
       )}
+
+      <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
   );
 }

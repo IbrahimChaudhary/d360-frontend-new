@@ -1,23 +1,23 @@
 "use client";
-import { AboutD360Data } from "@/types/about/about";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus } from "lucide-react";
 import { Section } from "./ui/section";
 import { AnimatedSection } from "./ui/animated-section";
+import { useStore } from "@/store/toggle-store";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "./ui/accordion";
-import { ApplePayData } from "@/types/apple-pay/apple-pay";
 
 // Type definitions
 interface FAQItem {
   id?: string;
-  question?: string;
-  answer?: string;
+  question: string;
+  answer: string;
 }
 
 interface FAQItemComponentProps {
@@ -25,54 +25,55 @@ interface FAQItemComponentProps {
   index: number;
 }
 
-
 interface MergedFAQAccordionProps {
-  data?: ApplePayData;
+  faqItems: FAQItem[];
   title?: string;
   sectionClassName?: string;
   titleClassName?: string;
 }
 
-function FAQMerged({ item, index}: FAQItemComponentProps) {
+function FAQMerged({ item, index }: FAQItemComponentProps) {
+  const {language} = useStore()
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <AccordionItem
       value={`item-${index}`}
-      className="bg-[#F8F8F8] rounded-2xl mb-4 px-3 md:px-6 md:py-4 transition-shadow"
+      className={`  rounded-2xl mb-4 px-3 md:px-6 md:py-4 bg-[#F8F8F8]`}
     >
       <AccordionTrigger
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[15px] md:text-[30px] [&>svg]:hidden"
+        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[40px] [&>svg]:hidden`}
       >
         {item.question}
-        <span className="ml-4 shrink-0 relative w-[38px] h-[39px]">
-          <AnimatePresence mode="wait" initial={false}>
-            {isOpen ? (
-              <motion.div
-                key="x-icon"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0"
-              >
-                <X size={28} className="text-[#E74529] font-extrabold w-full h-full" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="plus-icon"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-                className="absolute inset-0"
-              >
-                <Plus size={28} className="text-[#C0C5CE] font-extrabold w-full h-full" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </span>
+        <span className="ml-4 shrink-0 relative md:w-[38px] md:h-[39px] w-[24px] h-[24px] flex items-center justify-center">
+  <AnimatePresence mode="wait" initial={false}>
+    {isOpen ? (
+      <motion.div
+        key="x-icon"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.2 }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        <X className="text-[#E74529] font-extrabold lg:w-full lg:h-full w-[18px] h-[18px]" />
+      </motion.div>
+    ) : (
+      <motion.div
+        key="plus-icon"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.2 }}
+        className="absolute inset-0 flex items-center justify-center"
+      >
+        <Plus className="text-[#C0C5CE] font-extrabold lg:w-full lg:h-full w-[18px] h-[18px]" />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</span>
+
       </AccordionTrigger>
 
       <AnimatePresence initial={false}>
@@ -84,8 +85,8 @@ function FAQMerged({ item, index}: FAQItemComponentProps) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
-            <AccordionContent className="overflow-hidden">
-              <p className="text-md text-[#263244] mt-2 leading-relaxed">
+            <AccordionContent className={`overflow-hidden  flex ${language === 'ar' ? "flex-row" : "flex-row"}`}>
+              <p className={`text-[10px] lg:text-lg text-[#263244] mt-2 leading-relaxed ${ language==="ar"?"text-right":"text-left"}`}>
                 {item.answer}
               </p>
             </AccordionContent>
@@ -95,71 +96,23 @@ function FAQMerged({ item, index}: FAQItemComponentProps) {
     </AccordionItem>
   );
 }
+
 export function MergedFAQAccordion({
+  
+  faqItems,
   title = "FAQs",
-  data,
-  sectionClassName = "bg-white",
-  titleClassName = "text-4xl font-bold mb-8  text-[#293242]",
+  sectionClassName = "w-full flex justify-center ",
+  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242]",
 }: MergedFAQAccordionProps) {
-  const faqItems: FAQItem[] = [
-    {
-      id: "1",
-      question: data?.FAQTitle1,
-      answer: data?.FAQDescription1,
-    },
-    {
-      id: "2",
-      question: data?.FAQTitle2,
-      answer: data?.FAQDescription2,
-    },
-    {
-      id: "3",
-      question: data?.FAQTitle3,
-      answer: data?.FAQDescription3,
-    },
-    {
-      id: "4",
-      question: data?.FAQTitle4,
-      answer: data?.FAQDescription4,
-    },
-    {
-      id: "5",
-      question: data?.FAQTitle5,
-      answer: data?.FAQDescription5,
-    },
-    {
-      id: "6",
-      question: data?.FAQTitle6,
-      answer: data?.FAQDescription6,
-    },
-    {
-      id: "7",
-      question: data?.FAQTitle7,
-      answer: data?.FAQDescription7,
-    },
-    {
-      id: "8",
-      question: data?.FAQTitle8,
-      answer: data?.FAQDescription8,
-    },
-    {
-      id: "9",
-      question: data?.FAQTitle9,
-      answer: data?.FAQDescription9,
-    },
-    {
-      id: "10",
-      question: data?.FAQTitle10,
-      answer: data?.FAQDescription10,
-    },
-  ];
+  const {language} = useStore()
   return (
     <Section className={sectionClassName}>
       <AnimatedSection direction="up">
+        <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>{title}</h2>
         <Accordion
           type="single"
           collapsible
-          className="w-full max-w-5xl mx-auto"
+          className="w-full mx-auto"
         >
           {faqItems.map((item: FAQItem, index: number) => (
             <FAQMerged key={item.id || index} item={item} index={index} />

@@ -3,21 +3,28 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useStore } from "@/store/toggle-store";
+import englishContent from "@/data/home-en";
+import arabicContent from "@/data/home-ar";
+import { DownloadModal } from "./download-modal";
 import { HomePageData } from "@/types/home/home";
 interface InteractiveCardHeroProps {
-  data?: HomePageData;
+  data: HomePageData;
 }
 export default function InteractiveCardHero({
   data,
 }: InteractiveCardHeroProps) {
   const [hoveredSide, setHoveredSide] = useState<"left" | "right" | null>(null);
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleAreaHover = (side: "left" | "right") => setHoveredSide(side);
   const resetHover = () => setHoveredSide(null);
 
   return (
     <div
-      className="lg:flex hidden relative w-full mt-10 h-[600px] overflow-hidden bg-black"
+      className="lg:flex hidden relative w-full mt-10 h-[650px] overflow-hidden bg-black"
       onMouseLeave={resetHover}
     >
       {/* Panels Container */}
@@ -332,9 +339,9 @@ export default function InteractiveCardHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute bottom-5 w-full text-center text-white text-xl font-bold"
+                className="absolute bottom-5 w-full text-center text-white text-[75px] z-10 font-extrabold"
               >
-                {data?.PhysicalCard}{" "}
+                {data.PhysicalCard}
               </motion.div>
             )}
           </AnimatePresence>
@@ -346,12 +353,20 @@ export default function InteractiveCardHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 top-[70%] flex flex-col items-center  text-white text-center px-4"
+              className="absolute inset-0 top-[65%] flex flex-col items-center  text-white text-center px-4"
             >
-              <h2 className="text-3xl font-bold mb-2">{data?.PhysicalCard}</h2>
-              <p className="text-sm max-w-xs">
-                {data?.PhysicalCardDescription}
+              <h2 className="text-[42.75px] font-extrabold mb-2">
+                {data.PhysicalCard}
+              </h2>
+              <p className="text-[18px] max-w-md leading-tight">
+                {data.PhysicalCardDescription}
               </p>
+              <button
+                className="mt-2 bg-white text-[#E74529] px-22 py-2 rounded-lg font-bold text-sm shadow-md"
+                onClick={() => setModalOpen(true)}
+              >
+                {data.PhysicalCardCTA}
+              </button>
               <div
                 onMouseEnter={() => handleAreaHover("right")}
                 className="absolute top-0 right-0 h-full w-10"
@@ -520,32 +535,27 @@ export default function InteractiveCardHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute bottom-6 w-full text-center text-white text-xl font-bold"
+                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold rtl:text-left rtl:left-[-2px]"
               >
-                {data?.DigitalCard}
+                {data.DigitalCard}
               </motion.div>
             )}
           </AnimatePresence>
 
           {/* Mobile Mockup (Always Visible, But Moves) */}
           <motion.div
-            className="absolute w-[370px] h-[700px] top-10 z-10"
+            className="absolute w-[400px] h-[700px] top-18 z-10"
             animate={{
               left:
                 hoveredSide === "right"
                   ? "50%"
-                  : hoveredSide === "left"
-                  ? "0%"
+                  : language === "ar"
+                  ? "80%"
                   : "-20%",
-              x:
-                hoveredSide === "right"
-                  ? "-50%"
-                  : hoveredSide === "left"
-                  ? "0%"
-                  : "0%",
+              x: hoveredSide === "right" ? "-50%" : "0%",
               opacity: 1,
             }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <Image
               src="/home/mobile-mockup.png"
@@ -559,17 +569,23 @@ export default function InteractiveCardHero({
               {hoveredSide === "right" && (
                 <motion.div
                   key="mobile-content"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute top-[60%] w-full px-6 text-center text-white"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute top-[50%] w-full px-6 text-center text-white"
                 >
-                  <h2 className="text-xl font-bold"> {data?.DigitalCard}</h2>
-                  <p className="text-xs mt-2 mb-3 w-[70%] mx-auto text-center">
-                    {data?.DigitalCardDescription}
+                  <h2 className="text-[42.75px] font-bold ">
+                    {data.DigitalCard}
+                  </h2>
+                  <p className="text-[18px] px-1 mb-4 rtl:px-6 mx-auto text-center ">
+                    {data.DigitalCardDescription}
                   </p>
-                  <button className="bg-white text-[#263244] text-xs font-semibold rounded-lg px-10 py-2 w-[50%]">
-                    Create a Card
+                  <button
+                    className="bg-white font-bold text-[#E74529] text-sm rounded-lg px-12 py-3 mx-auto block"
+                    onClick={() => setModalOpen(true)}
+                  >
+                    {data.DigitalCardCTA}
                   </button>
                 </motion.div>
               )}
@@ -586,21 +602,35 @@ export default function InteractiveCardHero({
         </motion.div>
       </div>
 
-      {/* Center Card (Always Visible) */}
+      {/* Center Card (Moves into mobile when right side opens) */}
       <motion.div
         key="center-card"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] z-20 pointer-events-none"
+        className="absolute z-20 pointer-events-none"
+        animate={{
+          top: hoveredSide === "right" ? "25%" : "50%",
+          left: "50%",
+          x: "-50%",
+          y: hoveredSide === "right" ? "0%" : "-50%",
+        }}
+        transition={{ duration: 0, ease: "easeOut" }}
+        style={{
+          width: "300px",
+          height: "300px",
+        }}
       >
         <Image
-          src="/home/card.png"
+          src={
+            hoveredSide === "right"
+              ? "/home/card-digital.png"
+              : "/home/card.png"
+          }
           alt="Center Card"
           fill
           className="object-contain"
         />
       </motion.div>
+
+      <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
   );
 }

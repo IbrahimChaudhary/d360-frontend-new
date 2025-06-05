@@ -1,51 +1,72 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/language-context";
-import type { ReactNode } from "react";
+import { useState } from "react";
 import { Button } from "../ui/button";
+import { DownloadModal } from "./download-modal";
+import englishContent from "@/data/home-en";
+import arabicContent from "@/data/home-ar";
+import { useStore } from "@/store/toggle-store";
+import { cn } from "@/lib/utils";
 import { HomePageData } from "@/types/home/home";
-
-interface HeroProps {
- data:HomePageData
+interface HomeHeroProps {
+  data: HomePageData;
 }
-
-export function HomeHero({data}:HeroProps) {
-  const { isRtl } = useLanguage();
+export function HomeHero({ data }: HomeHeroProps) {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const { language } = useStore();
+  const isRTL = language === "ar";
+  const content = isRTL ? arabicContent : englishContent;
 
   return (
-    <section className="w-full  min-h-[750px] relative overflow-hidden">
-      {/* Background Video */}
+    <section className="w-full min-h-[450px] lg:min-h-[100vh] h-full flex items-center relative overflow-hidden">
+      {/* Switch video based on language */}
       <video
-        className="absolute w-full h-full lg:h-full object-cover  object-center z-0"
-        src="/home/home-banner.mp4"
+        className="absolute w-full h-full object-cover object-center z-0"
+        src={isRTL ? "/home/home-banner-ar.mp4" : "/home/home-banner.mp4"}
         autoPlay
         loop
         muted
         playsInline
       />
 
-      <div className="container px-4 md:px-18 flex md:flex-row mt-50 items-center justify-between h-full  pb-16 relative z-10 ">
+      <div
+        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row ${
+          isRTL ? "" : ""
+        } lg:items-center justify-between h-full pt-28 lg:pt-10 pb-16 relative z-10`}
+      >
         <motion.div
-          className="text-left lg:max-w-xl"
-          initial={{ opacity: 0, x: isRtl ? 50 : -50 }}
+          className={cn(
+            "lg:max-w-xl w-full",
+            isRTL ? "text-right items-end" : "text-left "
+          )}
+          initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-xl lg:text-6xl font-[800] pb-2 lg:mb-0 text-white leading-tight">
-            {data.Heading}
+          <h1
+            className={`text-[25px] lg:text-[84px] font-extrabold pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${
+              language === "ar"
+                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
+                : "lg:w-full w-[70%]"
+            }`}
+          >
+            {data.Heading} {data.HeadingB}
           </h1>
-          <h1 className="text-xl lg:text-6xl font-[800] pb-2 lg:mb-0 text-white leading-tight">
-            {data.HeadingB}
-          </h1>
-          <p className="text-sm sm:text-md lg:w-[60%]  mb-4 md:mb-6 text-white leading-tight">
-          {data.Description}
+          <p
+            className={`text-sm sm:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
+              language === "ar"
+                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
+                : "lg:w-full w-[70%]"
+            }`}
+          >
+            {data.Description}{" "}
           </p>
           <Button
-            className="bg-[#EB644C] text-white text-[10px] md:px-12 md:py-4 rounded-[14px]"
-            size="default"
+            onClick={() => setModalOpen(true)}
+            className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 md:py-6 rounded-[14px]"
           >
-            Download the App
+            {data.download}
           </Button>
         </motion.div>
 
@@ -55,8 +76,10 @@ export function HomeHero({data}:HeroProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7 }}
         >
-          {/* Optional right-side content (image, animation, etc.) */}
+          {/* Optional image or animation */}
         </motion.div>
+
+        <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
       </div>
     </section>
   );

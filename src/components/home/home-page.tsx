@@ -14,66 +14,73 @@ import MobileTransferSection from "./international-transfers-mobile";
 
 import ScrollSection from "../ui/sticky-scroll-reveal";
 import { CardCarosels } from "./card-carosel";
-import { HomePageData } from "@/types/home/home";
+import { useStore } from "@/store/toggle-store";
+import englishContent from "@/data/home-en";
+import arabicContent from "@/data/home-ar";
 import { useEffect, useState } from "react";
 import { fetchHomePage } from "@/api/home";
-import { extractNumber, extractSuffix } from "@/lib/separate-number-date";
+import { ApplePayData } from "@/types/apple-pay/apple-pay";
+import { HomePageData } from "@/types/home/home";
+
 
 export default function HomePage() {
-  const { t } = useTranslations();
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
   const [homeData, setHomeData] = useState<HomePageData | null>(null);
 
+
   useEffect(() => {
-    fetchHomePage()
+    fetchHomePage(language)
       .then(setHomeData)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
+  const stats = [
+    { 
+      label: homeData?.Title5 ?? '', 
+      value: homeData?.Description5 ?? '', 
+      animated: false 
+    },
+    { 
+      label: homeData?.Title6 ?? '', 
+      value: homeData?.Description6 ?? '', 
+      prefix: "+", 
+      animated: true 
+    },
+    { 
+      label: homeData?.Title7 ?? '', 
+      value: homeData?.Description7 ?? '', 
+      prefix: "+", 
+      animated: true 
+    },
+  ];
+  
+  
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         <div className="">
-          {homeData && <HomeHero data={homeData} />}
+          {homeData && <HomeHero  data={homeData}/>}
         </div>
         <div className="hidden lg:block">
         {homeData && <ScrollSection data={homeData}/>}
         </div>
         {homeData && <CardCarosels data={homeData}/>}
 
-        <SectionHeading className="mt-16 px-2 text-3xl font-bold">
-         {homeData?.Title4}
+        <SectionHeading className="mt-16 text-[27px] px-3  lg:text-[60px] font-extrabold">
+          {homeData?.Title4}
         </SectionHeading>
         <StatsCounter
-          container="pt-0"
-          stats={[
-            {
-              label: `${homeData?.Title5}`,
-              value: extractNumber(homeData?.Description5),
-              suffix: extractSuffix(homeData?.Description5),
-            },
-            {
-              label: `${homeData?.Title6}`,
-              value: extractNumber(homeData?.Description6),
-              suffix: extractSuffix(homeData?.Description6),
-            },
-            {
-              label: `${homeData?.Title7}`,
-              value: extractNumber(homeData?.Description7),
-              suffix: extractSuffix(homeData?.Description7),
-            },
-            {
-              label: `${homeData?.Title8}`,
-              value: extractNumber(homeData?.Description8),
-              suffix: extractSuffix(homeData?.Description8),
-            },
-          ]}
+          container="pt-0 grid grid-cols-3"
+          stats={stats}
         />
-
 
         {homeData && <InteractiveCardHero data={homeData}/>}
         {homeData && <MobileAnimatedSection data={homeData}/>}
         {homeData && <ShariahSection data={homeData}/>}
-        {homeData && <MobileTransferSection data={homeData}/>}
+        {/* <TransferSection  /> */}
       </main>
       <Footer />
     </div>

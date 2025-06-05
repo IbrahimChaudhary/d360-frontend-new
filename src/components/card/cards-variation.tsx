@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useAnimation,AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { CardsData } from "@/types/card/card";
 
 const cards = [
   {
@@ -64,8 +65,10 @@ const features = [
   "Multiple cards under one account",
   "Competitive FX rates with no hidden fees",
 ];
-
-export default function CardVariants() {
+interface CardVariantsProps{
+  data:CardsData
+}
+export default function CardVariants({data}:CardVariantsProps) {
   const [selected, setSelected] = useState(0);
   const [animate, setAnimate] = useState(false);
   const current = cards[selected];
@@ -82,10 +85,10 @@ export default function CardVariants() {
         <div>
           <div className="space-y-2">
             <h2 className={`text-3xl font-bold ${current.text}`}>
-              Classic Card
+              {data.Title2}
             </h2>
             <h3 className={`text-3xl font-bold ${current.text}`}>
-              Simple & Flexible
+            {data.Title3}
             </h3>
             <p className="text-[#263244]">
               Ideal for everyday payments with full control.

@@ -1,23 +1,22 @@
-'use client';
+"use client";
 
-import { useRef, useState, useEffect } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { HomePageData } from '@/types/home/home';
-
-
-
-
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useStore } from "@/store/toggle-store";
+import englishContent from "@/data/home-en";
+import arabicContent from "@/data/home-ar";
+import { HomePageData } from "@/types/home/home";
 
 const iconFadeIn = {
   hidden: { opacity: 1, y: 20 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay, duration: 1.5, ease: 'easeOut' },
+    transition: { delay, duration: 1.5, ease: "easeOut" },
   }),
 };
 
@@ -26,55 +25,179 @@ const statCardVariant = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
 };
-
-
-interface ScrollSectionProps{
-  data:HomePageData
+interface ScrollSectionProps {
+  data: HomePageData;
 }
-export default function ScrollSection({data}:ScrollSectionProps) {
+export default function ScrollSection({ data }: ScrollSectionProps) {
+  const { language } = useStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollLockRef = useRef(false);
 
+  const content = language === "en" ? englishContent : arabicContent;
   const [ref, inView] = useInView({ threshold: 0.5 });
   const sections = [
     {
-      title: `${data?.Title1}`,
-      description: `${data?.Description1}`,
-      image: '/card/red.png',
+      title1: data.Title1,
+      title2: data.Title1B,
+      description: data.Description1,
+      image: "/card/red.png",
       rotate: 20,
-      icons: [
-        { src: '/home/card-icons/plane.png', className: '-top-7 left-80' },
-        { src: '/home/card-icons/location.png', className: ' right-20 ' },
-        { src: '/home/card-icons/coin.png', className: 'top-0 -left-10 h-28 ' },
-        { src: '/home/card-icons/stat-card.png', className: 'top-50 -left-10' },
-      ],
+      icons:
+        language === "ar"
+          ? [
+              // { src: data.Title1img1, className: "top-5 left-40" },
+              {
+                src: "/home/card-icons/location.png",
+                className: "-bottom-10 right-20",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "top-30 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card-ar.png",
+                className: "top-70 -left-10",
+              },
+            ]
+          : [
+              // { src: data.Title1img1, className: "top-5 left-40" },
+              {
+                src: "/home/card-icons/location.png",
+                className: "-bottom-10 right-20",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "top-30 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card.png",
+                className: "top-70 -left-10",
+              },
+            ],
     },
     {
-      title: `${data?.Title2}`,
-      description: `${data?.Description2}`,
-      image: '/card/red.png',
+      title1: data.Title2,
+      title2: data.Title2B,
+      description: data.Description2,
+      image: "/card/red.png",
       rotate: -10,
-      icons: [
-        { src: '/home/card-icons/lock.png', className: '-top-30 left-70' },
-        { src: '/home/card-icons/shield.png', className: '-bottom-16 right-10 rotate-340' },
-        { src: '/home/card-icons/coin.png', className: 'top-24 -left-18 h-28 ' },
-        { src: '/home/card-icons/stat-card2.png', className: 'top-50 ' },
-      ],
+      icons:
+        language === "ar"
+          ? [
+              { src: "/home/card-icons/lock.png", className: "top-15 left-30" },
+              {
+                src: "/home/card-icons/shield.png",
+                className: "bottom-20 -right-10",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "top-50 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card2-ar.png",
+                className: "top-80",
+              },
+            ]
+          : [
+              { src: "/home/card-icons/lock.png", className: "top-5 left-30" },
+              {
+                src: "/home/card-icons/shield.png",
+                className: "bottom-10 right-10",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "top-50 -left-16 h-28",
+              },
+              { src: "/home/card-icons/stat-card2.png", className: "top-90" },
+            ],
     },
     {
-      title: `${data?.Title3}`,
-      description: `${data?.Description3}`,
-      image: '/card/red.png',
+      title1: data.Title3,
+      title2: data.Title3B,
+      description: data.Description3,
+      image: "/card/red.png",
       rotate: 10,
-      icons: [
-        { src: '/home/card-icons/arrow.png', className: '-top-20 left-80' },
-        { src: '/home/card-icons/shield.png', className: '-bottom-29 right-10' },
-        { src: '/home/card-icons/watch.png', className: 'top-10 -left-17 h-28 ' },
-        { src: '/home/card-icons/stat-card3.png', className: 'top-50' },
-      ],
+      icons:
+        language === "ar"
+          ? [
+              { src: "/home/card-icons/arrow.png", className: "top-5 left-30" },
+              {
+                src: "/home/card-icons/shield.png",
+                className: "bottom-10  right-10",
+              },
+              {
+                src: "/home/card-icons/watch.png",
+                className: "top-30 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card3-ar.png",
+                className: "top-70 -left-10",
+              },
+            ]
+          : [
+              { src: "/home/card-icons/arrow.png", className: "top-5 left-30" },
+              {
+                src: "/home/card-icons/shield.png",
+                className: "bottom-0 right-20",
+              },
+              {
+                src: "/home/card-icons/watch.png",
+                className: "top-30 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card3.png",
+                className: "top-70 -left-10",
+              },
+            ],
+    },
+    {
+      title1: data.Title8,
+      title2: data.Title8B,
+      description: data.Description8,
+      image: "/card/red.png",
+      rotate: 20,
+      icons:
+        language === "ar"
+          ? [
+              {
+                src: "/home/card-icons/diamond.png",
+                className: "top-5 left-30",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "bottom-5 left-50 ",
+              },
+              {
+                src: "/home/card-icons/mag.png",
+                className: "top-30 -left-16 ",
+              },
+              {
+                src: "/home/card-icons/stat-card4-ar.png",
+                className: "top-60 -left-30",
+              },
+            ]
+          : [
+              {
+                src: "/home/card-icons/diamond.png",
+                className: "top-5 left-30",
+              },
+              {
+                src: "/home/card-icons/coin.png",
+                className: "bottom-0 right-20",
+              },
+              {
+                src: "/home/card-icons/mag.png",
+                className: "top-30 -left-16 h-28",
+              },
+              {
+                src: "/home/card-icons/stat-card4.png",
+                className: "top-70 -left-10",
+              },
+            ],
     },
   ];
+
   // Scroll logic
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -97,37 +220,51 @@ export default function ScrollSection({data}:ScrollSectionProps) {
     };
 
     const container = containerRef.current;
-    container?.addEventListener('wheel', handleWheel, { passive: false });
+    container?.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
-      container?.removeEventListener('wheel', handleWheel);
+      container?.removeEventListener("wheel", handleWheel);
     };
   }, [activeIndex, inView]);
 
   // Lock body scroll only while in the section and in the range
   useEffect(() => {
-    const isScrollingSlides = inView && activeIndex > 0 && activeIndex < sections.length - 1;
-    document.body.style.overflow = isScrollingSlides ? 'hidden' : 'auto';
+    const isScrollingSlides =
+      inView && activeIndex > 0 && activeIndex < sections.length - 1;
+    document.body.style.overflow = isScrollingSlides ? "hidden" : "auto";
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [inView, activeIndex]);
 
   const current = sections[activeIndex];
 
   return (
-    <div ref={ref} className="relative h-screen w-full overflow-hidden bg-[#FDF0ED]">
-      <div ref={containerRef} className="absolute inset-0 flex flex-col md:flex-row items-center justify-center px-6 lg:px-24">
-        <div className="max-w-md text-left">
+    <div
+      ref={ref}
+      className="relative h-screen w-full overflow-hidden bg-[#FDF0ED]"
+    >
+      <div
+        ref={containerRef}
+        className={cn(
+          "absolute inset-0 flex flex-col items-center justify-center px-6 lg:px-16 gap-14",
+          language === "ar" ? "md:flex-row-reverse gap-[200px]" : "md:flex-row"
+        )}
+      >
+        <div className=" text-start">
           <motion.h2
-            key={current.title}
+            key={`${current.title1}-${current.title2}`} // make key more unique
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-bold text-[#E74529] leading-snug"
+            className={`text-3xl w-full md:text-[80px] uppercase font-extrabold text-[#E74529] ${
+              language === "ar" ? "text-right" : "text-left"
+            }`}
           >
-            {current.title}
+            {current.title1}
+            <br />
+            {current.title2}
           </motion.h2>
 
           <motion.p
@@ -135,7 +272,9 @@ export default function ScrollSection({data}:ScrollSectionProps) {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-[#263244] text-base md:text-lg w-[60%]"
+            className={`mt-4 w-full text-[#263244] text-base md:text-[31px] ${
+              language === "ar" ? "text-right" : "text-left"
+            }`}
           >
             {current.description}
           </motion.p>
@@ -146,11 +285,11 @@ export default function ScrollSection({data}:ScrollSectionProps) {
             key={current.image}
             initial={{ opacity: 0, y: -100, rotate: 0 }}
             animate={{ opacity: 1, y: 0, rotate: current.rotate }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <Image
               src={current.image}
-              alt={current.title}
+              alt={current.title1}
               width={550}
               height={350}
               className="object-contain w-full h-auto"
@@ -159,7 +298,7 @@ export default function ScrollSection({data}:ScrollSectionProps) {
 
           <AnimatePresence mode="wait">
             {current.icons.map((icon, i) => {
-              const isStatCard = icon.src.includes('stat-card');
+              const isStatCard = typeof icon.src === 'string' && icon.src.includes("stat-card");
               if (!isStatCard) return null;
 
               return (
@@ -169,16 +308,21 @@ export default function ScrollSection({data}:ScrollSectionProps) {
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  className={cn('absolute', icon.className)}
+                  className={cn("absolute", icon.className)}
                 >
-                  <Image src={icon.src} alt={`stat-${i}`} width={160} height={80} />
+                  <Image
+                    src={icon.src}
+                    alt={`stat-${i}`}
+                    width={160}
+                    height={80}
+                  />
                 </motion.div>
               );
             })}
           </AnimatePresence>
 
           {current.icons.map((icon, i) => {
-            const isStatCard = icon.src.includes('stat-card');
+            const isStatCard = typeof icon.src === 'string' && icon.src.includes("stat-card");
             if (isStatCard) return null;
 
             return (
@@ -188,9 +332,14 @@ export default function ScrollSection({data}:ScrollSectionProps) {
                 variants={iconFadeIn}
                 initial="hidden"
                 animate="visible"
-                className={cn('absolute', icon.className)}
+                className={cn("absolute", icon.className)}
               >
-                <Image src={icon.src} alt={`icon-${i}`} width={120} height={80} />
+                <Image
+                  src={icon.src}
+                  alt={`icon-${i}`}
+                  width={120}
+                  height={80}
+                />
               </motion.div>
             );
           })}
@@ -198,6 +347,4 @@ export default function ScrollSection({data}:ScrollSectionProps) {
       </div>
     </div>
   );
-
 }
-
