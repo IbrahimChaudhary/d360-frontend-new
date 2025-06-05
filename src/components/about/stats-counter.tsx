@@ -68,9 +68,14 @@ function CountUp({ end, prefix = "", suffix = "" }: { end: number; prefix?: stri
   }, [end]);
 
   return (
-    <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529]">
+    <>
+    <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529] rtl:hidden">
       {prefix}{count.toLocaleString()}{suffix}
     </span>
+     <span className="text-[30px] md:text-[60px] font-extrabold text-[#E74529] ltr:hidden">
+     {suffix}{count.toLocaleString()}{prefix}
+   </span>
+   </>
   );
 }
 

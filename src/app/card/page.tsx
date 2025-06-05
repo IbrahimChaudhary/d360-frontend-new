@@ -12,10 +12,13 @@ import { CardsData } from "@/types/card/card";
 import { fetchCard } from "@/api/card";
 import { useStore } from "@/store/toggle-store";
 import { extractFAQItems } from "@/lib/faq-extract";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
 
 export default function AboutPage() {
   const { language } = useStore();
-
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
   const { t } = useTranslations();
   const [cardData, setCardData] = useState<CardsData | null>(null);
 
@@ -28,22 +31,26 @@ export default function AboutPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="about" />
       <main className="flex-1">
-        <Hero backgroundImage="/card/card-hero.jpg">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-[#263244] leading-tight">
+        <Hero backgroundImage={
+            isRTL ? "/about/about-hero-arabic.png" : "/card/card-hero.jpg"
+          }
+          direction={isRTL ? "rtl" : "ltr"}
+        >
+          <h1 className="text-4xl ltr:lg:px-6  lg:text-[80px] font-extrabold text-[#263244] leading-tight">
             {cardData?.MainTitle}
           </h1>
-          <p className="text-4xl sm:text-5xl lg:text-6xl font-[600] mb-2 md:mb-6 text-[#263244] leading-tight">
+          <p className="text-4xl ltr:lg:px-6 lg:text-[80px] font-medium lg:w-[70%] mb-2 md:mb-6 text-[#263244] leading-tight">
             {cardData?.MainTitle1} {cardData?.MainTitle2}
           </p>
         </Hero>
         <SectionHeading className="pt-16">
-          <span className="text-5xl font-extrabold">
+          <span className="text-[30px] lg:text-[70px] font-extrabold">
             {" "}
             {cardData?.Title1}
           </span>
-          <p className="text-sm w-[70%] mx-auto pt-7">
+          <p className="text-[14px] lg:text-[25px] w-[86%] mx-auto pt-7">
             {cardData?.Description1}
             {cardData?.Description2}
             {cardData?.Description3}

@@ -1,10 +1,14 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { motion, useAnimation,AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { CardsData } from "@/types/card/card";
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { cn } from "@/lib/utils"
+
+interface CardsData {
+  Title2: string
+  Title3?: string
+}
 
 const cards = [
   {
@@ -55,7 +59,7 @@ const cards = [
       "/card/icons/fees-gold.svg",
     ],
   },
-];
+]
 
 const features = [
   "Instant virtual card issuance",
@@ -64,139 +68,196 @@ const features = [
   "Full control via the app",
   "Multiple cards under one account",
   "Competitive FX rates with no hidden fees",
-];
-interface CardVariantsProps{
-  data:CardsData
+]
+
+interface CardVariantsProps {
+  data: CardsData
 }
-export default function CardVariants({data}:CardVariantsProps) {
-  const [selected, setSelected] = useState(0);
-  const [animate, setAnimate] = useState(false);
-  const current = cards[selected];
+
+export default function CardVariants({ data }: CardVariantsProps) {
+  const [selected, setSelected] = useState(0)
+  const [animate, setAnimate] = useState(false)
+  const current = cards[selected]
 
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(true), 300);
-    return () => clearTimeout(timeout);
-  }, [selected]);
+    const timeout = setTimeout(() => setAnimate(true), 300)
+    return () => clearTimeout(timeout)
+  }, [selected])
 
   return (
-    <section className={`${current.bg} py-10 px-4`}>
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-evenly gap-10">
-        {/* Left Side */}
-        <div>
-          <div className="space-y-2">
-            <h2 className={`text-3xl font-bold ${current.text}`}>
-              {data.Title2}
-            </h2>
-            <h3 className={`text-3xl font-bold ${current.text}`}>
-            {data.Title3}
-            </h3>
-            <p className="text-[#263244]">
-              Ideal for everyday payments with full control.
-            </p>
-            <button
-              className={`${current.button} text-white px-7 py-2 rounded-xl font-medium`}
-            >
-              Get Card
+    <section className={`${current.bg} py-6 lg:py-10 lg:min-h-screen`}>
+      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+        {/* Mobile Layout */}
+        <div className="lg:hidden">
+          {/* Header */}
+          <div className="text-center mb-6">
+            <h2 className={`text-4xl sm:text-5xl font-bold mb-2 ${current.text}`}>{data.Title2}</h2>
+            <p className="text-[#263244] text-lg mb-4">Ideal for everyday payments with full control.</p>
+            <button className={`${current.button} text-white px-6 py-3 rounded-xl font-medium text-sm`}>
+              Get your card now
             </button>
           </div>
 
-          {/* Card Animation */}
+          {/* Features Grid - Mobile 2 columns */}
           <motion.div
-            className="relative h-[329px] "
-            
-            animate={animate ? { rotate: -20, y: 20, opacity: 1 } : {}}
-            transition={{ duration: 1.8, ease: "easeOut" }}
+            className="grid grid-cols-2 gap-3 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={animate ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <Image
-              src={current.image}
-              alt="card"
-              fill
-              className="object-contain"
-            />
+            {features.map((feature, i) => (
+              <motion.div
+                key={feature}
+                className={cn("flex  items-center gap-2 rounded-2xl px-2 py-2 text-center", current.border)}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className={cn("w-8 h-8 rounded-full flex items-center justify-center mb-1", current.iconBg)}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={current.icons[i]}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center justify-center w-full h-full"
+                    >
+                      <Image src={current.icons[i] || "/placeholder.svg"} alt={`icon-${i}`} width={16} height={16} />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <p className="text-xs font-semibold text-[#263244] leading-tight">{feature}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Card Image - Mobile */}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-80 h-48">
+              <Image src={current.image || "/placeholder.svg"} alt="card" fill className="object-contain" />
+            </div>
+          </div>
+
+          {/* Bottom Section - Mobile */}
+          <div className="text-center space-y-4">
+            <div className="flex justify-center gap-3">
+              {cards.map((_, idx) => {
+                const colors = ["bg-[#E74529]", "bg-[#0A6C4D]", "bg-[#D9D9D9]"]
+                const isActive = idx === selected
+
+                return (
+                  <div key={idx} className="relative w-3 h-3">
+                    <button
+                      onClick={() => {
+                        setSelected(idx)
+                        setAnimate(false)
+                      }}
+                      className={cn("w-3 h-3 rounded-full", colors[idx])}
+                    />
+                    {isActive && (
+                      <motion.div
+                        layoutId="mobile-selector-ring"
+                        className="absolute top-1.5 left-0.5 w-2.5 h-2.5 rounded-full ring-2 ring-black"
+                        transition={{ type: "spring", stiffness: 400, damping: 50 }}
+                      />
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+            <p className="text-lg font-bold text-black">Free for all D360 customers</p>
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden lg:flex items-center justify-evenly gap-10">
+          {/* Left Side */}
+          <div>
+            <div className="space-y-2">
+              <h2 className={`text-[60px] font-bold ${current.text}`}>{data.Title2}</h2>
+              <p className="text-[#263244] text-[25px]">Ideal for everyday payments with full control.</p>
+              <button className={`${current.button} text-white px-7 py-2 rounded-xl font-medium`}>
+                Get your card now
+              </button>
+            </div>
+
+            {/* Card Animation - Desktop */}
+            <motion.div
+              className="relative h-[230px] mt-10"
+              animate={animate ? { rotate: -20, y: 20, opacity: 1 } : {}}
+              transition={{ duration: 1.8, ease: "easeOut" }}
+            >
+              <Image src={current.image || "/placeholder.svg"} alt="card" fill className="object-contain" />
+            </motion.div>
+          </div>
+
+          {/* Right Features - Desktop */}
+          <motion.div
+            className="flex-1 space-y-4 w-full max-w-[430px]"
+            initial={{ x: 50, opacity: 0 }}
+            animate={animate ? { x: 0, opacity: 1 } : {}}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          >
+            {features.map((feature, i) => (
+              <motion.div
+                key={feature}
+                className={cn("flex items-center gap-4 rounded-full px-4 py-4", current.border)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className={cn("w-8 h-8 rounded-full flex items-center justify-center", current.iconBg)}>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={current.icons[i]}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center justify-center w-full h-full"
+                    >
+                      <Image src={current.icons[i] || "/placeholder.svg"} alt={`icon-${i}`} width={16} height={16} />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <p className="text-[19px] font-bold text-[#263244]">{feature}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 
-        {/* Right Features Animated In */}
-        <motion.div
-          className="flex-1 space-y-4 w-full max-w-[350px]"
-          initial={{ x: 50, opacity: 0 }}
-          animate={animate ? { x: 0, opacity: 1 } : {}}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-        >
-          {features.map((feature, i) => (
-           <motion.div
-           key={feature}
-           className={cn(
-             "flex items-center gap-4 rounded-full px-4 py-4 bg-white",
-             current.border
-           )}
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 7}}
-           transition={{ delay: i * 1 }}
-         >
-              <div
-      className={cn(
-        "w-8 h-8 rounded-full flex items-center justify-center",
-        current.iconBg
-      )}
-    >
-           <AnimatePresence mode="wait">
-        <motion.div
-          key={current.icons[i]} // triggers remount on icon change
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center justify-center w-full h-full"
-        >
-          <Image
-            src={current.icons[i]}
-            alt={`icon-${i}`}
-            width={16}
-            height={16}
-          />
-        </motion.div>
-      </AnimatePresence>
-      </div>
-           <p className="text-sm font-semibold text-[#263244]">{feature}</p>
-         </motion.div>
-          ))}
-        </motion.div>
-      </div>
+        {/* Desktop Bottom Section */}
+        <div className="hidden lg:flex justify-between items-center pt-10 lg:pt-26 px-6 md:px-44">
+          <p className="text-[25px] font-extrabold text-black">Free for all D360 customers</p>
 
+          <div className="flex justify-center gap-4 relative">
+            {cards.map((_, idx) => {
+              const colors = ["bg-[#E74529]", "bg-[#0A6C4D]", "bg-[#D9D9D9]"]
+              const isActive = idx === selected
 
-
-      <div className="flex justify-between items-center pt-10 px-6 md:px-44">
-  <p className="text-sm font-medium text-black">Free for all D360 customers</p>
-  
-  <div className="flex justify-center gap-4 relative">
-    {cards.map((_, idx) => {
-      const colors = ["bg-[#E74529]", "bg-[#0A6C4D]", "bg-[#D9D9D9]"];
-      const isActive = idx === selected;
-
-      return (
-        <div key={idx} className="relative w-4 h-4">
-          <button
-            onClick={() => {
-              setSelected(idx);
-              setAnimate(false);
-            }}
-            className={cn("w-4 h-4 rounded-full", colors[idx])}
-          />
-          {isActive && (
-            <motion.div
-              layoutId="selector-ring"
-              className="absolute top-[3px] left-0 w-4 h-4 rounded-full ring-2 ring-black"
-              transition={{ type: "spring", stiffness: 400, damping: 50 }}
-            />
-          )}
+              return (
+                <div key={idx} className="relative w-4 h-4">
+                  <button
+                    onClick={() => {
+                      setSelected(idx)
+                      setAnimate(false)
+                    }}
+                    className={cn("w-4 h-4 rounded-full", colors[idx])}
+                  />
+                  {isActive && (
+                    <motion.div
+                      layoutId="desktop-selector-ring"
+                      className="absolute top-[29px] lg:top-[3px] left-0 w-4 h-4 rounded-full ring-1 lg:ring-2 ring-black"
+                      transition={{ type: "spring", stiffness: 400, damping: 50 }}
+                    />
+                  )}
+                </div>
+              )
+            })}
+          </div>
         </div>
-      );
-    })}
-  </div>
-</div>
-
-
+      </div>
     </section>
-  );
+  )
 }

@@ -27,7 +27,7 @@ function DesktopContentSectionPrivacyAndNotice({
 
       <ContentSection heading={data.Lawful}>
         <p className="font-semibold mt-4">{data.LawfulDes}</p>
-        <ul className="list-disc pl-5 mt-2 space-y-1">
+        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
           <li>{data.LawfulA}</li>
           <li>{data.LawfulB}</li>
           <li>{data.LawfulC}</li>
@@ -47,7 +47,7 @@ function DesktopContentSectionPrivacyAndNotice({
 
       <ContentSection heading={data.RightsHeading}>
         <p className="font-semibold mt-4">{data.RightsPara}</p>
-        <ul className="list-disc pl-5 mt-2 space-y-1">
+        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
           <li>{data.RightsA}</li>
           <li>{data.RightsB}</li>
           <li>{data.RightsC}</li>
@@ -57,7 +57,7 @@ function DesktopContentSectionPrivacyAndNotice({
       </ContentSection>
       <ContentSection heading={data.Purpose}>
         <p className="font-semibold mt-4">{data.PurposePara}</p>
-        <ul className="list-disc pl-5 mt-2 space-y-1">
+        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
           <li>{data.PurposeA}</li>
           <li>{data.PurposeB}</li>
           <li>{data.PurposeC}</li>

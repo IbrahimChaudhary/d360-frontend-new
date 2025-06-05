@@ -14,7 +14,7 @@ export function ContactContent({ data }: ContactContentProps) {
   const content = language === "en" ? englishContent : arabicContent;
 
   return (
-    <AnimatedSection direction="left" className="lg:w-[44%]">
+    <AnimatedSection direction="left" className="lg:px-4">
       <ContactInfo
         data={data}
         title={content.data.contact.howTo}

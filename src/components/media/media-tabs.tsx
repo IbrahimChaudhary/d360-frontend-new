@@ -8,6 +8,7 @@ import { NewsCard } from "@/components/media/news-card";
 import type { GalleryImage, NewsArticle } from "@/types/media";
 import { cn } from "@/lib/utils";
 import { ArticleListResponse } from "@/types/media/newscard";
+import { useStore } from "@/store/toggle-store";
 import { NewsCardData } from "@/types/media/media";
 
 interface MediaTabsProps {
@@ -32,7 +33,8 @@ function useIsMobile() {
 export function MediaTabs({ galleryImages, newsArticles }: MediaTabsProps) {
   const [activeTab, setActiveTab] = useState<"gallery" | "news">("gallery");
   const [showAllMobile, setShowAllMobile] = useState(false);
-  const { language } = useLanguage();
+  const { language } = useStore();
+  const isRTL = language === "ar";
   const isMobile = useIsMobile();
   console.log(newsArticles);
   const tabs = [
@@ -52,7 +54,7 @@ export function MediaTabs({ galleryImages, newsArticles }: MediaTabsProps) {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "px-10 py-2 rounded-lg font-medium transition-all duration-200 relative",
+              "px-10 py-2 rounded-lg font-bold lg:text-[20px] text-[8px] transition-all duration-200 relative",
               activeTab === tab.id
                 ? "bg-[#E74529] text-white shadow-sm"
                 : "text-[#263244] bg-[#F6F7F8] hover:text-slate-800"

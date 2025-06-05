@@ -48,12 +48,12 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
   });
 
   return (
-    <section className="py-16 bg-white px-4 md:px-32">
-      <SectionHeading>
+    <section className=" lg:py-16 bg-white px-4 ">
+      <SectionHeading className="mt-16 text-[27px] w-full lg:text-[60px] font-extrabold">
         {data.Title1} {data.Title2} {data.Title3}
       </SectionHeading>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-center">
         {features.map(({ icon: Icon, title, description }) => (
           <motion.div
             key={title}
@@ -63,11 +63,11 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="flex flex-col items-center"
           >
-            <Icon size={32} className="text-[#E74529] mb-3" />
-            <h4 className="text-sm font-bold text-[#263244] mb-1 text-center">
+            <Icon size={32} className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[66px] lg:h-[57px]" />
+            <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}
             </h4>
-            <p className="text-xs text-[#4B5563]">{description}</p>
+            <p className="text-[10px] lg:text-[16px] text-[#4B5563]">{description}</p>
           </motion.div>
         ))}
       </div>
@@ -75,7 +75,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
       <div className="hidden lg:block text-center mt-12">
         <a
           href="#"
-          className="text-sm font-medium underline text-[#263244] hover:text-[#E74529]"
+          className="text-[20px] font-bold underline text-[#263244] hover:text-[#E74529]"
         >
           Products and Services Fees
         </a>

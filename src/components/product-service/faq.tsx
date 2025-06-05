@@ -67,7 +67,7 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
               >
                 <X
                   size={28}
-                  className="text-[#E74529] font-extrabold w-full h-full"
+                  className="text-[#E74529] font-extrabold w-[80%]  h-full lg:w-full lg:h-full"
                 />
               </motion.div>
             ) : (
@@ -81,7 +81,7 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
               >
                 <Plus
                   size={28}
-                  className="text-[#C0C5CE] font-extrabold w-full h-full"
+                  className="text-[#C0C5CE] font-extrabold w-[80%] h-full  lg:w-full lg:h-full"
                 />
               </motion.div>
             )}

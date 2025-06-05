@@ -44,7 +44,7 @@ export function ShariahSection({ data }: ShariahSectionProps) {
         }`}
       >
         <h2
-          className={`text-[30px]  md:text-[100px] uppercase font-extrabold leading-tight mb-6 ${
+          className={`text-[30px]  md:text-[100px] rtl:lg:w-[60%] uppercase font-extrabold leading-tight mb-6 ${
             isRTL ? "lg:text-right text-center" : "lg:text-left text-center"
           }`}
         >

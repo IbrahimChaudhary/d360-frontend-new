@@ -9,10 +9,15 @@ import { useTranslations } from "@/lib/i18n"
 import { useEffect, useState } from "react";
 import { ContactPageData } from "@/types/contact-us/contact-us";
 import { fetchContact } from "@/api/contact-us";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
 
 
 export default function AboutPage() {
-  const { t } = useTranslations()
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
   const [contact, setContact] = useState<ContactPageData | null>(null);
 
   useEffect(() => {
@@ -21,18 +26,22 @@ export default function AboutPage() {
       .catch((err) => console.error("Failed to load About D360:", err));
   }, []);
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="flex-1">
-      <Hero backgroundImage="/contact/contact-hero.png">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-[#263244] leading-tight">
+    <div className="flex flex-col">
+      <Header variant="about" />
+      <main className="flex-1 ">
+      <Hero   backgroundImage={
+            isRTL ? "/about/about-hero-arabic.png" : "/contact/contact-hero.png"
+          }
+          direction={isRTL ? "rtl" : "ltr"}
+        >
+      <h1 className="text-[25px] lg:text-[80px] l font-extrabold lg:px-4  text-[#263244] leading-tight">
         {contact?.BannerText1}
+        <br />
         {contact?.BannerText2}
+        <br />
         {contact?.BannerText3}
       </h1>
-      <Button className="bg-[#EB644C] text-white text-[10px] md:px-8 md:py-4 rounded-[14px]" size="sm">
-        {t("hero.downloadApp")}
-      </Button>
+     
     </Hero>
 
         {contact && <AppSupportSection data={contact}/>}

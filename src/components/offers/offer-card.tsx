@@ -68,7 +68,7 @@ export function OfferCard({
             glassBg,
             textColor
           )}>
-            <h3 className="font-extrabold text-base md:text-lg leading-snug mb-2">
+            <h3 className="font-extrabold text-base md:text-[25px] leading-snug mb-2">
               {language === "en" ? `${data?.title}` : data.title}
             </h3>
             <div className="text-xs flex items-center gap-2 opacity-90">

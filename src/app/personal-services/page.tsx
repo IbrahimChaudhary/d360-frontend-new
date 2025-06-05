@@ -4,6 +4,10 @@ import { Hero } from "@/components/layout/page-hero";
 import FeatureSection from "@/components/personal-services/feature-section";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "@/lib/i18n";
+import { DownloadModal } from "@/components/home/download-modal";
+import { useStore } from "@/store/toggle-store";
+import { englishContent } from "@/data/about-en";
+import { arabicContent } from "@/data/about-ar";
 import { Footer } from "@/components/layout/footer/footer";
 import TransfersFeatureSection from "@/components/personal-services/transfer-feature-section";
 import D360Cards from "@/components/personal-services/d360card";
@@ -12,7 +16,10 @@ import { useEffect, useState } from "react";
 import { fetchPersonalService } from "@/api/personal-service";
 
 export default function AboutPage() {
-  const { t } = useTranslations();
+  const { language } = useStore();
+  const content = language === "en" ? englishContent : arabicContent;
+  const isRTL = language === "ar";
+  const [isModalOpen, setModalOpen] = useState(false);
   const [personalService, setPersonalService] = useState<PersonalServiceData | null>(null);
 
   useEffect(() => {
@@ -22,21 +29,38 @@ export default function AboutPage() {
   }, []);
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="about" />
       <main className="flex-1">
-        <Hero backgroundImage="/personal/services-hero.png">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-[800] text-[#263244] leading-tight">
-            {personalService?.MainTitle}
-          </h1>
-          <p className="text-4xl sm:text-5xl lg:text-6xl font-[800] mb-2 md:mb-6 text-[#263244] leading-tight">
-            {personalService?.MainTitle1}
-          </p>
-          <Button
-            className="bg-[#EB644C] text-white text-[10px] md:px-8 md:py-4 rounded-[14px]"
-            size="sm"
+        <Hero  backgroundImage="/personal/services-hero.png">
+       
+          <div
+            className={`flex w-full flex-col ${
+              isRTL ? " items-start text-right" : "items-start text-left"
+            }`}
           >
-            {t("hero.downloadApp")}
-          </Button>
+            <h1
+              className={`text-[25px] flex items-center lg:w-full w-[70%] uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-22 ${
+                isRTL ? "justify-end" : " justify-center"
+              }`}
+            >
+              {personalService?.MainTitle}
+              <br />
+              {personalService?.MainTitle1}
+            </h1>
+
+            
+
+            <div
+              onClick={() => setModalOpen(true)}
+              className={`bg-[#EB644C] text-white font-bold py-2 mt-4 lg:mt-6 cursor-pointer px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+                isRTL
+                  ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
+                  : "lg:px-16"
+              }`}
+            >
+              Download the App
+            </div>
+          </div>
         </Hero>
 
         {personalService && <FeatureSection data={personalService} />}
@@ -44,6 +68,7 @@ export default function AboutPage() {
         {personalService && <D360Cards data={personalService}/>}
       </main>
       <Footer />
+      <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
   );
 }

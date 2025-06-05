@@ -39,12 +39,12 @@ export function BusinessForm({ data }: BusinessFormProps) {
   };
 
   return (
-    <section className="pb-16  lg:py-16 px-4 max-w-6xl mx-auto">
+    <section className="pb-16  lg:py-16 px-4 max-w-5xl mx-auto">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center text-2xl md:text-3xl font-bold text-[#263244] max-w-2xl mx-auto mb-12"
+        className="text-center text-2xl md:text-[60px] font-extrabold text-[#263244] max-w-5xl mx-auto mb-12"
       >
         {data.Title2}
       </motion.h2>
@@ -58,7 +58,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("organization")}
                 placeholder="Organization name"
-                className="border-b focus:outline-none py-2 placeholder:text-[#6D809C]"
+                className="border-b border-[#293242] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.organization && (
                 <span className="text-sm text-red-500">
@@ -70,7 +70,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("fullName")}
                 placeholder="Full Name"
-                className="border-b focus:outline-none py-2 placeholder:text-[#6D809C]"
+                className="border-b  border-[#293242] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.fullName && (
                 <span className="text-sm text-red-500">
@@ -82,7 +82,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("phone")}
                 placeholder="Phone Number"
-                className="border-b focus:outline-none py-2 placeholder:text-[#6D809C]"
+                className="border-b border-[#293242] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.phone && (
                 <span className="text-sm text-red-500">
@@ -94,7 +94,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("email")}
                 placeholder="Email Address"
-                className="border-b focus:outline-none py-2 placeholder:text-[#6D809C]"
+                className="border-b border-[#293242] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.email && (
                 <span className="text-sm text-red-500">
@@ -106,7 +106,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("website")}
                 placeholder="Website"
-                className="border-b focus:outline-none py-2 placeholder:text-[#6D809C]"
+                className="border-b border-[#293242] focus:outline-none py-2 placeholder:text-[#293242]"
               />
             </div>
           </div>
@@ -116,7 +116,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               {...register("message")}
               placeholder="Message"
               rows={12}
-              className="bg-[#f8f8f8] p-4 rounded-xl w-full resize-none placeholder:text-[#6D809C]"
+              className="bg-[#f8f8f8] p-4 rounded-xl w-full resize-none placeholder:text-[#293242]"
             />
             {errors.message && (
               <span className="text-sm text-red-500">
@@ -127,10 +127,10 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
 
         <div className="flex flex-col  ">
-          <div className="mt-4 flex justify-center">
-            <label className="flex items-center">
+          <div className="mt-4 flex justify-center ">
+            <label className="flex items-center rtl:flex-row-reverse ">
               <input type="checkbox" {...register("agree")} className="mr-2" />
-              <span>
+              <span className="text-[14px] lg:text-[30px]">
                 I agree to the <span className="font-bold">Privacy Notice</span>
               </span>
             </label>
@@ -149,17 +149,17 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
       </form>
 
-      <div className="mt-16 grid grid-cols-1 justify-items-center gap-2 text-left text-sm text-[#263244]">
-        <div className="flex  lg:gap-16 justify-center items-center">
+      <div className="mt-16 flex justify-between  text-[14px] lg:text-[30px] text-[#263244]">
+        <div className=" ">
           <p> {data.TollFree}</p>
-          <div className="text-[#E74529] font-bold flex item-center gap-2">
-            <Phone className="text-[#263244]" size={18} /> 8001244410
-          </div>
-        </div>
-        <div className="flex  lg:gap-[92px] justify-center items-center">
           <p> {data.outside}</p>
-          <div className="text-[#E74529] font-bold flex item-center gap-2">
-            <Globe className="text-[#263244]" size={18} /> +966920024360
+        </div>
+        <div className="rtl:space-y-7 ltr:space-y-10 lg:space-y-0">
+          <div className="text-[#E74529] font-bold  items-center flex gap-2">
+            <Phone className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1] " size={18} /> <span> 8001244410 </span>
+          </div>
+          <div className="text-[#E74529] font-bold flex items-center gap-2">
+            <Globe className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" size={18} /> +966920024360
           </div>
         </div>
       </div>
