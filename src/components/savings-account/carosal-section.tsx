@@ -74,7 +74,7 @@ export function Carosel({
   return (
     <section
       className={cn(
-        "flex flex-col lg:flex-row max-w-7xl mx-auto   items-center px-4 lg:px-8 justify-center  py-24",
+        "flex flex-col-reverse lg:flex-row max-w-7xl mx-auto   items-center px-4 lg:px-8 justify-center  lg:py-24 py-10",
         layout === "centered" &&
           "text-center lg:text-center justify-center gap-10"
       )}
@@ -87,7 +87,7 @@ export function Carosel({
         )}
       >
         <div className="space-y-4 flex  flex-col lg:justify-normal justify-center min-h-[280px]">
-          <h1 className="text-2xl lg:text-[60px] mb-8 lg:mb-12 text-center lg:text-left font-extrabold text-[#263244] leading-snug">
+          <h1 className="text-[30px] lg:pt-0 pt-8 lg:text-[60px] mb-8 lg:mb-12 text-center ltr:lg:text-left rtl:lg:text-right font-extrabold text-[#263244] leading-snug">
             {currentSlide.heading}
           </h1>
 
@@ -127,7 +127,7 @@ export function Carosel({
                   {...getSlideMotion(direction, 0.1)}
                   custom={direction}
                   className={cn(
-                    "text-base lg:text-[30px] text-center lg:text-left font-bold text-[#263244]",
+                    "text-[14px] lg:text-[30px] text-center lg:text-left font-bold text-[#263244]",
                     subheading
                   )}
                 >
@@ -142,7 +142,7 @@ export function Carosel({
                   {...getSlideMotion(direction, 0.2)}
                   custom={direction}
                   className={cn(
-                    "text-sm lg:text-[20px] text-center lg:text-left text-[#263244]",
+                    "text-[14px] lg:text-[20px] text-center lg:text-left text-[#263244]",
                     classname
                   )}
                 >
@@ -154,7 +154,7 @@ export function Carosel({
             {/* Arrows */}
             <div
               className={cn(
-                "flex text-xl justify-center lg:justify-start gap-5 z-10",
+                "flex text-xl rtl:flex-row-reverse justify-center lg:py-0 py-4 rtl:lg:justify-end ltr:lg:justify-start gap-5 z-10",
                 arrows
               )}
             >
@@ -175,7 +175,7 @@ export function Carosel({
             {showButton && (
               <Button
                 size="lg"
-                className="bg-[#EB644C] lg:w-[40%] w-[80%] lg:mx-0 mx-auto rounded-xl lg:mt-10"
+                className="bg-[#EB644C]  text-[8px] lg:text-base flex justify-center lg:w-[40%] w-[50%] lg:mx-0 mx-auto rounded-xl lg:mt-10"
               >
                 Open Your Savings Account
               </Button>

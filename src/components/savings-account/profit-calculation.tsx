@@ -12,20 +12,23 @@ export default function ProfitCalculationSection() {
 
   return (
     <section className="bg-[#F6F7F8] py-12 px-4 md:px-20">
-      <h2 className="text-[#EB644C] font-bold text-center lg:text-left text-4xl md:text-3xl mb-10">
-        How Profit Is Calculated
-      </h2>
-
-      <div className="relative border-l-2 border-[#E5E7EB] pl-6 space-y-3">
-        {points.map((text, i) => (
-          <div key={i} className="relative pl-6">
-            {/* Bullet Circle */}
-            <div className="absolute -left-[34px] top-1 w-4 h-4 rounded-full bg-[#E5E7EB] border border-white shadow-sm z-10" />
-            
-            <p className="text-[#263244] text-base leading-relaxed">{text}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <h2 className="text-[#EB644C] font-bold text-center rtl:lg:text-right ltr:lg:text-left text-3xl md:text-[60px] mb-10">
+      How Profit Is Calculated
+    </h2>
+  
+    <div className="relative ltr:border-l-2 rtl:border-r-2 border-[#E5E7EB] ltr:pl-6 rtl:pr-6 space-y-3">
+      {points.map((text, i) => (
+        <div key={i} className="relative ltr:pl-6 rtl:pr-6">
+          {/* Bullet Circle */}
+          <div className="absolute ltr:-left-[34px] rtl:-right-[34px] top-1 w-4 h-4 rounded-full bg-[#E5E7EB] border border-white shadow-sm z-10" />
+          
+          <p className="text-[#263244] text-base lg:text-[20px] leading-relaxed">
+            {text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
+  
   );
 }

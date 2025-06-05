@@ -24,10 +24,10 @@ export default function SanabilSteps() {
   return (
     <section className="bg-[#F6F7F8] py-14 lg:px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-[50px] font-extrabold text-[#263244]">
+        <h2 className="text-3xl px-4 lg:px-0 md:text-[50px] font-extrabold text-[#263244]">
           How to Open a Sanabil Daily Distribution Account
         </h2>
-        <p className="text-sm md:text-base px-6  lg:px-0 text-[#263244] mt-4 lg:mt-2">
+        <p className="text-sm md:text-base px-8  lg:px-0 text-[#263244] mt-4 lg:mt-2">
           Put your salary to work or activate unspent cash in 3 simple steps
         </p>
 
