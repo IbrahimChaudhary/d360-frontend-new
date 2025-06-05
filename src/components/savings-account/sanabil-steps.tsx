@@ -35,10 +35,10 @@ export default function SanabilSteps() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="bg-[#F6F7F8]  flex  items-center-safe gap-6 rounded-xl px-2 text-left shadow-sm"
+              className="bg-[#F6F7F8]  flex  items-center-safe gap-6 rounded-xl p-4 text-left shadow-sm"
             >
 
-              <div className="text-[128px] font-light  text-[#D9D9D9] ">
+              <div className="text-8xl font-light  text-[#D9D9D9] ">
                 {step.number}
               </div>
               <div>

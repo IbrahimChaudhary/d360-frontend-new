@@ -5,7 +5,7 @@ export default function SanabilRates() {
     <section className="bg-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-2xl md:text-4xl font-bold text-[#EB644C]">
+        <h2 className="text-2xl md:text-4xl font-extrabold text-[#EB644C]">
           Sanabil Profit Rates
         </h2>
         <p className="text-sm text-[#263244] mt-1">As of 29 April 2025</p>
