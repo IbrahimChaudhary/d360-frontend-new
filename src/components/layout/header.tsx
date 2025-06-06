@@ -7,6 +7,59 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store/toggle-store";
+import { DesktopDropdownMenu } from "./dropdown-menu";
+
+const aboutSections = [
+  {
+    items: [
+      { label: "About D360", href: "/about" },
+      { label: "Media Center", href: "/media" },
+      { label: "Shariah Committee", href: "/" },
+      { label: "Investor Relations", href: "/investors" },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      { label: "Security Awareness", href: "/security-awareness" },
+      { label: "Privacy Notice", href: "/privacy-notice" },
+      // {
+      //   label: "Customer Protection Principles",
+      //   href: "/protection-principles",
+      // },
+      { label: "Customer Care", href: "/customer-care" },
+      { label: "Products & Services", href: "/products-and-services" },
+      { label: "Contact Us", href: "/contact-us" },
+    ],
+  },
+];
+
+const personalSections = [
+  {
+    items: [
+      { label: "Personal Services", href: "/personal-services" },
+      { label: "Savings Accounts", href: "/savings-account" },
+      { label: "Payments", href: "/payments" },
+      { label: "International Transfers", href: "/international-transfers" },
+      { label: "Cards", href: "/cards" },
+      { label: "Offers", href: "/offers" },
+    ],
+  },
+  {
+    title: "Help & Support",
+    items: [
+      { label: "Security Awareness", href: "/security-awareness" },
+      { label: "Privacy Notice", href: "/privacy-notice" },
+      // {
+      //   label: "Customer Protection Principles",
+      //   href: "/protection-principles",
+      // },
+      { label: "Customer Care", href: "/customer-care" },
+      { label: "Products & Services", href: "/products-and-services" },
+      { label: "Contact Us", href: "/contact-us" },
+    ],
+  },
+];
 
 interface HeaderProps {
   fixed?: boolean;
@@ -14,6 +67,7 @@ interface HeaderProps {
 }
 
 export function Header({ variant = "default" }: HeaderProps) {
+  const [openMenu, setOpenMenu] = useState<"about" | "personal" | null>(null);
   const { language, toggleLanguage } = useStore();
   const isRTL = language === "ar";
 
@@ -24,6 +78,16 @@ export function Header({ variant = "default" }: HeaderProps) {
   const [scrollY, setScrollY] = useState(0);
   const [scrollDir, setScrollDir] = useState<"up" | "down" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setOpenMenu(null);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleMenu = (menu: "about" | "personal") => {
+    setOpenMenu((prev) => (prev === menu ? null : menu));
+  };
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -53,8 +117,11 @@ export function Header({ variant = "default" }: HeaderProps) {
   // Logic for changing logo and nav color (only for 'default')
   const shouldChangeAssets = variant === "default";
 
+ 
+  const isMenuOpen = openMenu !== null;
+
   const logoSrc = shouldChangeAssets
-    ? isWhite
+    ? isMenuOpen || isWhite
       ? isRTL
         ? "/arabic-logo-black.png"
         : "/footer-logo.png"
@@ -64,19 +131,24 @@ export function Header({ variant = "default" }: HeaderProps) {
     : isRTL
     ? "/arabic-logo-black.png"
     : "/footer-logo.png";
+  
 
-  const navColor = shouldChangeAssets
-    ? isWhite
+    const navColor = shouldChangeAssets
+    ? isMenuOpen || isWhite
       ? "text-[#293242]"
       : "text-white"
-    : "text-[#293242]"; // 'about' stays white
+    : "text-[#293242]";
+  
+
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 lg:px-4",
         isHidden ? "-translate-y-full" : "translate-y-0",
-        isWhite
+        isMenuOpen
+          ? "bg-white shadow-md"
+          : isWhite
           ? "bg-white shadow-md"
           : isBlur
           ? "bg-white/30 backdrop-blur-[2rem]"
@@ -121,9 +193,22 @@ export function Header({ variant = "default" }: HeaderProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <Link href="/about" className="hover:text-[#E74529]">
-            {isRTL ? " عن  D360" : "About D360"}
-          </Link>
+          <DesktopDropdownMenu
+            label="About D360"
+            active={openMenu === "about"}
+            onToggle={() => toggleMenu("about")}
+            sections={aboutSections}
+            className={navColor}
+          />
+
+          <DesktopDropdownMenu
+            label="Personal"
+            active={openMenu === "personal"}
+            onToggle={() => toggleMenu("personal")}
+            sections={personalSections}
+            className={navColor}
+          />
+
           <div
             onClick={handleToggle}
             className="cursor-pointer hover:text-[#E74529]"
@@ -136,7 +221,6 @@ export function Header({ variant = "default" }: HeaderProps) {
         <div className="block md:hidden z-[100]">
           <button onClick={() => setMobileOpen(!mobileOpen)}>
             <img
-            
               src={
                 variant === "about"
                   ? "/hambar.svg"

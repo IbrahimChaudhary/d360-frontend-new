@@ -102,13 +102,13 @@ export function MergedFAQAccordion({
   faqItems,
   title = "FAQs",
   sectionClassName = "w-full flex justify-center ",
-  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242]",
+  titleClassName = "text-[30px] lg:text-[60px] font-extrabold pt-16 lg:pt-0 lg:mb-8 px-4 lg:px-0 text-[#293242]",
 }: MergedFAQAccordionProps) {
   const {language} = useStore()
   return (
     <div className={sectionClassName}>
       <AnimatedSection direction="up">
-        <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>{title}</h2>
+        <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName} `}>{title}</h2>
         
 
          {/* <div className="flex flex-col gap-y-4 px-4 py-6">

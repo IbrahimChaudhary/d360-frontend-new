@@ -5,14 +5,14 @@ export default function SanabilRates() {
     <section className="bg-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         {/* Heading */}
-        <h2 className="text-2xl md:text-4xl font-extrabold text-[#EB644C]">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#EB644C]">
           Sanabil Profit Rates
         </h2>
-        <p className="text-sm text-[#263244] mt-1">As of 29 April 2025</p>
+        <p className="text-[7px] lg:text-sm text-[#263244] mt-1">As of 29 April 2025</p>
 
         {/* Table */}
         <div className="mt-10 overflow-x-auto lg:px-20">
-          <table className="w-full text-sm md:text-base  ">
+          <table className="w-full text-[7px] md:text-base  ">
             <thead>
               <tr className="text-[#263244] font-semibold ">
                 <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 text-left">
@@ -44,7 +44,7 @@ export default function SanabilRates() {
         </div>
 
         {/* Note */}
-        <p className="mt-6 text-xs lg:text-md text-[#7B818D] max-w-4xl mx-auto">
+        <p className="mt-6 text-[5px] lg:text-md text-[#7B818D] max-w-4xl mx-auto">
           *This is the Annual Earnings Rate. Which is the percentage return you can expect to earn over the course of one year.
         </p>
       </div>

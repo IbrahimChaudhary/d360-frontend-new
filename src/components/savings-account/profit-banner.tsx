@@ -29,7 +29,7 @@ export default function ProfitBanner() {
           <h2 className="text-3xl md:text-[60px] font-bold text-[#263244] leading-tight">
             Profit paid day<br className="hidden md:block" /> after day after day
           </h2>
-          <p className="mt-5 text-[20px] lg:px-0 px-6 lg:w-[65%] text-[#475569]">
+          <p className="mt-5 text-[14px] lg:text-[20px] lg:px-0 px-6 lg:w-[65%] text-[#475569]">
             Open an account in seconds, and see your money grow — every single day.
           </p>
         </div>
@@ -37,11 +37,11 @@ export default function ProfitBanner() {
 
       {/* Bottom Part */}
       <div className="bg-[#F8FAFC]  py-12 px-4">
-        <div className="lg:max-w-7xl relative    lg:h-[209px] flex flex-col-reverse lg:flex-row  ">
+        <div className="lg:max-w-7xl relative   mx-auto  lg:h-[209px] flex flex-col-reverse lg:flex-row  ">
           {/* Text Block */}
           <div className="lg:text-left text-center lg:pt-0 pt-10 max-w-md lg:ml-40 w-full">
-            <h3 className="lg:text-[60px] w-full rtl:text-right font-extrabold  text-[#293242] leading-16">Simple and Secure Savings</h3>
-            <p className="mt-6 text-[20px] rtl:text-right text-[#293242]">
+            <h3 className="lg:text-[60px] lg:px-0 px-8 text-[30px] w-full rtl:text-right font-extrabold  text-[#293242] lg:leading-16">Simple and Secure Savings</h3>
+            <p className="mt-6 text-[14px] lg:text-[20px] rtl:text-right text-[#293242]">
               Save easily and securely with the Sanabil Savings Account, fully compliant with Shariah principles
             </p>
           </div>

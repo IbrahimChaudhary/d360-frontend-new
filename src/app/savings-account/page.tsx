@@ -25,33 +25,33 @@ export default function SavingsAccount() {
     <div className="flex  flex-col">
       <Header variant="about"/>
       <main className="flex-1">
-        <Hero backgroundImage="/savings/savings-hero.png">
+        <Hero backgroundImage={ isRTL ? "/savings/savings-hero.png": "/savings/savings-hero.png"}>
         <div
             className={`flex w-full flex-col ${
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-          <p className="text-sm w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
+          <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
             Sanabil Daily Distribution Account{" "}
           </p>
-          <h1 className="text-2xl mb-2 lg:text-[80px]  uppercase font-extrabold text-[#263244] leading-19">
+          <h1 className="text-[25px] mb-2 lg:text-[80px]  uppercase font-extrabold text-[#263244] lg:leading-19">
             Daily profit,
             <br />
              brighter future!
           </h1>
           <Button
-            className="bg-[#EB644C] px-7 py-0 font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 rounded-[14px]"
+            className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 lg:rounded-[14px]"
             size="lg"
           >
             Open Your Savings Account
           </Button>
-          <p className="text-[14px] font-medium py-6 text-white leading-tight">
+          <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white leading-tight">
             *Minimum deposit of SAR 2,500 required to earn profit
           </p>
           </div>
         </Hero>
         <SectionHeading className=" pt-6 lg:pt-16">
-          <span className="text-2xl lg:text-[60px] font-extrabold ">
+          <span className="text-[25px] lg:text-[60px] font-extrabold ">
             {" "}
             Save today, <br /> secure tomorrow!
           </span>
