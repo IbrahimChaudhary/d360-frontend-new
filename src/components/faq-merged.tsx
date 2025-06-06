@@ -111,7 +111,7 @@ export function MergedFAQAccordion({
         <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>{title}</h2>
         
 
-         <div className="flex flex-col gap-y-4 px-4 py-6">
+         {/* <div className="flex flex-col gap-y-4 px-4 py-6">
           <h1 className="text-[25px] font-extrabold text-[#E74529]">
           Privacy Notice
           </h1>
@@ -121,7 +121,7 @@ export function MergedFAQAccordion({
           <p className="text-[10px] text-[#E74529] underline"> 
             Read More
           </p>
-         </div>
+         </div> */}
         <Accordion
           type="single"
           collapsible

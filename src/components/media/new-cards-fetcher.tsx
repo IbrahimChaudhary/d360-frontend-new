@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { NewsArticleDetails } from "@/components/media/news-article-details";
 import type { NewsCardData } from "@/types/media/media";
+import Image from "next/image";
 
 interface Props {
   slug: string;
@@ -42,6 +43,7 @@ export function NewsArticleFetcher({ slug }: Props) {
           slug: raw1.slug,
           ...raw1,
         };
+        console.log("heyy fetched", fetched);
         setArticle(fetched);
 
         // 2) fetch related
@@ -65,7 +67,7 @@ export function NewsArticleFetcher({ slug }: Props) {
               ...raw,
             } as NewsCardData;
           })
-          .filter((x:any): x is NewsCardData => x !== null);
+          .filter((x: any): x is NewsCardData => x !== null);
 
         setRelated(mapped);
       } catch (e: any) {
@@ -79,9 +81,29 @@ export function NewsArticleFetcher({ slug }: Props) {
     fetchData();
   }, [slug]);
 
-  if (loading) return <p>Loading…</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
-  if (!article) return <p>Article not found.</p>;
+  if (!article) return <p></p>;
 
-  return <NewsArticleDetails article={article} relatedArticles={related} />;
+  return (
+    <>
+      <div className=" lg:hidden relative h-64 w-full md:h-96 overflow-hidden mb-8">
+        <Image
+          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
+            article.imageHero?.formats?.large?.url ||
+            article.imageHero?.formats?.medium?.url ||
+            article.imageHero?.url
+          }`}
+          alt={article.heading}
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      <div className="bg-white">
+        <div className="w-full">
+          <NewsArticleDetails article={article} relatedArticles={related} />
+        </div>
+      </div>
+    </>
+  );
 }

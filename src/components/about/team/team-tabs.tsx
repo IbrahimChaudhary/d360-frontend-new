@@ -23,14 +23,17 @@ import {
   executiveMembersAr as arExecutiveMembers,
   shariahMembersAr as arShariahMembers,
 } from "@/data/team-member-ar";
+import { AboutD360Data } from "@/types/about/about";
 
 interface TeamTabsProps {
   boardMembers: (BoardMember & { image?: string; fullDes?: any[] })[];
   executiveMembers: (ExecutiveMember & { image?: string; fullDes?: any[] })[];
   shariahMembers: (ShariahMember & { image?: string; fullDes?: any[] })[];
+  data:AboutD360Data
 }
 
 export function TeamTabs({
+  data,
   boardMembers: initialBoardMembers,
   executiveMembers: initialExecutiveMembers,
   shariahMembers: initialShariahMembers,
@@ -201,12 +204,12 @@ export function TeamTabs({
 
   // Dynamic tabs logic
   const tabs = [
-    { value: "board", label: isRTL ? "مجلس الإدارة" : "Board of Directors" },
+    { value: "board", label: `${data.directorHead}` },
     {
       value: "management",
-      label: isRTL ? "الفريق الإداري" : "Management Team",
+      label: `${data.manageHead}`,
     },
-    { value: "advisors", label: isRTL ? "اللجنة الشرعية" : "Shariah" },
+    { value: "advisors", label:`${data.shariahHead}` },
   ];
 
   const orderedTabs = isRTL ? tabs : tabs;

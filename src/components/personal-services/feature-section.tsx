@@ -25,20 +25,20 @@ interface FeatureSectionProps {
 
 export default function FeatureSection({ data }: FeatureSectionProps) {
   const icons: IconType[] = [
-    FaGlobe,         
-    FaCreditCard,    
-    FaExchangeAlt,   
-    FaUniversity,    
-    FaBolt,          
-    FaMoneyBillWave, 
-    FaPhoneAlt,      
-    FaCalculator,    
+    FaGlobe,
+    FaCreditCard,
+    FaExchangeAlt,
+    FaUniversity,
+    FaBolt,
+    FaMoneyBillWave,
+    FaPhoneAlt,
+    FaCalculator,
   ];
 
   const features: Feature[] = icons.map((Icon, idx) => {
-    const slot = idx + 4; 
+    const slot = idx + 4;
     const titleKey = `Title${slot}` as keyof PersonalServiceData;
-    const descKey  = `Description${slot}` as keyof PersonalServiceData;
+    const descKey = `Description${slot}` as keyof PersonalServiceData;
 
     return {
       icon: Icon,
@@ -63,11 +63,16 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="flex flex-col items-center"
           >
-            <Icon size={32} className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[66px] lg:h-[57px]" />
+            <Icon
+              size={32}
+              className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[66px] lg:h-[57px]"
+            />
             <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}
             </h4>
-            <p className="text-[10px] lg:text-[16px] text-[#4B5563]">{description}</p>
+            <p className="text-[10px] lg:text-[16px] text-[#4B5563]">
+              {description}
+            </p>
           </motion.div>
         ))}
       </div>
@@ -77,7 +82,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
           href="#"
           className="text-[20px] font-bold underline text-[#263244] hover:text-[#E74529]"
         >
-          Products and Services Fees
+          {data.productFees}{" "}
         </a>
       </div>
     </section>

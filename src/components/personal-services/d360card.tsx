@@ -5,23 +5,24 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
 
-const cards = [
-  {
-    id: 1,
-    image: "/personal/orange-card.png", // replace with actual image paths
-    alt: "D360 Visa Card",
-  },
-  {
-    id: 2,
-    image: "/personal/green-card.png",
-    alt: "D360 Mada Card",
-  },
-]
 interface D360CardsProps{
   data:PersonalServiceData
 }
 export default function D360Cards({data}:D360CardsProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+
+  const cards = [
+    {
+      id: 1,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card1?.formats?.large?.url || data.card1?.formats?.medium?.url || data.card1?.url || "/personal/orange-card.png"}`,
+      alt: "D360 Visa Card",
+    },
+    {
+      id: 2,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card2?.formats?.large?.url || data.card2?.formats?.medium?.url || data.card2?.url || "/personal/green-card.png"}`,
+      alt: "D360 Mada Card",
+    },
+  ]
 
   return (
     <section className="py-16 lg:py-28 bg-white text-center">
@@ -60,7 +61,7 @@ export default function D360Cards({data}:D360CardsProps) {
       </div>
 
       <button className="bg-[#263244] text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
-        Explore Cards
+        {data.explore}
       </button>
     </section>
   )

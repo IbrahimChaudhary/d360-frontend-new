@@ -24,17 +24,16 @@ export default function AboutPage() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    fetchCustomerCare()
+    fetchCustomerCare(language)
       .then(setCustomerCare)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   return (
     <div className="">
       <Header variant="about"/>
       <main className="flex-1">
-        <Hero backgroundImage={
-            isRTL ? "/about/about-hero-arabic.png" : "/care/care-hero.png"
-          }
+        <Hero
+          backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${customerCare?.heroImg?.formats?.large?.url || customerCare?.heroImg?.formats?.medium?.url || customerCare?.heroImg?.url || (isRTL ? "/about/about-hero-arabic.png" : "/care/care-hero.png")}`}
           direction={isRTL ? "rtl" : "ltr"}
         >
          <div
@@ -56,7 +55,7 @@ export default function AboutPage() {
         </Hero>
         <SectionHeading className="text-xl lg:text-[60px] lg:w-[77%] text-[#263244] mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
         <div className="flex flex-col md:flex-row lg:px-6 mx-auto lg:mb-8 items-center justify-center gap-10">
-          <ContactImage />
+          <ContactImage url={`${process.env.NEXT_PUBLIC_STRAPI_URL}${customerCare?.sideImg?.formats?.large?.url || customerCare?.sideImg?.formats?.medium?.url || customerCare?.sideImg?.url || "/contact/contact-mob.png"}`} />
           {customerCare && (
             <CustomerCareContactInfo
               title={customerCare?.Feedbacks}

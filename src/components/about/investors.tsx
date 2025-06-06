@@ -92,14 +92,14 @@ export function Investors({data}:InvestorsProps) {
 
         <div className="flex flex-wrap justify-center items-center gap-12 md:gap-[190px]">
           <Image
-            src="/about/investor2.png"
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.investorImg2?.formats?.large?.url || data?.investorImg2?.formats?.medium?.url || data?.investorImg2?.url || "/about/investor2.png"}`}
             alt="PIF Logo"
             width={360}
             height={161}
             className="object-contain w-[120px] h-[60px]  md:w-[15%] md:h-[15%]"
           />
           <Image
-            src="/about/investor1.png"
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.investorImg1?.formats?.large?.url || data?.investorImg1?.formats?.medium?.url || data?.investorImg1?.url || "/about/investor1.png"}`}
             alt="Dirayah Logo"
             width={242}
             height={220}
@@ -112,6 +112,7 @@ export function Investors({data}:InvestorsProps) {
         <h2 className={`text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242]  lg:px-12 flex ${language === "ar"?'flex-row': "flex-row"}`}>{data.Title5}</h2>
 
         <TeamTabs
+        data={data}
           boardMembers={boardMembersFromData}
           executiveMembers={executiveMembersWithImages}
           shariahMembers={shariahMembersWithImages}

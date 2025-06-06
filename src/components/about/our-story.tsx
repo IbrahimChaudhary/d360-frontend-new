@@ -40,7 +40,7 @@ export function OurStory({ data }: OurStoryProps) {
           <Image
             src="/about/our-story-mob.png"
             alt="Decorative pyramid illustration (mobile)"
-            className="rounded-lg block lg:hidden h-[200px] w-[293px]"
+            className="rounded-lg block mb-10 lg:hidden h-[200px] w-[293px]"
             width={630}
             height={430}
           />
