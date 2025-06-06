@@ -12,6 +12,8 @@ import { useStore } from "@/store/toggle-store";
 import { NewsCardData } from "@/types/media/media";
 
 interface MediaTabsProps {
+  tab1:string
+  tab2:string
   galleryImages: GalleryImage[];
   newsArticles: NewsCardData[];
 }
@@ -30,7 +32,7 @@ function useIsMobile() {
   return isMobile;
 }
 
-export function MediaTabs({ galleryImages, newsArticles }: MediaTabsProps) {
+export function MediaTabs({ galleryImages, newsArticles, tab1, tab2 }: MediaTabsProps) {
   const [activeTab, setActiveTab] = useState<"gallery" | "news">("gallery");
   const [showAllMobile, setShowAllMobile] = useState(false);
   const { language } = useStore();
@@ -38,8 +40,8 @@ export function MediaTabs({ galleryImages, newsArticles }: MediaTabsProps) {
   const isMobile = useIsMobile();
   console.log(newsArticles);
   const tabs = [
-    { id: "gallery" as const, label: { en: "Gallery", ar: "المعرض" } },
-    { id: "news" as const, label: { en: "News", ar: "الأخبار" } },
+    { id: "gallery" as const, label: tab1 },
+    { id: "news" as const, label: tab2 },
   ];
 
   const visibleArticles =
@@ -60,7 +62,7 @@ export function MediaTabs({ galleryImages, newsArticles }: MediaTabsProps) {
                 : "text-[#263244] bg-[#F6F7F8] hover:text-slate-800"
             )}
           >
-            {language === "en" ? tab.label.en : tab.label.ar}
+            {tab.label}
             {activeTab === tab.id && (
               <motion.div
                 layoutId="activeTab"

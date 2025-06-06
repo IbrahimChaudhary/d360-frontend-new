@@ -29,20 +29,18 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <Header variant="about" />
       <main className="flex-1 ">
-      <Hero   backgroundImage={
-            isRTL ? "/about/about-hero-arabic.png" : "/contact/contact-hero.png"
-          }
-          direction={isRTL ? "rtl" : "ltr"}
-        >
-      <h1 className="text-[25px] lg:text-[80px] l font-extrabold lg:px-4  text-[#263244] leading-tight">
-        {contact?.BannerText1}
-        <br />
-        {contact?.BannerText2}
-        <br />
-        {contact?.BannerText3}
-      </h1>
-     
-    </Hero>
+      <Hero
+        backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${contact?.heroImg?.formats?.large?.url || contact?.heroImg?.formats?.medium?.url || contact?.heroImg?.url || (isRTL ? "/about/about-hero-arabic.png" : "/contact/contact-hero.png")}`}
+        direction={isRTL ? "rtl" : "ltr"}
+      >
+        <h1 className="text-[25px] lg:text-[80px] l font-extrabold lg:px-4  text-[#263244] leading-tight">
+          {contact?.BannerText1}
+          <br />
+          {contact?.BannerText2}
+          <br />
+          {contact?.BannerText3}
+        </h1>
+      </Hero>
 
         {contact && <AppSupportSection data={contact}/>}
         {contact && <BusinessForm data={contact}/>}

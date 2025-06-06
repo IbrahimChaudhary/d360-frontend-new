@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Header } from "@/components/layout/header";
 import { Hero } from "@/components/layout/page-hero";
 import FeatureSection from "@/components/personal-services/feature-section";
@@ -20,7 +20,8 @@ export default function AboutPage() {
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
   const [isModalOpen, setModalOpen] = useState(false);
-  const [personalService, setPersonalService] = useState<PersonalServiceData | null>(null);
+  const [personalService, setPersonalService] =
+    useState<PersonalServiceData | null>(null);
 
   useEffect(() => {
     fetchPersonalService()
@@ -31,8 +32,14 @@ export default function AboutPage() {
     <div className="flex min-h-screen flex-col">
       <Header variant="about" />
       <main className="flex-1">
-        <Hero  backgroundImage="/personal/services-hero.png">
-       
+        <Hero
+          backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
+            personalService?.heroImg?.formats?.large?.url ||
+            personalService?.heroImg?.formats?.medium?.url ||
+            personalService?.heroImg?.url ||
+            "/personal/services-hero.png"
+          }`}
+        >
           <div
             className={`flex w-full flex-col ${
               isRTL ? " items-start text-right" : "items-start text-left"
@@ -48,8 +55,6 @@ export default function AboutPage() {
               {personalService?.MainTitle1}
             </h1>
 
-            
-
             <div
               onClick={() => setModalOpen(true)}
               className={`bg-[#EB644C] text-white font-bold py-2 mt-4 lg:mt-6 cursor-pointer px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
@@ -58,14 +63,14 @@ export default function AboutPage() {
                   : "lg:px-16"
               }`}
             >
-              Download the App
+              {personalService?.download}{" "}
             </div>
           </div>
         </Hero>
 
         {personalService && <FeatureSection data={personalService} />}
-        {personalService && <TransfersFeatureSection data={personalService}/>}
-        {personalService && <D360Cards data={personalService}/>}
+        {personalService && <TransfersFeatureSection data={personalService} />}
+        {personalService && <D360Cards data={personalService} />}
       </main>
       <Footer />
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />

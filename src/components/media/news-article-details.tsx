@@ -8,6 +8,7 @@ import { Section } from "@/components/ui/section";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { NewsCard } from "@/components/media/news-card";
 import { useLanguage } from "@/context/language-context";
+import { StrapiMediaData } from "@/types/about/about";
 
 export interface NewsArticle {
   id: number;
@@ -18,7 +19,8 @@ export interface NewsArticle {
   para2?: string;
   para3?: string;
   date: string; // e.g. "Jan 2, 2023"
-  imageUrl?: string; // e.g. "/uploads/…"
+  imageHero: StrapiMediaData;
+  imageCard: StrapiMediaData;
 }
 
 interface NewsArticleDetailsProps {
@@ -50,7 +52,7 @@ export function NewsArticleDetails({
       <div className=" w-full">
         <div className="hidden lg:flex relative h-64 w-full md:h-96  overflow-hidden mb-8">
           <Image
-            src={"/media/gallery1.png"}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.imageHero?.formats?.large?.url || article.imageHero?.formats?.medium?.url || article.imageHero?.url}`}
             alt={language === "en" ? article.heading : article.heading}
             fill
             className="object-cover"

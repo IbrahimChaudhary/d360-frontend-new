@@ -1,3 +1,4 @@
+import { StrapiMediaData } from "../about/about";
 
 export interface PersonalServiceData {
     id: number
@@ -39,6 +40,17 @@ export interface PersonalServiceData {
     Title14: string
     Title15: string
     Title16: string
+
+    heroImg: StrapiMediaData
+    image1: StrapiMediaData
+    imges2: StrapiMediaData
+    card1: StrapiMediaData
+    card2: StrapiMediaData
+    download:string
+    explore:string
+    button:string
+    button2:string
+    productFees:string
   
     createdAt: string
     updatedAt: string

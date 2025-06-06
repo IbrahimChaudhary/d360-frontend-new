@@ -1,3 +1,5 @@
+import { StrapiMediaData } from "../about/about";
+
 export interface CustomerCareData {
   id: number;
   documentId: string;
@@ -25,6 +27,9 @@ export interface CustomerCareData {
   complaint:string
   Contact: string;
   Email: string;
+
+  heroImg: StrapiMediaData;
+  sideImg: StrapiMediaData;
 }
 
 export interface CustomerCareDataResponse {

@@ -131,7 +131,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
             <label className="flex items-center rtl:flex-row-reverse ">
               <input type="checkbox" {...register("agree")} className="mr-2" />
               <span className="text-[14px] lg:text-[30px]">
-                I agree to the <span className="font-bold">Privacy Notice</span>
+                {data.privacy} <span className="font-bold">{data.privacyBold}</span>
               </span>
             </label>
             {errors.agree && (
@@ -144,7 +144,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
             type="submit"
             className="mt-6 bg-[#E74529] text-white  px-6 py-2 rounded-xl hover:bg-[#d4381f] lg:w-[16%] mx-auto"
           >
-            Send Message
+            {data.sendMsg}
           </Button>
         </div>
       </form>
@@ -156,10 +156,10 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
         <div className="rtl:space-y-7 ltr:space-y-10 lg:space-y-0">
           <div className="text-[#E74529] font-bold  items-center flex gap-2">
-            <Phone className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1] " size={18} /> <span> 8001244410 </span>
+            <Phone className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1] " size={18} /> <span> {data.insidePhone} </span>
           </div>
           <div className="text-[#E74529] font-bold flex items-center gap-2">
-            <Globe className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" size={18} /> +966920024360
+            <Globe className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" size={18} /> {data.outsidePhone}
           </div>
         </div>
       </div>

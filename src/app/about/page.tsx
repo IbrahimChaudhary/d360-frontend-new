@@ -53,6 +53,7 @@ export default function AboutPage() {
       animated: true,
     },
   ];
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -60,9 +61,7 @@ export default function AboutPage() {
 
       <main className="flex-1">
         <Hero
-          backgroundImage={
-            isRTL ? "/about/about-hero-arabic.png" : "/about/about-hero.png"
-          }
+          backgroundImage={`${baseUrl}${aboutData?.heroImage?.formats?.large?.url || aboutData?.heroImage?.formats?.medium?.url || aboutData?.heroImage.formats?.small?.url || aboutData?.heroImage?.url}`}
           direction={isRTL ? "rtl" : "ltr"}
         >
           <div
@@ -119,7 +118,7 @@ export default function AboutPage() {
             language === "ar" ? "flex-row" : "flex-row"
           } `}
         >
-          <ContactImage />
+          <ContactImage url={`${process.env.NEXT_PUBLIC_STRAPI_URL}${aboutData?.sideImg?.formats?.large?.url || aboutData?.sideImg?.formats?.medium?.url || aboutData?.sideImg?.url || "/contact/contact-mob.png"}`} />
 
           {aboutData && <ContactContent data={aboutData} />}
         </div>

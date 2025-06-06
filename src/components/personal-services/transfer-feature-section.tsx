@@ -14,15 +14,15 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
     {
       icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[40px] h-[40px] " />,
       title: `${data.Title12} ${data.Title13}`,
-      button: "Explore",
-      image: "/personal/mob-right.png", // adjust path
+      button: `${data.button}`,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.image1?.formats?.large?.url || data.image1?.formats?.medium?.url || data.image1?.url }`,
       reverse: false,
     },
     {
       icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[40px] h-[40px]" />,
       title: `${data.Title14} ${data.Title15}`,
-      button: "Explore",
-      image: "/personal/mob-left.png", // adjust path
+      button: `${data.button2}`,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.imges2?.formats?.large?.url || data.imges2?.formats?.medium?.url || data.imges2?.url || "/personal/mob-left.png"}`,
       reverse: true,
     },
   ]

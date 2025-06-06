@@ -45,7 +45,7 @@ export function NewsCard({ article, index }: NewsCardProps) {
           {/* Image */}
           <div className="relative h-48 w-full">
             <Image
-              src={"/media/card1.png"}
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.imageCard?.formats?.large?.url || article.imageCard?.formats?.medium?.url || article.imageCard?.url || "/media/card1.png"}`}
               alt={language === "en" ? article.heading : article.heading}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"

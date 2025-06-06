@@ -1,28 +1,29 @@
 "use client";
 
 import { useTranslations } from "@/lib/i18n";
-
-export function FooterLegal() {
+import { FooterData } from "@/types/footer/footer";
+interface FooterLegalProps {
+  data: FooterData;
+}
+export function FooterLegal({ data }: FooterLegalProps) {
   const { t } = useTranslations();
 
   return (
     <div className="text-sm text-slate-500">
       <h3 className="font-semibold text-[#E74529] mb-2">
-        {t("footer.legal.moneyTransfers")}
+        {data.International}
       </h3>
       <p className="text-sm leading-relaxed mb-4 text-[#999999]">
-        {t("footer.legal.moneyTransfersText")}
+        {data.InternationalDes}
       </p>
 
-      <h3 className="font-semibold text-[#E74529] mb-2">
-        {t("footer.legal.exchangeRates")}
-      </h3>
+      <h3 className="font-semibold text-[#E74529] mb-2">{data.Exchange}</h3>
       <p className="text-sm leading-relaxed mb-4 text-[#999999]">
-        {t("footer.legal.exchangeRatesText")}
+        {data.ExchangeDes}
       </p>
 
       <p className="text-xs text-[#999999] leading-relaxed">
-        {t("footer.legal.copyright")}
+        {data.FooterDes}{" "}
       </p>
     </div>
   );

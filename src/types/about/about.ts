@@ -19,22 +19,24 @@ export interface StrapiMediaData {
    */
   formats?: {
     thumbnail?: {
-      url: string;      // e.g. "/uploads/thumbnail_inv4_1c59f6b9ae.png"
+      url: string; // e.g. "/uploads/thumbnail_inv4_1c59f6b9ae.png"
       width: number;
       height: number;
     };
-    [key: string]: {
-      url: string;
-      width: number;
-      height: number;
-    } | undefined;
+    [key: string]:
+      | {
+          url: string;
+          width: number;
+          height: number;
+        }
+      | undefined;
   };
 
   hash: string;
   ext: string;
   mime: string;
   size: number;
-  url: string;         // e.g. "/uploads/inv4_1c59f6b9ae.png"
+  url: string; // e.g. "/uploads/inv4_1c59f6b9ae.png"
   previewUrl: string | null;
   provider: string;
   provider_metadata: unknown | null;
@@ -42,7 +44,6 @@ export interface StrapiMediaData {
   updatedAt: string;
   publishedAt: string;
 }
-
 
 /**
  * Each Leader (“director”) in the response has:
@@ -56,7 +57,7 @@ export interface Leader {
   name: string;
   role: string;
   description: string;
-  fullDes: any[];                // replace with your exact Portable Text type if you have one
+  fullDes: any[]; // replace with your exact Portable Text type if you have one
   position: string;
 
   /**
@@ -129,10 +130,15 @@ export interface AboutD360Data {
   complaintDes: string;
   download: string;
   contact: string;
-
+  sideImg: StrapiMediaData;
   /** Directors array exactly as your JSON shows it */
   directors: Leader[];
-
+  heroImage: StrapiMediaData;
+  investorImg1: StrapiMediaData;
+  investorImg2: StrapiMediaData;
+  directorHead: string;
+  manageHead: string;
+  shariahHead: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

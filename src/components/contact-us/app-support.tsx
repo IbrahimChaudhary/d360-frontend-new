@@ -25,7 +25,7 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
           className="w-full max-w-[280px] sm:max-w-[320px]"
         >
           <Image
-            src="/contact/contact-mob.png" // update with your image path
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.sideImg?.formats?.large?.url || data?.sideImg?.formats?.medium?.url || data?.sideImg?.url || "/contact/contact-mob.png"}`}
             alt="App Support Screen"
             width={320}
             height={600}
@@ -48,7 +48,7 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
           <Button 
           onClick={() => setModalOpen(true)}
           className="bg-[#E74529] hover:bg-[#e93d20] text-white lg:rounded-xl rounded-md text-[8px] font-bold  px-6 py-2 lg:text-[20px]">
-            Download App
+            {data.download}
           </Button>
         </motion.div>
       </div>

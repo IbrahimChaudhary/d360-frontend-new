@@ -17,13 +17,14 @@ export function HomeHero({ data }: HomeHeroProps) {
   const { language } = useStore();
   const isRTL = language === "ar";
   const content = isRTL ? arabicContent : englishContent;
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
 
   return (
     <section className="w-full min-h-[450px] lg:min-h-[100vh] h-full flex items-center relative overflow-hidden">
       {/* Switch video based on language */}
       <video
         className="absolute w-full h-full object-cover object-center z-0"
-        src={isRTL ? "/home/home-banner-ar.mp4" : "/home/home-banner.mp4"}
+        src={`${baseUrl}${data?.heroVideo?.url}`}
         autoPlay
         loop
         muted

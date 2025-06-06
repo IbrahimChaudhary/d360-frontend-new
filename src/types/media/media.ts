@@ -1,5 +1,7 @@
 // src/types/media-center.ts
 
+import { StrapiMediaData } from "../about/about";
+
 /** One news‐card entry */
 export interface NewsCardData {
     id: number;
@@ -14,9 +16,11 @@ export interface NewsCardData {
     createdAt?: string;
     updatedAt?: string;
     publishedAt?: string;
+    imageHero: StrapiMediaData;
+    imageCard: StrapiMediaData;
   }
   
-  /** The single “media‐center” record */
+  /** The single "media‐center" record */
   export interface MediaCenterData {
     id: number;
     documentId?: string;
@@ -26,6 +30,13 @@ export interface NewsCardData {
     locale: string;
     Title1: string;
     Title2: string;
+    gallery:string
+    news:string
+    heroImg:StrapiMediaData
+    galleryImg1:StrapiMediaData
+    galleryImg2:StrapiMediaData
+    galleryImg3:StrapiMediaData
+    galleryImg4:StrapiMediaData
     news_cards: NewsCardData[];
   }
   

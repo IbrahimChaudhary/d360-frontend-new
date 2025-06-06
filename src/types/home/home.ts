@@ -1,3 +1,6 @@
+interface HeroVideo{
+  url:string
+}
 export interface HomePageData {
   id: number;
   documentId: string;
@@ -29,7 +32,7 @@ export interface HomePageData {
   Title8: string;
   Description8: string;
 
-  heroVideo: string;  
+  heroVideo: HeroVideo;  
 
   PhysicalCard: string;
   PhysicalCardDescription: string;
