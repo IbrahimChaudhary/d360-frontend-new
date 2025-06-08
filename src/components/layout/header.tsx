@@ -14,7 +14,7 @@ const aboutSections = [
     items: [
       { label: "About D360", href: "/about" },
       { label: "Media Center", href: "/media" },
-      { label: "Shariah Committee", href: "/" },
+      { label: "Shariah Committee", href: "/shahriah-committee" },
       { label: "Investor Relations", href: "/investors" },
     ],
   },
@@ -41,7 +41,7 @@ const personalSections = [
       { label: "Savings Accounts", href: "/savings-account" },
       { label: "Payments", href: "/payments" },
       { label: "International Transfers", href: "/international-transfers" },
-      { label: "Cards", href: "/cards" },
+      { label: "Cards", href: "/card" },
       { label: "Offers", href: "/offers" },
     ],
   },
