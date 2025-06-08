@@ -9,8 +9,10 @@ import { Footer } from "@/components/layout/footer/footer";
 import { ApplePayData } from "@/types/apple-pay/apple-pay";
 import { fetchApplePay } from "@/api/apple-pay";
 import { extractFAQItems } from "@/lib/faq-extract";
+import { useStore } from "@/store/toggle-store";
 
 function ApplePay() {
+  const {language} = useStore();
   const [activeTab, setActiveTab] = useState<"overview" | "faq">("faq");
   const [applePay, setApplePay] = useState<ApplePayData | null>(null);
 
@@ -18,10 +20,10 @@ function ApplePay() {
   const isFaq = (tab: "overview" | "faq"): tab is "faq" => tab === "faq";
 
   useEffect(() => {
-    fetchApplePay()
+    fetchApplePay(language)
       .then(setApplePay)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   const faqItems = applePay ? extractFAQItems(applePay) : [];
 
   return (

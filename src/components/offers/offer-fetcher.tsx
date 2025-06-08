@@ -6,12 +6,14 @@ import { notFound } from "next/navigation";
 import OfferDynamicPage from "./dynamic-page";
 import type { OfferPageData } from "@/types/offer/offerpage";
 import { fetchOfferPages, fetchOfferPagesBySlug } from "@/api/offer";
+import { useStore } from "@/store/toggle-store";
 
 interface Props {
   slug: string;
 }
 
 export default function OfferFetcher({ slug }: Props) {
+  const { language } = useStore();
   const [page, setPage] = useState<OfferPageData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,7 +21,7 @@ export default function OfferFetcher({ slug }: Props) {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetchOfferPagesBySlug(slug); // wrap your Strapi call here
+        const res = await fetchOfferPagesBySlug(language, slug); // wrap your Strapi call here
         if (!res || res.length === 0) {
           // show 404
           notFound();
@@ -34,7 +36,7 @@ export default function OfferFetcher({ slug }: Props) {
       }
     }
     load();
-  }, [slug]);
+  }, [slug, language]);
 
   if (loading) return <p>Loading…</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;

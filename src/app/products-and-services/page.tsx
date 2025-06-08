@@ -6,14 +6,15 @@ import { FeesData } from "@/types/product-services/product-services";
 import { useEffect, useState } from "react";
 import { fetchFee } from "@/api/product-services";
 import { FeeFAQAccordion } from "@/components/product-service/faq";
+import { useStore } from "@/store/toggle-store";
 export default function ProductAndServicesFee() {
   const [feeData, setFeeData] = useState<FeesData | null>(null);
-
+  const {language} = useStore()
   useEffect(() => {
-    fetchFee()
+    fetchFee(language)
       .then(setFeeData)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   return (
     <div className="w-full  flex flex-col justify-center px-4 items-center">
       <Header variant="about" />

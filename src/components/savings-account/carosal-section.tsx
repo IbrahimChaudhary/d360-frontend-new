@@ -26,15 +26,18 @@ type CaroselSliderProps = {
   icon?: string;
   arrows?: string;
   img1?:string
+  btnTxt?:string
   container?:string
 };
 
 export function Carosel({
+
   slides,
   showButton = true,
   layout = "default",
   classname,
   textstyle,
+  btnTxt,
   arrows,
   img2,
   icon,
@@ -93,7 +96,7 @@ export function Carosel({
 
           <div className={cn(" relative w-full hidden max-w-md h-[200px] lg:h-[300px]",img1)}>
             <Image
-              src={currentSlide.image}
+              src={currentSlide.image || "/placeholder.svg"}
               alt={currentSlide.heading}
               fill
               className="object-contain"
@@ -110,7 +113,7 @@ export function Carosel({
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E6E8EB]"
                 >
                   <Image
-                    src={currentSlide.icon}
+                    src={currentSlide.icon || "/placeholder.svg"}
                     alt="icon"
                     width={20}
                     height={20}
@@ -177,7 +180,7 @@ export function Carosel({
                 size="lg"
                 className="bg-[#EB644C]  text-[8px] lg:text-base flex justify-center lg:w-[40%] w-[50%] lg:mx-0 mx-auto rounded-xl lg:mt-10"
               >
-                Open Your Savings Account
+                {btnTxt}
               </Button>
             )}
           </div>
@@ -187,7 +190,7 @@ export function Carosel({
       {/* Image Section */}
       <div className={cn("relative w-full max-w-md h-[200px] lg:h-[300px]",img2)}>
         <Image
-          src={currentSlide.image}
+          src={currentSlide.image || "/placeholder.svg"}
           alt={currentSlide.heading}
           fill
           className="object-contain"

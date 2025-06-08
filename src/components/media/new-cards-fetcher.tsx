@@ -5,12 +5,14 @@ import React, { useState, useEffect } from "react";
 import { NewsArticleDetails } from "@/components/media/news-article-details";
 import type { NewsCardData } from "@/types/media/media";
 import Image from "next/image";
+import { useStore } from "@/store/toggle-store";
 
 interface Props {
   slug: string;
 }
 
 export function NewsArticleFetcher({ slug }: Props) {
+  const { language } = useStore();
   const [article, setArticle] = useState<NewsCardData | null>(null);
   const [related, setRelated] = useState<NewsCardData[]>([]);
   const [loading, setLoading] = useState(true);
@@ -23,7 +25,7 @@ export function NewsArticleFetcher({ slug }: Props) {
         const res1 = await fetch(
           `http://localhost:1337/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
             slug
-          )}&populate=*`
+          )}&populate=*&locale=${language}`
         );
         if (!res1.ok) throw new Error(`Status ${res1.status}`);
 
@@ -50,7 +52,7 @@ export function NewsArticleFetcher({ slug }: Props) {
         const res2 = await fetch(
           `http://localhost:1337/api/news-cards?filters[slug][$ne]=${encodeURIComponent(
             slug
-          )}&populate=*&pagination[limit]=2`
+          )}&populate=*&pagination[limit]=2&locale=${language}`
         );
         if (!res2.ok) throw new Error(`Related status ${res2.status}`);
 
@@ -79,7 +81,7 @@ export function NewsArticleFetcher({ slug }: Props) {
     }
 
     fetchData();
-  }, [slug]);
+  }, [slug, language]);
 
   if (error) return <p className="text-red-500">Error: {error}</p>;
   if (!article) return <p></p>;

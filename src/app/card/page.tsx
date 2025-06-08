@@ -33,9 +33,12 @@ export default function AboutPage() {
     <div className="flex min-h-screen flex-col">
       <Header variant="about" />
       <main className="flex-1">
-        <Hero backgroundImage={
-            isRTL ? "/about/about-hero-arabic.png" : "/card/card-hero.jpg"
-          }
+        <Hero
+          backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
+            cardData?.imges?.formats?.large?.url ||
+            cardData?.imges?.formats?.medium?.url ||
+            cardData?.imges?.url
+          }`}
           direction={isRTL ? "rtl" : "ltr"}
         >
           <h1 className="text-4xl ltr:lg:px-6  lg:text-[80px] font-extrabold text-[#263244] leading-tight">
@@ -55,12 +58,9 @@ export default function AboutPage() {
             {cardData?.Description2}
             {cardData?.Description3}
             {cardData?.Description4}
-
           </p>
         </SectionHeading>
-        {cardData && 
-        <CardVariants data={cardData}/>
-        }
+        {cardData && <CardVariants data={cardData} />}
 
         <MergedFAQAccordion faqItems={faqItems} />
       </main>

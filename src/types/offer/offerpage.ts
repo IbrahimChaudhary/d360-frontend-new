@@ -99,6 +99,8 @@ export interface ImageFormats {
     Terms7: string;
     slug: string;
     imgage: UploadFile;
+    heroImage: UploadFile;
+    image: UploadFile;
     offer_card: OfferCardRelation;
   }
   

@@ -1,5 +1,5 @@
 type ContentSectionProps = {
-    heading: string;
+    heading?: string;
     children: React.ReactNode;
   };
   

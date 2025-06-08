@@ -33,15 +33,15 @@ export default function OffersPage() {
   const isRTL = language === "ar";
 
   useEffect(() => {
-    fetchOffer()
+    fetchOffer(language)
       .then(setOffer)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   useEffect(() => {
-    fetchOfferCards()
+    fetchOfferCards(language)
       .then(setOfferCard)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
@@ -62,22 +62,22 @@ export default function OffersPage() {
   const offerCategories: OfferCategory[] = [
     {
       id: "automative",
-      name: { en: `${offer?.Type1}`, ar: "السيارات" },
+      name: { en: `${offer?.Type1}`, ar: `${offer?.Type1}` },
     },
     {
       id: "shopping",
-      name: { en: `${offer?.Type2}`, ar: "التسوق" },
+      name: { en: `${offer?.Type2}`, ar: `${offer?.Type2}` },
     },
     {
       id: "Expired-offers",
-      name: { en: `${offer?.Type3}`, ar: "عروض العلامات التجارية" },
+      name: { en: `${offer?.Type3}`, ar: `${offer?.Type3}` },
     },
   ];
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header variant="about" />
       <main className="flex-1">
-        <Hero backgroundImage="/offers/offers-hero.png">
+        <Hero backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${offer?.heroImage?.formats?.large?.url || offer?.heroImage?.formats?.medium?.url || offer?.heroImage?.url || "/offers/offers-hero.png"}`}>
        
           <div
             className={`flex w-full flex-col ${

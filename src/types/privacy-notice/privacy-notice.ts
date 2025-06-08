@@ -1,80 +1,37 @@
 // src/types/privacy-notice.ts
 
-/** The shape of the `data` object returned by Strapi */
+/** The shape of the `data` object returned by Strapi for the Privacy Notice page */
 export interface PrivacyNoticeData {
-    id: number;
-    documentId: string;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    
-    Heading: string;
-    headingPara1: string;
-    headingPara2: string;
-    headingPara3: string;
-    
-    Personal: string;
-    PersonalPara: string;
-    
-    Purpose: string;
-    PurposeA: string;
-    PurposeB: string;
-    PurposeC: string;
-    PurposeD: string;
-    PurposeE: string;
-    PurposeF: string;
-    PurposeG: string;
-    PurposeH: string;
-    PurposeI: string;
-    PurposeJ: string;
-    PurposeK: string;
-    PurposePara: string;
-    
-    RightsHeading: string;
-    RightsPara: string;
-    RightsA: string;
-    RightsB: string;
-    RightsC: string;
-    RightsD: string;
-    RightsE: string;
-  
-    Lawful: string;
-    LawfulA: string;
-    LawfulB: string;
-    LawfulC: string;
-    LawfulD: string;
-    LawfulDes: string;
-  
-    Data: string;
-    DataPara1: string;
-    DataPara2: string;
-  
-    Retention: string;
-    RetentionDes: string;
-  
-    Security: string;
-    SecurityDes: string;
-  
-    Media: string;
-    MediaPara: string;
-  
-    Cookies: string;
-    CookiesPara: string;
-  
-    Market: string;
-    MarketPara: string;
-  
-    Quality: string;
-    QualityPara: string;
-  
-    Contact: string;
-    ContactPara: string;
-    ContactEmail: string;
-  }
-  
-  /** Full wrapper for the Strapi response */
-  export interface PrivacyNoticeResponse {
-    data: PrivacyNoticeData;
-    meta: Record<string, unknown>;
-  }
-  
+  id: number;
+  documentId: string;
+  createdAt: string;   // ISO timestamp
+  updatedAt: string;   // ISO timestamp
+  publishedAt: string; // ISO timestamp
+  locale: string;
+
+  /** Main heading and introductory paragraphs */
+  Heading: string;
+  headingPara1: string;
+  headingPara2: string;
+  headingPara3: string;
+
+  /** Full markdown content for the notice body */
+  Title2: string;
+
+  /** FAQ section */
+  FAQ: string;
+  FAQTitle1: string;
+  FAQDescription1: string;
+  FAQTitle2: string;
+  FAQDescription2: string;
+  FAQTitle3: string;
+  FAQDescription3: string;
+  FAQTitle4: string;
+  FAQDescription4: string;
+}
+
+/** Full wrapper for the Strapi response */
+export interface PrivacyNoticeResponse {
+  data: PrivacyNoticeData;
+  meta: Record<string, unknown>;
+}

@@ -24,10 +24,10 @@ export default function AboutPage() {
     useState<PersonalServiceData | null>(null);
 
   useEffect(() => {
-    fetchPersonalService()
+    fetchPersonalService(language)
       .then(setPersonalService)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   return (
     <div className="flex min-h-screen flex-col">
       <Header variant="about" />

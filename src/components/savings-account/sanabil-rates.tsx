@@ -1,14 +1,21 @@
-'use client';
+"use client";
 
-export default function SanabilRates() {
+import { SavingsData } from "@/types/savings-account/savings-account";
+
+interface SanabilRatesProps {
+  data: SavingsData;
+}
+export default function SanabilRates({ data }: SanabilRatesProps) {
   return (
     <section className="bg-white py-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-extrabold text-[#EB644C]">
-          Sanabil Profit Rates
+          {data.RatesHead}
         </h2>
-        <p className="text-[7px] lg:text-sm text-[#263244] mt-1">As of 29 April 2025</p>
+        <p className="text-[7px] lg:text-sm text-[#263244] mt-1">
+          {data.RatesDes}
+        </p>
 
         {/* Table */}
         <div className="mt-10 overflow-x-auto lg:px-20">
@@ -16,22 +23,38 @@ export default function SanabilRates() {
             <thead>
               <tr className="text-[#263244] font-semibold ">
                 <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 text-left">
-                  Level
+                  {data.ColName1}
                 </th>
                 <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 text-left">
-                  Balance Threshold (SAR)
+                  {data.ColName2}{" "}
                 </th>
                 <th className="border-b-2 border-[#4FC4D9] px-6 py-3 text-left">
-                  Annual Equivalent Rate (AER)*
+                  {data.ColName3}{" "}
                 </th>
               </tr>
             </thead>
             <tbody className="text-[#263244] font-medium text-left">
               {[
-                { level: '1', threshold: '2,500 - 4,999', rate: '0.5%' },
-                { level: '2', threshold: '5,000 - 19,999', rate: '1.0%' },
-                { level: '3', threshold: '20,000 - 49,999', rate: '1.5%' },
-                { level: '4', threshold: '≥ 50,000', rate: '2.0%' },
+                {
+                  level: `${data.Col1Val1}`,
+                  threshold: `${data.Col2Val1}`,
+                  rate: `${data.Col3Val1}`,
+                },
+                {
+                  level: `${data.Col1Val2}`,
+                  threshold: `${data.Col2Val2}`,
+                  rate: `${data.Col3Val2}`,
+                },
+                {
+                  level: `${data.Col1Val3}`,
+                  threshold: `${data.Col2Val3}`,
+                  rate: `${data.Col3Val3}`,
+                },
+                {
+                  level: `${data.Col1Val4}`,
+                  threshold: `${data.Col2Val4}`,
+                  rate: `${data.Col3Val4}`,
+                },
               ].map((row, idx) => (
                 <tr key={idx} className="border-t  border-[#DEE4ED]">
                   <td className="px-6 py-4 border-r">{row.level}</td>
@@ -45,7 +68,7 @@ export default function SanabilRates() {
 
         {/* Note */}
         <p className="mt-6 text-[5px] lg:text-md text-[#7B818D] max-w-4xl mx-auto">
-          *This is the Annual Earnings Rate. Which is the percentage return you can expect to earn over the course of one year.
+          {data.RatesTerm}
         </p>
       </div>
     </section>

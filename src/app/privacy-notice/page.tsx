@@ -7,14 +7,17 @@ import DesktopContentSectionPrivacyAndNotice from "@/components/privacy-notice/d
 import { useEffect, useState } from "react";
 import { PrivacyNoticeData } from "@/types/privacy-notice/privacy-notice";
 import { fetchPrivacyNotice } from "@/api/privacy-notice";
+import { useStore } from "@/store/toggle-store";
+import { extractFAQItems } from "@/lib/faq-extract";
 export default function PrivacyNotice() {
   const [privacy, setPrivacy] = useState<PrivacyNoticeData | null>(null);
-
+  const {language} = useStore()
   useEffect(() => {
-    fetchPrivacyNotice()
+    fetchPrivacyNotice(language)
       .then(setPrivacy)
       .catch((err) => console.error("Failed to load media center:", err));
-  }, []);
+  }, [language]);
+  const faqItems = privacy ? extractFAQItems(privacy) : [];
   return (
     <div className="w-full  flex flex-col justify-center items-center">
       <Header variant="about" />
@@ -23,7 +26,7 @@ export default function PrivacyNotice() {
       </div>
       {/* mobile version  */}
       <div className=" mt-[100px] flex  md:hidden flex-col justify-center items-center overflow-y-scroll  ">
-       <MergedFAQAccordion faqItems={FAQsAbout} />
+       <MergedFAQAccordion faqItems={faqItems} />
     </div>
       <Footer/>
     </div>

@@ -15,88 +15,150 @@ import SanabilSteps from "@/components/savings-account/sanabil-steps";
 import ProfitBanner from "@/components/savings-account/profit-banner";
 import SanabilRates from "@/components/savings-account/sanabil-rates";
 import ProfitCalculationSection from "@/components/savings-account/profit-calculation";
+import { SavingsData } from "@/types/savings-account/savings-account";
+import { useEffect, useState } from "react";
+import { fetchSavings } from "@/api/savings-account";
+import { extractFAQItems } from "@/lib/faq-extract";
 
 export default function SavingsAccount() {
   const { t } = useTranslations();
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
+  const [savings, setSavings] = useState<SavingsData | null>(null);
+
+  useEffect(() => {
+    fetchSavings(language)
+      .then((data) => setSavings(data))
+      .catch((err) => console.error("Failed to load About D360:", err));
+  }, [language]);
+  const faqItems = savings ? extractFAQItems(savings) : [];
+
   return (
     <div className="flex  flex-col">
-      <Header variant="about"/>
+      <Header variant="about" />
       <main className="flex-1">
-        <Hero backgroundImage={ isRTL ? "/savings/savings-hero.png": "/savings/savings-hero.png"}>
-        <div
+        <Hero
+          backgroundImage={
+            savings?.HeroImg?.formats?.large?.url ||
+            savings?.HeroImg?.formats?.medium?.url ||
+            savings?.HeroImg?.url
+              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                  savings?.HeroImg?.formats?.large?.url ||
+                  savings?.HeroImg?.formats?.medium?.url ||
+                  savings?.HeroImg?.url
+                }`
+              : ""
+          }
+        >
+          <div
             className={`flex w-full flex-col ${
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-          <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
-            Sanabil Daily Distribution Account{" "}
-          </p>
-          <h1 className="text-[25px] mb-2 lg:text-[80px]  uppercase font-extrabold text-[#263244] lg:leading-19">
-            Daily profit,
-            <br />
-             brighter future!
-          </h1>
-          <Button
-            className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 lg:rounded-[14px]"
-            size="lg"
-          >
-            Open Your Savings Account
-          </Button>
-          <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white leading-tight">
-            *Minimum deposit of SAR 2,500 required to earn profit
-          </p>
+            <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
+              {savings?.MainTitleUpDes}{" "}
+            </p>
+            <h1 className="text-[25px] mb-2 lg:text-[80px]  uppercase font-extrabold text-[#263244] lg:leading-19">
+              {savings?.MainTitle1}
+              <br />
+              {savings?.MainTitle2}
+            </h1>
+            <Button
+              className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 lg:rounded-[14px]"
+              size="lg"
+            >
+              {savings?.HeroBtn}
+            </Button>
+            <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white leading-tight">
+              {savings?.MainTitleDownDes}{" "}
+            </p>
           </div>
         </Hero>
         <SectionHeading className=" pt-6 lg:pt-16">
           <span className="text-[25px] lg:text-[60px] font-extrabold ">
             {" "}
-            Save today, <br /> secure tomorrow!
+            {savings?.Title1} <br /> {savings?.Title2}
           </span>
         </SectionHeading>
         <Carosel
           layout="default"
           showButton={true}
+          btnTxt={savings?.SavingBtn}
           slides={[
             {
-              heading: "Sanabil Daily Distribution Account Benefits",
-              subheading: "Daily profit calculation and deposit",
-              paragraph:
-                "Your profits are calculated daily based on your minimum balance and automatically deposited into your account at 9:00 AM on the next business day.",
-              image: "/savings/carosel1.png",
+              heading: `${savings?.Title3}`,
+              subheading: `${savings?.Way1Head}`,
+              paragraph: `${savings?.Way1Des}`,
+              image: `${
+                savings?.Way1Img?.formats?.large?.url ||
+                savings?.Way1Img?.formats?.medium?.url ||
+                savings?.Way1Img?.url
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                      savings?.Way1Img?.formats?.large?.url ||
+                      savings?.Way1Img?.formats?.medium?.url ||
+                      savings?.Way1Img?.url
+                    }`
+                  : ""
+              }`,
             },
             {
-              heading: "Sanabil Daily Distribution Account Benefits",
-              subheading: "Withdraw your money at any time",
-              paragraph:
-                "Benefit from unlimited withdrawals with no frequency restrictions, giving you full access to your funds anytime you need them",
-              image: "/savings/carosel2.png",
+              heading: `${savings?.Title3}`,
+              subheading: `${savings?.Way2Head}`,
+              paragraph: `${savings?.Way2Des}`,
+              image: `${
+                savings?.Way2Img?.formats?.large?.url ||
+                savings?.Way2Img?.formats?.medium?.url ||
+                savings?.Way2Img?.url
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                      savings?.Way2Img?.formats?.large?.url ||
+                      savings?.Way2Img?.formats?.medium?.url ||
+                      savings?.Way2Img?.url
+                    }`
+                  : ""
+              }`,
             },
             {
-                heading: "Sanabil Daily Distribution Account Benefits",
-                subheading: "Dedicated IBAN for easy transfers",
-                paragraph:
-                  "Get your own International Bank Account Number (IBAN) for smooth, secure transfers—whether local or international",
-                image: "/savings/carosel3.png",
-              },
-              {
-                heading: "Sanabil Daily Distribution Account Benefits",
-                subheading: "Shariah Compliant",
-                paragraph:
-                  "The Sanabil Savings Account follows Islamic banking principles, with all transactions and profit distributions compliant with Shariah guidelines.",
-                image: "/savings/carosel4.png",
-              },
+              heading: `${savings?.Title3}`,
+              subheading: `${savings?.Way3Head}`,
+              paragraph: `${savings?.Way3Des}`,
+              image: `${
+                savings?.Way3Img?.formats?.large?.url ||
+                savings?.Way3Img?.formats?.medium?.url ||
+                savings?.Way3Img?.url
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                      savings?.Way3Img?.formats?.large?.url ||
+                      savings?.Way3Img?.formats?.medium?.url ||
+                      savings?.Way3Img?.url
+                    }`
+                  : ""
+              }`,
+            },
+            {
+              heading: `${savings?.Title3}`,
+              subheading: `${savings?.Way4Head}`,
+              paragraph: `${savings?.Way4Des}`,
+              image: `${
+                savings?.Way4Img?.formats?.large?.url ||
+                savings?.Way4Img?.formats?.medium?.url ||
+                savings?.Way4Img?.url
+                  ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                      savings?.Way4Img?.formats?.large?.url ||
+                      savings?.Way4Img?.formats?.medium?.url ||
+                      savings?.Way4Img?.url
+                    }`
+                  : ""
+              }`,
+            },
           ]}
         />
 
-        <SanabilSteps />
-        <ProfitBanner />
-        <SanabilRates />
-        <ProfitCalculationSection />
+        {savings && <SanabilSteps data={savings} />}
+        {savings && <ProfitBanner data={savings} />}
+        {savings && <SanabilRates data={savings} />}
+        {savings && <ProfitCalculationSection data={savings} />}
 
-        <MergedFAQAccordion faqItems={FAQsAbout} />
+        <MergedFAQAccordion faqItems={faqItems} />
       </main>
       <Footer />
     </div>

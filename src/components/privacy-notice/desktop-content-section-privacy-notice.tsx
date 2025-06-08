@@ -1,96 +1,63 @@
+"use client";
 import React from "react";
-import ContentSection from "../content-section";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { PrivacyNoticeData } from "@/types/privacy-notice/privacy-notice";
-interface DesktopContentSectionPrivacyAndNoticeProps {
+
+interface Props {
   data: PrivacyNoticeData;
 }
-function DesktopContentSectionPrivacyAndNotice({
-  data,
-}: DesktopContentSectionPrivacyAndNoticeProps) {
+
+export default function DesktopContentSectionPrivacyAndNotice({ data }: Props) {
+  const mdComponents = {
+    // Headings
+    h1: (props: React.ComponentPropsWithoutRef<"h1">) => (
+      <h1 className="text-4xl font-extrabold mt-8 mb-4" {...props} />
+    ),
+    h2: (props: React.ComponentPropsWithoutRef<"h2">) => (
+      <h2 className="text-3xl font-bold mt-6 mb-4" {...props} />
+    ),
+    h3: (props: React.ComponentPropsWithoutRef<"h3">) => (
+      <h3 className="text-[25px] lg:text-[60px] font-extrabold mt-4 mb-6" {...props} />
+    ),
+    h4: (props: React.ComponentPropsWithoutRef<"h4">) => (
+      <h4 className="text-2xl font-bold mt-3 mb-4" {...props} />
+    ),
+    p: (props: React.ComponentPropsWithoutRef<"h4">) => (
+      <h4 className="text-[14px] lg:text-[25px] mt-3 mb-4" {...props} />
+    ),
+
+    // Unordered lists
+    ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
+      <ul className="list-disc  pl-4 space-y-2" {...props} />
+    ),
+    // Ordered lists (alphabetical if the source uses 1. a) etc)
+    ol: (props: React.ComponentPropsWithoutRef<"ol">) => (
+      <ol className="list-decimal  pl-4 space-y-2" type="a" {...props} />
+    ),
+    li: (props: React.ComponentPropsWithoutRef<"li">) => (
+      <li className="text-base md:text-lg leading-relaxed" {...props} />
+    ),
+  };
+
   return (
-    <div className="max-w-[1228px] flex-col justify-center items-center overflow-scroll px-[24px]">
-      <div className="mt-[100px]">
-        <div className="text-[80px] text-[#E74529] font-extrabold">
+    <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
+      {/* Page title & intro */}
+      <div className="space-y-6">
+        <h1 className="text-[25px] lg:text-[70px] font-extrabold text-[#E74529]">
           {data.Heading}
-        </div>
-        <div className="text-[25px]">
-          <p className="mb-6">{data.headingPara1}</p>
-          <p className="mb-6">{data.headingPara2}</p>
-          <p className="mb-6">{data.headingPara3}</p>
-        </div>
+        </h1>
+        <p className="text-[14px] lg:text-[25px]">{data.headingPara1}</p>
+        <p className="text-[14px] lg:text-[25px]">{data.headingPara2}</p>
+        <p className="text-[14px] lg:text-[25px]">{data.headingPara3}</p>
       </div>
 
-      <ContentSection heading={data.Data}>
-        <p className="mb-6">{data.DataPara1}</p>
-        <p className="mb-6">{data.DataPara2}</p>
-      </ContentSection>
-
-      <ContentSection heading={data.Lawful}>
-        <p className="font-semibold mt-4">{data.LawfulDes}</p>
-        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
-          <li>{data.LawfulA}</li>
-          <li>{data.LawfulB}</li>
-          <li>{data.LawfulC}</li>
-          <li>{data.LawfulD}</li>
-        </ul>
-      </ContentSection>
-
-      <ContentSection heading={data.Personal}>
-        <p className="mb-6">{data.PersonalPara}</p>
-      </ContentSection>
-      <ContentSection heading={data.Retention}>
-        <p className="mb-6">{data.RetentionDes}</p>
-      </ContentSection>
-      <ContentSection heading={data.Security}>
-        <p className="mb-6">{data.SecurityDes}</p>
-      </ContentSection>
-
-      <ContentSection heading={data.RightsHeading}>
-        <p className="font-semibold mt-4">{data.RightsPara}</p>
-        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
-          <li>{data.RightsA}</li>
-          <li>{data.RightsB}</li>
-          <li>{data.RightsC}</li>
-          <li>{data.RightsD}</li>
-          <li>{data.RightsE}</li>
-        </ul>
-      </ContentSection>
-      <ContentSection heading={data.Purpose}>
-        <p className="font-semibold mt-4">{data.PurposePara}</p>
-        <ul className="list-disc pl-5 rtl:px-4 mt-2 space-y-1">
-          <li>{data.PurposeA}</li>
-          <li>{data.PurposeB}</li>
-          <li>{data.PurposeC}</li>
-          <li>{data.PurposeD}</li>
-          <li>{data.PurposeE}</li>
-          <li>{data.PurposeF}</li>
-          <li>{data.PurposeG}</li>
-          <li>{data.PurposeH}</li>
-          <li>{data.PurposeI}</li>
-          <li>{data.PurposeJ}</li>
-          <li>{data.PurposeK}</li>
-        </ul>
-      </ContentSection>
-
-      <ContentSection heading={data.Media}>
-        <p>{data.MediaPara}</p>
-      </ContentSection>
-      <ContentSection heading={data.Cookies}>
-        <p>{data.CookiesPara}</p>
-      </ContentSection>
-      <ContentSection heading={data.Market}>
-        <p>{data.MarketPara}</p>
-      </ContentSection>
-      <ContentSection heading={data.Quality}>
-        <p>{data.QualityPara}</p>
-      </ContentSection>
-      <ContentSection heading={data.Contact}>
-        <span>{data.ContactPara}</span> <span className="font-bold underline">{data.ContactEmail}</span>
-      </ContentSection>
-
-    
+      {/* Render the full markdown notice body */}
+      <div className="prose prose-lg dark:prose-invert">
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+          {data.Title2}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 }
-
-export default DesktopContentSectionPrivacyAndNotice;

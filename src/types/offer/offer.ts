@@ -1,3 +1,4 @@
+import { StrapiMediaData } from "../about/about";
 
 export interface OfferData {
   id: number;
@@ -10,6 +11,8 @@ export interface OfferData {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  
+  heroImage: StrapiMediaData;
 }
 
 export interface OfferResponse {

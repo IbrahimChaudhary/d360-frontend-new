@@ -5,79 +5,48 @@ import { Button } from "@/components/ui/button"
 import { Section } from "@/components/ui/section"
 import { AnimatedSection } from "@/components/ui/animated-section"
 import { useTranslations } from "@/lib/i18n"
+import { InternationalData } from "@/types/international/international"
 
 interface Feature {
-  id: string
-  title: {
-    en: string
-    ar: string
-  }
-  description: {
-    en: string
-    ar: string
-  }
+  title: string
+  description: string
 }
 
-const features: Feature[] = [
-  {
-    id: "faster-transfers",
-    title: {
-      en: "Faster transfers. Better rates.",
-      ar: "تحويلات أسرع. أسعار أفضل.",
-    },
-    description: {
-      en: "Send with peace of mind—compare rates and know exactly what you're paying before you transfer.",
-      ar: "أرسل براحة بال - قارن الأسعار واعرف بالضبط ما تدفعه قبل التحويل.",
-    },
-  },
-  {
-    id: "compare-currencies",
-    title: {
-      en: "Compare currencies in seconds",
-      ar: "قارن العملات في ثوانٍ",
-    },
-    description: {
-      en: "Enter the amount in the app and see exactly how much the recipient will receive in their currency.",
-      ar: "أدخل المبلغ في التطبيق وشاهد بالضبط كم سيتلقى المستلم بعملته.",
-    },
-  },
-  {
-    id: "clear-rates",
-    title: {
-      en: "Clear and competitive rates",
-      ar: "أسعار واضحة وتنافسية",
-    },
-    description: {
-      en: "No fees on currency exchange. Everything's transparent and upfront.",
-      ar: "لا توجد رسوم على صرف العملات. كل شيء شفاف ومقدم مسبقاً.",
-    },
-  },
-  {
-    id: "traveling-costs",
-    title: {
-      en: "Traveling? Check what you actually paid",
-      ar: "مسافر؟ تحقق مما دفعته فعلياً",
-    },
-    description: {
-      en: "See the difference and know the exact amount you spent—no hidden costs.",
-      ar: "شاهد الفرق واعرف المبلغ الدقيق الذي أنفقته - لا توجد تكاليف خفية.",
-    },
-  },
-]
-
-export function FeaturesSection() {
+interface FeaturesSectionProps{
+  data:InternationalData
+}
+export function FeaturesSection({data}:FeaturesSectionProps) {
   const { t } = useTranslations()
+
+  const features: Feature[] = [
+    {
+      title: data.FeatHead1,
+      description: data.FeatHeadDes1,
+    },
+    {
+      title: data.FeatHead2,
+      description: data.FeatHeadDes2,
+    },
+    {
+      title: data.FeatHead3,
+      description: data.FeatHeadDes3,
+    },
+    {
+      title: data.FeatHead4,
+      description: data.FeatHeadDes4,
+    },
+  ].filter(feature => feature.title && feature.description);
 
   return (
     <Section className="flex justify-center">
       <div className=" ">
         <AnimatedSection direction="up" className="text-center mb-8 lg:mb-16">
-          <h2 className="lg:text-[50px] text-[25px] font-bold text-[slate-800]">{t("features.title" as any) || "Features"}</h2>
+          <h2 className="lg:text-[50px] text-[25px] font-bold text-[slate-800]">{data.FeatHead}</h2>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 lg:px-24">
           {features.map((feature, index) => (
-            <FeatureCard key={feature.id} feature={feature} index={index} />
+            <FeatureCard key={index} feature={feature} index={index} />
           ))}
         </div>
 
@@ -86,7 +55,7 @@ export function FeaturesSection() {
             className="bg-[#E74529]  text-white px-8 py-3 lg:py-6 text-sm lg:text-lg font-bold rounded-xl"
             size="sm"
           >
-            {t("features.tryNow" as any) || "Try It Now!"}
+            {data.FeatBtn}
           </Button>
         </AnimatedSection>
       </div>
@@ -100,8 +69,6 @@ interface FeatureCardProps {
 }
 
 function FeatureCard({ feature, index }: FeatureCardProps) {
-  const { t } = useTranslations()
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -112,10 +79,10 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
       className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-0 p-1 lg:p-8 shadow-sm hover:shadow-md transition-all duration-300"
     >
       <h3 className="text-[14px] lg:text-[40px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4 leading-tight">
-        {t(`features.items.${feature.id}.title` as any) || feature.title.en}
+        {feature.title}
       </h3>
       <p className="text-[#263244]  text-[12px] lg:text-[25px]">
-        {t(`features.items.${feature.id}.description` as any) || feature.description.en}
+        {feature.description}
       </p>
     </motion.div>
   )

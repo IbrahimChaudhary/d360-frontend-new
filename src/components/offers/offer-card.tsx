@@ -40,7 +40,7 @@ export function OfferCard({
       whileHover={{ scale: 1.02 }}
       className="group"
     >
-      <Link href={`/offers/${data.slug}`}>
+      <Link href={`/offers/${data?.slug}`}>
         <div
           className={cn(
             "relative overflow-hidden rounded-2xl shadow-md hover:shadow-lg transition-all duration-300",
@@ -50,9 +50,8 @@ export function OfferCard({
         >
           <div className="absolute inset-0">
             <Image
-              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data.image.formats.thumbnail?.url}`}
-              alt={language === "en" ? data.title : data.title}
-              unoptimized
+              src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.image?.formats?.large?.url || data?.image?.formats?.medium?.url || data?.image?.url || "/"}`}
+              alt={language === "en" ? data?.title : data?.title}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-300"
             />
@@ -69,7 +68,7 @@ export function OfferCard({
             textColor
           )}>
             <h3 className="font-extrabold text-base md:text-[25px] leading-snug mb-2">
-              {language === "en" ? `${data?.title}` : data.title}
+              {language === "en" ? `${data?.title}` : data?.title}
             </h3>
             <div className="text-xs flex items-center gap-2 opacity-90">
               <Calendar/>

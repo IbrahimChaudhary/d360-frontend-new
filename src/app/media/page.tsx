@@ -13,14 +13,15 @@ import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 
 export default function MediaPage() {
+  const { language } = useStore();
   const { t } = useTranslations();
   const [media, setMedia] = useState<MediaCenterData | null>(null);
 
   useEffect(() => {
-    fetchMedia()
+    fetchMedia(language)
       .then(setMedia)
       .catch((err) => console.error("Failed to load media center:", err));
-  }, []);
+  }, [language]);
 
   // derive an array of newsArticles from the news_cards relation
   const newsArticles = useMemo(() => {
@@ -43,7 +44,6 @@ export default function MediaPage() {
     }));
   }, [media]);
 
-  const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
 

@@ -11,8 +11,11 @@ import { useTranslations } from "@/lib/i18n";
 import { countries, continents } from "@/data/countries";
 import type { Country } from "@/types/countries";
 import { cn } from "@/lib/utils";
-
-export function CountriesSection() {
+import { InternationalData } from "@/types/international/international";
+interface CountriesSectionProps{
+  data:InternationalData
+}
+export function CountriesSection({data}:CountriesSectionProps) {
   const [activeContinent, setActiveContinent] = useState<
     "europe" | "africa" | "asia"
   >("europe");
@@ -73,14 +76,13 @@ export function CountriesSection() {
         <h2 className="text-lg lg:text-[40px] font-normal text-[#293242] mb-6 max-w-4xl mx-auto leading-tight">
           {t("moneyTransfer.title" as any) || (
             <>
-             Your money is going places. Keep more of it, with competitive rates when sending to  {" "}
+             {data.CountriesHead}  {" "}
               <span className="text-slate-900 font-extrabold">
-                160+ countries,in
+              {data.CountriesHeadBold}
               </span>{" "}
-              <span className="text-slate-900 font-extrabold">
+              {/* <span className="text-slate-900 font-extrabold">
                 over 70 currencies
-              </span>
-              .
+              </span> */}
             </>
           )}
         </h2>

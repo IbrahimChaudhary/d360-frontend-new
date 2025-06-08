@@ -21,10 +21,10 @@ export default function AboutPage() {
   const [contact, setContact] = useState<ContactPageData | null>(null);
 
   useEffect(() => {
-    fetchContact()
+    fetchContact(language)
       .then(setContact)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, []);
+  }, [language]);
   return (
     <div className="flex flex-col">
       <Header variant="about" />

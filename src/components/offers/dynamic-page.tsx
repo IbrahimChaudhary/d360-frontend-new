@@ -16,11 +16,6 @@ export default function OfferDynamicPage({ page }: Props) {
     <div className="flex flex-col min-h-screen">
       <Header variant="about"/>
       <main className="flex-1 lg:pt-20">
-        <div className="lg:hidden mb-8 ">
-          <Hero backgroundImage="/offers/card1.png">
-            
-          </Hero>
-        </div>
 
         <OfferDetails offer={page} />
       </main>
