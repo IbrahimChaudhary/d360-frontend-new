@@ -8,58 +8,16 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store/toggle-store";
 import { DesktopDropdownMenu } from "./dropdown-menu";
+import { fetchHeader } from "@/api/header";
+import type { Header } from "@/types/header/header";
 
-const aboutSections = [
-  {
-    items: [
-      { label: "About D360", href: "/about" },
-      { label: "Media Center", href: "/media" },
-      { label: "Shariah Committee", href: "/shahriah-committee" },
-      { label: "Investor Relations", href: "/investors" },
-    ],
-  },
-  {
-    title: "Help & Support",
-    items: [
-      { label: "Security Awareness", href: "/security-awareness" },
-      { label: "Privacy Notice", href: "/privacy-notice" },
-      // {
-      //   label: "Customer Protection Principles",
-      //   href: "/protection-principles",
-      // },
-      { label: "Customer Care", href: "/customer-care" },
-      { label: "Products & Services", href: "/products-and-services" },
-      { label: "Contact Us", href: "/contact-us" },
-    ],
-  },
-];
-
-const personalSections = [
-  {
-    items: [
-      { label: "Personal Services", href: "/personal-services" },
-      { label: "Savings Accounts", href: "/savings-account" },
-      { label: "Payments", href: "/payments" },
-      { label: "International Transfers", href: "/international-transfers" },
-      { label: "Cards", href: "/card" },
-      { label: "Offers", href: "/offers" },
-    ],
-  },
-  {
-    title: "Help & Support",
-    items: [
-      { label: "Security Awareness", href: "/security-awareness" },
-      { label: "Privacy Notice", href: "/privacy-notice" },
-      // {
-      //   label: "Customer Protection Principles",
-      //   href: "/protection-principles",
-      // },
-      { label: "Customer Care", href: "/customer-care" },
-      { label: "Products & Services", href: "/products-and-services" },
-      { label: "Contact Us", href: "/contact-us" },
-    ],
-  },
-];
+interface MenuSection {
+  title?: string;
+  items: {
+    label: string;
+    href: string;
+  }[];
+}
 
 interface HeaderProps {
   fixed?: boolean;
@@ -70,6 +28,20 @@ export function Header({ variant = "default" }: HeaderProps) {
   const [openMenu, setOpenMenu] = useState<"about" | "personal" | null>(null);
   const { language, toggleLanguage } = useStore();
   const isRTL = language === "ar";
+  const [headerData, setHeaderData] = useState<Header | null>(null);
+
+  useEffect(() => {
+    const loadHeaderData = async () => {
+      try {
+        const data = await fetchHeader(language);
+        setHeaderData(data);
+      } catch (error) {
+        console.error("Error fetching header data:", error);
+      }
+    };
+
+    loadHeaderData();
+  }, [language]);
 
   const handleToggle = useCallback(() => {
     toggleLanguage();
@@ -117,7 +89,6 @@ export function Header({ variant = "default" }: HeaderProps) {
   // Logic for changing logo and nav color (only for 'default')
   const shouldChangeAssets = variant === "default";
 
- 
   const isMenuOpen = openMenu !== null;
 
   const logoSrc = shouldChangeAssets
@@ -140,6 +111,49 @@ export function Header({ variant = "default" }: HeaderProps) {
     : "text-[#293242]";
   
 
+  const aboutSections: MenuSection[] = [
+    {
+      items: [
+        { label: headerData?.link1 || "About D360", href: headerData?.link1Url || "/about" },
+        { label: headerData?.link2 || "Media Center", href: headerData?.link2Url || "/media" },
+        { label: headerData?.link3 || "Shariah Committee", href: headerData?.link3Url || "/shahriah-committee" },
+        { label: headerData?.link4 || "Investor Relations", href: headerData?.link4Url || "/investors" },
+      ],
+    },
+    {
+      title: headerData?.Help || "Help & Support",
+      items: [
+        { label: headerData?.HelpLink1 || "Security Awareness", href: headerData?.HelpLink1Url || "/security-awareness" },
+        { label: headerData?.HelpLink2 || "Privacy Notice", href: headerData?.HelpLink2Url || "/privacy-notice" },
+        { label: headerData?.HelpLink3 || "Customer Care", href: headerData?.HelpLink3Url || "/customer-care" },
+        { label: headerData?.HelpLink4 || "Products & Services", href: headerData?.HelpLink4Url || "/products-and-services" },
+        { label: headerData?.HelpLink5 || "Contact Us", href: headerData?.HelpLink5Url || "/contact-us" },
+      ],
+    },
+  ];
+
+  const personalSections: MenuSection[] = [
+    {
+      items: [
+        { label: "Personal Services", href: "/personal-services" },
+        { label: "Savings Accounts", href: "/savings-account" },
+        { label: "Payments", href: "/payments" },
+        { label: "International Transfers", href: "/international-transfers" },
+        { label: "Cards", href: "/card" },
+        { label: "Offers", href: "/offers" },
+      ],
+    },
+    {
+      title: headerData?.Help || "Help & Support",
+      items: [
+        { label: headerData?.HelpLink1 || "Security Awareness", href: headerData?.HelpLink1Url || "/security-awareness" },
+        { label: headerData?.HelpLink2 || "Privacy Notice", href: headerData?.HelpLink2Url || "/privacy-notice" },
+        { label: headerData?.HelpLink3 || "Customer Care", href: headerData?.HelpLink3Url || "/customer-care" },
+        { label: headerData?.HelpLink4 || "Products & Services", href: headerData?.HelpLink4Url || "/products-and-services" },
+        { label: headerData?.HelpLink5 || "Contact Us", href: headerData?.HelpLink5Url || "/contact-us" },
+      ],
+    },
+  ];
 
   return (
     <header
