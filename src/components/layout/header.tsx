@@ -116,8 +116,8 @@ export function Header({ variant = "default" }: HeaderProps) {
       items: [
         { label: headerData?.link1 || "About D360", href: headerData?.link1Url || "/about" },
         { label: headerData?.link2 || "Media Center", href: headerData?.link2Url || "/media" },
-        { label: headerData?.link3 || "Shariah Committee", href: headerData?.link3Url || "/shahriah-committee" },
-        { label: headerData?.link4 || "Investor Relations", href: headerData?.link4Url || "/investors" },
+        { label: headerData?.link3 || "Shariah Committee", href: headerData?.link3Url || "/shariah-committee" },
+        { label: headerData?.link4 || "Investor Relations", href: headerData?.link4Url || "/investor-relations" },
       ],
     },
     {
@@ -126,8 +126,9 @@ export function Header({ variant = "default" }: HeaderProps) {
         { label: headerData?.HelpLink1 || "Security Awareness", href: headerData?.HelpLink1Url || "/security-awareness" },
         { label: headerData?.HelpLink2 || "Privacy Notice", href: headerData?.HelpLink2Url || "/privacy-notice" },
         { label: headerData?.HelpLink3 || "Customer Care", href: headerData?.HelpLink3Url || "/customer-care" },
-        { label: headerData?.HelpLink4 || "Products & Services", href: headerData?.HelpLink4Url || "/products-and-services" },
-        { label: headerData?.HelpLink5 || "Contact Us", href: headerData?.HelpLink5Url || "/contact-us" },
+        { label: headerData?.HelpLink4 || "Customer Care", href: headerData?.HelpLink4Url || "/customer-care" },
+        { label: headerData?.HelpLink5 || "Products & Services", href: headerData?.HelpLink5Url || "/products-and-services" },
+        { label: headerData?.HelpLink6 || "Contact Us", href: headerData?.HelpLink6Url || "/contact-us" },
       ],
     },
   ];
@@ -135,12 +136,12 @@ export function Header({ variant = "default" }: HeaderProps) {
   const personalSections: MenuSection[] = [
     {
       items: [
-        { label: "Personal Services", href: "/personal-services" },
-        { label: "Savings Accounts", href: "/savings-account" },
-        { label: "Payments", href: "/payments" },
-        { label: "International Transfers", href: "/international-transfers" },
-        { label: "Cards", href: "/card" },
-        { label: "Offers", href: "/offers" },
+        { label: headerData?.PSLink1 || "Personal Services", href: headerData?.PSLink1Url || "/personal-services" },
+        { label: headerData?.PSLink2 || "Savings Accounts", href: headerData?.PSLink2Url || "/savings-account" },
+        { label: headerData?.PSLink3 || "Payments", href: headerData?.PSLink3Url || "/payments" },
+        { label: headerData?.PSLink4 || "International Transfers", href: headerData?.PSLink4Url || "/international-transfer" },
+        { label: headerData?.PSLink5 || "Cards", href: headerData?.PSLink5Url || "/card" },
+        { label: headerData?.PSLink6 || "Offers", href: headerData?.PSLink6Url || "/offers" },
       ],
     },
     {
@@ -208,7 +209,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <DesktopDropdownMenu
-            label="About D360"
+            label= {isRTL ? "عن  D360" : "About D360"}
             active={openMenu === "about"}
             onToggle={() => toggleMenu("about")}
             sections={aboutSections}
@@ -216,7 +217,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           />
 
           <DesktopDropdownMenu
-            label="Personal"
+            label= {isRTL ? "شخصي" : "Personal"}
             active={openMenu === "personal"}
             onToggle={() => toggleMenu("personal")}
             sections={personalSections}

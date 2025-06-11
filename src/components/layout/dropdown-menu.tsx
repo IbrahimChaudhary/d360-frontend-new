@@ -68,7 +68,7 @@ export function DesktopDropdownMenu({
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block text-[#263244] hover:text-[#E74529] transition text-sm"
+                      className="block text-[#263244] hover:text-[#E74529] transition text-[18px]"
                     >
                       {item.label}
                     </Link>
