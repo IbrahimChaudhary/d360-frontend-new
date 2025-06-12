@@ -272,7 +272,7 @@ export default function ScrollSection({ data }: ScrollSectionProps) {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className={`mt-4 w-full text-[#263244] text-base md:text-[31px] ${
+            className={`mt-4 w-full text-[#263244] text-base md:text-[28px] ${
               language === "ar" ? "text-right" : "text-left"
             }`}
           >

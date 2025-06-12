@@ -54,7 +54,7 @@ export function DesktopDropdownMenu({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="fixed top-[135px] left-0 w-full bg-white z-40 shadow-md"
+            className="fixed top-[122px] left-0 w-full bg-white z-40 shadow-md"
           >
             <div className="container px-28 py-10 grid grid-cols-2 w-[80%] max-w-7xl">
               {sections.map((section, idx) => (

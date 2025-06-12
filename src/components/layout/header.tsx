@@ -94,14 +94,14 @@ export function Header({ variant = "default" }: HeaderProps) {
   const logoSrc = shouldChangeAssets
     ? isMenuOpen || isWhite
       ? isRTL
-        ? "/arabic-logo-black.png"
-        : "/footer-logo.png"
+        ? "/arabic-logo-black.svg"
+        : "/footer-logo.svg"
       : isRTL
-      ? "/arabic-logo.png"
-      : "/logo2.png"
+      ? "/arabic-logo.svg"
+      : "/logo2.svg"
     : isRTL
-    ? "/arabic-logo-black.png"
-    : "/footer-logo.png";
+    ? "/arabic-logo-black.svg"
+    : "/footer-logo.svg";
   
 
     const navColor = shouldChangeAssets
@@ -159,7 +159,7 @@ export function Header({ variant = "default" }: HeaderProps) {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 lg:px-4",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 lg:px-9",
         isHidden ? "-translate-y-full" : "translate-y-0",
         isMenuOpen
           ? "bg-white shadow-md"
@@ -184,14 +184,14 @@ export function Header({ variant = "default" }: HeaderProps) {
           <Link href="/">
             <Image
               src={logoSrc}
-              width={isRTL ? 80 : 65}
-              height={isRTL ? 80 : 105}
+              width={isRTL ? 59 : 59}
+              height={isRTL ? 90 : 90}
               alt="Logo"
               className={cn(
                 "transition-all duration-300",
                 isRTL
-                  ? "lg:w-[65px] lg:h-[105px] w-[50px] h-[80px]"
-                  : "lg:w-[65px] lg:h-[105px] w-[50px] h-[80px]"
+                  ? "lg:w-[59px] lg:h-[90px] w-[50px] h-[80px]"
+                  : "lg:w-[59px] lg:h-[90px] w-[50px] h-[80px]"
               )}
             />
           </Link>

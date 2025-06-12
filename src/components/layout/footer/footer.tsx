@@ -47,8 +47,8 @@ export function Footer() {
           <div className={`mb-6 flex  md:hidden ${isRTL ? 'justify-start' : 'justify-start'}`}>
             <Image
             src={isRTL 
-              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.png"}`
-              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.png"}`
+              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.svg"}`
+              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.svg"}`
             }
               alt="D360 Bank Logo"
               width={59}
@@ -85,11 +85,8 @@ export function Footer() {
 
         {/* Desktop Logo */}
         <div className="md:flex hidden">
-          <Image
-            src={isRTL 
-              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.png"}`
-              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.png"}`
-            }
+           <Image
+            src={isRTL ? "/arabic-logo-black.svg" : "/footer-logo.svg"}
             alt="D360 Bank Logo"
             width={59}
             height={90}

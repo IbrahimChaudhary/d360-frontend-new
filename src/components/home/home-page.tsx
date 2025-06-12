@@ -44,13 +44,13 @@ export default function HomePage() {
     { 
       label: homeData?.Title6 ?? '', 
       value: homeData?.Description6 ?? '', 
-      prefix: "+", 
+      prefix: "", 
       animated: true 
     },
     { 
       label: homeData?.Title7 ?? '', 
       value: homeData?.Description7 ?? '', 
-      prefix: "+", 
+      prefix: "", 
       animated: true 
     },
   ];

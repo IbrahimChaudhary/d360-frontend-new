@@ -358,7 +358,7 @@ export default function InteractiveCardHero({
               <h2 className="text-[42.75px] font-extrabold mb-2">
                 {data.PhysicalCard}
               </h2>
-              <p className="text-[18px] max-w-md leading-tight">
+              <p className="text-[18px] max-w-md pl-5 pr-5 leading-tight">
                 {data.PhysicalCardDescription}
               </p>
               <button
@@ -535,7 +535,7 @@ export default function InteractiveCardHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold rtl:text-left rtl:left-[-2px]"
+                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold rtl:left-[-2px]"
               >
                 {data.DigitalCard}
               </motion.div>
@@ -550,7 +550,7 @@ export default function InteractiveCardHero({
                 hoveredSide === "right"
                   ? "50%"
                   : language === "ar"
-                  ? "60%"
+                  ? "80%"
                   : "-20%",
               x: hoveredSide === "right" ? "-50%" : "0%",
               opacity: 1,
@@ -578,7 +578,7 @@ export default function InteractiveCardHero({
                   <h2 className="text-[42.75px] font-bold ">
                     {data.DigitalCard}
                   </h2>
-                  <p className="text-[18px] px-1 mb-4 rtl:px-6 mx-auto text-center ">
+                  <p className="text-[18px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
                     {data.DigitalCardDescription}
                   </p>
                   <button
