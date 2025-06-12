@@ -60,8 +60,14 @@ export default function AboutPage() {
       <Header variant="about" />
 
       <main className="flex-1">
-        <Hero
+        {/*<Hero
           backgroundImage={`${baseUrl}${aboutData?.heroImage?.formats?.large?.url || aboutData?.heroImage?.formats?.medium?.url || aboutData?.heroImage.formats?.small?.url || aboutData?.heroImage?.url}`}
+          direction={isRTL ? "rtl" : "ltr"}
+        >*/}
+        <Hero
+          backgroundImage={
+            isRTL ? "/about/about-hero-arabic.png" : "/about/about-hero.png"
+          }
           direction={isRTL ? "rtl" : "ltr"}
         >
           <div
@@ -69,11 +75,7 @@ export default function AboutPage() {
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-            <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
-                isRTL ? "justify-end" : " justify-center"
-              }`}
-            >
+            <h1 className={`text-[25px] flex items-center  uppercase lg:text-[140px] font-extrabold text-[#263244] lg:leading-33 ${isRTL?"justify-end":" justify-center"}`}>
               {aboutData?.Title1}
               <br />
               {aboutData?.Title2}
@@ -118,7 +120,7 @@ export default function AboutPage() {
             language === "ar" ? "flex-row" : "flex-row"
           } `}
         >
-          <ContactImage url={`${process.env.NEXT_PUBLIC_STRAPI_URL}${aboutData?.sideImg?.formats?.large?.url || aboutData?.sideImg?.formats?.medium?.url || aboutData?.sideImg?.url || "/contact/contact-mob.png"}`} />
+          <ContactImage />
 
           {aboutData && <ContactContent data={aboutData} />}
         </div>

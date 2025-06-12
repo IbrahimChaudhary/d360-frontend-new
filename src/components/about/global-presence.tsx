@@ -47,10 +47,10 @@ export function GlobalCTA({
         <h2 className="text-3xl md:text-[60px] px- font-extrabold text-[#263244]  mb-4">
           {title}
         </h2>
-        <p className="text-md md:text-[20px] lg:px-52 text-[#263244] ">
+        <p className="text-md md:text-[20px] lg:px-60 text-[#263244] ">
           {subtitle}
         </p>
-        <p className="text-md md:text-[20px] lg:px-52 text-[#263244]  mb-8">
+        <p className="text-md md:text-[20px] lg:px-60 text-[#263244]  mb-8">
           {subtitle2}
         </p>
         <Button

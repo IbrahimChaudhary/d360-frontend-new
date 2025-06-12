@@ -13,14 +13,14 @@ export function Hero({ backgroundImage, children, direction = "ltr" }: HeroProps
   const isRTL = direction === "rtl";
 
   return (
-    <section className="w-full  lg:h-[100vh] relative overflow-hidden">
+    <section className="w-full md:min-h-[750px] lg:h-[100vh] relative overflow-hidden">
       <div
         className="absolute w-full h-full bg-no-repeat bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
       
       <div
-        className={`container max-w-screen w-full px-4 md:px-6 flex flex-col md:flex-row ${
+        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row ${
           isRTL ? "" : ""
         } lg:items-center justify-between h-full pt-28 lg:pt-52 pb-16 relative z-10`}
       >
