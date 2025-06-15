@@ -59,7 +59,6 @@ function ApplePay() {
               FAQs
             </button>
           </div>
-
           {applePay && <ApplePayOverview data={applePay}/>}
         </div>
       ) : (
