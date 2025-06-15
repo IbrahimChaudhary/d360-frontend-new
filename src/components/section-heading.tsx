@@ -17,9 +17,9 @@ export function SectionHeading({ children, className,textstyle = "" }: SectionHe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className={`text-center max-w-7xl mx-auto mb-16 ${className}`}
+      className={`text-center  mb-16 ${className}`}
     >
-      <h2 className={cn(` mx-auto lg:w-full text-[#263244] mb-2 `,textstyle)}>
+      <h2 className={cn(` mx-auto lg:w-[70%] text-[#263244] mb-2 `,textstyle)}>
         {children}
       </h2>
     </motion.div>

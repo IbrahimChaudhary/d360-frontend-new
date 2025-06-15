@@ -19,10 +19,10 @@ export default function ProductAndServicesFee() {
     <div className="w-full  flex flex-col justify-center px-4 items-center">
       <Header variant="about" />
       <div className=" mt-[150px] flex max-w-5xl  flex-col justify-center items-center overflow-y-scroll  ">
-        <div className="text-[25px] lg:text-[80px]  flex flex-col justify-start items-start text-[#E74529] font-extrabold">
+        <div className="text-[25px] md:px-7 px-4 lg:text-[80px]  flex flex-col justify-start items-start text-[#E74529] font-extrabold">
           {feeData?.MainTitle}
         </div>
-        <div className="text-[14px] lg:text-[25px] max-w-[1024px]">{feeData?.Description}</div>
+        <div className="text-[14px] md:px-7 px-4 lg:text-[25px] max-w-[1024px]">{feeData?.Description}</div>
 
         {feeData && <FeeFAQAccordion data={feeData} />}
       </div>

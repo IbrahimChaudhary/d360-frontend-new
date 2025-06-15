@@ -73,8 +73,8 @@ export default function InternationalTransfer() {
             </div>
           </div>
         </Hero>
-        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-5xl">
-          <p className="lg:text-[60px] px-4 lg:px-0 lg:w-[90%] mx-auto text-center font-bold lg:font-extrabold ">
+        <SectionHeading className=" pt-6 lg:pt-16 ">
+          <p className="lg:text-[60px] px-4 lg:px-0 lg:w-[80%] mx-auto text-center font-bold lg:font-extrabold ">
             {international?.Title1}{" "}
           </p>
         </SectionHeading>

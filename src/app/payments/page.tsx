@@ -37,11 +37,17 @@ export default function Payments() {
       {payment && (
         <main className="flex-1">
           <Hero
-            backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
+            backgroundImage={
               payment?.imges?.formats?.large?.url ||
               payment?.imges?.formats?.medium?.url ||
               payment?.imges?.url
-            }`}
+                ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
+                    payment?.imges?.formats?.large?.url ||
+                    payment?.imges?.formats?.medium?.url ||
+                    payment?.imges?.url
+                  }`
+                : ""
+            }
           >
             <h1 className="text-[30px] lg:text-[80px] rtl:text-right  uppercase font-extrabold text-[#263244] leading-tight">
               {payment?.MainTitle}
@@ -96,7 +102,8 @@ export default function Payments() {
                   payment?.Way2Icon?.formats?.large?.url ||
                   payment?.Way2Icon?.formats?.medium?.url ||
                   payment?.Way2Icon?.url
-                }`,              },
+                }`,
+              },
               {
                 heading: `${payment?.Title2}`,
                 subheading: `${payment?.Way3Head}`,
@@ -110,7 +117,8 @@ export default function Payments() {
                   payment?.Way3Icon?.formats?.large?.url ||
                   payment?.Way3Icon?.formats?.medium?.url ||
                   payment?.Way3Icon?.url
-                }`,              },
+                }`,
+              },
             ]}
           />
 

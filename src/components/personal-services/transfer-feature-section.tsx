@@ -12,14 +12,14 @@ interface TransfersFeatureSectionProps{
 export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
   const items = [
     {
-      icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[40px] h-[40px] " />,
+      icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[30px] h-[30px] " />,
       title: `${data.Title12} ${data.Title13}`,
       button: `${data.button}`,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.image1?.formats?.large?.url || data.image1?.formats?.medium?.url || data.image1?.url }`,
       reverse: false,
     },
     {
-      icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[40px] h-[40px]" />,
+      icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[30px] h-[30px]" />,
       title: `${data.Title14} ${data.Title15}`,
       button: `${data.button2}`,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.imges2?.formats?.large?.url || data.imges2?.formats?.medium?.url || data.imges2?.url || "/personal/mob-left.png"}`,
@@ -44,18 +44,18 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
               <div className="flex items-center justify-start gap-2">
                 {item.icon}
               </div>
-              <h3 className="text-[30px] lg:text-[60px] font-extrabold text-[#263244]">{item.title}</h3>
+              <h3 className="text-[30px] lg:text-[40px] font-extrabold text-[#263244]">{item.title}</h3>
               <button className="bg-[#E74529] text-white rounded-md lg:rounded-xl px-8 lg:px-12 py-2 font-bold text-[8px] lg:text-[20px] hover:bg-[#cf3c21] transition">
                 {item.button}
               </button>
             </div>
 
-            <div className="flex-1 max-w-[300px] lg:max-w-[400px]">
+            <div className="flex-1 max-w-[300px] lg:max-w-[500px]">
               <Image
                 src={item.image}
                 alt={item.title}
-                width={360}
-                height={360}
+                width={500}
+                height={500}
                 className="object-contain  h-auto"
               />
             </div>

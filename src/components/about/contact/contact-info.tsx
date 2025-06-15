@@ -101,14 +101,14 @@ export function ContactInfo({
         </ul>
       </div>
 
-      {language === "ar" && (
+   
         <div className="space-y-2 text-sm">
           <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
-            {data.Title7}
+            {data.complaint}
           </h4>
-          <p className="text-[20px] leading-relaxed">{data.viaDes}</p>
+          <p className="text-[25px] leading-relaxed">{data.complaintDes}</p>
         </div>
-      )}
+     
 
       {showButton && (
         <div
@@ -119,7 +119,7 @@ export function ContactInfo({
           <Button
             onClick={() => setModalOpen(true)}
             size="lg"
-            className="bg-[#E74529] font-bold text-white rounded-[15px] hover:bg-[#e6391f]"
+             className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
           >
             {data.download}{" "}
           </Button>

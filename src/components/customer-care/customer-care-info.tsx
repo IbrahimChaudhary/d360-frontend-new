@@ -40,7 +40,7 @@ export function CustomerCareContactInfo({
   return (
     <div
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="text-[#263244] text-sm space-y-6 px-4 lg:px-10 mb-12 lg:mb-0"
+      className="text-[#263244] text-sm space-y-6 px-4  lg:px-10 mb-12 lg:mb-0"
     >
       {data.Feedbacks && (
         <h3
@@ -52,7 +52,7 @@ export function CustomerCareContactInfo({
         </h3>
       )}
       {data.FeedbacksSub && (
-        <p className="text-lg font-semibold text-[#EB644C] ">
+        <p className="text-[30px] font-extrabold text-[#EB644C] ">
           {data.FeedbacksSub}
         </p>
       )}
@@ -61,15 +61,21 @@ export function CustomerCareContactInfo({
         {showPhone && (
           <>
             <div>
-              <h4 className="text-[#6D809C] font-bold ">{data.inside}</h4>
+              <h4 className="text-[#6D809C] text-[14px] lg:text-[25px] font-bold ">
+                {data.inside}
+              </h4>
               <p>{data.insideDes}</p>
             </div>
             <div>
-              <h4 className="text-[#6D809C] font-bold">{data.outside}</h4>
+              <h4 className="text-[#6D809C] text-[14px] lg:text-[25px]  font-bold">
+                {data.outside}
+              </h4>
               <p>{data.outsideDes}</p>
             </div>
             <div>
-              <h4 className="text-[#6D809C] font-bold">{data.emailHead}</h4>
+              <h4 className="text-[#6D809C] text-[14px] lg:text-[25px] font-bold">
+                {data.emailHead}
+              </h4>
               <p>{data.Email}</p>
             </div>
           </>
@@ -80,15 +86,20 @@ export function CustomerCareContactInfo({
         <h4 className="text-[#EB644C] font-extrabold text-[14px] lg:text-[30px] mb-2">
           {data.Bank}
         </h4>
-        <p className="text-[#293242] mb-2 text-[14px] lg:text-[25px]">{data.Reach}</p>
-        <ul className="list-disc text-[10px] lg:text-base list-inside space-y-1">
+        <p className="text-[#6D809C] font-bold mb-4 text-[14px] lg:text-[25px]">
+          {data.Reach}
+        </p>
+        <ul className="list-disc text-[10px] lg:text-[25px] font-medium list-inside space-y-1">
           <li>{data.ReachA}</li>
           <li>{data.ReachB}</li>
         </ul>
       </div>
 
-      <div className="lg:text-base text-[10px]">{data.complaint}</div>
-      <div className="lg:text-base text-[10px]">{data.Contact}</div>
+      <div className="lg:text-[25px] text-[10px]">{data.complaint}</div>
+      <div className="lg:text-[25px] text-[10px]">
+        {data.Contact}
+        <span className="text-[#EB644C] font-bold">{data.Email}</span>
+      </div>
     </div>
   );
 }

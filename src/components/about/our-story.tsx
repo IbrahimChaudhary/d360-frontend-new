@@ -33,8 +33,8 @@ export function OurStory({ data }: OurStoryProps) {
           <Image
             src="/about/our-story.png"
             alt="Decorative pyramid illustration"
-            width={700}
-            height={700}
+            width={500}
+            height={500}
             className="rounded-lg lg:block hidden"
           />
           <Image

@@ -32,13 +32,13 @@ function ApplePay() {
 
       {activeTab === "overview" ? (
         <div className="max-w-[1728px] px-0 lg:px-4 flex flex-col justify-center items-start">
-          <div className="text-[25px] lg:text-[70px] px-2 lg:px-0 text-[#E74529] lg:text-[#293242] w-[80%] lg:w-full  max-w-[1108px] font-extrabold">
+          <div className="text-[25px] lg:text-[70px] lg:px-7 text-[#E74529] lg:text-[#293242] w-[80%] lg:w-full  max-w-[1108px] font-extrabold">
             {applePay?.MainTitle}
           </div>
           
-          <div className="flex   gap-4 mb-6 mt-3 lg:mt-6">
+          <div className="flex md:px-7 px-5  gap-4 mb-6 mt-3 lg:mt-6">
             <button
-              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-base text-[8px] font-bold ${
+              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-[14px] text-[8px] font-bold ${
                 isOverview(activeTab)
                   ? "bg-[#E74529] text-white"
                   : "bg-gray-200 text-black"
@@ -49,7 +49,7 @@ function ApplePay() {
             </button>
 
             <button
-              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-base text-[8px] font-bold ${
+              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-[14px] text-[8px] font-bold ${
                 isFaq(activeTab)
                   ? "bg-[#E74529] text-white"
                   : "bg-gray-200 text-black"
@@ -64,13 +64,13 @@ function ApplePay() {
         </div>
       ) : (
         <div className="flex flex-col max-w-[1240px] lg:justify-center items-start ">
-          <div className="text-[25px] lg:text-[70px]  lg:px-4 text-[#E74529] lg:text-[#293242] w-[80%] lg:w-full  max-w-[1108px] font-extrabold">
+          <div className="text-[25px] lg:text-[70px]  lg:px-10 text-[#E74529] lg:text-[#293242] w-[80%] lg:w-full  max-w-[1108px] font-extrabold">
             {applePay?.MainTitle}
           </div>
 
-          <div className="flex gap-4 lg:mb-6 mt-6 lg:px-4">
+          <div className="flex  gap-4 lg:mb-6 mt-6 md:px-10">
             <button
-              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-base text-[8px] font-bold  ${
+              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-[14px] text-[8px] font-bold  ${
                 isOverview(activeTab)
                   ? "bg-[#E74529] text-white"
                   : "bg-gray-200 text-black"
@@ -81,7 +81,7 @@ function ApplePay() {
             </button>
 
             <button
-              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-base text-[8px] font-bold  ${
+              className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-[14px] text-[8px] font-bold  ${
                 isFaq(activeTab)
                   ? "bg-[#E74529] text-white"
                   : "bg-gray-200 text-black"

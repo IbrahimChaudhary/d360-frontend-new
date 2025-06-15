@@ -34,9 +34,9 @@ export default function CardVariants({ data }: CardVariantsProps) {
         "/placeholder-card-1.png"
       }`,
       bg: "bg-[#FDF0ED]",
-      button: "bg-[#E74529]",
-      text: "text-[#E74529]",
-      iconBg: "bg-[#E74529]",
+      button: "bg-[#EB644C]",
+      text: "text-[#EB644C]",
+      iconBg: "bg-[#EB644C]",
       border: "border-[#EB644C] border-[1px]",
       icons: [
         "/card/icons/card.svg",
@@ -55,7 +55,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
         "/placeholder-card-2.png"
       }`,
       bg: "bg-[#F6F7F8]",
-      button: "bg-[#E74529]",
+      button: "bg-[#EB644C]",
       text: "text-[#293242]",
       iconBg: "bg-[#004118]",
       border: "border-[#004118] border-[1px]",
@@ -76,7 +76,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
         "/placeholder-card-3.png"
       }`,
       bg: "bg-[#F2EAE5]",
-      button: "bg-[#E74529]",
+      button: "bg-[#EB644C]",
       text: "text-[#293242]",
       iconBg: "bg-[#DCC9BB]",
       border: "border-[#DCC9BB] border-[1px]",
@@ -228,7 +228,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
 
             {/* Card Animation - Desktop */}
             <motion.div
-              className="relative h-[230px] mt-10"
+              className="relative h-[230px] mt-10 mr-22"
               animate={animate ? { rotate: -20, y: 20, opacity: 1 } : {}}
               transition={{ duration: 1.8, ease: "easeOut" }}
             >
@@ -292,12 +292,12 @@ export default function CardVariants({ data }: CardVariantsProps) {
         </div>
 
         {/* Desktop Bottom Section */}
-        <div className="hidden lg:flex justify-between items-center pt-10 lg:pt-26 px-6 md:px-44">
-          <p className="text-[25px] font-extrabold text-black">
+        <div className="hidden lg:flex justify-around items-center pt-10 lg:pt-26 ">
+          <p className="text-[25px] w-full max-w-[430px] font-extrabold text-black">
             Free for all D360 customers
           </p>
 
-          <div className="flex justify-center gap-4 relative">
+          <div className="flex justify-end w-full max-w-[430px] gap-4 relative">
             {cards.map((_, idx) => {
               const colors = ["bg-[#E74529]", "bg-[#0A6C4D]", "bg-[#D9D9D9]"];
               const isActive = idx === selected;

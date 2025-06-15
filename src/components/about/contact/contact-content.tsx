@@ -14,13 +14,13 @@ export function ContactContent({ data }: ContactContentProps) {
   const content = language === "en" ? englishContent : arabicContent;
 
   return (
-    <div className="lg:px-4">
+    <AnimatedSection direction="left" className="w-[70%]">
       <ContactInfo
         data={data}
         title={content.data.contact.howTo}
         showComplaintText={false}
         showAppSection={false}
       />
-    </div>
+    </AnimatedSection>
   );
 }

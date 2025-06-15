@@ -43,7 +43,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
     >
       <AccordionTrigger
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[40px] [&>svg]:hidden`}
+        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[30px] [&>svg]:hidden`}
       >
         {item.question}
         <span className="ml-4 shrink-0 relative md:w-[38px] md:h-[39px] w-[24px] h-[24px] flex items-center justify-center">
@@ -101,37 +101,39 @@ export function MergedFAQAccordion({
   
   faqItems,
   title = "FAQs",
-  sectionClassName = "w-full flex justify-center ",
-  titleClassName = "text-[30px] lg:text-[60px] font-extrabold pt-16 lg:pt-0 lg:mb-8 px-4 lg:px-0 text-[#293242]",
+  sectionClassName = "py-8 md:py-16 w-full flex justify-center",
+  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242]",
 }: MergedFAQAccordionProps) {
   const {language} = useStore()
   return (
-    <div className={sectionClassName}>
-      <AnimatedSection direction="up">
-        <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName} `}>{title}</h2>
-        
+    <section className={sectionClassName}>
+      <div className="container px-4 md:px-6">
+        <AnimatedSection direction="up">
+          <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName} `}>{title}</h2>
+          
 
-         {/* <div className="flex flex-col gap-y-4 px-4 py-6">
-          <h1 className="text-[25px] font-extrabold text-[#E74529]">
-          Privacy Notice
-          </h1>
-          <p className="text-[14px] text-[#293242]">
-          D360 Bank (“the Bank”, “D360”, “We”, “Us” or “Our”) is committed to protecting your privacy and Personal Data and offering the highest data protection standards in line with applicable laws and regulations, including without limitation, the Saudi Personal Data Protection Law (“PDPL”). We ask for your consent when required, for processing of your personal information including collection, use, storage, archiving and sharing of your personal information subject to and inconsistence with the PDPL and applicable laws and other notices you may receive based on your relationship with us.
-          </p>
-          <p className="text-[10px] text-[#E74529] underline"> 
-            Read More
-          </p>
-         </div> */}
-        <Accordion
-          type="single"
-          collapsible
-          className="w-full mx-auto p-4" 
-        >
-          {faqItems.map((item: FAQItem, index: number) => (
-            <FAQMerged key={item.id || index} item={item} index={index} />
-          ))}
-        </Accordion>
-      </AnimatedSection>
-    </div>
+           {/* <div className="flex flex-col gap-y-4 px-4 py-6">
+            <h1 className="text-[25px] font-extrabold text-[#E74529]">
+            Privacy Notice
+            </h1>
+            <p className="text-[14px] text-[#293242]">
+            D360 Bank (“the Bank”, “D360”, “We”, “Us” or “Our”) is committed to protecting your privacy and Personal Data and offering the highest data protection standards in line with applicable laws and regulations, including without limitation, the Saudi Personal Data Protection Law (“PDPL”). We ask for your consent when required, for processing of your personal information including collection, use, storage, archiving and sharing of your personal information subject to and inconsistence with the PDPL and applicable laws and other notices you may receive based on your relationship with us.
+            </p>
+            <p className="text-[10px] text-[#E74529] underline"> 
+              Read More
+            </p>
+           </div> */}
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full mx-auto p-4" 
+          >
+            {faqItems.map((item: FAQItem, index: number) => (
+              <FAQMerged key={item.id || index} item={item} index={index} />
+            ))}
+          </Accordion>
+        </AnimatedSection>
+      </div>
+    </section>
   );
 }

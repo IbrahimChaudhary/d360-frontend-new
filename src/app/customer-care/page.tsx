@@ -53,8 +53,8 @@ export default function AboutPage() {
             </div>
           
         </Hero>
-        <SectionHeading className="text-xl lg:text-[60px] lg:w-[77%] text-[#263244] mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
-        <div className="flex flex-col md:flex-row lg:px-6 mx-auto lg:mb-8 items-center justify-center gap-10">
+        <SectionHeading className="text-xl lg:text-[60px] lg:w-[100%] text-[#263244] mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
+        <div className="flex flex-col md:flex-row lg:px-6 w-full max-w-7xl mx-auto lg:mb-8 items-center justify-center gap-10">
           <ContactImage url={`${process.env.NEXT_PUBLIC_STRAPI_URL}${customerCare?.sideImg?.formats?.large?.url || customerCare?.sideImg?.formats?.medium?.url || customerCare?.sideImg?.url || "/contact/contact-mob.png"}`} />
           {customerCare && (
             <CustomerCareContactInfo

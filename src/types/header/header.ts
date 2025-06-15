@@ -24,6 +24,21 @@ export type Header = {
     HelpLink4Url: string;
     HelpLink5: string;
     HelpLink5Url: string;
+    HelpLink6: string;
+    HelpLink6Url: string;
+
+    PSLink1: string;
+    PSLink1Url: string;
+    PSLink2: string;
+    PSLink2Url: string;
+    PSLink3: string;
+    PSLink3Url: string;
+    PSLink4: string;
+    PSLink4Url: string;
+    PSLink5: string;
+    PSLink5Url: string;
+    PSLink6: string;
+    PSLink6Url: string;
   };
   
   export type HeaderResponse = {

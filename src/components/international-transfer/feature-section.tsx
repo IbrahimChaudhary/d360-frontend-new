@@ -76,9 +76,9 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-0 p-1 lg:p-8 shadow-sm hover:shadow-md transition-all duration-300"
+      className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-[35px] lg:pl-[26px] lg:pr-[100px] p-1  transition-all duration-300"
     >
-      <h3 className="text-[14px] lg:text-[40px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4 leading-tight">
+      <h3 className="text-[14px] lg:text-[40px] pr-[105px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4">
         {feature.title}
       </h3>
       <p className="text-[#263244]  text-[12px] lg:text-[25px]">

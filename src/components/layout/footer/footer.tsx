@@ -26,14 +26,14 @@ export function Footer() {
   
   const footerColumns = useMemo(() => {
     const allLinks = [
-      { href: "#", label: footer?.Title1 || "" },
-      { href: "#", label: footer?.Title2 || "" },
-      { href: "#", label: footer?.Title3 || "" },
-      { href: "#", label: footer?.Title4 || "" },
-      { href: "#", label: footer?.Title5 || "" },
-      { href: "#", label: footer?.Title6 || "" },
-      { href: "#", label: footer?.Title7 || "" },
-      { href: "#", label: footer?.Title8 || "" },
+      { href: footer?.Title1Url || "", label: footer?.Title1 || "" },
+      { href: footer?.Title2Url || "", label: footer?.Title2 || "" },
+      { href: footer?.Title3Url || "", label: footer?.Title3 || "" },
+      { href: footer?.Title4Url || "", label: footer?.Title4 || "" },
+      { href: footer?.Title5Url || "", label: footer?.Title5 || "" },
+      { href: footer?.Title6Url || "", label: footer?.Title6 || "" },
+      { href: footer?.Title7Url || "", label: footer?.Title7 || "" },
+      { href: footer?.Title8Url || "", label: footer?.Title8 || "" },
     ];
     const chunkSize = 2;
     return Array.from({ length: 4 }, (_, i) => ({
@@ -47,8 +47,8 @@ export function Footer() {
           <div className={`mb-6 flex  md:hidden ${isRTL ? 'justify-start' : 'justify-start'}`}>
             <Image
             src={isRTL 
-              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.png"}`
-              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.png"}`
+              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.svg"}`
+              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.svg"}`
             }
               alt="D360 Bank Logo"
               width={59}
@@ -85,11 +85,8 @@ export function Footer() {
 
         {/* Desktop Logo */}
         <div className="md:flex hidden">
-          <Image
-            src={isRTL 
-              ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/arabic-logo-black.png"}`
-              : `${process.env.NEXT_PUBLIC_STRAPI_URL}${footer?.logo?.formats?.large?.url || footer?.logo?.formats?.medium?.url || footer?.logo?.url || "/footer-logo.png"}`
-            }
+           <Image
+            src={isRTL ? "/arabic-logo-black.svg" : "/footer-logo.svg"}
             alt="D360 Bank Logo"
             width={59}
             height={90}

@@ -67,7 +67,7 @@ export default function SanabilRates({ data }: SanabilRatesProps) {
         </div>
 
         {/* Note */}
-        <p className="mt-6 text-[5px] lg:text-md text-[#7B818D] max-w-4xl mx-auto">
+        <p className="mt-[42px] text-[15px] lg:text-md text-[#7B818D] max-w-4xl mx-auto">
           {data.RatesTerm}
         </p>
       </div>

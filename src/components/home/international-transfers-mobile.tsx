@@ -21,7 +21,10 @@ export default function TransferSection({
 }: InternationalTransferProps) {
   return (
     <section
-      className={cn("  w-full lg:px-10 py-8 lg:py-16 bg-white ", container)}
+      className={cn(
+        "  w-full lg:px-10 max-w-7xl mx-auto py-8 lg:py-16 bg-white ",
+        container
+      )}
     >
       <div className="lg:w-[70%] w-full space-y-2">
         <p className="rtl:lg:text-right ltr:lg:text-left text-[14px] lg:text-[20px] text-center text-[#ACBBD1]">
@@ -38,11 +41,13 @@ export default function TransferSection({
         </p> */}
       </div>
 
-      <div className="bg-gray-50 lg:w-[30%] p-2   rounded-xl shadow-md space-y-3  mx-4 lg:mx-0 text-black">
+      <div className="bg-gray-50 lg:w-[35%] p-2   rounded-xl shadow-md space-y-3  mx-4 lg:mx-0 text-black">
         <div className=" bg-white p-2 rounded-lg ">
-          <span className="text-[8px] text-left">{data.Sender}</span>
+          <span className="text-[12px] font-semibold text-left">
+            {data.Sender}
+          </span>
           <div className="flex justify-between items-center">
-            <span className="font-bold text-xl">{data.SenderMoney}</span>
+            <span className="font-bold text-[36px]">{data.SenderMoney}</span>
             <div className="text-sm flex items-center font-medium text-black">
               <div className="flex items-center gap-2">
                 <img
@@ -60,7 +65,9 @@ export default function TransferSection({
                   className="w-[16] h-[16]"
                   alt=""
                 />
-                {data.SenderCountry}
+                <span className="text-[24px] font-semibold">
+                  {data.SenderCountry}
+                </span>
               </div>
               <ChevronDown className="align-middle" size={18} />
             </div>
@@ -68,9 +75,9 @@ export default function TransferSection({
         </div>
 
         <div className=" bg-white p-2 rounded-lg">
-          <span className="text-xs ">{data.Receiver}</span>
+          <span className="text-[12px] font-semibold ">{data.Receiver}</span>
           <div className="flex justify-between items-center">
-            <span className="font-bold text-xl">{data.ReceiverMoney}</span>
+            <span className="font-bold text-[36px]">{data.ReceiverMoney}</span>
             <div className="text-sm flex items-center font-medium text-black ">
               <div className="flex items-center gap-2">
                 <img
@@ -88,7 +95,10 @@ export default function TransferSection({
                   className="w-[16] h-[16]"
                   alt=""
                 />
-                {data.ReceiverCountry}
+                <span className="text-[24px] font-semibold">
+                  {" "}
+                  {data.ReceiverCountry}
+                </span>
               </div>
               <ChevronDown className="align-middle" size={18} />
             </div>
@@ -96,18 +106,18 @@ export default function TransferSection({
         </div>
 
         <div className="bg-white p-2 rounded-lg">
-          <span className="text-sm flex items-center font-medium text-black">
+          <span className="text-[12px] flex items-center font-medium text-black">
             {data.Bank} <ChevronDown className="align-middle" size={18} />{" "}
           </span>
-          <span className="text-xl font-bold">{data.BankMoney}</span>
+          <span className="text-[36px] font-bold">{data.BankMoney}</span>
         </div>
 
         <div className="bg-white p-2 rounded-lg">
-          <span className=" text-sm flex items-center font-medium text-black">
+          <span className=" text-[12px] flex items-center font-medium text-black">
             {data.Convert}{" "}
             <ChevronDown className="align-middle hidden" size={18} />
           </span>
-          <span className="text-xl font-bold">{data.ConvertMoney}</span>
+          <span className="text-[36px] font-bold">{data.ConvertMoney}</span>
         </div>
 
         <button className="w-full bg-[#E74529] text-white py-2 rounded-md text-sm font-semibold">

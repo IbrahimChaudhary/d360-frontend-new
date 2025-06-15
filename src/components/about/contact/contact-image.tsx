@@ -12,11 +12,14 @@ export function ContactImage({ url }: ContactImageProps) {
   const { language } = useStore();
   const isRTL = language === "ar";
 
+    // Set the image source depending on language
+  const imageSrc = isRTL ? "/about/phone-ar.png" : "/about/phone.png";
+
   return (
     <AnimatedSection direction="right">
-      <div className="w-[180px] h-[360px] ml-20 sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-[600px] relative">
+      <div className="w-[180px] h-[360px] sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-[600px] relative">
         <Image
-          src={url}
+          src={imageSrc}
           alt="D360 App Help Screen"
           fill
           className="object-contain"

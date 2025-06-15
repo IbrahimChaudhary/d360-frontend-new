@@ -12,11 +12,15 @@ export interface SavingsResponse {
     documentId: string;
     MainTitle1: string;
     MainTitle2: string;
+    MainTitle3: string;
     MainTitleUpDes: string;
     MainTitleDownDes: string;
     Title1: string;
     Title2: string;
-    Title3: string;
+    Way1Title: string;
+    Way2Title: string;
+    Way3Title: string;
+    Way4Title: string;
     HeroBtn: string;
   
     Way1Head: string;

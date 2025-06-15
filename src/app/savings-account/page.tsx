@@ -63,6 +63,8 @@ export default function SavingsAccount() {
               {savings?.MainTitle1}
               <br />
               {savings?.MainTitle2}
+              <br />
+              {savings?.MainTitle3}
             </h1>
             <Button
               className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 lg:rounded-[14px]"
@@ -75,19 +77,19 @@ export default function SavingsAccount() {
             </p>
           </div>
         </Hero>
-        <SectionHeading className=" pt-6 lg:pt-16">
+        {/* <SectionHeading className=" pt-6 lg:pt-16">
           <span className="text-[25px] lg:text-[60px] font-extrabold ">
             {" "}
             {savings?.Title1} <br /> {savings?.Title2}
           </span>
-        </SectionHeading>
+        </SectionHeading> */}
         <Carosel
           layout="default"
           showButton={true}
           btnTxt={savings?.SavingBtn}
           slides={[
             {
-              heading: `${savings?.Title3}`,
+              heading: `${savings?.Way1Title}`,
               subheading: `${savings?.Way1Head}`,
               paragraph: `${savings?.Way1Des}`,
               image: `${
@@ -103,7 +105,7 @@ export default function SavingsAccount() {
               }`,
             },
             {
-              heading: `${savings?.Title3}`,
+              heading: `${savings?.Way2Title}`,
               subheading: `${savings?.Way2Head}`,
               paragraph: `${savings?.Way2Des}`,
               image: `${
@@ -119,7 +121,7 @@ export default function SavingsAccount() {
               }`,
             },
             {
-              heading: `${savings?.Title3}`,
+              heading: `${savings?.Way3Title}`,
               subheading: `${savings?.Way3Head}`,
               paragraph: `${savings?.Way3Des}`,
               image: `${
@@ -135,7 +137,7 @@ export default function SavingsAccount() {
               }`,
             },
             {
-              heading: `${savings?.Title3}`,
+              heading: `${savings?.Way4Title}`,
               subheading: `${savings?.Way4Head}`,
               paragraph: `${savings?.Way4Des}`,
               image: `${
