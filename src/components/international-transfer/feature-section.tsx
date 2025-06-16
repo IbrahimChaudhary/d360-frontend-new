@@ -41,10 +41,10 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
     <Section className="flex justify-center">
       <div className=" ">
         <AnimatedSection direction="up" className="text-center mb-8 lg:mb-16">
-          <h2 className="lg:text-[50px] text-[25px] font-bold text-[slate-800]">{data.FeatHead}</h2>
+          <h2 className="lg:text-[50px] text-[25px] font-bold text-[#263244]">{data.FeatHead}</h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 lg:px-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 ">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}

@@ -41,15 +41,17 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
           transition={{ duration: 0.6 }}
           className="max-w-lg text-center md:text-left"
         >
-          <h3 className="text-[20px] md:text-[40px]  text-[#263244] mb-6">
+          <h3 className="text-[20px] md:text-[40px] rtl:text-right  text-[#263244] mb-6">
             {data.Title1}
           </h3>
 
-          <Button 
-          onClick={() => setModalOpen(true)}
-          className="bg-[#E74529] hover:bg-[#e93d20] text-white lg:rounded-xl rounded-md text-[8px] font-bold  px-6 py-2 lg:text-[20px]">
-            {data.download}
-          </Button>
+          <div
+              onClick={() => setModalOpen(true)}
+              className={`bg-[#EB644C] text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] rtl:lg:px-3 w-[40%]  rtl:lg:ml-30 ltr:lg:px-16"
+              }`}
+            >
+              {data.download}
+            </div>
         </motion.div>
       </div>
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />

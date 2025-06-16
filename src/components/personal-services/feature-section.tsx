@@ -49,7 +49,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
 
   return (
     <section className=" lg:py-16 bg-white px-4 ">
-      <SectionHeading className="mt-16 text-[27px] w-full lg:text-[60px] font-extrabold">
+      <SectionHeading className="py-16 text-[27px]   leading-tight w-full lg:text-[60px] font-extrabold">
         {data.Title1} {data.Title2} {data.Title3}
       </SectionHeading>
 
@@ -65,7 +65,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
           >
             <Icon
               size={32}
-              className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[45px] lg:h-[57px]"
+              className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[40px] lg:h-[40px]"
             />
             <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}

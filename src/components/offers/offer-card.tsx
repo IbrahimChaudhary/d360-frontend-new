@@ -70,8 +70,8 @@ export function OfferCard({
             <h3 className="font-extrabold text-base md:text-[25px] leading-snug mb-2">
               {language === "en" ? `${data?.title}` : data?.title}
             </h3>
-            <div className="text-xs flex items-center gap-2 opacity-90">
-              <Calendar/>
+            <div className="text-[11px] pt-3 flex items-center gap-2 opacity-90">
+              <Calendar width={14} height={14}/>
               <span>{data?.date}</span>
             </div>
           </div>

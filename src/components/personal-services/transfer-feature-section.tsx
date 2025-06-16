@@ -12,20 +12,28 @@ interface TransfersFeatureSectionProps{
 export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
   const items = [
     {
-      icon: <FaGlobe size={20} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[30px] h-[30px] " />,
+      icon: (
+        <div className="w-[40px] h-[40px] bg-[#F6F7F8] rounded-full flex items-center justify-center">
+          <FaGlobe size={18} className="text-[#263244]" />
+        </div>
+      ),
       title: `${data.Title12} ${data.Title13}`,
       button: `${data.button}`,
-      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.image1?.formats?.large?.url || data.image1?.formats?.medium?.url || data.image1?.url }`,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.image1?.formats?.large?.url || data.image1?.formats?.medium?.url || data.image1?.url}`,
       reverse: false,
     },
     {
-      icon: <FaExchangeAlt size={22} className="text-[#263244] bg-[#F6F7F8] rounded-full w-[30px] h-[30px]" />,
+      icon: (
+        <div className="w-[40px] h-[40px] bg-[#F6F7F8] rounded-full flex items-center justify-center">
+          <FaExchangeAlt size={18} className="text-[#263244]" />
+        </div>
+      ),
       title: `${data.Title14} ${data.Title15}`,
       button: `${data.button2}`,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.imges2?.formats?.large?.url || data.imges2?.formats?.medium?.url || data.imges2?.url || "/personal/mob-left.png"}`,
       reverse: true,
     },
-  ]
+  ];
   return (
     <section className="bg-white lg:pt-0 pt-18 px-6 lg:px-0 max-w-5xl mx-auto">
       <div className="space-y-20 max-w-7xl mx-auto">

@@ -49,6 +49,7 @@ export default function InvestorRealtions() {
       <Header variant="about" />
       <main className="flex-1">
         <Hero
+        containerAlign="lg:items-start"
           backgroundImage={
             investor?.HeroImg?.formats?.large?.url ||
             investor?.HeroImg?.formats?.medium?.url ||
@@ -77,7 +78,7 @@ export default function InvestorRealtions() {
             </h1>
           </div>
         </Hero>
-        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-5xl">
+        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-7xl">
           <p className="lg:text-[50px] text-[25px] px-4 lg:px-0  mx-auto text-center font-extrabold ">
             {investor?.Title2}
           </p>

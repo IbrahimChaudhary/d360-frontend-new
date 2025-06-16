@@ -56,7 +56,7 @@ export default function ShahriahCommittee() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight${
+              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -68,14 +68,14 @@ export default function ShahriahCommittee() {
         </Hero>
 
         <SectionHeading>
-          <p className="text-[25px] lg:text-[60px] font-extrabold px-2 lg:px-0 py-2 lg:py-0 lg:w-[70%] mx-auto">
+          <p className="text-[25px] lg:text-[60px] font-extrabold px-2 lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
             {shahriah?.Title2}
           </p>
         </SectionHeading>
 
         {shahriah && <ShariahCommittee data={shahriah}/>}
-        <div className="mt-10 lg:mt-20 ">
-          <h2 className="text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242] px-4 container mx-auto">
+        <div className="mt-10 lg:mt-20 lg:mx-8 overflow-x-hidden">
+          <h2 className="text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242] container mx-auto">
             {shahriah?.MembersHead}
           </h2>
 

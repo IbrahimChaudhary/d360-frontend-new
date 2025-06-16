@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import type { ReactNode } from "react"
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 interface HeroProps {
   backgroundImage: string;
   children: React.ReactNode;
   direction?: "ltr" | "rtl";
+  containerAlign?: string; // e.g., "lg:items-start" or "lg:items-end"
 }
 
-export function Hero({ backgroundImage, children, direction = "ltr" }: HeroProps) {
+export function Hero({
+  backgroundImage,
+  children,
+  direction = "ltr",
+  containerAlign = "lg:items-center", // default to center
+}: HeroProps) {
   const isRTL = direction === "rtl";
 
   return (
@@ -18,11 +24,9 @@ export function Hero({ backgroundImage, children, direction = "ltr" }: HeroProps
         className="absolute w-full h-full bg-no-repeat bg-cover bg-center z-0"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
-      
+
       <div
-        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row ${
-          isRTL ? "" : ""
-        } lg:items-center justify-between h-full pt-28 lg:pt-32 pb-16 relative z-10`}
+        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row justify-between h-full pt-28 lg:pt-32 pb-16 relative z-10 ${containerAlign}`}
       >
         <motion.div
           className={` ${isRTL ? "text-right" : "text-left"}`}
@@ -33,7 +37,6 @@ export function Hero({ backgroundImage, children, direction = "ltr" }: HeroProps
           {children}
         </motion.div>
 
-        {/* Optional right-side image/animation container */}
         <motion.div
           className="w-full md:w-[45%] mt-8 md:mt-0"
           initial={{ opacity: 0, scale: 0.8 }}

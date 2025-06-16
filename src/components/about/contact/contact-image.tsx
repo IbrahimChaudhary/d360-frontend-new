@@ -5,10 +5,10 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import { useStore } from "@/store/toggle-store";  // import your language store
 
 interface ContactImageProps {
-  url: string;
+  url?: string;
 }
 
-export function ContactImage({ url }: ContactImageProps) {
+export function ContactImage ({url}:ContactImageProps) {
   const { language } = useStore();
   const isRTL = language === "ar";
 
@@ -17,7 +17,7 @@ export function ContactImage({ url }: ContactImageProps) {
 
   return (
     <AnimatedSection direction="right">
-      <div className="w-[180px] h-[360px] sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-[600px] relative">
+      <div className="w-[180px] h-[360px] sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-[800px] relative">
         <Image
           src={imageSrc}
           alt="D360 App Help Screen"

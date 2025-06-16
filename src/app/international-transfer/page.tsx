@@ -55,7 +55,7 @@ export default function InternationalTransfer() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-[70%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-snug ${
+              className={`text-[25px] flex items-center lg:w-[80%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-snug ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

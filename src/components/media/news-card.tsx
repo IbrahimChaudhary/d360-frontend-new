@@ -41,7 +41,7 @@ export function NewsCard({ article, index }: NewsCardProps) {
       className="h-full" // <--- Ensures the card fills grid height
     >
       <Link href={`/media/news/${article.slug}`}>
-        <div className="bg-[#E7E7E7] rounded-2xl lg:rounded-4xl transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[320px]">
+        <div className="bg-[#F6F7F8] rounded-2xl lg:rounded-4xl transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[320px]">
           {/* Image */}
           <div className="relative h-48 w-full">
             <Image
@@ -63,7 +63,7 @@ export function NewsCard({ article, index }: NewsCardProps) {
               </p>
             </div>
 
-            <div className="flex items-center text-xs text-slate-500 mt-auto">
+            <div className="flex items-center text-[14px] text-[#293242] mt-auto">
               <Calendar className="w-3 h-3 mr-1" />
               <span>{formatDate(article.date)}</span>
             </div>

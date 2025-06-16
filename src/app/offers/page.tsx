@@ -110,7 +110,7 @@ export default function OffersPage() {
             <AnimatedSection direction="left" className="flex-1">
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-[750px] gap-2 lg:gap-0 justify-items-center lg:justify-items-normal"
               >
                 <AnimatePresence initial={false}>
                   {visibleOffers?.map((offer, index) => (
@@ -126,8 +126,8 @@ export default function OffersPage() {
                         <OfferCard
                           data={offerCard[index]}
                           index={index}
-                          height="h-[200px] lg:h-[300px]"
-                          width="w-full"
+                          height="h-[200px] lg:h-[330px]"
+                          width="w-[240px]"
                           textColor="text-white"
                           glassBg="bg-white/10 backdrop-blur-md"
                         />

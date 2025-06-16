@@ -95,7 +95,7 @@ export default function MediaPage() {
             </div>
         </Hero>
 
-        <div className="bg-gray-50 py-8 lg:py-18">
+        <div className="bg-white py-8 lg:py-18">
           <MediaTabs
             tab1={media?.gallery || ""}
             tab2={media?.news || ""}

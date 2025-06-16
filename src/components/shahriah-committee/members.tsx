@@ -59,7 +59,7 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
                         <h3 className="text-xl font-bold text-gray-900 mb-1">{selectedMember.name}</h3>
                         <p className="text-red-600 font-medium">{selectedMember.position}</p>
                       </div>
-                      <button onClick={handleClose} className="text-red-600 hover:text-red-700 text-xl font-bold ml-4">
+                      <button onClick={handleClose} className="text-[#EB644C]  text-xl font-bold ml-4">
                         ×
                       </button>
                     </div>
@@ -115,20 +115,20 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
                       transition={{ duration: 0.3 }}
                       className="w-80 flex-shrink-0"
                     >
-                      <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                      <div className="bg-[#F8F8F8] rounded-2xl p-6 ">
                         <div className="flex justify-between items-start mb-4">
                           <div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">{selectedMember.name}</h3>
-                            <p className="text-red-600 font-medium text-sm">{selectedMember.position}</p>
+                            <h3 className="text-[26px] font-extrabold text-[#293242] mb-2">{selectedMember.name}</h3>
+                            <p className="text-[#293242] font-light text-[18px]">{selectedMember.position}</p>
                           </div>
                           <button
                             onClick={handleClose}
-                            className="text-red-600 hover:text-red-700 text-xl font-bold ml-4"
+                            className="text-[#EB644C] text-3xl font-extrabold ml-4"
                           >
                             ×
                           </button>
                         </div>
-                        <p className="text-gray-700 text-sm leading-relaxed">{selectedMember.biography}</p>
+                        <p className="text-[#293242] text-[20px] ">{selectedMember.biography}</p>
                       </div>
                     </motion.div>
                   )}
