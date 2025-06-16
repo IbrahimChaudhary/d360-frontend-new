@@ -84,7 +84,7 @@ export default function MediaPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-[80%] w-[60%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
+              className={`text-[25px] flex items-center lg:w-[80%] w-[40%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

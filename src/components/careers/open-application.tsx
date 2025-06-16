@@ -5,7 +5,7 @@ interface OpenApplicationProps {
 }
 export default function OpenApplication({ data }: OpenApplicationProps) {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <div className="py-16 md:py-24 bg-white overflow-x-hidden">
       <div className="lg:max-w-7xl mx-auto px-4 md:px-6">
         <div className="lg:grid flex flex-col-reverse lg:grid-cols-2 gap-8 items-center">
           {/* Left column - Content */}
@@ -31,7 +31,7 @@ export default function OpenApplication({ data }: OpenApplicationProps) {
 
           {/* Right column - Image */}
           <div className="flex justify-center md:justify-end">
-            <div className="relative lg:w-full lg:h-full w-80 h-50 max-w-lg lg:max-w-md aspect-square lg:rounded-2xl overflow-hidden">
+            <div className="relative lg:w-full lg:h-full w-108 h-50 max-w-md aspect-square lg:rounded-2xl overflow-hidden">
               <Image
                 src={
                   data?.ApplicationImg?.formats?.large?.url ||
@@ -52,6 +52,6 @@ export default function OpenApplication({ data }: OpenApplicationProps) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

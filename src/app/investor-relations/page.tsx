@@ -78,8 +78,8 @@ export default function InvestorRealtions() {
             </h1>
           </div>
         </Hero>
-        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-7xl">
-          <p className="lg:text-[50px] text-[25px] px-4 lg:px-0  mx-auto text-center font-extrabold ">
+        <SectionHeading className=" pt-6 lg:pt-16  lg:max-w-7xl">
+          <p className="lg:text-[50px] text-[30px] lg:w-full w-[90%] px-4 lg:px-0  mx-auto text-center font-extrabold ">
             {investor?.Title2}
           </p>
         </SectionHeading>

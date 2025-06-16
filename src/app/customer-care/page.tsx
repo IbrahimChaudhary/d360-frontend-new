@@ -42,7 +42,7 @@ export default function AboutPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-tight lg:w-[90%] ${
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight lg:w-[90%] w-[50%] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -53,7 +53,7 @@ export default function AboutPage() {
             </div>
           
         </Hero>
-        <SectionHeading className="text-xl lg:text-[60px] lg:w-[100%] text-[#263244] mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
+        <SectionHeading className="text-[30px] lg:text-[60px]  mx-auto lg:mx-0 lg:w-[100%] text-[#263244] mt-10 font-extrabold">{customerCare?.Title1}</SectionHeading>
         <div className="flex flex-col md:flex-row lg:px-6 w-full max-w-7xl mx-auto lg:mb-8 items-center justify-center gap-10">
           <ContactImage url={`${process.env.NEXT_PUBLIC_STRAPI_URL}${customerCare?.sideImg?.formats?.large?.url || customerCare?.sideImg?.formats?.medium?.url || customerCare?.sideImg?.url || "/contact/contact-mob.png"}`} />
           {customerCare && (

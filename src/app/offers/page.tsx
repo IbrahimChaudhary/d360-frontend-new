@@ -75,7 +75,10 @@ export default function OffersPage() {
   ];
   return (
     <div className="flex min-h-screen flex-col">
+      <div className="hidden lg:block">
       <Header variant="about" />
+      </div>
+      <div className="block lg:hidden"><Header  /></div>
       <main className="flex-1">
         <Hero backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${offer?.heroImage?.formats?.large?.url || offer?.heroImage?.formats?.medium?.url || offer?.heroImage?.url || "/offers/offers-hero.png"}`}>
        
@@ -110,7 +113,7 @@ export default function OffersPage() {
             <AnimatedSection direction="left" className="flex-1">
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-[750px] gap-2 lg:gap-0 justify-items-center lg:justify-items-normal"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-[750px] w-full gap-2 lg:gap-0 justify-items-center lg:justify-items-normal"
               >
                 <AnimatePresence initial={false}>
                   {visibleOffers?.map((offer, index) => (
@@ -127,7 +130,7 @@ export default function OffersPage() {
                           data={offerCard[index]}
                           index={index}
                           height="h-[200px] lg:h-[330px]"
-                          width="w-[240px]"
+                          width="lg:w-[240px] w-[370px]"
                           textColor="text-white"
                           glassBg="bg-white/10 backdrop-blur-md"
                         />
@@ -139,7 +142,7 @@ export default function OffersPage() {
 
               {/* Mobile only toggle */}
               
-              {isMobile && filteredOffers.length > 3 && (
+              {isMobile && filteredOffers.length > 2 && (
                 <div className="text-center mt-4">
                   <Button
                     variant="default"

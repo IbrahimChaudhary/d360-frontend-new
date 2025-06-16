@@ -2,14 +2,17 @@
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer/footer";
 import { MergedFAQAccordion } from "@/components/faq-merged";
-import { aboutData, FAQsAbout } from "@/data/about";
 import DesktopContentSectionPrivacyAndNotice from "@/components/privacy-notice/desktop-content-section-privacy-notice";
 import { useEffect, useState } from "react";
 import { PrivacyNoticeData } from "@/types/privacy-notice/privacy-notice";
 import { fetchPrivacyNotice } from "@/api/privacy-notice";
 import { useStore } from "@/store/toggle-store";
 import { extractFAQItems } from "@/lib/faq-extract";
+
+
+
 export default function PrivacyNotice() {
+
   const [privacy, setPrivacy] = useState<PrivacyNoticeData | null>(null);
   const {language} = useStore()
   useEffect(() => {
@@ -25,8 +28,25 @@ export default function PrivacyNotice() {
        {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
       </div>
       {/* mobile version  */}
-      <div className=" mt-[100px] flex  md:hidden flex-col justify-center items-center overflow-y-scroll  ">
-       <MergedFAQAccordion faqItems={faqItems} />
+      <div className=" w-full  block  md:hidden  py-[60px] ">
+
+      <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
+      {/* Page title & intro */}
+      {privacy && (
+  <div className="space-y-6">
+    <h1 className="text-[25px] lg:text-[70px] font-extrabold text-[#E74529]">
+      {privacy.Heading}
+    </h1>
+    <p className="text-[14px] lg:text-[25px]">{privacy.headingPara1}</p>
+
+    <p className="text-[#E74529] text-[10px] font-[900] underline">Read More</p>
+  </div>
+
+)}
+
+
+       <MergedFAQAccordion faqItems={faqItems} title="hidden" />
+    </div>
     </div>
       <Footer/>
     </div>

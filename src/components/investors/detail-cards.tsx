@@ -97,11 +97,11 @@ export default function InfoCards({ data }: InfoCardsProps) {
               <div className="relative h-full flex flex-col  p-6">
                 <div className="space-y-3">
                   <h3
-                    className={`text-[16px] lg:w-full w-[55%] md:text-[40px] font-extrabold ${card.textColor} leading-tight`}
+                    className={`text-[16px] lg:w-full w-[40%] md:text-[40px] font-extrabold ${card.textColor} leading-tight`}
                   >
                     {card.title}
                   </h3>
-                  <p className={`${card.textColor} text-sm md:text-[25px]  `}>
+                  <p className={`${card.textColor} text-sm md:text-[25px] lg:w-full w-[65%]`}>
                     {card.description}
                   </p>
                 </div>

@@ -27,9 +27,27 @@ export default function SecurityAwareness() {
        <DesktopContentSectionSecurityAndAwareness/>
       </div>
       {/* mobile version  */}
-      <div className=" mt-[100px] flex  md:hidden flex-col justify-center items-center overflow-y-scroll  ">
-       <MergedFAQAccordion faqItems={faqItems} />
+      <div className=" w-full  block  md:hidden  py-[60px] ">
+      <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
+      {/* Page title & intro */}
+      {security && (
+  <div className="space-y-6">
+    <h1 className="text-[25px] lg:text-[70px] font-extrabold text-[#E74529]">
+      {security.Title1}
+    </h1>
+    <p className="text-[14px] lg:text-[25px]">{security.Title1Des1}</p>
+    <p className="text-[14px] lg:text-[25px]">{security.Title1Des2}</p>
+
+    <p className="text-[#E74529] text-[10px] font-[900] underline">Read More</p>
+  </div>
+
+)}
+
+
+       <MergedFAQAccordion faqItems={faqItems} title="hidden" />
     </div>
+    
+</div>
       <Footer/>
     </div>
   );

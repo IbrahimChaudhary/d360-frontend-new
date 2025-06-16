@@ -52,16 +52,16 @@ export default function ProfitBanner({ data }: ProfitBannerProps) {
         <div className="lg:max-w-7xl relative   mx-auto  lg:h-[209px] flex flex-col-reverse lg:flex-row  ">
           {/* Text Block */}
           <div className="lg:text-left text-center lg:pt-0 pt-10 max-w-md lg:ml-40 w-full">
-            <h3 className="lg:text-[60px] lg:px-0 px-8 text-[30px] w-full rtl:text-right font-extrabold  text-[#293242] lg:leading-16">
+            <h3 className="lg:text-[60px] lg:px-0 px-6 text-[30px] w-[73%] mx-auto lg:w-full rtl:text-right font-extrabold  text-[#293242] lg:leading-16">
             {data.ProfitBannerHead}
             </h3>
-            <p className="mt-6 text-[14px] lg:text-[20px] rtl:text-right text-[#293242]">
+            <p className="mt-6 text-[14px] lg:text-[20px] lg:w-full w-[60%] mx-auto rtl:text-right text-[#293242]">
             {data.ProfitBannerDes}
             </p>
           </div>
 
           {/* Phone Visual */}
-          <div className="lg:absolute w-full -top-20 rtl:left-30 ltr:right-30 max-w-xs">
+          <div className="lg:absolute w-full mx-auto -top-20 rtl:left-30 ltr:right-30 max-w-xs">
             <Image
             src={
               data?.ProfitBannerImg?.formats?.large?.url ||

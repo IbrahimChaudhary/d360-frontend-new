@@ -34,7 +34,12 @@ export default function InternationalTransfer() {
 
   return (
     <div className="flex min-h-screen  flex-col">
+      <div className="hidden lg:block">
       <Header variant="about" />
+      </div>
+      <div className="lg:hidden block">
+      <Header />
+      </div>
       <main className="flex-1">
         <Hero
           backgroundImage={
@@ -55,7 +60,7 @@ export default function InternationalTransfer() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-[80%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-snug ${
+              className={`text-[25px] flex items-center w-[40%] lg:w-[80%] uppercase lg:text-[80px] font-extrabold text-white lg:text-[#263244] leading-snug ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -74,7 +79,7 @@ export default function InternationalTransfer() {
           </div>
         </Hero>
         <SectionHeading className=" pt-6 lg:pt-16 ">
-          <p className="lg:text-[60px] px-4 lg:px-0 lg:w-[80%] mx-auto text-center font-bold lg:font-extrabold ">
+          <p className="lg:text-[60px] text-[30px] px-4 lg:px-0 w-[90%] lg:w-[80%] mx-auto text-center font-extrabold ">
             {international?.Title1}{" "}
           </p>
         </SectionHeading>

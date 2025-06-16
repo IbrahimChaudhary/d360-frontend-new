@@ -59,7 +59,7 @@ export default function SavingsAccount() {
             <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
               {savings?.MainTitleUpDes}{" "}
             </p>
-            <h1 className="text-[25px] mb-2 lg:text-[80px]  uppercase font-extrabold text-[#263244] lg:leading-19">
+            <h1 className="text-[25px] mb-2 lg:text-[80px] leading-tight uppercase font-extrabold text-[#263244] lg:leading-19">
               {savings?.MainTitle1}
               <br />
               {savings?.MainTitle2}

@@ -41,21 +41,32 @@ export default function AboutPage() {
           direction={isRTL ? "rtl" : "ltr"}
         >
           <div
-            className={`flex w-full flex-col  ${
+            className={`flex  flex-col w-full ${
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
             <h1
-              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight ${
-                isRTL ? "justify-end" : " justify-center"
-              }`}
-            >
-              {contact?.BannerText1}
-              <br />
-              {contact?.BannerText2}
-              <br />
-              {contact?.BannerText3}
-            </h1>
+  className={`
+    text-[25px] 
+    lg:text-[80px] 
+    font-extrabold 
+    text-[#263244] 
+    leading-tight 
+    uppercase 
+    ${isRTL ? "text-right" : "text-left"} 
+    w-full 
+    max-w-[190px] 
+    sm:max-w-[400px] 
+    lg:max-w-none
+  `}
+>
+  {contact?.BannerText1}
+  <br />
+  {contact?.BannerText2}
+  <br />
+  {contact?.BannerText3}
+</h1>
+
           </div>
         </Hero>
 

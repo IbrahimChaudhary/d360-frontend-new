@@ -53,7 +53,7 @@ export function OfferCard({
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data?.image?.formats?.large?.url || data?.image?.formats?.medium?.url || data?.image?.url || "/"}`}
               alt={language === "en" ? data?.title : data?.title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              className="lg:object-cover  group-hover:scale-105 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black/20" />
           </div>

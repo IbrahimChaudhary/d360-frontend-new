@@ -27,7 +27,7 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
   return (
     <section className="bg-[#F6F7F8] py-14 lg:px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl px-4 lg:px-0 md:text-[50px] font-extrabold text-[#263244]">
+        <h2 className="text-3xl leading-tight lg:w-full mx-auto lg:mx-0 px-4 lg:px-0 md:text-[50px] font-extrabold text-[#263244]">
           {data.OpenHead}
         </h2>
         <p className="text-sm md:text-base px-8  lg:px-0 text-[#263244] mt-4 lg:mt-2">
@@ -38,7 +38,7 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="bg-[#F6F7F8]  flex  items-center-safe gap-6 rounded-xl p-4 text-left shadow-sm"
+              className="bg-white  flex  items-center-safe gap-6 rounded-xl p-4 text-left "
             >
               <div className="text-8xl font-light  text-[#D9D9D9] ">
                 {step.number}

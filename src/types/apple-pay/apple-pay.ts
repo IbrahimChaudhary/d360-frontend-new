@@ -33,6 +33,26 @@ export interface ApplePayData {
   FAQDescription10: string;
   FAQTitle11: string;
   FAQDescription11: string;
+  AppleFAQTitle1:string;
+  AppleFAQDescription1:string;
+  AppleFAQTitle2:string;
+  AppleFAQDescription2:string;
+  AppleFAQTitle3:string;
+  AppleFAQTitle4:string;
+  AppleFAQTitle5:string;
+  AppleFAQTitle6:string;
+  AppleFAQTitle7:string;
+  AppleFAQTitle8:string;
+  AppleFAQTitle9:string;
+  AppleFAQDescription3:string;
+  AppleFAQDescription4:string;
+  AppleFAQDescription5:string;
+  AppleFAQDescription6:string;
+  AppleFAQDescription7:string;
+  AppleFAQDescription8:string;
+  AppleFAQDescription9:string;
+
+
 
   createdAt: string;   // ISO timestamp
   updatedAt: string;   // ISO timestamp

@@ -37,7 +37,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
       button: "bg-[#EB644C]",
       text: "text-[#EB644C]",
       iconBg: "bg-[#EB644C]",
-      border: "border-[#EB644C] border-[1px]",
+      border: "border-[#EB644C] border-[1px] rounded-full",
       icons: [
         "/card/icons/card.svg",
         "/card/icons/call.svg",
@@ -98,15 +98,15 @@ export default function CardVariants({ data }: CardVariantsProps) {
         {/* Mobile Layout */}
         <div className="lg:hidden">
           {/* Header */}
-          <div className="text-center mb-6">
+          <div className="ltr:text-left rtl:text-right mb-6">
             <h2
-              className={`text-4xl sm:text-5xl font-bold mb-2 ${current.text}`}
+              className={`text-[30px] sm:text-5xl  w-[65%] font-extrabold mb-2 ${current.text}`}
             >
               {data.Title2}
             </h2>
-            <p className="text-[#263244] text-lg mb-4">{data.Description5}</p>
+            <p className="text-[#263244] text-[14px] font-[400] mb-4">{data.Description5}</p>
             <button
-              className={`${current.button} text-white px-6 py-3 rounded-xl font-medium text-sm`}
+              className={`${current.button} text-white px-10 py-3 rounded-lg font-medium text-[8px] `}
             >
               {data.getCard}
             </button>
@@ -154,7 +154,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <p className="text-xs font-semibold text-[#263244] leading-tight">
+                <p className="text-[7px] font-semibold text-[#263244] leading-tight">
                   {feature}
                 </p>
               </motion.div>
@@ -163,15 +163,16 @@ export default function CardVariants({ data }: CardVariantsProps) {
 
           {/* Card Image - Mobile */}
           <div className="flex justify-center mb-6">
-            <div className="relative w-80 h-48">
-              <Image
-                src={current.image || "/placeholder.svg"}
-                alt="card"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
+      <div className="relative w-[332px] h-48 ">
+        <Image
+          src={current.image || "/placeholder.svg"}
+          alt="card"
+          fill
+          className="object-contain border-none rounded-xl"
+        />
+      </div>
+    </div>
+
 
           {/* Bottom Section - Mobile */}
           <div className="text-center space-y-4">
