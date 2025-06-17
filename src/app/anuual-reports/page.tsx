@@ -62,7 +62,7 @@ export default function InvestorRealtions() {
         </Hero>
         {annual && (
           <DynamicInfoSection
-            title={annual?.AnnualHead}
+            // title={annual?.AnnualHead}
             type="reports"
             reportCards={customReportCards}
             className=""

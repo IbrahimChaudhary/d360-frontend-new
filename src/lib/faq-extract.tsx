@@ -59,4 +59,44 @@ export function extractFAQItems<T extends Record<string, any>>(aboutData: T) {
   
     return faqItems;
   }
+
+  export function extractAppleFAQItems<T extends Record<string, any>>(appleData: T) {
+    const entries = Object.entries(appleData) as [string, any][];
+  
+    const titleMap = new Map<number, string>();
+    const descMap = new Map<number, string>();
+  
+    for (const [key, value] of entries) {
+      if (/^AppleFAQTitle(\d+)$/.test(key)) {
+        const idx = parseInt(key.replace(/^AppleFAQTitle/, ""), 10);
+        titleMap.set(idx, String(value));
+      }
+  
+      if (/^AppleFAQDescription(\d+)$/.test(key)) {
+        const idx = parseInt(key.replace(/^AppleFAQDescription/, ""), 10);
+        descMap.set(idx, String(value));
+      }
+    }
+  
+    const allIndices = new Set<number>([
+      ...Array.from(titleMap.keys()),
+      ...Array.from(descMap.keys()),
+    ]);
+  
+    const sortedIndices = Array.from(allIndices).sort((a, b) => a - b);
+  
+    const faqItems: { question: string; answer: string }[] = [];
+  
+    for (const idx of sortedIndices) {
+      const question = titleMap.get(idx);
+      const answer = descMap.get(idx);
+  
+      if (typeof question === "string" && typeof answer === "string") {
+        faqItems.push({ question, answer });
+      }
+    }
+  
+    return faqItems;
+  }
+  
   

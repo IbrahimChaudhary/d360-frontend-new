@@ -47,7 +47,7 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
 
           <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] rtl:lg:px-3 w-[40%]  rtl:lg:ml-30 ltr:lg:px-16"
+              className={`bg-[#EB644C] text-white mx-auto font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] rtl:lg:px-3 w-[40%]  rtl:lg:ml-30 ltr:lg:px-16"
               }`}
             >
               {data.download}

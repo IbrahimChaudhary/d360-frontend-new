@@ -49,7 +49,7 @@ export default function Payments() {
                 : ""
             }
           >
-            <h1 className="text-[30px] lg:text-[80px] rtl:text-right  uppercase font-extrabold text-[#263244] leading-tight">
+            <h1 className="text-[30px] lg:text-[80px] rtl:text-right lg:w-full w-[50%]  uppercase font-extrabold text-[#263244] leading-tight">
               {payment?.MainTitle}
               <br />
               {payment?.MainTitle1}
@@ -58,7 +58,7 @@ export default function Payments() {
             </h1>
           </Hero>
           <SectionHeading className=" pt-6 lg:pt-16">
-            <h1 className="text-lg px-4 lg:px-0 lg:text-[60px] mx-auto lg:w-[80%] font-bold lg:font-extrabold ">
+            <h1 className="text-[30px] px-4 lg:px-0 lg:text-[60px] mx-auto w-[80%] font-extrabold ">
               {payment?.Title1}
             </h1>
           </SectionHeading>

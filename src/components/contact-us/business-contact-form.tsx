@@ -44,7 +44,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center text-2xl md:text-[60px]  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
+        className="text-center text-[30px] md:text-[60px] w-[83%] lg:w-full  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
       >
         {data.Title2}
       </motion.h2>
@@ -150,11 +150,11 @@ export function BusinessForm({ data }: BusinessFormProps) {
       </form>
 
       <div className="mt-16 flex justify-between  text-[14px] lg:text-[30px] text-[#263244]">
-        <div className="rtl:space-y-7 ltr:space-y-4">
+        <div className="rtl:space-y-7 ltr:space-y-4 lg;w-full w-[50%]">
           <p> {data.TollFree}</p>
           <p> {data.outside}</p>
         </div>
-        <div className="rtl:space-y-7 ltr:space-y-4 lg:space-y-0">
+        <div className="ltr:space-y-10 rtl:space-y-14 rtl:lg:space-y-7 ltr:lg:space-y-4 lg:space-y-0">
           <div className="text-[#E74529] font-bold  items-center flex gap-2">
             <Phone className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1] " size={18} /> <span> {data.insidePhone} </span>
           </div>

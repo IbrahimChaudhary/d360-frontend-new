@@ -11,7 +11,7 @@ export default function WorkSection({ data }: WorkSectionProps) {
           {/* Left column - Heading */}
           <div className="md:col-span-4 lg:col-span-3">
             <h2 className="text-[30px] md:text-[60px] ltr:lg:text-left rtl:lg:text-right text-center  font-extrabold text-white leading-tight">
-              {data.WorkHead1} {""}
+              {data.WorkHead1}  {""}
               {data.WorkHead2}
             </h2>
           </div>

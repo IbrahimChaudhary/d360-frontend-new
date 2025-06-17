@@ -48,8 +48,8 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
   });
 
   return (
-    <section className=" lg:py-16 bg-white px-4 ">
-      <SectionHeading className="py-16 text-[27px]   leading-tight w-full lg:text-[60px] font-extrabold">
+    <section className=" lg:py-16 bg-white lg:px-4 px-1 ">
+      <SectionHeading className="lg:py-16 pt-16 lg:pt-0 text-[30px] leading-tight w-full lg:text-[60px] font-extrabold">
         {data.Title1} {data.Title2} {data.Title3}
       </SectionHeading>
 
@@ -64,13 +64,13 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
             className="flex flex-col items-center"
           >
             <Icon
-              size={32}
-              className="text-[#E74529] mb-3 w-[20px] h-[25px] lg:w-[40px] lg:h-[40px]"
+             
+              className="text-[#E74529] mb-3 w-[33px] h-[23px] lg:w-[40px] lg:h-[40px]"
             />
             <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}
             </h4>
-            <p className="text-[10px] lg:text-[16px] text-[#4B5563]">
+            <p className="text-[12px] font-[400] lg:text-[16px] text-[#4B5563]">
               {description}
             </p>
           </motion.div>

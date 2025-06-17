@@ -46,7 +46,7 @@ export default function AboutPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-full w-[70%] uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-22 ${
+              className={`text-[25px] flex items-center lg:w-full leading-tight w-[62.8%] uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-22 ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -57,7 +57,7 @@ export default function AboutPage() {
 
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] text-white font-bold py-2 mt-4 lg:mt-6 cursor-pointer px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] text-white font-bold py-2 mt-4 lg:mt-6 cursor-pointer px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
                   ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
                   : "lg:px-16"

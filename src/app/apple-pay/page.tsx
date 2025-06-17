@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { MergedFAQAccordion } from "@/components/faq-merged";
-import { FAQsAbout } from "@/data/about";
 import { useState } from "react";
 import ApplePayOverview from "@/components/apple-pay/apple-pay-overview";
 import { Header } from "@/components/layout/header";
@@ -9,6 +8,7 @@ import { Footer } from "@/components/layout/footer/footer";
 import { ApplePayData } from "@/types/apple-pay/apple-pay";
 import { fetchApplePay } from "@/api/apple-pay";
 import { extractFAQItems } from "@/lib/faq-extract";
+import { extractAppleFAQItems } from "@/lib/faq-extract";
 import { useStore } from "@/store/toggle-store";
 
 function ApplePay() {
@@ -25,6 +25,7 @@ function ApplePay() {
       .catch((err) => console.error("Failed to load About D360:", err));
   }, [language]);
   const faqItems = applePay ? extractFAQItems(applePay) : [];
+  const appleOverviewFaqs = applePay ? extractAppleFAQItems(applePay) : [];
 
   return (
     <div className="px-6 py-10 flex mt-24 flex-col justify-center items-center mx-auto">
@@ -32,11 +33,11 @@ function ApplePay() {
 
       {activeTab === "overview" ? (
         <div className="max-w-[1728px] px-0 lg:px-4 flex flex-col justify-center items-start">
-          <div className="text-[25px] lg:text-[70px] lg:px-7 text-[#E74529] lg:text-[#293242] w-[80%] lg:w-full  max-w-[1108px] font-extrabold">
+          <div className="text-[25px] lg:text-[70px] lg:px-7 text-[#E74529] lg:text-[#293242] w-[60%] lg:w-full  max-w-[1108px] font-extrabold">
             {applePay?.MainTitle}
           </div>
           
-          <div className="flex md:px-7 px-5  gap-4 mb-6 mt-3 lg:mt-6">
+          <div className="flex md:px-7 lg:px-5  gap-4 mb-6 mt-3 lg:mt-6">
             <button
               className={`px-4 py-2 rounded-md lg:rounded-xl lg:text-[14px] text-[8px] font-bold ${
                 isOverview(activeTab)
@@ -59,7 +60,12 @@ function ApplePay() {
               FAQs
             </button>
           </div>
+          <div className="lg:block hidden">
           {applePay && <ApplePayOverview data={applePay}/>}
+          </div>
+          <div className="  block  md:hidden w-full  ">
+       {applePay && <MergedFAQAccordion faqItems={appleOverviewFaqs} title="hidden"/>}
+    </div>
         </div>
       ) : (
         <div className="flex flex-col max-w-[1240px] lg:justify-center items-start ">
@@ -91,7 +97,7 @@ function ApplePay() {
             </button>
           </div>
 
-          {applePay && <MergedFAQAccordion faqItems={faqItems} title={""} />}
+          {applePay && <MergedFAQAccordion faqItems={faqItems} title="hidden" sectionClassName=" pt-8" />}
         </div>
       )}
       <Footer />

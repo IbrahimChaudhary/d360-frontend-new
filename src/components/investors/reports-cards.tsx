@@ -12,7 +12,7 @@ interface ReportCard {
 }
 
 interface DynamicInfoSectionProps {
-  title: string
+  title?: string
   type: "info" | "reports"
   infoCards?: InfoCard[]
   reportCards?: ReportCard[]
@@ -76,21 +76,21 @@ export default function DynamicInfoSection({
   const gridCols =
     type === "info" ? "grid-cols-2 sm:grid-cols-2 lg:grid-cols-4" : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
 
-  const cardHeight = type === "info" ? "h-60 lg:h-90" : "h-60 lg:h-90"
+  const cardHeight = type === "info" ? "h-[263px] lg:h-90" : "h-60 lg:h-90"
 
   return (
     <section className={`py-12 md:py-16 bg-white ${className}`}>
       <div className="lg:max-w-5xl mx-auto px-4">
-        <h2 className="text-center text-[25px] lg:text-[60px] text-[#263244] mb-8 md:mb-10">{title}</h2>
+        <h2 className="text-center  text-[25px] lg:text-[60px] text-[#263244] mb-8 md:mb-10">{title}</h2>
 
         <div className={`grid ${gridCols} gap-4`}>
           {type === "info" &&
             (cardsToRender as InfoCard[]).map((card, index) => (
-              <div key={index} className={`bg-[#E74529] rounded-2xl p-3 lg:p-6 text-white flex flex-col ${cardHeight}`}>
+              <div key={index} className={`bg-[#E74529] rounded-3xl p-3 lg:p-6 text-white flex flex-col ${cardHeight}`}>
                 <h3 className="lg:text-[27px] text-[18px] font-bold mb-6">
                   {card.title1} {card.title2 && <br />} {card.title2}
                 </h3>
-                <p className="lg:text-[20px] text-[12px] mt-auto">{card.description}</p>
+                <p className="lg:text-[20px] text-[12px] mt-auto lg:w-full w-[65%]">{card.description}</p>
               </div>
             ))}
 

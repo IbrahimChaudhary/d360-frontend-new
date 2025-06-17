@@ -21,11 +21,11 @@ export function CategoryTabs({
   return (
     <div className="w-full md:w-64  rounded-lg p-4">
      
-      <div className="grid grid-cols-2 md:flex flex-col gap-2 w-full md:w-[160px]">
+      <div className="grid grid-cols-2 md:flex flex-col gap-2 w-[60%] lg:mx-0 mx-auto md:w-[160px]">
         <button
           onClick={() => onCategoryChange("all")}
           className={cn(
-            "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[16px] transition",
+            "lg:px-4 px-0 py-2 rounded-md lg:rounded-xl font-bold text-[8px] lg:text-[16px] transition",
             activeCategory === "all"
               ? "bg-[#EB644C] text-white"
               : "bg-[#F4F4F4] text-[#263244]"

@@ -59,8 +59,8 @@ export default function Career() {
             </h1>
           </div>
         </Hero>
-        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-5xl">
-          <p className="lg:text-[50px] text-[25px] px-4 lg:px-0  mx-auto text-center font-extrabold ">
+        <SectionHeading className=" pt-6 lg:pt-16 lg:max-w-6xl mx-auto">
+          <p className="lg:text-[50px] text-[30px] px-4 lg:px-0 lg:w-full w-[86%]  mx-auto text-center font-extrabold ">
           {career?.Title2}
           </p>
         </SectionHeading>

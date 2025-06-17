@@ -95,8 +95,8 @@ export function CustomerCareContactInfo({
         </ul>
       </div>
 
-      <div className="lg:text-[25px] text-[10px]">{data.complaint}</div>
-      <div className="lg:text-[25px] text-[10px]">
+      <div className="lg:text-[25px] text-[14px]">{data.complaint}</div>
+      <div className="lg:text-[25px] text-[14px]">
         {data.Contact}
         <span className="text-[#EB644C] font-bold">{data.Email}</span>
       </div>

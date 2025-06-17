@@ -28,6 +28,24 @@ export interface PrivacyNoticeData {
   FAQDescription3: string;
   FAQTitle4: string;
   FAQDescription4: string;
+  FAQTitle5: string;
+  FAQTitle6: string;
+  FAQTitle7: string;
+  FAQTitle8: string;
+  FAQTitle9: string;
+  FAQTitle10: string;
+  FAQTitle11: string;
+  FAQTitle12: string;
+  FAQDescription5: string;
+  FAQDescription6: string;
+  FAQDescription7: string;
+  FAQDescription8: string;
+  FAQDescription9: string;
+  FAQDescription10: string;
+  FAQDescription11: string;
+  FAQDescription12: string;
+
+
 }
 
 /** Full wrapper for the Strapi response */

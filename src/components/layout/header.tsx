@@ -191,8 +191,8 @@ export function Header({ variant = "default" }: HeaderProps) {
               className={cn(
                 "transition-all duration-300",
                 isRTL
-                  ? "lg:w-[59px] lg:h-[90px] w-[50px] h-[80px]"
-                  : "lg:w-[59px] lg:h-[90px] w-[50px] h-[80px]"
+                  ? "lg:w-[59px] lg:h-[90px] w-[34px] h-[55px]"
+                  : "lg:w-[59px] lg:h-[90px] w-[34px] h-[55px]"
               )}
             />
           </Link>
@@ -237,6 +237,7 @@ export function Header({ variant = "default" }: HeaderProps) {
         <div className="block md:hidden z-[100]">
           <button onClick={() => setMobileOpen(!mobileOpen)}>
             <img
+            className="w-[29px] h-[22px]"
               src={
                 variant === "about"
                   ? "/hambar.svg"

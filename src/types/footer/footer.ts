@@ -16,6 +16,14 @@ export interface FooterData {
     Title6: string;
     Title7: string;
     Title8: string;
+    Title1Url:string
+    Title2Url:string
+    Title3Url:string
+    Title4Url:string
+    Title5Url:string
+    Title6Url:string
+    Title7Url:string
+    Title8Url:string
     Follow: string;
     International: string;
     InternationalDes: string;

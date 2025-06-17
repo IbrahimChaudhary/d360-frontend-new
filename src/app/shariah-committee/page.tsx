@@ -68,7 +68,7 @@ export default function ShahriahCommittee() {
         </Hero>
 
         <SectionHeading>
-          <p className="text-[25px] lg:text-[60px] font-extrabold px-2 lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
+          <p className="text-[25px] lg:text-[60px] lg:w-full w-[66%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
             {shahriah?.Title2}
           </p>
         </SectionHeading>
