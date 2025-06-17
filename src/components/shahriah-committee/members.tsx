@@ -38,7 +38,7 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
   const tabs = [{ value: "advisors", label: isRTL ? "اللجنة الشرعية" : "Shariah Committee Members" }]
 
   return (
-    <div className="w-full bg-white py-8">
+    <div className="w-full bg-white py-8 max-w-[1195px] mx-auto px-4 ">
       <div className="max-w-7xl mx-auto  px-4">
         <Tabs defaultValue="advisors" className="w-full">
           <TabsContent value="advisors">
