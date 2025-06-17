@@ -20,7 +20,7 @@ export const countries: Country[] = [
   {
     id: "france",
     name: { en: "France", ar: "فرنسا" },
-    flag: "/international/flag2.png",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "FR",
@@ -28,7 +28,7 @@ export const countries: Country[] = [
   {
     id: "germany",
     name: { en: "Germany", ar: "ألمانيا" },
-    flag: "🇩🇪",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "DE",
@@ -36,7 +36,7 @@ export const countries: Country[] = [
   {
     id: "italy",
     name: { en: "Italy", ar: "إيطاليا" },
-    flag: "🇮🇹",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "IT",
@@ -44,7 +44,7 @@ export const countries: Country[] = [
   {
     id: "spain",
     name: { en: "Spain", ar: "إسبانيا" },
-    flag: "🇪🇸",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "ES",
@@ -52,7 +52,7 @@ export const countries: Country[] = [
   {
     id: "uk",
     name: { en: "United Kingdom", ar: "المملكة المتحدة" },
-    flag: "🇬🇧",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "GBP",
     code: "GB",
@@ -60,7 +60,7 @@ export const countries: Country[] = [
   {
     id: "netherlands",
     name: { en: "Netherlands", ar: "هولندا" },
-    flag: "🇳🇱",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "NL",
@@ -68,7 +68,7 @@ export const countries: Country[] = [
   {
     id: "poland",
     name: { en: "Poland", ar: "بولندا" },
-    flag: "🇵🇱",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "PLN",
     code: "PL",
@@ -76,7 +76,7 @@ export const countries: Country[] = [
   {
     id: "sweden",
     name: { en: "Sweden", ar: "السويد" },
-    flag: "🇸🇪",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "SEK",
     code: "SE",
@@ -84,7 +84,7 @@ export const countries: Country[] = [
   {
     id: "norway",
     name: { en: "Norway", ar: "النرويج" },
-    flag: "🇳🇴",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "NOK",
     code: "NO",
@@ -92,7 +92,7 @@ export const countries: Country[] = [
   {
     id: "denmark",
     name: { en: "Denmark", ar: "الدنمارك" },
-    flag: "🇩🇰",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "DKK",
     code: "DK",
@@ -100,7 +100,7 @@ export const countries: Country[] = [
   {
     id: "austria",
     name: { en: "Austria", ar: "النمسا" },
-    flag: "🇦🇹",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "AT",
@@ -108,7 +108,7 @@ export const countries: Country[] = [
   {
     id: "switzerland",
     name: { en: "Switzerland", ar: "سويسرا" },
-    flag: "🇨🇭",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "CHF",
     code: "CH",
@@ -116,7 +116,7 @@ export const countries: Country[] = [
   {
     id: "belgium",
     name: { en: "Belgium", ar: "بلجيكا" },
-    flag: "🇧🇪",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "BE",
@@ -124,7 +124,7 @@ export const countries: Country[] = [
   {
     id: "portugal",
     name: { en: "Portugal", ar: "البرتغال" },
-    flag: "🇵🇹",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "PT",
@@ -132,7 +132,7 @@ export const countries: Country[] = [
   {
     id: "greece",
     name: { en: "Greece", ar: "اليونان" },
-    flag: "🇬🇷",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "GR",
@@ -140,7 +140,7 @@ export const countries: Country[] = [
   {
     id: "ireland",
     name: { en: "Ireland", ar: "أيرلندا" },
-    flag: "🇮🇪",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "IE",
@@ -148,7 +148,7 @@ export const countries: Country[] = [
   {
     id: "finland",
     name: { en: "Finland", ar: "فنلندا" },
-    flag: "🇫🇮",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "FI",
@@ -156,7 +156,7 @@ export const countries: Country[] = [
   {
     id: "czech",
     name: { en: "Czech Republic", ar: "التشيك" },
-    flag: "🇨🇿",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "CZK",
     code: "CZ",
@@ -164,7 +164,7 @@ export const countries: Country[] = [
   {
     id: "hungary",
     name: { en: "Hungary", ar: "المجر" },
-    flag: "🇭🇺",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "HUF",
     code: "HU",
@@ -172,7 +172,7 @@ export const countries: Country[] = [
   {
     id: "romania",
     name: { en: "Romania", ar: "رومانيا" },
-    flag: "🇷🇴",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "RON",
     code: "RO",
@@ -180,7 +180,7 @@ export const countries: Country[] = [
   {
     id: "bulgaria",
     name: { en: "Bulgaria", ar: "بلغاريا" },
-    flag: "🇧🇬",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "BGN",
     code: "BG",
@@ -188,7 +188,7 @@ export const countries: Country[] = [
   {
     id: "croatia",
     name: { en: "Croatia", ar: "كرواتيا" },
-    flag: "🇭🇷",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "HR",
@@ -196,7 +196,7 @@ export const countries: Country[] = [
   {
     id: "slovakia",
     name: { en: "Slovakia", ar: "سلوفاكيا" },
-    flag: "🇸🇰",
+    flag: "/international/flag1.png",
     continent: "europe",
     currency: "EUR",
     code: "SK",
@@ -204,7 +204,7 @@ export const countries: Country[] = [
   {
     id: "slovenia",
     name: { en: "Slovenia", ar: "سلوفينيا" },
-    flag: "/international/flag1.png",
+    flag: "/international/flag2.png",
     continent: "europe",
     currency: "EUR",
     code: "SI",
@@ -214,7 +214,7 @@ export const countries: Country[] = [
   {
     id: "algeria",
     name: { en: "Algeria", ar: "الجزائر" },
-    flag: "🇩🇿",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "DZD",
     code: "DZ",
@@ -222,7 +222,7 @@ export const countries: Country[] = [
   {
     id: "angola",
     name: { en: "Angola", ar: "أنغولا" },
-    flag: "🇦🇴",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "AOA",
     code: "AO",
@@ -230,7 +230,7 @@ export const countries: Country[] = [
   {
     id: "benin",
     name: { en: "Benin", ar: "بنين" },
-    flag: "🇧🇯",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "XOF",
     code: "BJ",
@@ -238,7 +238,7 @@ export const countries: Country[] = [
   {
     id: "botswana",
     name: { en: "Botswana", ar: "بوتسوانا" },
-    flag: "🇧🇼",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "BWP",
     code: "BW",
@@ -246,7 +246,7 @@ export const countries: Country[] = [
   {
     id: "cameroon",
     name: { en: "Cameroon", ar: "الكاميرون" },
-    flag: "🇨🇲",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "XAF",
     code: "CM",
@@ -254,7 +254,7 @@ export const countries: Country[] = [
   {
     id: "egypt",
     name: { en: "Egypt", ar: "مصر" },
-    flag: "🇪🇬",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "EGP",
     code: "EG",
@@ -262,7 +262,7 @@ export const countries: Country[] = [
   {
     id: "ethiopia",
     name: { en: "Ethiopia", ar: "إثيوبيا" },
-    flag: "🇪🇹",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "ETB",
     code: "ET",
@@ -270,7 +270,7 @@ export const countries: Country[] = [
   {
     id: "ghana",
     name: { en: "Ghana", ar: "غانا" },
-    flag: "🇬🇭",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "GHS",
     code: "GH",
@@ -278,7 +278,7 @@ export const countries: Country[] = [
   {
     id: "kenya",
     name: { en: "Kenya", ar: "كينيا" },
-    flag: "🇰🇪",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "KES",
     code: "KE",
@@ -286,7 +286,7 @@ export const countries: Country[] = [
   {
     id: "morocco",
     name: { en: "Morocco", ar: "المغرب" },
-    flag: "🇲🇦",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "MAD",
     code: "MA",
@@ -294,7 +294,7 @@ export const countries: Country[] = [
   {
     id: "nigeria",
     name: { en: "Nigeria", ar: "نيجيريا" },
-    flag: "🇳🇬",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "NGN",
     code: "NG",
@@ -302,7 +302,7 @@ export const countries: Country[] = [
   {
     id: "senegal",
     name: { en: "Senegal", ar: "السنغال" },
-    flag: "🇸🇳",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "XOF",
     code: "SN",
@@ -310,7 +310,7 @@ export const countries: Country[] = [
   {
     id: "south-africa",
     name: { en: "South Africa", ar: "جنوب أفريقيا" },
-    flag: "🇿🇦",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "ZAR",
     code: "ZA",
@@ -318,7 +318,7 @@ export const countries: Country[] = [
   {
     id: "tanzania",
     name: { en: "Tanzania", ar: "تنزانيا" },
-    flag: "🇹🇿",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "TZS",
     code: "TZ",
@@ -326,7 +326,7 @@ export const countries: Country[] = [
   {
     id: "tunisia",
     name: { en: "Tunisia", ar: "تونس" },
-    flag: "🇹🇳",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "TND",
     code: "TN",
@@ -334,7 +334,7 @@ export const countries: Country[] = [
   {
     id: "uganda",
     name: { en: "Uganda", ar: "أوغندا" },
-    flag: "🇺🇬",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "UGX",
     code: "UG",
@@ -342,7 +342,7 @@ export const countries: Country[] = [
   {
     id: "zambia",
     name: { en: "Zambia", ar: "زامبيا" },
-    flag: "🇿🇲",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "ZMW",
     code: "ZM",
@@ -350,7 +350,7 @@ export const countries: Country[] = [
   {
     id: "zimbabwe",
     name: { en: "Zimbabwe", ar: "زيمبابوي" },
-    flag: "🇿🇼",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "ZWL",
     code: "ZW",
@@ -358,7 +358,7 @@ export const countries: Country[] = [
   {
     id: "ivory-coast",
     name: { en: "Ivory Coast", ar: "ساحل العاج" },
-    flag: "🇨🇮",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "XOF",
     code: "CI",
@@ -366,7 +366,7 @@ export const countries: Country[] = [
   {
     id: "mali",
     name: { en: "Mali", ar: "مالي" },
-    flag: "🇲🇱",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "XOF",
     code: "ML",
@@ -374,7 +374,7 @@ export const countries: Country[] = [
   {
     id: "burkina-faso",
     name: { en: "Burkina Faso", ar: "بوركينا فاسو" },
-    flag: "🇧🇫",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "XOF",
     code: "BF",
@@ -382,7 +382,7 @@ export const countries: Country[] = [
   {
     id: "niger",
     name: { en: "Niger", ar: "النيجر" },
-    flag: "🇳🇪",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "XOF",
     code: "NE",
@@ -390,7 +390,7 @@ export const countries: Country[] = [
   {
     id: "chad",
     name: { en: "Chad", ar: "تشاد" },
-    flag: "🇹🇩",
+    flag: "/international/flag1.png",
     continent: "africa",
     currency: "XAF",
     code: "TD",
@@ -398,7 +398,7 @@ export const countries: Country[] = [
   {
     id: "sudan",
     name: { en: "Sudan", ar: "السودان" },
-    flag: "🇸🇩",
+    flag: "/international/flag2.png",
     continent: "africa",
     currency: "SDG",
     code: "SD",
@@ -408,7 +408,7 @@ export const countries: Country[] = [
   {
     id: "china",
     name: { en: "China", ar: "الصين" },
-    flag: "🇨🇳",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "CNY",
     code: "CN",
@@ -416,7 +416,7 @@ export const countries: Country[] = [
   {
     id: "india",
     name: { en: "India", ar: "الهند" },
-    flag: "🇮🇳",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "INR",
     code: "IN",
@@ -424,7 +424,7 @@ export const countries: Country[] = [
   {
     id: "japan",
     name: { en: "Japan", ar: "اليابان" },
-    flag: "🇯🇵",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "JPY",
     code: "JP",
@@ -432,7 +432,7 @@ export const countries: Country[] = [
   {
     id: "south-korea",
     name: { en: "South Korea", ar: "كوريا الجنوبية" },
-    flag: "🇰🇷",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "KRW",
     code: "KR",
@@ -440,7 +440,7 @@ export const countries: Country[] = [
   {
     id: "indonesia",
     name: { en: "Indonesia", ar: "إندونيسيا" },
-    flag: "🇮🇩",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "IDR",
     code: "ID",
@@ -448,7 +448,7 @@ export const countries: Country[] = [
   {
     id: "thailand",
     name: { en: "Thailand", ar: "تايلاند" },
-    flag: "🇹🇭",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "THB",
     code: "TH",
@@ -456,7 +456,7 @@ export const countries: Country[] = [
   {
     id: "vietnam",
     name: { en: "Vietnam", ar: "فيتنام" },
-    flag: "🇻🇳",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "VND",
     code: "VN",
@@ -464,7 +464,7 @@ export const countries: Country[] = [
   {
     id: "philippines",
     name: { en: "Philippines", ar: "الفلبين" },
-    flag: "🇵🇭",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "PHP",
     code: "PH",
@@ -472,7 +472,7 @@ export const countries: Country[] = [
   {
     id: "malaysia",
     name: { en: "Malaysia", ar: "ماليزيا" },
-    flag: "🇲🇾",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "MYR",
     code: "MY",
@@ -480,7 +480,7 @@ export const countries: Country[] = [
   {
     id: "singapore",
     name: { en: "Singapore", ar: "سنغافورة" },
-    flag: "🇸🇬",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "SGD",
     code: "SG",
@@ -488,7 +488,7 @@ export const countries: Country[] = [
   {
     id: "bangladesh",
     name: { en: "Bangladesh", ar: "بنغلاديش" },
-    flag: "🇧🇩",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "BDT",
     code: "BD",
@@ -496,7 +496,7 @@ export const countries: Country[] = [
   {
     id: "pakistan",
     name: { en: "Pakistan", ar: "باكستان" },
-    flag: "🇵🇰",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "PKR",
     code: "PK",
@@ -504,7 +504,7 @@ export const countries: Country[] = [
   {
     id: "sri-lanka",
     name: { en: "Sri Lanka", ar: "سريلانكا" },
-    flag: "🇱🇰",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "LKR",
     code: "LK",
@@ -512,7 +512,7 @@ export const countries: Country[] = [
   {
     id: "nepal",
     name: { en: "Nepal", ar: "نيبال" },
-    flag: "🇳🇵",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "NPR",
     code: "NP",
@@ -520,7 +520,7 @@ export const countries: Country[] = [
   {
     id: "myanmar",
     name: { en: "Myanmar", ar: "ميانمار" },
-    flag: "🇲🇲",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "MMK",
     code: "MM",
@@ -528,7 +528,7 @@ export const countries: Country[] = [
   {
     id: "cambodia",
     name: { en: "Cambodia", ar: "كمبوديا" },
-    flag: "🇰🇭",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "KHR",
     code: "KH",
@@ -536,7 +536,7 @@ export const countries: Country[] = [
   {
     id: "laos",
     name: { en: "Laos", ar: "لاوس" },
-    flag: "🇱🇦",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "LAK",
     code: "LA",
@@ -544,7 +544,7 @@ export const countries: Country[] = [
   {
     id: "mongolia",
     name: { en: "Mongolia", ar: "منغوليا" },
-    flag: "🇲🇳",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "MNT",
     code: "MN",
@@ -552,7 +552,7 @@ export const countries: Country[] = [
   {
     id: "brunei",
     name: { en: "Brunei", ar: "بروناي" },
-    flag: "🇧🇳",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "BND",
     code: "BN",
@@ -560,7 +560,7 @@ export const countries: Country[] = [
   {
     id: "uzbekistan",
     name: { en: "Uzbekistan", ar: "أوزبكستان" },
-    flag: "🇺🇿",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "UZS",
     code: "UZ",
@@ -568,7 +568,7 @@ export const countries: Country[] = [
   {
     id: "kazakhstan",
     name: { en: "Kazakhstan", ar: "كازاخستان" },
-    flag: "🇰🇿",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "KZT",
     code: "KZ",
@@ -576,7 +576,7 @@ export const countries: Country[] = [
   {
     id: "kyrgyzstan",
     name: { en: "Kyrgyzstan", ar: "قيرغيزستان" },
-    flag: "🇰🇬",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "KGS",
     code: "KG",
@@ -584,7 +584,7 @@ export const countries: Country[] = [
   {
     id: "tajikistan",
     name: { en: "Tajikistan", ar: "طاجيكستان" },
-    flag: "🇹🇯",
+    flag: "/international/flag1.png",
     continent: "asia",
     currency: "TJS",
     code: "TJ",
@@ -592,7 +592,7 @@ export const countries: Country[] = [
   {
     id: "turkmenistan",
     name: { en: "Turkmenistan", ar: "تركمانستان" },
-    flag: "🇹🇲",
+    flag: "/international/flag2.png",
     continent: "asia",
     currency: "TMT",
     code: "TM",

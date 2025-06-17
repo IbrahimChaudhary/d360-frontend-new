@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { DownloadModal } from "../home/download-modal";
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { Link } from "lucide-react";
 
 interface CTAProps {
   title: string
@@ -53,12 +54,14 @@ export function GlobalCTA({
         <p className="text-md md:text-[20px] lg:px-60 text-[#263244]  mb-8">
           {subtitle2}
         </p>
+        <a href="/contact-us">
         <Button
           className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
-          onClick={() => setModalOpen(true)}
+          
         >
           {ctaText}
         </Button>
+        </a>
       </motion.div>
 
       {/* Optional Overlay Tint */}

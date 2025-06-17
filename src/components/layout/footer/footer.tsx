@@ -26,14 +26,14 @@ export function Footer() {
   
   const footerColumns = useMemo(() => {
     const allLinks = [
-      { href: footer?.Title1Url || "", label: footer?.Title1 || "" },
-      { href: footer?.Title2Url || "", label: footer?.Title2 || "" },
-      { href: footer?.Title3Url || "", label: footer?.Title3 || "" },
-      { href: footer?.Title4Url || "", label: footer?.Title4 || "" },
-      { href: footer?.Title5Url || "", label: footer?.Title5 || "" },
-      { href: footer?.Title6Url || "", label: footer?.Title6 || "" },
-      { href: footer?.Title7Url || "", label: footer?.Title7 || "" },
-      { href: footer?.Title8Url || "", label: footer?.Title8 || "" },
+      { href: footer?.Title1Url || "/security-awareness", label: footer?.Title1 || "" },
+      { href: footer?.Title2Url || "/apple-pay", label: footer?.Title2 || "" },
+      { href: footer?.Title3Url || "/contact-us", label: footer?.Title3 || "" },
+      { href: footer?.Title4Url || "/", label: footer?.Title4 || "" },
+      { href: footer?.Title5Url || "/privacy-notice", label: footer?.Title5 || "" },
+      { href: footer?.Title6Url || "/careers", label: footer?.Title6 || "" },
+      { href: footer?.Title7Url || "/customer-care", label: footer?.Title7 || "" },
+      { href: footer?.Title8Url || "/products-and-services", label: footer?.Title8 || "" },
     ];
     const chunkSize = 2;
     return Array.from({ length: 4 }, (_, i) => ({

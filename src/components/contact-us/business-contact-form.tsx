@@ -53,12 +53,12 @@ export function BusinessForm({ data }: BusinessFormProps) {
         className="w-full max-w-5xl mx-auto px-4  text-[#293242]"
       >
         <div className="grid grid-cols-1 md:grid-cols-2  gap-6 ">
-          <div className="lg:space-y-12">
+          <div className="lg:space-y-12 space-y-6">
             <div className="flex flex-col">
               <input
                 {...register("organization")}
                 placeholder="Organization name"
-                className="border-b border-[#293242] lg:pb-4 placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.organization && (
                 <span className="text-sm text-red-500">
@@ -70,7 +70,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("fullName")}
                 placeholder="Full Name"
-                className="border-b  border-[#293242] lg:pb-4 placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b  border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.fullName && (
                 <span className="text-sm text-red-500">
@@ -82,7 +82,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("phone")}
                 placeholder="Phone Number"
-                className="border-b border-[#293242] lg:pb-4 placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.phone && (
                 <span className="text-sm text-red-500">
@@ -94,7 +94,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("email")}
                 placeholder="Email Address"
-                className="border-b border-[#293242] lg:pb-4 placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.email && (
                 <span className="text-sm text-red-500">
@@ -106,7 +106,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("website")}
                 placeholder="Website"
-                className="border-b border-[#293242] placeholder:text-[25px] focus:outline-none py-2 lg:pb-4 placeholder:text-[#293242]"
+                className="border-b border-[#293242] lg:placeholder:text-[25px] focus:outline-none py-2 pb-4 placeholder:text-[#293242]"
               />
             </div>
           </div>
@@ -116,7 +116,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               {...register("message")}
               placeholder="Message"
               rows={17}
-              className="bg-[#f8f8f8] p-4 rounded-xl placeholder:text-[25px] w-full resize-none placeholder:text-[#293242]"
+              className="bg-[#f8f8f8] p-4 rounded-xl lg:placeholder:text-[25px] w-full resize-none placeholder:text-[#293242]"
             />
             {errors.message && (
               <span className="text-sm text-red-500">

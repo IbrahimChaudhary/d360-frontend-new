@@ -5,31 +5,28 @@ import { useState, useMemo, useEffect } from "react";
 import { Hero } from "@/components/layout/page-hero";
 import { Footer } from "@/components/layout/footer/footer";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "@/lib/i18n";
 import { Section } from "@/components/ui/section";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { OfferCard } from "@/components/offers/offer-card";
 import { CategoryTabs } from "@/components/offers/category-tabs";
 import { offers } from "@/data/offer";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { OfferData } from "@/types/offer/offer";
 import { fetchOffer, fetchOfferCards } from "@/api/offer";
 import { OfferCategory } from "@/types/offers";
 import { OfferCardData } from "@/types/offer/offercard";
 import { useStore } from "@/store/toggle-store";
-import { englishContent } from "@/data/about-en";
-import { arabicContent } from "@/data/about-ar";
-import { off } from "process";
+
+
 
 export default function OffersPage() {
-  const { t } = useTranslations();
+ 
   const [activeCategory, setActiveCategory] = useState("all");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [offer, setOffer] = useState<OfferData | null>(null);
   const [offerCard, setOfferCard] = useState<OfferCardData[] | null>(null);
   const { language } = useStore();
-  const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
 
   useEffect(() => {
