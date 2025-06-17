@@ -33,10 +33,10 @@ export const footerData: FooterContent = {
   ],
 
   socialLinks: [
-    { icon:"/insta.svg" },
-    { icon:   "/linkedin.svg" },
-    { icon:  "/x.svg" },
-    { icon:   "/tiktok.svg" },
+    { icon:"/insta.svg",scLink: "https://www.instagram.com/d360bank/" },
+    { icon:   "/linkedin.svg",scLink: "https://www.linkedin.com/company/d360bank/"  },
+    { icon:  "/x.svg",scLink: "https://x.com/D360bank"  },
+    { icon:   "/tiktok.svg",scLink: ""  },
     // { icon:   "/fb.svg" },
   ],
 

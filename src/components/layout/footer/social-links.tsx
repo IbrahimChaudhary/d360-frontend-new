@@ -14,7 +14,7 @@ export function SocialLinks() {
        
 
         return (
-          <Link key={index} href="/" target="_blank">
+          <Link key={index} href={link.scLink}  target="_blank">
             <Image 
               src={link.icon} 
               alt="" 
