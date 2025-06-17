@@ -126,7 +126,7 @@ export default function OffersPage() {
             <AnimatedSection direction="left" className="flex-1">
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-[750px] w-full gap-2 lg:gap-0 justify-items-center lg:justify-items-normal"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:w-[650px] xl:w-[800px] w-full gap-2 lg:gap-0 justify-items-center lg:justify-items-normal"
               >
                 {visibleOffers?.map((card, index) => (
                   <motion.div
@@ -141,7 +141,7 @@ export default function OffersPage() {
                       data={card}
                       index={index}
                       height="h-[200px] lg:h-[330px]"
-                      width="lg:w-[240px] w-[290px]"
+                      width="lg:w-[200px] xl:w-[250px] w-[290px]"
                       textColor="text-white"
                       glassBg="bg-white/10 backdrop-blur-md"
                     />
