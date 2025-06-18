@@ -1,15 +1,19 @@
 "use client"
 
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion"
 import { FaGlobe, FaExchangeAlt } from "react-icons/fa"
 import Image from "next/image"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
+import { Button } from "../ui/button"
+import { DownloadModal } from "../home/download-modal"
 
 
 interface TransfersFeatureSectionProps{
   data:PersonalServiceData
 }
 export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
+   const [isModalOpen, setModalOpen] = useState(false);
   const items = [
     {
       icon: (
@@ -54,12 +58,12 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
               </div>
               <h3 className="text-[30px] lg:text-[40px] leading-tight lg:leading-normal font-extrabold text-[#263244]">{item.title}</h3>
               
-              <button className="bg-[#E74529] text-white rounded-md lg:rounded-xl px-8 lg:px-12 py-2 font-bold text-[8px] lg:text-[20px] hover:bg-[#cf3c21] transition">
+              <Button onClick={() => setModalOpen(true)} className="bg-[#E74529] text-white rounded-md lg:rounded-xl px-8 lg:px-12 py-2 font-bold text-[8px] lg:text-[20px] hover:bg-[#cf3c21] transition">
                 {item.button}
-              </button>
+              </Button>
             </div>
 
-            <div className="flex-1  lg:h-full h-[286px]  -mt-12 lg:-mt-0 lg:max-w-[500px]">
+            <div className="flex-1 items-center lg:h-full h-[286px]  -mt-12 lg:-mt-0 lg:max-w-[500px]">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -70,6 +74,8 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
             </div>
           </motion.div>
         ))}
+          <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
+
       </div>
     </section>
   )

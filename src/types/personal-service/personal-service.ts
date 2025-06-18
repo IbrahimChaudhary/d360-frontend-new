@@ -46,6 +46,7 @@ export interface PersonalServiceData {
     imges2: StrapiMediaData
     card1: StrapiMediaData
     card2: StrapiMediaData
+    card3: StrapiMediaData
     download:string
     explore:string
     button:string
