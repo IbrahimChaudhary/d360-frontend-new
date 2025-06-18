@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { SectionHeading } from "../section-heading";
 import { PersonalServiceData } from "@/types/personal-service/personal-service";
+import Link from "next/link";
 
 interface Feature {
   icon: IconType;
@@ -78,12 +79,12 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
       </div>
 
       <div className="hidden lg:block text-center mt-12">
-        <a
-          href="#"
+        <Link
+          href="/products-and-services"
           className="text-[20px] font-bold underline text-[#263244] hover:text-[#E74529]"
         >
           {data.productFees}{" "}
-        </a>
+        </Link>
       </div>
     </section>
   );

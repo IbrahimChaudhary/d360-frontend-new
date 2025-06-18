@@ -1,15 +1,18 @@
 "use client"
 
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion"
 import { FaGlobe } from "react-icons/fa"
 import Image from "next/image"
-import type { PersonalServiceData } from "@/types/personal-service/personal-service"
+import { PersonalServiceData } from "@/types/personal-service/personal-service"
+import { Button } from "../ui/button"
+import { DownloadModal } from "../home/download-modal"
 
 interface TransfersFeatureSectionProps {
   data: PersonalServiceData
 }
-
-export default function TransfersFeatureSection({ data }: TransfersFeatureSectionProps) {
+export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
+   const [isModalOpen, setModalOpen] = useState(false);
   const items = [
     {
       icon: (
@@ -56,27 +59,26 @@ export default function TransfersFeatureSection({ data }: TransfersFeatureSectio
                   {item.button}
                 </button>
               </div>
+              <h3 className="text-[30px] lg:text-[40px] leading-tight lg:leading-normal font-extrabold text-[#263244]">{item.title}</h3>
+              
+              <Button onClick={() => setModalOpen(true)} className="bg-[#E74529] text-white rounded-md lg:rounded-xl px-8 lg:px-12 py-2 font-bold text-[8px] lg:text-[20px] hover:bg-[#cf3c21] transition">
+                {item.button}
+              </Button>
             </div>
 
-            {/* Image Section */}
-            <div
-              className={`flex ${
-                item.reverse ? "lg:order-1 justify-center  lg:justify-start" : "lg:order-2 justify-center lg:justify-end"
-              }`}
-            >
-              <div className="relative lg:h-full h-[286px] -mt-12 lg:-mt-0 lg:max-w-[500px]">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  width={300}
-                  height={700}
-                  className={`object-cover w-full lg:max-w-full flex h-[266px] lg:w-full lg:h-auto ${index === 1 ? "lg:scale-x-[-1]" : "lg:scale-x-[-1]"}`}
-                  priority={index === 0}
-                />
-              </div>
+            <div className="flex-1 items-center lg:h-full h-[286px]  -mt-12 lg:-mt-0 lg:max-w-[500px]">
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={600}
+                height={600}
+                className="object-contain  h-[266px] lg:w-full lg:h-auto"
+              />
             </div>
           </motion.div>
         ))}
+          <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
+
       </div>
     </section>
   )

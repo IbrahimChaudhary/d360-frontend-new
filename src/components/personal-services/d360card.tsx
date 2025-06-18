@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
+import Link from "next/link";
 
 interface D360CardsProps{
   data:PersonalServiceData
@@ -21,6 +22,11 @@ export default function D360Cards({data}:D360CardsProps) {
       id: 2,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card2?.formats?.large?.url || data.card2?.formats?.medium?.url || data.card2?.url || "/personal/green-card.png"}`,
       alt: "D360 Mada Card",
+    },
+    {
+      id: 3,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card3?.formats?.large?.url || data.card3?.formats?.medium?.url || data.card3?.url || "/personal/brown-card.png"}`,
+      alt: "D360 Brown Mada Card",
     },
   ]
 
@@ -60,9 +66,12 @@ export default function D360Cards({data}:D360CardsProps) {
         ))}
       </div>
 
-      <button className="bg-[#263244] text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
-        {data.explore}
-      </button>
+      <Link href="/card">
+        <button  className="bg-[#263244] text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
+          {data.explore}
+        </button>
+      </Link>
+
     </section>
   )
 }
