@@ -15,6 +15,8 @@ import { extractFAQItems } from "@/lib/faq-extract";
 import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 
+
+
 export default function AboutPage() {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
@@ -62,7 +64,7 @@ export default function AboutPage() {
         </SectionHeading>
         {cardData && <CardVariants data={cardData} />}
 
-        <MergedFAQAccordion faqItems={faqItems} sectionClassName="mt-10 px-4" />
+        <MergedFAQAccordion faqItems={faqItems} titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242] lg:px-0 px-2"  />
       </main>
       <Footer />
     </div>

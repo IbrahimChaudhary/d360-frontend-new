@@ -13,6 +13,7 @@ import { useStore } from "@/store/toggle-store";
 import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 
+
 export default function AboutPage() {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
@@ -29,6 +30,7 @@ export default function AboutPage() {
       <Header variant="about" />
       <main className="flex-1 ">
         <Hero
+        bgimage={isRTL ? "scale-x-[-1]" : ""}
         containerAlign="lg:items-start"
           backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
             contact?.heroImg?.formats?.large?.url ||

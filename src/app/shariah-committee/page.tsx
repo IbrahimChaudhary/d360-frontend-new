@@ -75,7 +75,7 @@ export default function ShahriahCommittee() {
 
         {shahriah && <ShariahCommittee data={shahriah}/>}
         <div className="mt-10 lg:mt-20 lg:mx-8 overflow-x-hidden">
-          <h2 className="text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242] container mx-auto max-w-[1195px] mx-auto px-4 ">
+          <h2 className="text-[30px] lg:text-[40px] font-extrabold mb-10 text-[#293242] container  max-w-[1195px] mx-auto px-4 ">
             {shahriah?.MembersHead}
           </h2>
 

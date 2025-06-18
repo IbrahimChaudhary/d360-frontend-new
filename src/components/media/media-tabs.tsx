@@ -56,7 +56,7 @@ export function MediaTabs({ galleryImages, newsArticles, tab1, tab2 }: MediaTabs
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "px-10 py-2 rounded-lg font-bold lg:text-[20px] text-[8px] transition-all duration-200 relative",
+              "px-10 py-2  rounded-lg lg:rounded-xl font-bold lg:text-[20px] text-[8px] transition-all duration-200 relative",
               activeTab === tab.id
                 ? "bg-[#E74529] text-white shadow-sm"
                 : "text-[#263244] bg-[#F6F7F8] hover:text-slate-800"

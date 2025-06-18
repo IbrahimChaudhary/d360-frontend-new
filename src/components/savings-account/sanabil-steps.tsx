@@ -44,14 +44,14 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
                 {step.number}
               </div>
               <div>
-                <h3 className="font-semibold text-[#1E293B] text-sm md:text-base mb-1">
+                <h3 className="font-semibold text-[#1E293B] rtl:text-right ltr:text-left text-sm md:text-base mb-1">
                   {step.title}
                 </h3>
-                <p className="text-xs text-[#475569]">{step.description}</p>
+                <p className="text-xs rtl:text-right ltr:text-left text-[#475569]">{step.description}</p>
               </div>
             </div>
           ))}
-          <p className="text-xs text-center lg:text-left text-[#64748B]  underline cursor-pointer">
+          <p className="text-xs text-center rtl:lg:text-right ltr:lg:text-left text-[#64748B]  underline cursor-pointer">
           {data.OpenTerms}
           </p>
         </div>

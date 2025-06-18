@@ -52,7 +52,7 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
 
         <AnimatedSection direction="up" className="text-center">
           <Button
-            className="bg-[#E74529]  text-white px-8 py-3 lg:py-6 text-[8px] lg:text-lg font-bold lg:rounded-xl"
+            className="bg-[#E74529]  text-white px-8 lg:px-10 py-3 lg:py-6 text-[8px] lg:text-[20px] font-bold lg:rounded-xl"
             size="sm"
           >
             {data.FeatBtn}

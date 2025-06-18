@@ -66,12 +66,12 @@ export default function SavingsAccount() {
               <br />
               {savings?.MainTitle3}
             </h1>
-            <Button
-              className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[10px] lg:px-8 lg:py-4 lg:rounded-[14px]"
-              size="lg"
+            <button
+              className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]"
+             
             >
               {savings?.HeroBtn}
-            </Button>
+            </button>
             <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white leading-tight">
               {savings?.MainTitleDownDes}{" "}
             </p>

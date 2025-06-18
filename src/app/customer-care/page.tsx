@@ -33,6 +33,7 @@ export default function AboutPage() {
       <Header variant="about"/>
       <main className="flex-1">
         <Hero
+        bgimage={isRTL ? "scale-x-[-1]" : ""}
           backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${customerCare?.heroImg?.formats?.large?.url || customerCare?.heroImg?.formats?.medium?.url || customerCare?.heroImg?.url || (isRTL ? "/about/about-hero-arabic.png" : "/care/care-hero.png")}`}
           direction={isRTL ? "rtl" : "ltr"}
         >

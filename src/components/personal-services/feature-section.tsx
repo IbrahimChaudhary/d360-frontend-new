@@ -65,7 +65,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
           >
             <Icon
              
-              className="text-[#E74529] mb-3 w-[33px] h-[23px] lg:w-[40px] lg:h-[40px]"
+              className="text-[#E74529] mb-3 w-[33px] h-[23px] lg:w-[60px] lg:h-[60px]"
             />
             <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}

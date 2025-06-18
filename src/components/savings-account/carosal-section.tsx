@@ -130,7 +130,7 @@ export function Carosel({
                   {...getSlideMotion(direction, 0.1)}
                   custom={direction}
                   className={cn(
-                    "text-[14px] lg:text-[30px] text-center lg:text-left font-bold text-[#263244]",
+                    "text-[14px] lg:text-[30px] text-center rtl:lg:text-right ltr:lg:text-left font-bold text-[#263244]",
                     subheading
                   )}
                 >
@@ -145,7 +145,7 @@ export function Carosel({
                   {...getSlideMotion(direction, 0.2)}
                   custom={direction}
                   className={cn(
-                    "text-[14px] lg:text-[20px] font-[400] text-center lg:text-left text-[#263244]",
+                    "text-[14px] lg:text-[20px] font-[400] text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]",
                     classname
                   )}
                 >
@@ -176,12 +176,12 @@ export function Carosel({
             </div>
 
             {showButton && (
-              <Button
-                size="lg"
-                className="bg-[#EB644C]  text-[8px] lg:text-base flex justify-center lg:w-[40%] w-[40%] lg:mx-0 mx-auto rounded-xl lg:mt-10"
+              <button
+               
+                className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]"
               >
                 {btnTxt}
-              </Button>
+              </button>
             )}
           </div>
         </div>
