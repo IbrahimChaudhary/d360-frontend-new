@@ -4,37 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { CardsData } from "@/types/card/card"
-import { useStore } from "@/store/toggle-store";
+import { CardsData } from "@/types/card/card";
 
 interface CardVariantsProps {
   data: CardsData;
 }
 
-
-
-const translations = {
-  en: {
-    subtitle: "Ideal for everyday payments with full control.",
-    button: "Get your card now",
-    footer: "Free for all D360 customers",
-  },
-  ar: {
-    subtitle: "مثالي للمدفوعات اليومية مع تحكم كامل.",
-    button: "احصل على بطاقتك الآن",
-    footer: "مجاني لجميع عملاء D360",
-  },
-};
-
-
-
-
 export default function CardVariants({ data }: CardVariantsProps) {
   const [selected, setSelected] = useState(0);
   const [animate, setAnimate] = useState(false);
-  const { language } = useStore();
-
-const t = translations[language] || translations.en;
   useEffect(() => {
     const timeout = setTimeout(() => setAnimate(true), 300);
     return () => clearTimeout(timeout);
@@ -115,7 +93,7 @@ const t = translations[language] || translations.en;
   const current = cards[selected];
 
   return (
-    <section className={`${current.bg} py-6 lg:py-10 `}>
+    <section className={`${current.bg} py-6 lg:py-10 lg:min-h-screen`}>
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
         {/* Mobile Layout */}
         <div className="lg:hidden">
@@ -126,9 +104,7 @@ const t = translations[language] || translations.en;
             >
               {data.Title2}
             </h2>
-            <p className="text-[#263244] text-[14px] font-[400] mb-4">
-              {data.Description5}
-            </p>
+            <p className="text-[#263244] text-[14px] font-[400] mb-4">{data.Description5}</p>
             <button
               className={`${current.button} text-white px-10 py-3 rounded-lg font-medium text-[8px] `}
             >
@@ -187,15 +163,16 @@ const t = translations[language] || translations.en;
 
           {/* Card Image - Mobile */}
           <div className="flex justify-center mb-6">
-            <div className="relative w-[332px] h-48 ">
-              <Image
-                src={current.image || "/placeholder.svg"}
-                alt="card"
-                fill
-                className="object-contain border-none rounded-xl"
-              />
-            </div>
-          </div>
+      <div className="relative w-[332px] h-48 ">
+        <Image
+          src={current.image || "/placeholder.svg"}
+          alt="card"
+          fill
+          className="object-contain border-none rounded-xl"
+        />
+      </div>
+    </div>
+
 
           {/* Bottom Section - Mobile */}
           <div className="text-center space-y-4">
@@ -240,12 +217,13 @@ const t = translations[language] || translations.en;
               <h2 className={`text-[60px] font-bold ${current.text}`}>
                 {data.Title2}
               </h2>
-              <p className="text-[#263244] text-[25px]">{t.subtitle}</p>
-
+              <p className="text-[#263244] text-[25px]">
+                Ideal for everyday payments with full control.
+              </p>
               <button
-                className={`${current.button} text-white px-5 py-2 rounded-xl font-bold`}
+                className={`${current.button} text-white px-7 py-2 rounded-xl font-medium`}
               >
-                {t.button}
+                Get your card now
               </button>
             </div>
 
@@ -317,7 +295,7 @@ const t = translations[language] || translations.en;
         {/* Desktop Bottom Section */}
         <div className="hidden lg:flex justify-around items-center pt-10 lg:pt-26 ">
           <p className="text-[25px] w-full max-w-[430px] font-extrabold text-black">
-            {t.footer}
+            Free for all D360 customers
           </p>
 
           <div className="flex justify-end w-full max-w-[430px] gap-4 relative">
@@ -337,7 +315,7 @@ const t = translations[language] || translations.en;
                   {isActive && (
                     <motion.div
                       layoutId="desktop-selector-ring"
-                      className="absolute top-[29px] rtl:lg:top-[1px] ltr:lg:top-[1.5px] left-0 w-4 h-4 rounded-full ring-1 lg:ring-2 ring-black"
+                      className="absolute top-[29px] lg:top-[3px] left-0 w-4 h-4 rounded-full ring-1 lg:ring-2 ring-black"
                       transition={{
                         type: "spring",
                         stiffness: 400,

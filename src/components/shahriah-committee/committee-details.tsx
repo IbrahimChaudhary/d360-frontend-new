@@ -21,7 +21,7 @@ export default function ShariahCommittee({data}:ShahriahCommitteeProps) {
               {data.ShariahDes1}
             </p>
   
-            <p className="text-[14px] rtl:lg:text-right ltr:lg:text-left text-center lg:text-[25px]  text-[#496083] mb-8">
+            <p className="text-[14px] lg:text-left text-center lg:text-[25px]  text-[#496083] mb-8">
             {data.ShariahDes2}
             </p>
           </div>

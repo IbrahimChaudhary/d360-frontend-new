@@ -118,7 +118,7 @@ export function MergedFAQAccordion({
   <Accordion
     type="single"
     collapsible
-    className="w-full mx-auto lg:p-4 px-2 lg:px-0" 
+    className="w-full mx-auto lg:p-4" 
   >
     {faqItems.map((item: FAQItem, index: number) => (
       <FAQMerged key={item.id || index} item={item} index={index} />

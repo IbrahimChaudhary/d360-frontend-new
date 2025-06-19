@@ -49,7 +49,6 @@ export default function InvestorRealtions() {
       <Header variant="about" />
       <main className="flex-1">
         <Hero
-        bgimage={isRTL ? "scale-x-[-1]" : ""}
         containerAlign="lg:items-start"
           backgroundImage={
             investor?.HeroImg?.formats?.large?.url ||

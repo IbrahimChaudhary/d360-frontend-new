@@ -17,12 +17,12 @@ export function ContactImage ({url}:ContactImageProps) {
 
   return (
     <AnimatedSection direction="right">
-      <div className="w-[180px] h-[360px] rounded-full sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-auto aspect-[9/20] relative">
+      <div className="w-[180px] h-[360px] sm:w-[240px] sm:h-[480px] md:w-[300px] md:h-[800px] relative">
         <Image
           src={imageSrc}
           alt="D360 App Help Screen"
           fill
-          className="lg:object-cover object-contain "
+          className="object-contain"
         />
       </div>
     </AnimatedSection>

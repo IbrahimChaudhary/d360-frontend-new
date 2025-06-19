@@ -3,8 +3,6 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { CareerData } from "@/types/careers/careers";
-import { Button } from "../ui/button";
-import Link from "next/link";
 
 interface CustomerSupportProps {
   data: CareerData;
@@ -34,14 +32,12 @@ export default function CustomerSupport({ data }: CustomerSupportProps) {
           {data.HelpingText}
         </ReactMarkdown>
 
-      <Link href="/contact-us">
-        <Button
-          className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
-          
+        <a
+          href="/contact-us"
+          className="bg-[#E74529] hover:bg-[#d63d1e] text-white text-[8px] lg:text-[20px] font-bold px-8 py-3 rounded-md lg:rounded-xl transition-colors duration-300"
         >
           {data.HelpingBtn}
-        </Button>
-        </Link>
+        </a>
       </div>
     </section>
   );

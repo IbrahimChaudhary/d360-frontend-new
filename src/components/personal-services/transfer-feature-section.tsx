@@ -1,20 +1,20 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FaGlobe } from "react-icons/fa"
+import { FaGlobe, FaExchangeAlt } from "react-icons/fa"
 import Image from "next/image"
-import type { PersonalServiceData } from "@/types/personal-service/personal-service"
+import { PersonalServiceData } from "@/types/personal-service/personal-service"
 
-interface TransfersFeatureSectionProps {
-  data: PersonalServiceData
+
+interface TransfersFeatureSectionProps{
+  data:PersonalServiceData
 }
-
-export default function TransfersFeatureSection({ data }: TransfersFeatureSectionProps) {
+export default function TransfersFeatureSection({data}:TransfersFeatureSectionProps) {
   const items = [
     {
       icon: (
-        <div className="w-10 h-10 bg-[#F6F7F8] rounded-full flex items-center justify-center">
-          <FaGlobe className="text-[#263244] w-5 h-5" />
+        <div className="w-[40px] h-[40px] bg-[#F6F7F8] rounded-full flex items-center justify-center">
+          <FaGlobe  className="text-[#263244] w-[26px] h-[26px] lg:w-[40px] lg:h-[40px]" />
         </div>
       ),
       title: `${data.Title12} ${data.Title13}`,
@@ -24,8 +24,8 @@ export default function TransfersFeatureSection({ data }: TransfersFeatureSectio
     },
     {
       icon: (
-        <div className="w-10 h-10 bg-[#F6F7F8] rounded-full flex items-center justify-center">
-          <img src="/personal/arrows.svg" alt="" className="w-5 h-5" />
+        <div className="w-[40px] h-[40px] bg-[#F6F7F8] rounded-full flex items-center justify-center">
+          <img src="/personal/arrows.svg" alt="" />
         </div>
       ),
       title: `${data.Title14} ${data.Title15}`,
@@ -33,11 +33,10 @@ export default function TransfersFeatureSection({ data }: TransfersFeatureSectio
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.imges2?.formats?.large?.url || data.imges2?.formats?.medium?.url || data.imges2?.url || "/personal/mob-left.png"}`,
       reverse: true,
     },
-  ]
-
+  ];
   return (
-    <section className="bg-white py-12 px-4">
-      <div className="lg:max-w-3xl  mx-auto">
+    <section className="bg-white lg:pt-0 pt-18 px-6 lg:px-0 max-w-5xl mx-auto">
+      <div className="space-y-20 max-w-7xl mx-auto">
         {items.map((item, index) => (
           <motion.div
             key={index}
@@ -45,35 +44,29 @@ export default function TransfersFeatureSection({ data }: TransfersFeatureSectio
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
-            className={`grid lg:grid-cols-2 items-center ${index === 0 ? "mb-16" : ""}`}
+            className={` lg:flex ${
+              item.reverse ? "md:flex-row-reverse" : "md:flex-row"
+            } items-center  `}
           >
-            {/* Content Section */}
-            <div className={`space-y-6 ${item.reverse ? "lg:order-2" : "lg:order-1"}`}>
-              <div className="flex items-center justify-start">{item.icon}</div>
-              <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-[#263244] leading-tight mb-4">{item.title}</h2>
-                <button className="bg-[#E74529] hover:bg-[#cf3c21] text-white px-6 py-2.5 rounded-md font-semibold text-sm transition-colors">
-                  {item.button}
-                </button>
+            <div className="flex-1  space-y-4">
+              <div className="flex items-center justify-start gap-2">
+                {item.icon}
               </div>
+              <h3 className="text-[30px] lg:text-[40px] leading-tight lg:leading-normal font-extrabold text-[#263244]">{item.title}</h3>
+              
+              <button className="bg-[#E74529] text-white rounded-md lg:rounded-xl px-8 lg:px-12 py-2 font-bold text-[8px] lg:text-[20px] hover:bg-[#cf3c21] transition">
+                {item.button}
+              </button>
             </div>
 
-            {/* Image Section */}
-            <div
-              className={`flex ${
-                item.reverse ? "lg:order-1 justify-center  lg:justify-start" : "lg:order-2 justify-center lg:justify-end"
-              }`}
-            >
-              <div className="relative lg:h-full h-[286px] -mt-12 lg:-mt-0 lg:max-w-[500px]">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  width={300}
-                  height={700}
-                  className={`object-cover w-full lg:max-w-full flex h-[266px] lg:w-full lg:h-auto ${index === 1 ? "lg:scale-x-[-1]" : "lg:scale-x-[-1]"}`}
-                  priority={index === 0}
-                />
-              </div>
+            <div className="flex-1  lg:h-full h-[286px]  -mt-12 lg:-mt-0 lg:max-w-[500px]">
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={600}
+                height={600}
+                className="object-contain  h-[266px] lg:w-full lg:h-auto"
+              />
             </div>
           </motion.div>
         ))}
