@@ -16,6 +16,7 @@ import { extractFAQItems } from "@/lib/faq-extract";
 export default function Payments() {
   const { t } = useTranslations();
   const { language } = useStore();
+  const isRTL = language === "ar";
   const [payment, setPayment] = useState<PaymentsData | null>(null);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function Payments() {
       {payment && (
         <main className="flex-1">
           <Hero
+          bgimage={isRTL ? "scale-x-[-1]" : ""}
             backgroundImage={
               payment?.imges?.formats?.large?.url ||
               payment?.imges?.formats?.medium?.url ||

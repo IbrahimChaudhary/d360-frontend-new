@@ -128,7 +128,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
 
         <div className="flex flex-col  ">
           <div className="mt-4 flex justify-center ">
-            <label className="flex items-center rtl:flex-row-reverse ">
+          <label className="flex items-center rtl:flex-row rtl:gap-2 ">
               <input type="checkbox" {...register("agree")} className="mr-2" />
               <span className="text-[14px] lg:text-[30px]">
                 {data.privacy} <span className="font-bold">{data.privacyBold}</span>
@@ -156,10 +156,10 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
         <div className="ltr:space-y-10 rtl:space-y-14 rtl:lg:space-y-7 ltr:lg:space-y-4 lg:space-y-0">
           <div className="text-[#E74529] font-bold  items-center flex gap-2">
-            <Phone className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1] " size={18} /> <span> {data.insidePhone} </span>
+          <img src="/contact/globe.svg" className="w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" alt="" /> <span> {data.insidePhone} </span>
           </div>
           <div className="text-[#E74529] font-bold flex items-center gap-2">
-            <Globe className="text-[#263244] w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" size={18} /> {data.outsidePhone}
+          <img src="/contact/phone.svg" className="w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]" alt="" />  {data.outsidePhone}
           </div>
         </div>
       </div>

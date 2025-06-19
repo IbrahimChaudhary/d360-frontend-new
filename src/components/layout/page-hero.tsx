@@ -8,20 +8,23 @@ interface HeroProps {
   children: React.ReactNode;
   direction?: "ltr" | "rtl";
   containerAlign?: string; // e.g., "lg:items-start" or "lg:items-end"
+  bgimage?:string
 }
 
 export function Hero({
   backgroundImage,
   children,
   direction = "ltr",
-  containerAlign = "lg:items-center", // default to center
+  containerAlign = "lg:items-center", 
+  // default to center
+  bgimage
 }: HeroProps) {
   const isRTL = direction === "rtl";
 
   return (
     <section className="w-full md:min-h-[750px] lg:h-[100vh] relative overflow-hidden">
       <div
-        className="absolute w-full h-full bg-no-repeat bg-cover bg-center z-0"
+        className={`absolute w-full h-full bg-no-repeat bg-cover bg-center z-0 ${bgimage}`}
         style={{ backgroundImage: `url(${backgroundImage})` }}
       />
 

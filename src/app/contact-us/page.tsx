@@ -29,6 +29,7 @@ export default function AboutPage() {
       <Header variant="about" />
       <main className="flex-1 ">
         <Hero
+        bgimage={isRTL ? "scale-x-[-1]" : ""}
         containerAlign="lg:items-start"
           backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
             contact?.heroImg?.formats?.large?.url ||

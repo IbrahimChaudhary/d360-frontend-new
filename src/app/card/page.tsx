@@ -2,9 +2,7 @@
 import { Header } from "@/components/layout/header";
 import { Hero } from "@/components/layout/page-hero";
 import { Footer } from "@/components/layout/footer/footer";
-import { useTranslations } from "@/lib/i18n";
 import { MergedFAQAccordion } from "@/components/faq-merged";
-import { FAQsAbout } from "@/data/about";
 import { SectionHeading } from "@/components/section-heading";
 import CardVariants from "@/components/card/cards-variation";
 import { useEffect, useState } from "react";
@@ -12,14 +10,12 @@ import { CardsData } from "@/types/card/card";
 import { fetchCard } from "@/api/card";
 import { useStore } from "@/store/toggle-store";
 import { extractFAQItems } from "@/lib/faq-extract";
-import { englishContent } from "@/data/about-en";
-import { arabicContent } from "@/data/about-ar";
+
+
 
 export default function AboutPage() {
   const { language } = useStore();
-  const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
-  const { t } = useTranslations();
   const [cardData, setCardData] = useState<CardsData | null>(null);
 
   useEffect(() => {
@@ -62,7 +58,7 @@ export default function AboutPage() {
         </SectionHeading>
         {cardData && <CardVariants data={cardData} />}
 
-        <MergedFAQAccordion faqItems={faqItems} sectionClassName="mt-10 px-4" />
+        <MergedFAQAccordion faqItems={faqItems} titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242] lg:px-0 px-2"  />
       </main>
       <Footer />
     </div>
