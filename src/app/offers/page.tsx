@@ -85,6 +85,7 @@ export default function OffersPage() {
       </div>
       <main className="flex-1">
         <Hero
+        bgimage={isRTL ? "scale-x-[-1]" : ""}
           backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
             offer?.heroImage?.formats?.large?.url ||
             offer?.heroImage?.formats?.medium?.url ||
@@ -98,7 +99,7 @@ export default function OffersPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight${
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight lg:leading-[5.5rem]${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

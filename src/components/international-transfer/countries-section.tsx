@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Section } from "@/components/ui/section";
 import { AnimatedSection } from "@/components/ui/animated-section";
-import { useLanguage } from "@/context/language-context";
+import { useStore } from "@/store/toggle-store";
 import { useTranslations } from "@/lib/i18n";
 import { countries, continents } from "@/data/countries";
 import type { Country } from "@/types/countries";
@@ -21,7 +21,7 @@ export function CountriesSection({data}:CountriesSectionProps) {
   >("europe");
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchMode, setIsSearchMode] = useState(false);
-  const { language } = useLanguage();
+  const { language } = useStore();
   const { t } = useTranslations();
 
   const filteredCountries = useMemo(() => {
@@ -73,7 +73,7 @@ export function CountriesSection({data}:CountriesSectionProps) {
   return (
     <Section className="flex justify-center">
       <AnimatedSection direction="up" className="text-center mb-12">
-        <h2 className="text-lg lg:text-[40px] font-normal text-[#293242] mb-6 max-w-4xl mx-auto leading-tight">
+        <h2 className="text-[20px] lg:px-0 px-8 lg:text-[40px] font-normal text-[#293242]  lg:mb-6 max-w-4xl mx-auto leading-tight">
           {t("moneyTransfer.title" as any) || (
             <>
              {data.CountriesHead}  {" "}
@@ -98,7 +98,7 @@ export function CountriesSection({data}:CountriesSectionProps) {
         key={continent.id}
         onClick={() => handleTabClick(continent.id)}
         className={cn(
-          "flex-1 px-6 lg:py-3 py-2 rounded-md lg:rounded-2xl text-[8px] lg:text-base font-semibold transition-all text-center",
+          "flex-1 px-6 lg:py-2 py-2 rounded-md lg:rounded-xl cursor-pointer text-[8px] lg:text-base font-semibold transition-all text-center",
           activeContinent === continent.id && !isSearchMode
             ? "bg-[#E74529] text-white"
             : "bg-[#F6F7F8] text-[#263244]"
@@ -114,12 +114,12 @@ export function CountriesSection({data}:CountriesSectionProps) {
     <button
       onClick={handleSearchFocus}
       className={cn(
-        "w-full px-6 lg:py-3 py-2 rounded-md lg:rounded-2xl text-[8px] lg:text-base font-semibold flex items-center  gap-2 transition-all",
+        "w-full px-6 lg:py-2 py-2 rounded-md lg:rounded-xl text-[8px] lg:text-base font-semibold flex items-center  gap-2 transition-all",
         isSearchMode ? "bg-[#E74529] text-white" : "bg-[#FDF0ED] text-[#263244]"
       )}
     >
     
-      {t("moneyTransfer.search" as any) || "Search"}
+    {language === "en" ? "Search" : "يبحث"}
     </button>
 
     {isSearchMode && (

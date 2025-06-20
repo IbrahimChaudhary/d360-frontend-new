@@ -58,7 +58,7 @@ export function Footer() {
           </div>
 
           {/* Columns + Social */}
-          <div className={`w-full flex flex-col lg:flex-row  justify-normal items-start gap-6  lg:justify-between md:gap-30 `}>
+          <div className={`w-full flex flex-col lg:flex-row  justify-normal items-start gap-6  lg:justify-between  `}>
             {/* Follow Us - Will be on left in English, right in Arabic */}
             <div className={`flex w-full md:w-auto mb-6 md:mb-0 ${isRTL ? 'order-2' : 'order-2'}  gap-10 md:justify-between`}>
               <div className={`flex flex-col w-full  `}>
@@ -70,7 +70,7 @@ export function Footer() {
             </div>
 
             {/* Accordion Group - Will be on right in English, left in Arabic */}
-            <div className={`mt-4 md:mt-0 grid grid-cols-2 md:grid-cols-4 gap-3 `}>
+            <div className={`w-full mt-4 md:mt-0 grid grid-cols-2 md:grid-cols-4 lg:gap-8 `}>
               {footerColumns.map((column, index) => (
                 <FooterColumn key={index} links={column.links} />
               ))}

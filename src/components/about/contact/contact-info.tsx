@@ -116,13 +116,13 @@ export function ContactInfo({
             language === "ar" ? "justify-start" : "justify-start"
           }`}
         >
-          <Button
+          <button
             onClick={() => setModalOpen(true)}
-            size="lg"
-             className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
+           
+             className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-xl font-bold cursor-pointer text-[20px]"
           >
             {data.download}{" "}
-          </Button>
+          </button>
         </div>
       )}
 

@@ -236,7 +236,7 @@ export function TeamTabs({
             >
               <div
                 className={`flex justify-between items-start mb-4 ${
-                  isRTL ? "flex-row" : "flex-row"
+                  isRTL ? "flex-row-reverse" : "flex-row"
                 }`}
               >
                 <button

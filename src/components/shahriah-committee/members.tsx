@@ -77,7 +77,7 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     onClick={() => handleSelect(member)}
-                    className="relative bg-white rounded-2xl overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-gray-200 w-full aspect-[3/4] "
+                    className="relative bg-[#F8F8F8] rounded-2xl overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-gray-200 w-full aspect-[3/4] "
                   >
                     <div className="relative w-full h-full">
                       <Image
@@ -147,7 +147,7 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
                           transition={{ duration: 0.4, delay: index * 0.1 }}
                           viewport={{ once: true }}
                           onClick={() => handleSelect(member)}
-                          className={`relative bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300  w-70 h-94`}
+                          className={`relative bg-[#F8F8F8] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300  w-70 h-94`}
                         >
                           <div className="relative w-full h-full">
                             <Image

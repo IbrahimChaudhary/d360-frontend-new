@@ -115,17 +115,22 @@ export default function CardVariants({ data }: CardVariantsProps) {
         {/* Mobile Layout */}
         <div className="lg:hidden">
           {/* Header */}
-          <div className="ltr:text-left rtl:text-right mb-6">
+          <div className="ltr:text-left leading-tight rtl:text-right mb-6">
             <h2
               className={`text-[30px] sm:text-5xl  w-[65%] font-extrabold mb-2 ${current.text}`}
             >
               {data.Title2}
             </h2>
+            <h2
+              className={`text-[30px] sm:text-5xl  w-[65%] font-extrabold mb-2 ${current.text}`}
+            >
+              {data.Title3}
+            </h2>
             <p className="text-[#263244] text-[14px] font-[400] mb-4">
               {data.Description5}
             </p>
             <button
-              className={`${current.button} text-white px-10 py-3 rounded-lg font-medium text-[8px] `}
+              className={`${current.button} text-white px-6 py-3 rounded-lg font-bold text-[8px] `}
             >
               {data.getCard}
             </button>
@@ -142,7 +147,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
               <motion.div
                 key={feature}
                 className={cn(
-                  "flex  items-center gap-2 rounded-2xl px-2 py-2 text-center",
+                  "flex  items-center gap-2 rounded-2xl px-2 py-1 lg:text-center",
                   current.border
                 )}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -169,11 +174,12 @@ export default function CardVariants({ data }: CardVariantsProps) {
                         alt={`icon-${i}`}
                         width={16}
                         height={16}
+                        className=""
                       />
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <p className="text-[7px] font-semibold text-[#263244] leading-tight">
+                <p className="text-[7px] font-bold text-[#263244] leading-tight">
                   {feature}
                 </p>
               </motion.div>
@@ -238,7 +244,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
               </h2>
               <p className="text-[#263244] text-[25px]">{t.subtitle}</p>
               <button
-                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold`} >
+                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold text-[20px]`} >
                 {t.button}
               </button>
             </div>

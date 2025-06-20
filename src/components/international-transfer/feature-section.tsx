@@ -6,6 +6,8 @@ import { Section } from "@/components/ui/section"
 import { AnimatedSection } from "@/components/ui/animated-section"
 import { useTranslations } from "@/lib/i18n"
 import { InternationalData } from "@/types/international/international"
+import { useState } from "react"
+import { DownloadModal } from "../home/download-modal"
 
 interface Feature {
   title: string
@@ -17,6 +19,7 @@ interface FeaturesSectionProps{
 }
 export function FeaturesSection({data}:FeaturesSectionProps) {
   const { t } = useTranslations()
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const features: Feature[] = [
     {
@@ -44,21 +47,23 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
           <h2 className="lg:text-[50px] text-[25px] font-bold text-[#263244]">{data.FeatHead}</h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 px-4 lg:px-0 ">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}
         </div>
 
         <AnimatedSection direction="up" className="text-center">
-          <Button
-             className="bg-[#E74529]  text-white px-8 lg:px-10 py-3 lg:py-6 text-[8px] lg:text-[20px] font-bold lg:rounded-xl"
-            size="sm"
+          <button
+          onClick={() => setModalOpen(true)}
+             className="bg-[#E74529]  text-white px-8 lg:px-8 py-3 lg:py-2 text-[8px] lg:text-[20px] font-bold rounded-lg lg:rounded-xl"
+          
           >
             {data.FeatBtn}
-          </Button>
+          </button>
         </AnimatedSection>
       </div>
+      <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </Section>
   )
 }
@@ -76,9 +81,9 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-[35px] lg:pl-[26px] lg:pr-[100px] p-1  transition-all duration-300"
+      className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-[35px] lg:pl-[26px] rtl:lg:pr-[25px] ltr:lg:pr-[100px] p-1  transition-all duration-300 lg:px-0 px-4"
     >
-      <h3 className="text-[14px] lg:text-[40px] pr-[105px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4">
+      <h3 className="text-[14px] lg:text-[40px] ltr:pr-[105px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4">
         {feature.title}
       </h3>
       <p className="text-[#263244]  text-[12px] lg:text-[25px]">

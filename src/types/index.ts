@@ -57,6 +57,7 @@ export type TeamMemberId =
   
   type SocialLink = {
     icon: string
+    scLink:string
     // href: string
   }
   

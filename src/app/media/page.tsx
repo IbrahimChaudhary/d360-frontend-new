@@ -77,14 +77,16 @@ export default function MediaPage() {
     <div className="flex min-h-screen flex-col">
       <Header variant="about"/>
       <main className="flex-1">
-        <Hero backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${media?.heroImg?.formats?.large?.url || media?.heroImg?.formats?.medium?.url || media?.heroImg?.url || "/media/media-hero.png"}`}>
+        <Hero
+        bgimage={isRTL? "scale-x-[-1]" : " "}
+        backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${media?.heroImg?.formats?.large?.url || media?.heroImg?.formats?.medium?.url || media?.heroImg?.url || "/media/media-hero.png"}`}>
         <div
             className={`flex w-full flex-col ${
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-[80%] w-[40%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight${
+              className={`text-[25px] flex items-center lg:w-[80%] w-[40%] uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight lg:leading-[5.5rem]${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

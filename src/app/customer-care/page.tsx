@@ -43,8 +43,8 @@ export default function AboutPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight lg:w-[90%] w-[50%] ${
-                isRTL ? "justify-end" : " justify-center"
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-tight lg:leading-[5.5rem] lg:w-[90%] w-[50%] ${
+                isRTL ? "justify-end" : " "
               }`}
             >
               {customerCare?.HeroHeading}

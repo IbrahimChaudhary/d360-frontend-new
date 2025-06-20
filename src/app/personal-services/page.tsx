@@ -46,7 +46,7 @@ export default function AboutPage() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center lg:w-full leading-tight w-[62.8%] uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-22 ${
+              className={`text-[25px] flex items-center lg:w-full leading-tight w-[62.8%] uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-[5.5rem] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >

@@ -75,7 +75,7 @@ export default function AboutPage() {
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-            <h1 className={`text-[25px] flex items-center  uppercase lg:text-[140px] font-extrabold text-[#263244] lg:leading-33 ${isRTL?"justify-end":" justify-center"}`}>
+            <h1 className={`text-[25px] flex   uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-[5.5rem] ${isRTL?"justify-end":" "}`}>
               {aboutData?.Title1}
               <br />
               {aboutData?.Title2}
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] cursor-pointer text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
                   ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
                   : "lg:px-16"

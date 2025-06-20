@@ -42,6 +42,7 @@ export default function InternationalTransfer() {
       </div>
       <main className="flex-1">
         <Hero
+        bgimage={isRTL? "scale-x-[-1] " :" "}
           backgroundImage={
             international?.heroImage?.formats?.large?.url ||
             international?.heroImage?.formats?.medium?.url ||
@@ -60,7 +61,7 @@ export default function InternationalTransfer() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center w-[40%] lg:w-[80%] uppercase lg:text-[80px] font-extrabold text-white lg:text-[#263244] leading-snug ${
+              className={`text-[25px] flex items-center w-[40%] lg:w-[80%] uppercase lg:text-[80px] font-extrabold text-white lg:text-[#263244] leading-tight lg:leading-[5.5rem] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -68,9 +69,9 @@ export default function InternationalTransfer() {
             </h1>
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] cursor-pointer mt-4 text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] lg:mt-8 cursor-pointer mt-4 text-white font-bold py-2 px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
-                  ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
+                  ? "lg:px-3 w-[30%] ml-[70%] lg:w-[40%] lg:ml-30"
                   : "lg:px-16"
               }`}
             >
@@ -90,7 +91,7 @@ export default function InternationalTransfer() {
           textstyle="flex lg:block  items-center lg:space-y-6 lg:mt-0 mt-6"
           subheading="ltr:text-left rtl:text-right lg:text-[30px]"
           arrows="text-sm gap-0 lg:gap-4"
-          icon="w-4 h-4 lg:w-6 lg:h-6 "
+          icon="w-[23px] h-[23px] lg:w-[34px] lg:h-[34px] "
           img1=" block lg:hidden"
           img2="lg:block hidden"
           container="pl-6 lg:pl-0"

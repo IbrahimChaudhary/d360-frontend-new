@@ -37,14 +37,14 @@ export default function AboutPage() {
           }`}
           direction={isRTL ? "rtl" : "ltr"}
         >
-          <h1 className="text-[25px] ltr:lg:px-6  lg:text-[80px] font-extrabold text-[#263244] leading-tight">
+          <h1 className="text-[25px] ltr:lg:px-6 leading-tight  lg:text-[80px] font-extrabold text-[#263244] lg:leading-[5.5rem]">
             {cardData?.MainTitle}
           </h1>
-          <p className="text-[25px] ltr:lg:px-6 lg:text-[80px] font-extrabold lg:font-medium w-[40%] lg:w-[70%] mb-2 md:mb-6 text-[#263244] leading-tight">
+          <p className="text-[25px] ltr:lg:px-6 lg:text-[80px] font-extrabold lg:font-medium w-[40%] lg:w-[70%] mb-2 md:mb-6 text-[#263244] leading-tight lg:leading-[5.5rem]">
             {cardData?.MainTitle1} <br className="lg:hidden block" /> {cardData?.MainTitle2}
           </p>
         </Hero>
-        <SectionHeading className="pt-16">
+        <SectionHeading className="lg:pt-16 pt-8">
           <p className="text-[30px] lg:w-full w-[60%] leading-tight mx-auto lg:mx-0 lg:text-[70px] font-extrabold">
             {" "}
             {cardData?.Title1}
@@ -58,7 +58,7 @@ export default function AboutPage() {
         </SectionHeading>
         {cardData && <CardVariants data={cardData} />}
 
-        <MergedFAQAccordion faqItems={faqItems} titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242] lg:px-0 px-2"  />
+        <MergedFAQAccordion faqItems={faqItems} titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold lg:mb-8 mb-4  text-[#293242] lg:px-0 px-2"  />
       </main>
       <Footer />
     </div>

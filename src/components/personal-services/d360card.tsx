@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
+import Link from "next/link"
 
 interface D360CardsProps{
   data:PersonalServiceData
@@ -16,13 +17,20 @@ export default function D360Cards({data}:D360CardsProps) {
       id: 1,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card1?.formats?.large?.url || data.card1?.formats?.medium?.url || data.card1?.url || "/personal/orange-card.png"}`,
       alt: "D360 Visa Card",
+      buttonColor: "#EB644C",
+      hoverColor: "#d8583f",
     },
     {
       id: 2,
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card2?.formats?.large?.url || data.card2?.formats?.medium?.url || data.card2?.url || "/personal/green-card.png"}`,
       alt: "D360 Mada Card",
+      buttonColor: "#004119",
+      hoverColor: "#003217",
     },
   ]
+
+  const activeCard = cards[activeIndex]
+
 
   return (
     <section className="py-16 lg:py-28 bg-white text-center">
@@ -49,20 +57,26 @@ export default function D360Cards({data}:D360CardsProps) {
       </div>
 
       <div className="flex justify-center items-center gap-2 mb-6">
-        {cards.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              activeIndex === index ? "bg-[#004119]" : "bg-[#F08071]"
-            }`}
-          />
-        ))}
-      </div>
+  {cards.map((card, index) => (
+    <button
+      key={index}
+      onClick={() => setActiveIndex(index)}
+      style={{
+        backgroundColor: card.buttonColor,
+        transform: activeIndex === index ? "scale(1.3)" : "scale(1)",
+      
+      }}
+      className="w-3 h-3 rounded-full transition-all duration-300"
+    />
+  ))}
+</div>
 
-      <button className="bg-[#263244] text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
+      <Link href="/card">     
+       <button className="bg-[#263244] cursor-pointer text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition">
         {data.explore}
       </button>
+      </Link>
+
     </section>
   )
 }

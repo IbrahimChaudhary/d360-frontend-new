@@ -582,7 +582,7 @@ export default function InteractiveCardHero({
                     {data.DigitalCardDescription}
                   </p>
                   <button
-                    className="bg-white font-bold text-[#E74529] text-sm rounded-lg px-12 py-3 mx-auto block"
+                    className="bg-white font-bold text-[#E74529] text-sm rounded-lg px-12 py-2 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
                     {data.DigitalCardCTA}

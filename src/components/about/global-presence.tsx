@@ -34,7 +34,7 @@ export function GlobalCTA({
         alt="CTA Background"
         fill
         priority
-        className="object-cover object-center z-10"
+        className="object-cover object-center z-10 rtl:scale-x-[-1]"
       />
 
       {/* Overlay Content */}
@@ -55,12 +55,12 @@ export function GlobalCTA({
           {subtitle2}
         </p>
         <a href="/contact-us">
-        <Button
-          className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
+        <button
+          className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-2 rounded-xl font-bold text-[20px]"
           
         >
           {ctaText}
-        </Button>
+        </button>
         </a>
       </motion.div>
 

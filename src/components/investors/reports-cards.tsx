@@ -100,12 +100,12 @@ export default function DynamicInfoSection({
                 key={index}
                 className={`bg-[#F6F7F8] rounded-2xl p-4 lg:p-3 flex flex-col justify-between ${cardHeight}`}
               >
-                <div className="text-left rtl:text-right">
-                  <div className="text-3xl lg:text-[80px] font-extrabold text-[#263244] mb-2">{card.year.slice(0, 2)}</div>
-                  <div className="text-3xl lg:text-[80px] font-extrabold text-[#263244]">{card.year.slice(2)}</div>
+                <div className="text-left rtl:text-right leading-tight">
+                  <div className="text-[44px]  lg:text-[80px] font-extrabold text-[#263244] mb-2">{card.year.slice(0, 2)}</div>
+                  <div className="text-[44px] lg:text-[80px] font-extrabold text-[#263244]">{card.year.slice(2)}</div>
                 </div>
                 <button
-                  className="bg-[#E74529] hover:bg-[#d63d1e] text-white text-[8px] lg:text-sm font-bold px-4 py-3 rounded-lg transition-colors duration-200 mt-4"
+                  className="bg-[#E74529] hover:bg-[#d63d1e] text-white text-[8px] lg:text-[20px] font-bold lg:w-full w-[80%] lg:mx-0 mx-auto py-3 rounded-xl transition-colors duration-200 mt-4"
                   onClick={() => {
                     if (card.downloadUrl) {
                       window.open(card.downloadUrl, "_blank")

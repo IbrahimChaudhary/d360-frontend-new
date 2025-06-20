@@ -27,10 +27,10 @@ export default function TransferSection({
       )}
     >
       <div className="lg:w-[70%] w-full space-y-2">
-        <p className="rtl:lg:text-right ltr:lg:text-left text-[14px] lg:text-[20px] text-center text-[#ACBBD1]">
+        <p className="rtl:lg:text-right ltr:lg:text-left text-[12px] lg:text-[20px] text-center text-[#ACBBD1] font-extrabold">
           {uppertext}
         </p>
-        <h2 className="text-[30px] rtl:lg:text-right lg:text-[60px] w-full lg:w-[90%] font-extrabold text-center lg:text-left text-[#263244] uppercase lg:normal-case leading-tight">
+        <h2 className="text-[30px] rtl:lg:text-right lg:text-[60px] w-full lg:w-[90%] font-extrabold text-center lg:text-left text-[#1F2E41] uppercase lg:normal-case leading-tight">
           {heading}
         </h2>
         <p className="text-[14px] lg:text-[30px] w-full lg:w-[50%] text-[#263244] rtl:lg:text-right ltr:lg:text-left text-center mb-4">
@@ -41,7 +41,7 @@ export default function TransferSection({
         </p> */}
       </div>
 
-      <div className="bg-gray-50 lg:w-[35%] p-2   rounded-xl shadow-md space-y-3  mx-4 lg:mx-0 text-black">
+      <div className="bg-gray-50 lg:w-[35%] p-4 lg:p-2   rounded-xl  space-y-3  mx-4 lg:mx-0 text-black">
         <div className=" bg-white p-2 rounded-lg ">
           <span className="text-[12px] font-semibold text-left">
             {data.Sender}
@@ -62,7 +62,7 @@ export default function TransferSection({
                         }`
                       : "/international/international-hero.png"
                   }
-                  className="w-[16] h-[16]"
+                  className="w-[29px] h-[29px]"
                   alt=""
                 />
                 <span className="text-[24px] font-semibold">
@@ -92,7 +92,7 @@ export default function TransferSection({
                         }`
                       : "/international/international-hero.png"
                   }
-                  className="w-[16] h-[16]"
+                  className="w-[29px] h-[29px]"
                   alt=""
                 />
                 <span className="text-[24px] font-semibold">
@@ -100,7 +100,7 @@ export default function TransferSection({
                   {data.ReceiverCountry}
                 </span>
               </div>
-              <ChevronDown className="align-middle" size={18} />
+              <ChevronDown className="align-middle font-extrabold" size={18} />
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function TransferSection({
           <span className="text-[36px] font-bold">{data.ConvertMoney}</span>
         </div>
 
-        <button className="w-full bg-[#E74529] text-white py-2 rounded-md text-sm font-semibold">
+        <button className="w-full bg-[#E74529] text-white py-2 rounded-xl text-sm font-semibold">
           {data.FeatBtn}
         </button>
       </div>

@@ -29,8 +29,8 @@ export default function AboutPage() {
       <Header variant="about" />
       <main className="flex-1 ">
         <Hero
-        bgimage={isRTL ? "scale-x-[-1]" : ""}
-        containerAlign="lg:items-start"
+          bgimage={isRTL ? "scale-x-[-1]" : ""}
+          containerAlign="lg:items-start"
           backgroundImage={`${process.env.NEXT_PUBLIC_STRAPI_URL}${
             contact?.heroImg?.formats?.large?.url ||
             contact?.heroImg?.formats?.medium?.url ||
@@ -47,12 +47,13 @@ export default function AboutPage() {
             }`}
           >
             <h1
-  className={`
+              className={`
     text-[25px] 
     lg:text-[80px] 
     font-extrabold 
     text-[#263244] 
-    leading-tight 
+    lg:leading-[5.5rem] leading-tight 
+    lg:mt-57 
     uppercase 
     ${isRTL ? "text-right" : "text-left"} 
     w-full 
@@ -60,14 +61,13 @@ export default function AboutPage() {
     sm:max-w-[400px] 
     lg:max-w-none
   `}
->
-  {contact?.BannerText1}
-  <br />
-  {contact?.BannerText2}
-  <br />
-  {contact?.BannerText3}
-</h1>
-
+            >
+              {contact?.BannerText1}
+              <br />
+              {contact?.BannerText2}
+              <br />
+              {contact?.BannerText3}
+            </h1>
           </div>
         </Hero>
 

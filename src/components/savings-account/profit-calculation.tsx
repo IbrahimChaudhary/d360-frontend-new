@@ -18,8 +18,8 @@ export default function ProfitCalculationSection({
   ];
 
   return (
-    <section className="bg-[#F6F7F8] py-12 px-4 xl:px-25 2xl:px-136">
-      <h2 className="text-[#EB644C] lg:w-full lg:mx-0 mx-auto w-[80%] font-bold  text-3xl md:text-[60px] mb-10">
+    <section className="bg-[#F6F7F8] py-12 px-4 xl:px-27 2xl:px-196">
+      <h2 className="text-[#EB644C] lg:w-full text-center ltr:lg:text-left rtl:lg:text-right lg:mx-0 mx-auto w-[80%] font-bold  text-3xl md:text-[60px] mb-10">
         {data.ProfitCalHead}{" "}
       </h2>
 

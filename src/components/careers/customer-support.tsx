@@ -21,9 +21,9 @@ export default function CustomerSupport({ data }: CustomerSupportProps) {
   };
 
   return (
-    <section className="py-8 lg:py-24 bg-white">
+    <section className="py-2 lg:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-[25px] lg:text-[60px] font-extrabold text-[#293242] mb-6">
+        <h2 className="text-[25px] lg:text-[60px] lg:w-full w-[70%] mx-auto lg:mx-0 font-extrabold text-[#293242] mb-6">
           {data.HelpingHead}
         </h2>
 
@@ -35,12 +35,12 @@ export default function CustomerSupport({ data }: CustomerSupportProps) {
         </ReactMarkdown>
 
         <Link href="/contact-us">
-        <Button
-          className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-4 rounded-lg font-semibold text-[20px]"
+        <button
+          className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-lg lg:rounded-xl font-bold text-[8px] lg:text-[20px]"
           
         >
           {data.HelpingBtn}
-          </Button>
+          </button>
         </Link>
       </div>
     </section>

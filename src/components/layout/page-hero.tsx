@@ -29,7 +29,7 @@ export function Hero({
       />
 
       <div
-        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row justify-between h-full pt-28 lg:pt-32 pb-16 relative z-10 ${containerAlign}`}
+        className={`container max-w-screen w-full px-4 md:px-18 flex flex-col md:flex-row justify-between h-full lg:pt-0 pt-28  pb-16 relative z-10 ${containerAlign}`}
       >
         <motion.div
           className={` ${isRTL ? "text-right" : "text-left"}`}

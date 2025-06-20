@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -77,7 +76,7 @@ export function Carosel({
   return (
     <section
       className={cn(
-        "flex flex-col-reverse lg:flex-row max-w-7xl mx-auto   items-center px-4 lg:px-8 justify-center  lg:py-24 py-10",
+        "flex flex-col-reverse lg:flex-row max-w-7xl mx-auto   items-center px-4 lg:px-8 justify-center  lg:py-24 pb-10 lg:pb-0",
         layout === "centered" &&
           "text-center lg:text-center justify-center gap-10"
       )}
@@ -103,14 +102,14 @@ export function Carosel({
             />
           </div>
 
-          <div className={cn("", textstyle)}>
+          <div className={cn("rtl:gap-2 lg:gap-0", textstyle)}>
             <AnimatePresence mode="wait" custom={direction}>
               {currentSlide.icon && (
                 <motion.div
                   key={currentSlide.icon}
                   {...getSlideMotion(direction, 0.5)}
                   custom={direction}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-[#E6E8EB]"
+                  className="h-10 w-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-full bg-[#E6E8EB]"
                 >
                   <Image
                     src={currentSlide.icon || "/placeholder.svg"}
@@ -145,7 +144,7 @@ export function Carosel({
                   {...getSlideMotion(direction, 0.2)}
                   custom={direction}
                   className={cn(
-                    "text-[14px] lg:text-[20px] font-[400] text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]",
+                    "text-[14px] lg:text-[20px] font-[400] lg:w-[80%] lg:mb-2 text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]",
                     classname
                   )}
                 >
@@ -178,7 +177,7 @@ export function Carosel({
             {showButton && (
               <button
                
-              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]"
+              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px]"
             >
                 {btnTxt}
               </button>

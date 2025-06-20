@@ -15,7 +15,7 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
   
   const [isModalOpen, setModalOpen] = useState(false);
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="lg:py-20 py-10 px-4 bg-white">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
         {/* Image on Left */}
         <motion.div
@@ -41,13 +41,13 @@ export function AppSupportSection({ data }: AppSupportSectionProps) {
           transition={{ duration: 0.6 }}
           className="max-w-lg text-center md:text-left"
         >
-          <h3 className="text-[20px] md:text-[40px] rtl:text-right  text-[#263244] mb-6">
+          <h3 className="text-[20px] md:text-[40px] rtl:text-right font-bold  text-[#263244] mb-6">
             {data.Title1}
           </h3>
 
           <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#E74529] text-white mx-auto lg:mx-0 font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] rtl:lg:px-3 w-[40%]  rtl:lg:ml-30 ltr:lg:px-16"
+              className={`bg-[#E74529] text-white mx-auto lg:mx-0 font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] rtl:lg:px-3 w-[26%]  rtl:lg:ml-30 ltr:lg:px-16"
               }`}
             >
               {data.download}

@@ -50,8 +50,8 @@ export default function InvestorRealtions() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-snug ${
-                isRTL ? "justify-end" : " justify-center"
+              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight lg:leading-[5.5rem] ${
+                isRTL ? "justify-end" : " "
               }`}
             >
               {annual?.HeroTitle1}

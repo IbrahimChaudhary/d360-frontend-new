@@ -33,11 +33,11 @@ export default function AnnualReportsBanner({ data }: AnnualReportsBannerProp) {
 
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-[60px] font-extrabold text-white  lg:text-[#263244] mb-8">
+        <h2 className="text-3xl md:text-4xl lg:text-[60px] font-extrabold text-white  lg:text-[#263244] lg:mb-8 mb-2 w-[60%] mx-auto lg:mx-0 lg:w-full">
           {data.ExploreHead}
         </h2>
         <Link href="/anuual-reports" className="">
-        <button className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 py-1 lg:py-2 rounded-lg font-bold text-[20px] lg:rounded-xl lg:px-10">
+        <button className="bg-[#E74529]  text-white px-8  py-2 rounded-lg  font-bold text-[8px] lg:text-[20px] lg:rounded-xl lg:px-8">
             {data.ExploreBtn}
           </button>
         </Link>

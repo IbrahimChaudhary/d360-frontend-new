@@ -4,12 +4,9 @@ import { Hero } from "@/components/layout/page-hero";
 import { Footer } from "@/components/layout/footer/footer";
 import { useTranslations } from "@/lib/i18n";
 import { MergedFAQAccordion } from "@/components/faq-merged";
-import { FAQsAbout } from "@/data/about";
-import { SectionHeading } from "@/components/section-heading";
 import { useStore } from "@/store/toggle-store";
 import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
-import { Button } from "@/components/ui/button";
 import { Carosel } from "@/components/savings-account/carosal-section";
 import SanabilSteps from "@/components/savings-account/sanabil-steps";
 import ProfitBanner from "@/components/savings-account/profit-banner";
@@ -39,6 +36,7 @@ export default function SavingsAccount() {
       <Header variant="about" />
       <main className="flex-1">
         <Hero
+          bgimage={isRTL ? "scale-x-[-1] " : ""}
           backgroundImage={
             savings?.HeroImg?.formats?.large?.url ||
             savings?.HeroImg?.formats?.medium?.url ||
@@ -56,21 +54,20 @@ export default function SavingsAccount() {
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-            <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight">
+            <p className="text-[12px] w-full lg:text-xl  lg:mb-2  text-[#263244] leading-tight lg:leading-[5.5rem]">
               {savings?.MainTitleUpDes}{" "}
             </p>
-            <h1 className="text-[25px] mb-2 lg:text-[80px] leading-tight uppercase font-extrabold text-[#263244] lg:leading-19">
+            <h1 className="text-[25px] mb-2 lg:text-[80px]  w-[50%] lg:w-full leading-tight uppercase font-extrabold text-[#263244] lg:leading-[5.5rem]">
               {savings?.MainTitle1}
               <br />
               {savings?.MainTitle2}
               <br />
               {savings?.MainTitle3}
             </h1>
-            <button
-              className="bg-[#EB644C] rounded-md px-7  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
+            <button className="bg-[#EB644C] rounded-md px-8 py-2  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
               {savings?.HeroBtn}
             </button>
-            <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white leading-tight">
+            <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white lg:leading-[5.5rem]">
               {savings?.MainTitleDownDes}{" "}
             </p>
           </div>
@@ -158,7 +155,16 @@ export default function SavingsAccount() {
         {savings && <SanabilRates data={savings} />}
         {savings && <ProfitCalculationSection data={savings} />}
 
-        <MergedFAQAccordion faqItems={faqItems} />
+        <MergedFAQAccordion
+          faqItems={faqItems}
+          sectionClassName="py-8 lg:py-0 px-4  w-full flex lg:justify-center lg:items-center"
+          titleClassName="lg:pb-0 text-[30px] lg:text-[60px] font-extrabold    text-[#293242]"
+          para={
+            language === "ar"
+              ? "ابحث عن إجابات لأكثر الأسئلة شيوعًا حول حساب التوفير سنابل."
+              : "Find answers to the most frequently asked questions about the Sanabil Savings Account."
+          }
+        />
       </main>
       <Footer />
     </div>

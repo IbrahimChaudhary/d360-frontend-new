@@ -51,7 +51,7 @@ export default function Payments() {
                 : ""
             }
           >
-            <h1 className="text-[30px] lg:text-[80px] rtl:text-right lg:w-full w-[50%]  uppercase font-extrabold text-[#263244] leading-tight">
+            <h1 className="text-[30px] lg:text-[80px] rtl:text-right lg:w-full w-[50%]  uppercase font-extrabold text-[#263244] leading-tight lg:leading-[5.5rem]">
               {payment?.MainTitle}
               <br />
               {payment?.MainTitle1}
@@ -124,7 +124,7 @@ export default function Payments() {
             ]}
           />
 
-          <MergedFAQAccordion faqItems={faqItems} />
+          <MergedFAQAccordion faqItems={faqItems} titleClassName="py-4 lg:py-0 text-[30px] lg:text-[60px] font-extrabold lg:mb-8   text-[#293242]" sectionClassName="px-4 lg:px-0" />
         </main>
       )}
       <Footer />

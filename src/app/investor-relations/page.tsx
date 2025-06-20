@@ -69,13 +69,22 @@ export default function InvestorRealtions() {
             }`}
           >
             <h1
-              className={`text-[25px] flex items-center  uppercase lg:text-[80px] font-extrabold text-[#263244] leading-snug ${
+              className={`text-[25px]  items-center  lg:mt-32 lg:flex hidden leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
               {investor?.HeroTitle1}
               <br />
               {investor?.HeroTitle2}
+            </h1>
+            <h1
+              className={`text-[25px] flex items-center  lg:mt-32 lg:hidden  leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
+                isRTL ? "justify-end" : " justify-center"
+              }`}
+            >
+              Invest in 
+              <br />
+              D360 Bank
             </h1>
           </div>
         </Hero>

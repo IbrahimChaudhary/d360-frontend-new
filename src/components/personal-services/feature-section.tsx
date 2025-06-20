@@ -14,7 +14,7 @@ import { SectionHeading } from "../section-heading";
 import { PersonalServiceData } from "@/types/personal-service/personal-service";
 
 interface Feature {
-  icon: IconType;
+  icon: string;
   title: string;
   description: string;
 }
@@ -24,15 +24,15 @@ interface FeatureSectionProps {
 }
 
 export default function FeatureSection({ data }: FeatureSectionProps) {
-  const icons: IconType[] = [
-    FaGlobe,
-    FaCreditCard,
-    FaExchangeAlt,
-    FaUniversity,
-    FaBolt,
-    FaMoneyBillWave,
-    FaPhoneAlt,
-    FaCalculator,
+  const icons: string[] = [
+    "/personal/icon1.svg",
+    "/personal/icon2.svg",
+    "/personal/icon3.svg",
+    "/personal/icon4.svg",
+    "/personal/icon5.svg",
+    "/personal/icon6.svg",
+    "/personal/icon7.svg",
+    "/personal/icon8.svg",
   ];
 
   const features: Feature[] = icons.map((Icon, idx) => {
@@ -63,9 +63,10 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="flex flex-col items-center"
           >
-            <Icon
-             
-             className="text-[#E74529] mb-3 w-[33px] h-[23px] lg:w-[60px] lg:h-[60px]"
+            <img
+              src={Icon}
+              alt={title}
+              className="mb-3 w-[33px] h-[23px] lg:w-[60px] lg:h-[60px] object-contain"
             />
             <h4 className="text-[12px] lg:text-[25px]  font-extrabold text-[#263244] mb-1 text-center">
               {title}

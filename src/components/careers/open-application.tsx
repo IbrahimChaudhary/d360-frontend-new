@@ -23,7 +23,7 @@ export default function OpenApplication({ data }: OpenApplicationProps) {
             </p>
 
             <div className="pt-4 lg:block flex justify-center">
-              <button className="bg-[#293242]  hover:bg-[#2d3748] text-white text-[8px] lg:text-base font-bold px-6 py-3 rounded-md transition-colors duration-300">
+              <button className="bg-[#293242]  hover:bg-[#2d3748] text-white text-[8px] lg:text-[20px] font-bold px-6 py-2 rounded-lg lg:rounded-xl transition-colors duration-300">
                 {data.ApplicationBtn}
               </button>
             </div>

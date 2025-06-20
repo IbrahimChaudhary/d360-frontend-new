@@ -78,7 +78,7 @@ export default function InfoCards({ data }: InfoCardsProps) {
           {cardData.map((card, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-2xl w-full h-80 lg:w-[460px] group cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
+              className="relative overflow-hidden rounded-2xl w-full h-80 lg:w-[460px] group  transition-transform duration-300 hover:scale-[1.02]"
             >
               {/* Background Image */}
               <div className="absolute inset-0">

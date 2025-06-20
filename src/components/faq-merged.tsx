@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Plus } from "lucide-react";
-import { Section } from "./ui/section";
 import { AnimatedSection } from "./ui/animated-section";
 import { useStore } from "@/store/toggle-store";
 import {
@@ -30,10 +28,13 @@ interface MergedFAQAccordionProps {
   title?: string;
   sectionClassName?: string;
   titleClassName?: string;
+  para?: string
+  paraClassName?: string;
 }
 
 function FAQMerged({ item, index }: FAQItemComponentProps) {
   const {language} = useStore()
+  const isRTL = language === "ar";
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -57,7 +58,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
         transition={{ duration: 0.2 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <X className="text-[#E74529] font-extrabold lg:w-full lg:h-full w-[18px] h-[18px]" />
+        <img src="/plus.svg" className="w-[10px] h-[11px] lg:w-[38px] lg:h-[39px]"  alt="" />
       </motion.div>
     ) : (
       <motion.div
@@ -68,7 +69,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
         transition={{ duration: 0.2 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <Plus className="text-[#C0C5CE] font-extrabold lg:w-full lg:h-full w-[18px] h-[18px]" />
+        <img src="/+.svg" className="w-[10px] h-[11px] lg:w-[38px] lg:h-[39px]" alt="" />
       </motion.div>
     )}
   </AnimatePresence>
@@ -86,7 +87,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <AccordionContent className={`overflow-hidden  flex ${language === 'ar' ? "flex-row" : "flex-row"}`}>
-              <p className={`text-[10px] lg:text-lg text-[#263244] mt-2 leading-relaxed ${ language==="ar"?"text-right":"text-left"}`}>
+              <p className={`text-[10px] font-extrabold lg:text-lg text-[#263244] mt-2 leading-relaxed ${ language==="ar"?"text-right":"text-left"}`}>
                 {item.answer}
               </p>
             </AccordionContent>
@@ -99,26 +100,37 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
 
 export function MergedFAQAccordion({
   
+ 
+  
   faqItems,
-  title = "FAQs",
-  sectionClassName = "pb-4 lg:pb-0 md:py-16 w-full flex lg:justify-center",
-  titleClassName = "text-[30px] lg:text-[60px] font-extrabold mb-8  text-[#293242]",
+  title,
+  para,
+  sectionClassName = "pb-4 lg:pb-0 md:py-16 w-full flex lg:justify-center lg:items-center",
+  titleClassName = "text-[30px] lg:text-[60px] font-extrabold lg:mb-8   text-[#293242]",
+  paraClassName = "text-[#263244] text-[10px] lg:text-[25px] font-[500] py-2"
 }: MergedFAQAccordionProps) {
   const {language} = useStore()
+   const isRTL = language === "ar";
   return (
     <div className={sectionClassName}>
       <div className="container  md:px-6">
       <AnimatedSection direction="up">
   {title !== "hidden" && (
     <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>
-      {title}
+       {title ?? (isRTL ? "الأسئلة الشائعة" : "FAQs")}
     </h2>
   )}
+
+{para && (
+  <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${paraClassName}`}>
+    {para}
+  </h2>
+)}
 
   <Accordion
     type="single"
     collapsible
-    className="w-full mx-auto lg:p-4 px-2 lg:px-0" 
+    className="w-full mx-auto lg:p-4  lg:px-0" 
   >
     {faqItems.map((item: FAQItem, index: number) => (
       <FAQMerged key={item.id || index} item={item} index={index} />

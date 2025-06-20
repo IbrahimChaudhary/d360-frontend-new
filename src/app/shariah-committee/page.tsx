@@ -38,7 +38,9 @@ export default function ShahriahCommittee() {
 
       <main className="flex-1">
         <Hero
+         bgimage={isRTL ? "scale-x-[-1]" : ""}
           backgroundImage={
+
             shahriah?.HeroImg?.formats?.large?.url ||
             shahriah?.HeroImg?.formats?.medium?.url ||
             shahriah?.HeroImg?.url
@@ -56,7 +58,7 @@ export default function ShahriahCommittee() {
             }`}
           >
             <h1
-              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight${
+              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight lg:leading-[5.5rem]${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -68,7 +70,7 @@ export default function ShahriahCommittee() {
         </Hero>
 
         <SectionHeading>
-          <p className="text-[25px] lg:text-[60px] lg:w-full w-[66%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
+          <p className="text-[25px] lg:text-[60px] lg:w-full w-[69%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
             {shahriah?.Title2}
           </p>
         </SectionHeading>

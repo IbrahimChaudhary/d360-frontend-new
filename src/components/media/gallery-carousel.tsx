@@ -75,7 +75,7 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
             key={index}
             onClick={() => goToSlide(index)}
             className={cn(
-              "w-3 h-3 rotate-45  transition-all duration-200",
+              "w-3 h-3  rotate-45  transition-all duration-200",
               index === currentIndex ? "bg-[#E74529]" : "bg-white hover:bg-white"
             )}
             aria-label={`Go to slide ${index + 1}`}

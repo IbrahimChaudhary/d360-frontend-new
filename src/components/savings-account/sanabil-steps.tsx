@@ -25,16 +25,16 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
   ];
 
   return (
-    <section className="bg-[#F6F7F8] py-14 lg:px-4">
+    <section className="bg-[#F6F7F8] py-14 ">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl leading-tight lg:w-full mx-auto lg:mx-0 px-4 lg:px-0 md:text-[50px] font-extrabold text-[#263244]">
+        <h2 className="text-3xl leading-tight lg:w-full mx-auto lg:mx-0 px-4 lg:px-0 md:text-[40px] font-extrabold text-[#263244]  w-[80%]">
           {data.OpenHead}
         </h2>
-        <p className="text-sm md:text-base px-8  lg:px-0 text-[#263244] mt-4 lg:mt-2">
+        <p className="text-[14px] md:text-[base] px-16  lg:px-0 text-[#263244] mt-4 lg:mt-2">
         {data.OpenDes}
         </p>
 
-        <div className="grid md:grid-cols-3 gap-6 px-6 lg:px-28 mt-10">
+        <div className="grid md:grid-cols-3 gap-6 px-12 lg:px-0 mt-10">
           {steps.map((step) => (
             <div
               key={step.number}

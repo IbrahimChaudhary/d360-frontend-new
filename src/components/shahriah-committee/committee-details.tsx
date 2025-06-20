@@ -15,13 +15,13 @@ export default function ShariahCommittee({data}:ShahriahCommitteeProps) {
         <div className="max-w-[1195px] mx-auto px-4 ">
           {/* Header */}
           <div className="mb-8">
-            <h2 className="text-[#E74529] font-semibold text-[20px] mb-4">{data.Shariah}</h2>
+            <h2 className="text-[#E74529] font-semibold text-center ltr:lg:text-left rtl:lg:text-right text-[20px] mb-4">{data.Shariah}</h2>
   
-            <p className="text-[#293242] font-extrabold text-[20px] leading-tight lg:text-[35px] mb-6">
+            <p className="text-[#293242] text-center ltr:lg:text-left rtl:lg:text-right font-extrabold text-[20px] leading-tight lg:text-[35px] mb-6">
               {data.ShariahDes1}
             </p>
   
-            <p className="text-[14px] rtl:lg:text-right ltr:lg:text-left text-center lg:text-[25px]  text-[#496083] mb-8">
+            <p className="text-[14px]  rtl:lg:text-right ltr:lg:text-left text-center lg:text-[25px]  text-[#496083] mb-8">
             {data.ShariahDes2}
             </p>
           </div>

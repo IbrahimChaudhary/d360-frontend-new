@@ -40,9 +40,9 @@ export function TeamMemberCard({ member, index, selectedMember, onSelect }: Team
   `}
         />
 
-        <div className="absolute bottom-2 md:bottom-4 left-1 right-1 md:left-4 md:right-4 rounded-xl backdrop-blur-sm bg-white/50 px-2 py-1 md:px-4 md:py-3 shadow-md flex flex-col items-start">
-          <h3 className="text-[15px] md:text-md font-bold text-gray-900">{member.name}</h3>
-          <p className=" text-[15px] md:text-sm text-gray-700">{member.position}</p>
+        <div className="absolute bottom-2 md:bottom-4 left-1 right-1 md:left-4 md:right-4 rounded-xl backdrop-blur-sm bg-white/50 px-2 py-1 md:px-4 md:py-3 shadow-md flex flex-col rtl:items-end ltr:items-start">
+          <h3 className="text-[15px] rtl:text-right md:text-md font-bold text-gray-900">{member.name}</h3>
+          <p className=" text-[15px] rtl:text-right md:text-sm text-gray-700">{member.position}</p>
         </div>
       </div>
     </motion.div>
