@@ -25,7 +25,6 @@ export async function generateMetadata() {
     });
   }
 }
-
 export default function ShariahCommitteePage() {
   return (
     <ShariahCommitteePageClient />
