@@ -21,6 +21,9 @@ import { useEffect, useState } from "react";
 import { fetchHomePage } from "@/api/home";
 import { ApplePayData } from "@/types/apple-pay/apple-pay";
 import { HomePageData } from "@/types/home/home";
+import TransferSection from "./international-transfers-mobile";
+import { InternationalData } from "@/types/international/international";
+import { fetchInternational } from "@/api/international";
 
 
 export default function HomePage() {
@@ -28,6 +31,16 @@ export default function HomePage() {
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
   const [homeData, setHomeData] = useState<HomePageData | null>(null);
+
+  const [international, setInternational] = useState<InternationalData | null>(
+    null
+  );
+
+  useEffect(() => {
+    fetchInternational(language)
+      .then((data) => setInternational(data))
+      .catch((err) => console.error("Failed to load About D360:", err));
+  }, [language]);
 
 
   useEffect(() => {
@@ -80,6 +93,15 @@ export default function HomePage() {
         {homeData && <InteractiveCardHero data={homeData}/>}
         {homeData && <MobileAnimatedSection data={homeData}/>}
         {homeData && <ShariahSection data={homeData}/>}
+        {international && (
+          <TransferSection
+          data={international}
+            heading={international?.InternationalHead}
+            uppertext={international?.International}
+            description={international?.InternationalDes}
+            container="lg:flex justify-center items-start"
+          />
+        )}
         {/* <TransferSection  /> */}
       </main>
       <Footer />

@@ -157,7 +157,7 @@ export default function SavingsAccount() {
 
         <MergedFAQAccordion
           faqItems={faqItems}
-          sectionClassName="py-8 lg:py-0 px-4  w-full flex lg:justify-center lg:items-center"
+          sectionClassName="py-8 lg:py-0   w-full flex lg:justify-center lg:items-center"
           titleClassName="lg:pb-0 text-[30px] lg:text-[60px] font-extrabold    text-[#293242]"
           para={
             language === "ar"

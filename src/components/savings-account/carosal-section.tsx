@@ -27,6 +27,7 @@ type CaroselSliderProps = {
   img1?:string
   btnTxt?:string
   container?:string
+  headsection?:string
 };
 
 export function Carosel({
@@ -36,6 +37,7 @@ export function Carosel({
   layout = "default",
   classname,
   textstyle,
+  headsection,
   btnTxt,
   arrows,
   img2,
@@ -75,16 +77,17 @@ export function Carosel({
 
   return (
     <section
-      className={cn(
-        "flex flex-col-reverse lg:flex-row max-w-7xl mx-auto   items-center px-4 lg:px-8 justify-center  lg:py-24 pb-10 lg:pb-0",
-        layout === "centered" &&
-          "text-center lg:text-center justify-center gap-10"
-      )}
+    className={cn(
+      "flex flex-col-reverse lg:flex-row max-w-[1500px] mx-auto items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0",
+      headsection,
+      layout === "centered" && "text-center lg:text-center justify-center gap-10"
+    )}
+    
     >
       {/* Text Block */}
       <div
         className={cn(
-          "w-full space-y-6 relative",
+          "w-full space-y-6 relative ",
           layout === "centered" && ""
         )}
       >

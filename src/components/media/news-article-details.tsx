@@ -70,6 +70,10 @@ export function NewsArticleDetails({
             <p className="mb-3">{article.para2}</p>
             <p className="mb-3">{article.para3}</p>
           </div>
+          <div className="lg:flex hidden items-center ltr:justify-start rtl:justify-end">
+          <img src="/media/calender.svg" alt="" />
+          <p className="text-[#9B9B9B] lg:text-[14px]">{article.date} </p>
+          </div>
         </div>
 
         {relatedArticles.length > 0 && (

@@ -113,7 +113,7 @@ export function MergedFAQAccordion({
    const isRTL = language === "ar";
   return (
     <div className={sectionClassName}>
-      <div className="container  md:px-6">
+      <div className="container w-full  md:px-6">
       <AnimatedSection direction="up">
   {title !== "hidden" && (
     <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>
