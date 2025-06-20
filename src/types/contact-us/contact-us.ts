@@ -1,5 +1,12 @@
 import { StrapiMediaData } from "../about/about";
 
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
 export interface ContactPageData {
   id: number;
   documentId: string;
@@ -24,6 +31,8 @@ export interface ContactPageData {
   insidePhone: string;
   outsidePhone: string;
   sendMsg: string;
+
+  SEO: SeoComponent[];
 }
 
 export interface ContactPageResponse {

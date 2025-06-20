@@ -1,6 +1,6 @@
 // src/types/media-center.ts
 
-import { StrapiMediaData } from "../about/about";
+import { SeoComponent, StrapiMediaData } from "../about/about";
 
 /** One news‐card entry */
 export interface NewsCardData {
@@ -18,6 +18,7 @@ export interface NewsCardData {
     publishedAt?: string;
     imageHero: StrapiMediaData;
     imageCard: StrapiMediaData;
+    SEO?: SeoComponent[];
   }
   
   /** The single "media‐center" record */
@@ -38,6 +39,7 @@ export interface NewsCardData {
     galleryImg3:StrapiMediaData
     galleryImg4:StrapiMediaData
     news_cards: NewsCardData[];
+    SEO?: SeoComponent[];
   }
   
   /** Wrapper for the API response */

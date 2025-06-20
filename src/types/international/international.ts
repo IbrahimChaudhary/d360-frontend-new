@@ -3,7 +3,7 @@ import { StrapiMediaData } from "../about/about";
 // types/international.ts
 
 /**
- * Represents the “international transfers” record returned by Strapi.
+ * Represents the "international transfers" record returned by Strapi.
  */
 export interface InternationalData {
     id: number;
@@ -60,10 +60,15 @@ export interface InternationalData {
     Way4Icon:StrapiMediaData
     SenderImg:StrapiMediaData
     ReceiverImg:StrapiMediaData
+    SEO?: {
+      metaTitle?: string;
+      metaDescription?: string;
+      shareImage?: StrapiMediaData;
+    };
   }
   
   /**
-   * The full response envelope from Strapi’s REST API for the “international” endpoint.
+   * The full response envelope from Strapi's REST API for the "international" endpoint.
    */
   export interface InternationalResponse {
     data: InternationalData;

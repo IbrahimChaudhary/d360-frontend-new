@@ -1,6 +1,7 @@
 // src/types/shariah-committee.ts
 
 import { Leader, StrapiMediaData } from "@/types/about/about";
+import { SeoComponent } from "../home/home";
 
 /** Data object returned by Strapi for the Shariah Committee page */
 export interface ShariahCommitteeData {
@@ -29,6 +30,7 @@ export interface ShariahCommitteeData {
 
     /** Members heading */
     MembersHead: string;
+    SEO: SeoComponent[];
   }
   
   /** Full wrapper for the Strapi response */

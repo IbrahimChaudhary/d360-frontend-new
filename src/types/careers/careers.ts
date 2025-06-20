@@ -2,7 +2,15 @@
 
 import { StrapiMediaData } from "../about/about";
 
-/** The data object returned by Strapi for the “Work at D360 Bank” page */
+/** SEO component interface */
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
+/** The data object returned by Strapi for the "Work at D360 Bank" page */
 export interface CareerData {
     id: number;
     documentId: string;
@@ -34,6 +42,10 @@ export interface CareerData {
     WorkHead2: string;
     HeroImg:StrapiMediaData
     ApplicationImg:StrapiMediaData
+    
+    /** SEO data */
+    SEO: SeoComponent[];
+    
     /** Timestamps and locale */
     createdAt: string;   // ISO timestamp
     updatedAt: string;   // ISO timestamp

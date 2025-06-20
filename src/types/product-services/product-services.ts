@@ -1,3 +1,5 @@
+import { SeoComponent } from "../home/home";
+
 // src/types/fees.ts
 
 /** The shape of the `data` object returned by your Fees endpoint */
@@ -55,6 +57,7 @@ export interface FeesData {
     FAQ4SubDescriptionGValue: string;
     FAQ4SubDescriptionH: string;
     FAQ4SubDescriptionHValue: string;
+    SEO: SeoComponent[];
   }
   
   /** Full wrapper for the Strapi response */

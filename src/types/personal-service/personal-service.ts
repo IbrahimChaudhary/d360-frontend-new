@@ -1,4 +1,5 @@
 import { StrapiMediaData } from "../about/about";
+import { SeoComponent } from "../home/home";
 
 export interface PersonalServiceData {
     id: number
@@ -55,6 +56,7 @@ export interface PersonalServiceData {
     createdAt: string
     updatedAt: string
     publishedAt: string
+    SEO: SeoComponent[];
   }
   
   export interface PersonalServiceResponse {

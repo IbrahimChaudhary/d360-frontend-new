@@ -2,6 +2,14 @@
 
 import { StrapiMediaData } from "../about/about";
 
+/** SEO component interface */
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
 /** The data object returned by Strapi for the Annual Reports page */
 export interface AnnualReportsData {
   id: number;
@@ -19,6 +27,9 @@ export interface AnnualReportsData {
   ContactDes: string;
   email: string;
   Phone: string;
+
+  /** SEO data */
+  SEO: SeoComponent[];
 
   /** Timestamps and locale */
   createdAt: string; // ISO timestamp
