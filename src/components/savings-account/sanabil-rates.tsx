@@ -22,18 +22,18 @@ export default function SanabilRates({ data }: SanabilRatesProps) {
           <table className="w-full text-[7px] md:text-base  ">
             <thead>
               <tr className="text-[#263244] font-semibold ">
-                <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 text-left">
+                <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 rtl:text-right ltr:text-left">
                   {data.ColName1}
                 </th>
-                <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 text-left">
+                <th className="border-b-2 border-r-[#DEE4ED] border-r border-[#4FC4D9] px-6 py-3 rtl:text-right ltr:text-left">
                   {data.ColName2}{" "}
                 </th>
-                <th className="border-b-2 border-[#4FC4D9] px-6 py-3 text-left">
+                <th className="border-b-2 border-[#4FC4D9] px-6 py-3 rtl:text-right ltr:text-left">
                   {data.ColName3}{" "}
                 </th>
               </tr>
             </thead>
-            <tbody className="text-[#263244] font-medium text-left">
+            <tbody className="text-[#263244] font-medium rtl:text-right ltr:text-left">
               {[
                 {
                   level: `${data.Col1Val1}`,
@@ -67,7 +67,7 @@ export default function SanabilRates({ data }: SanabilRatesProps) {
         </div>
 
         {/* Note */}
-        <p className="lg:mt-[42px] text-[5px] lg:text-md text-[#7B818D] max-w-4xl mx-auto">
+        <p className="lg:mt-[42px] text-[5px] lg:text-[16px] text-[#7B818D] max-w-4xl mx-auto">
           {data.RatesTerm}
         </p>
       </div>

@@ -78,7 +78,7 @@ export function Carosel({
   return (
     <section
     className={cn(
-      "flex flex-col-reverse lg:flex-row max-w-[1500px] mx-auto items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0",
+      "flex flex-col-reverse lg:flex-row max-w-[1500px] lg:max-w-[1280px]  mx-auto  items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0",
       headsection,
       layout === "centered" && "text-center lg:text-center justify-center gap-10"
     )}
@@ -180,7 +180,7 @@ export function Carosel({
             {showButton && (
               <button
                
-              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px]"
+              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 lg:mb-22 mb-0 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px]"
             >
                 {btnTxt}
               </button>

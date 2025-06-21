@@ -85,7 +85,7 @@ export default function InternationalTransfer() {
           </p>
         </SectionHeading>
         <Carosel
-          layout="default"
+          layout="centered"
           showButton={false}
           classname="w-[70%] lg:w-[40%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
           textstyle="flex lg:block  items-center lg:space-y-6 lg:mt-0 mt-6"
