@@ -105,7 +105,7 @@ export function MergedFAQAccordion({
   faqItems,
   title,
   para,
-  sectionClassName = "pb-4 lg:pb-0 md:py-16 w-full flex lg:justify-center lg:items-center",
+  sectionClassName = "pb-4 lg:pb-0 md:py-16 w-full  flex lg:justify-center lg:items-center",
   titleClassName = "text-[30px] lg:text-[60px] font-extrabold lg:mb-8   text-[#293242]",
   paraClassName = "text-[#263244] text-[10px] lg:text-[25px] font-[500] py-2"
 }: MergedFAQAccordionProps) {
@@ -113,7 +113,7 @@ export function MergedFAQAccordion({
    const isRTL = language === "ar";
   return (
     <div className={sectionClassName}>
-      <div className="container w-full  md:px-6">
+      <div className="container w-full 2xl:max-w-[1100px] md:px-6">
       <AnimatedSection direction="up">
   {title !== "hidden" && (
     <h2 className={`${language === 'ar' ? "text-right" : "text-left"} ${titleClassName}`}>
