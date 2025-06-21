@@ -1,7 +1,7 @@
 // types/about/about.ts
 
 /**
- * A single uploaded file returned by Strapi’s Media Library,
+ * A single uploaded file returned by Strapi's Media Library,
  * flattened under `data` exactly as your JSON shows.
  */
 export interface StrapiMediaData {
@@ -14,7 +14,7 @@ export interface StrapiMediaData {
   height: number;
 
   /**
-   * The “formats” object lives directly under `data`.
+   * The "formats" object lives directly under `data`.
    * We add thumbnail (and any other size) here.
    */
   formats?: {
@@ -46,7 +46,17 @@ export interface StrapiMediaData {
 }
 
 /**
- * Each Leader (“director”) in the response has:
+ * SEO component interface
+ */
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
+/**
+ * Each Leader ("director") in the response has:
  *  - scalar fields (name, role, description, position, etc.)
  *  - a `fullDes` array of Portable Text blocks
  *  - a nested `image` object with exactly `data: StrapiMediaData`
@@ -75,7 +85,7 @@ export interface Leader {
 }
 
 /**
- * The “about-d360” single‐type attributes exactly as your JSON shows.
+ * The "about-d360" single‐type attributes exactly as your JSON shows.
  */
 export interface AboutD360Data {
   id: number;
@@ -139,6 +149,7 @@ export interface AboutD360Data {
   directorHead: string;
   manageHead: string;
   shariahHead: string;
+  SEO: SeoComponent[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -146,7 +157,7 @@ export interface AboutD360Data {
 }
 
 /**
- * Top‐level Strapi envelope for “about‐d360”.
+ * Top‐level Strapi envelope for "about‐d360".
  */
 export interface AboutResponse {
   data: AboutD360Data;

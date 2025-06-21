@@ -1,3 +1,5 @@
+import { SeoComponent } from "../home/home";
+
 /** The main Strapi response wrapper for the Security Awareness page */
 export interface SecurityAwarenessResponse {
     data: SecurityAwarenessData;
@@ -26,6 +28,7 @@ export interface SecurityAwarenessResponse {
     FAQTitle4: string;
     FAQDescription4: string;
     FAQ: string;
+    SEO: SeoComponent[];
 
   }
   

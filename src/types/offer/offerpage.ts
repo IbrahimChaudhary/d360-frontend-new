@@ -1,3 +1,5 @@
+import { SeoComponent } from "../about/about";
+
 export interface ImageFormats {
     thumbnail?: {
       name: string;
@@ -102,6 +104,7 @@ export interface ImageFormats {
     heroImage: UploadFile;
     image: UploadFile;
     offer_card: OfferCardRelation;
+    SEO?: SeoComponent[];
   }
   
   export interface Pagination {

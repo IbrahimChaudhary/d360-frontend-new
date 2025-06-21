@@ -1,3 +1,12 @@
+import { StrapiMediaData } from "../about/about";
+
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
 interface HeroVideo{
   url:string
 }
@@ -57,6 +66,7 @@ export interface HomePageData {
   Title2B:string
   Title3B:string
   Title8B:string
+  SEO: SeoComponent[];
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

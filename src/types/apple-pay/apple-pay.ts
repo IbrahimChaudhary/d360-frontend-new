@@ -1,5 +1,15 @@
 // src/types/apple-pay.ts
 
+import { StrapiMediaData } from "../about/about";
+
+/** SEO component interface */
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
 export interface ApplePayData {
   id: number;
   documentId: string;
@@ -52,7 +62,8 @@ export interface ApplePayData {
   AppleFAQDescription8:string;
   AppleFAQDescription9:string;
 
-
+  /** SEO data */
+  SEO: SeoComponent[];
 
   createdAt: string;   // ISO timestamp
   updatedAt: string;   // ISO timestamp

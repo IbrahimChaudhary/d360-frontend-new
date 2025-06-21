@@ -1,4 +1,5 @@
 import { StrapiMediaData } from "../about/about";
+import { SeoComponent } from "../home/home";
 
 export interface PersonalServiceData {
     id: number
@@ -46,6 +47,7 @@ export interface PersonalServiceData {
     imges2: StrapiMediaData
     card1: StrapiMediaData
     card2: StrapiMediaData
+    card3: StrapiMediaData
     download:string
     explore:string
     button:string
@@ -55,6 +57,7 @@ export interface PersonalServiceData {
     createdAt: string
     updatedAt: string
     publishedAt: string
+    SEO: SeoComponent[];
   }
   
   export interface PersonalServiceResponse {

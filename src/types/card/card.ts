@@ -2,8 +2,16 @@
 
 import { StrapiMediaData } from "../about/about";
 
+/** SEO component interface */
+export interface SeoComponent {
+  __component: string;
+  metaTitle: string;
+  metaDescription: string;
+  shareImage: StrapiMediaData;
+}
+
 /**
- * Represents the fields returned under `data` for the “D360 Cards” single‐type.
+ * Represents the fields returned under `data` for the "D360 Cards" single‐type.
  */
 export interface CardsData {
   id: number;
@@ -43,10 +51,13 @@ export interface CardsData {
   imges1: StrapiMediaData;
   imges2: StrapiMediaData;
   imges3: StrapiMediaData;
+  
+  /** SEO data */
+  SEO: SeoComponent[];
 }
 
 /**
- * Top‐level response envelope for the “D360 Cards” endpoint.
+ * Top‐level response envelope for the "D360 Cards" endpoint.
  */
 export interface CardsResponse {
   data: CardsData;

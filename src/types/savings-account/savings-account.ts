@@ -1,3 +1,4 @@
+import { SeoComponent } from "../home/home";
 import { StrapiMediaData } from "../about/about";
 
 /** The main Strapi response wrapper */
@@ -101,5 +102,6 @@ export interface SavingsResponse {
     Way4Img: StrapiMediaData;
     ProfitImg: StrapiMediaData;
     ProfitBannerImg: StrapiMediaData;
+    SEO: SeoComponent[];
   }
   

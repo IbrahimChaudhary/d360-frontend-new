@@ -20,10 +20,11 @@ export function NewsArticleFetcher({ slug }: Props) {
 
   useEffect(() => {
     async function fetchData() {
+      const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
       try {
         // 1) fetch main article
         const res1 = await fetch(
-          `http://13.235.50.194:1337/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
+          `${apiUrl}/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
             slug
           )}&populate=*&locale=${language}`
         );
@@ -50,7 +51,7 @@ export function NewsArticleFetcher({ slug }: Props) {
 
         // 2) fetch related
         const res2 = await fetch(
-          `http://13.235.50.194:1337/api/news-cards?filters[slug][$ne]=${encodeURIComponent(
+          `${apiUrl}/api/news-cards?filters[slug][$ne]=${encodeURIComponent(
             slug
           )}&populate=*&pagination[limit]=2&locale=${language}`
         );

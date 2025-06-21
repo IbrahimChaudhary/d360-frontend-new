@@ -1,4 +1,4 @@
-import { StrapiMediaData } from "../about/about";
+import { SeoComponent, StrapiMediaData } from "../about/about";
 
 export interface OfferData {
   id: number;
@@ -13,6 +13,7 @@ export interface OfferData {
   publishedAt: string;
   
   heroImage: StrapiMediaData;
+  SEO?: SeoComponent[];
 }
 
 export interface OfferResponse {

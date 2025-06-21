@@ -30,6 +30,11 @@ export interface CustomerCareData {
 
   heroImg: StrapiMediaData;
   sideImg: StrapiMediaData;
+  SEO?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    shareImage?: StrapiMediaData;
+  };
 }
 
 export interface CustomerCareDataResponse {

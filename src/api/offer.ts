@@ -6,7 +6,7 @@ import { OfferPageData, OfferPageListResponse } from "@/types/offer/offerpage";
 const STRAPI = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
 export async function fetchOffer(language: string): Promise<OfferData> {
-  const { data } = await api.get<OfferResponse>(`/offer?locale=${language}&populate[heroImage]=true`);
+  const { data } = await api.get<OfferResponse>(`/offer?locale=${language}&populate[heroImage]=true&populate[SEO][populate]=*`);
   return data.data;
 }
 

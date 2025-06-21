@@ -1,17 +1,12 @@
 "use client";
 import { Header } from "@/components/layout/header";
-
 import { Footer } from "@/components/layout/footer/footer";
-
-import { useTranslations } from "@/lib/i18n";
 import { SectionHeading } from "../section-heading";
 import { StatsCounter } from "../about/stats-counter";
 import { HomeHero } from "./home-hero";
 import { ShariahSection } from "./shariha-section";
 import InteractiveCardHero from "./animated-section";
 import MobileAnimatedSection from "./mobile-animated-section";
-import MobileTransferSection from "./international-transfers-mobile";
-
 import ScrollSection from "../ui/sticky-scroll-reveal";
 import { CardCarosels } from "./card-carosel";
 import { useStore } from "@/store/toggle-store";

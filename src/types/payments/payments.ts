@@ -1,4 +1,5 @@
 import { StrapiMediaData } from "../about/about";
+import { SeoComponent } from "../home/home";
 
 // types/payments.ts
 
@@ -38,6 +39,7 @@ export interface PaymentsData {
     Way1Icon:StrapiMediaData
     Way2Icon:StrapiMediaData
     Way3Icon:StrapiMediaData
+    SEO: SeoComponent[];
   }
   
   /**

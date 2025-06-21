@@ -1,3 +1,5 @@
+import { SeoComponent } from "../home/home";
+
 // src/types/privacy-notice.ts
 
 /** The shape of the `data` object returned by Strapi for the Privacy Notice page */
@@ -44,7 +46,7 @@ export interface PrivacyNoticeData {
   FAQDescription10: string;
   FAQDescription11: string;
   FAQDescription12: string;
-
+  SEO: SeoComponent[];
 
 }
 

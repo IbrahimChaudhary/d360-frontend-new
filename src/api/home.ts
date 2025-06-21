@@ -4,7 +4,7 @@ import api from '../lib/api';
 
 export async function fetchHomePage(language: string): Promise<HomePageData> {
   const { data } = await api.get<HomePageResponse>(
-    `/home-page?locale=${language}&populate=heroVideo`
+    `/home-page?locale=${language}&populate=heroVideo&populate=SEO&populate=SEO.shareImage`
   );
   return data.data;
 }

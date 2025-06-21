@@ -27,6 +27,13 @@ export default function D360Cards({data}:D360CardsProps) {
       buttonColor: "#004119",
       hoverColor: "#003217",
     },
+    {
+      id: 3,
+      image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${data.card3?.formats?.large?.url || data.card3?.formats?.medium?.url || data.card3?.url || ""}`,
+      alt: "D360 Mada Card",
+      buttonColor: "#DCC9BB",
+      hoverColor: "#DCC9BB",
+    },
   ]
 
   const activeCard = cards[activeIndex]

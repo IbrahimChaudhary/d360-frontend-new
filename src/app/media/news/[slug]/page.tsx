@@ -3,9 +3,69 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer/footer";
 import { Hero } from "@/components/layout/page-hero";
 import { NewsArticleFetcher } from "@/components/media/new-cards-fetcher";
+import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 
 interface Props {
   params: { slug: string };
+}
+
+// Generate metadata for the News Article page
+export async function generateMetadata({ params }: Props) {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
+    
+    // Use the same direct fetch approach as in the client component
+    const res = await fetch(
+      `${apiUrl}/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
+        params.slug
+      )}&populate=*&locale=en`,
+      { cache: 'no-store' } // Disable caching
+    );
+    
+    console.log("News card API response:", res.status, res.statusText); // Debug log
+    if (!res.ok) throw new Error(`Status ${res.status}`);
+    
+    const json = await res.json();
+    console.log("News card API response:", json); // Debug log
+    
+    const items = Array.isArray(json.data) ? json.data : [];
+    if (items.length === 0) throw new Error("Article not found");
+
+    const hit = items[0];
+    const raw = hit.attributes ?? hit;
+    
+    console.log("Raw news card data:", raw); // Debug log
+    
+    const articleData = {
+      id: hit.id,
+      slug: raw.slug,
+      heading: raw.heading,
+      shortDesc: raw.shortDesc,
+      ...raw,
+    };
+    
+    console.log("Processed article data:", articleData); // Debug log
+    const seoData = extractSeoData(articleData);
+    console.log("Extracted SEO data:", seoData); // Debug log
+    
+    return generatePageMetadata({
+      seoData,
+      locale: "en",
+      path: `/media/news/${params.slug}`,
+      fallbackTitle: articleData.heading,
+      fallbackDescription: articleData.shortDesc
+    });
+  } catch (error) {
+    console.error("Failed to fetch metadata:", error);
+    
+    // Return fallback metadata
+    return generatePageMetadata({
+      locale: "en",
+      path: `/media/news/${params.slug}`,
+      fallbackTitle: "News Article - D360 Bank",
+      fallbackDescription: "Read the latest news and updates from D360 Bank."
+    });
+  }
 }
 
 export default function NewsArticlePage({ params }: Props) {
