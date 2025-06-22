@@ -61,7 +61,7 @@ export function FooterColumn({ links }: FooterColumnProps) {
             <li key={index}>
               <Link
                 href={link.href}
-                className="text-[12px] lg:text-[20px] text-[#C0C6D0] font-extrabold"
+                className="text-[12px] lg:text-[12px] text-[#C0C6D0] font-extrabold"
               >
                 {link.label}
               </Link>

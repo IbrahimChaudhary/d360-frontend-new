@@ -146,6 +146,7 @@ export function SavingsAccountPageClient() {
         {savings && <SanabilRates data={savings} />}
         {savings && <ProfitCalculationSection data={savings} />}
 
+        <br /><br /><br /><br /><br />
         <MergedFAQAccordion
           faqItems={faqItems}
           sectionClassName="py-8 lg:py-0  px-4  w-full lg:flex lg:justify-center lg:items-center"

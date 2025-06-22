@@ -33,7 +33,7 @@ export default function ApplePayOverview({ data }: ApplePayProps) {
   };
 
   return (
-    <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
+    <div className="max-w-[1100px] px-6 mx-auto mt-10 space-y-16">
       {/* Page title & intro */}
       <div className="space-y-4">
         <h1 className="text-[25px] lg:text-[70px] font-extrabold">

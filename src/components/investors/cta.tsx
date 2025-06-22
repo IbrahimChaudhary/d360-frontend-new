@@ -11,13 +11,13 @@ export default function AnnualReportsBanner({ data }: AnnualReportsBannerProp) {
       <div className="absolute inset-0">
         <Image
           src={
-            data?.HeroImg?.formats?.large?.url ||
-            data?.HeroImg?.formats?.medium?.url ||
-            data?.HeroImg?.url
+            data?.ExploreImg?.formats?.large?.url ||
+            data?.ExploreImg?.formats?.medium?.url ||
+            data?.ExploreImg?.url
               ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${
-                  data?.HeroImg?.formats?.large?.url ||
-                  data?.HeroImg?.formats?.medium?.url ||
-                  data?.HeroImg?.url
+                  data?.ExploreImg?.formats?.large?.url ||
+                  data?.ExploreImg?.formats?.medium?.url ||
+                  data?.ExploreImg?.url
                 }`
               : "/international/international-hero"
           }

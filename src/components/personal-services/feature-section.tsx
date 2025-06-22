@@ -80,7 +80,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
 
       <div className="hidden lg:block text-center mt-12">
         <a
-          href="#"
+          href="/products-and-services"
           className="text-[20px] font-bold underline text-[#263244] hover:text-[#E74529]"
         >
           {data.productFees}{" "}

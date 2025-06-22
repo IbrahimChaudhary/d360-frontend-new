@@ -64,7 +64,8 @@ export default function InternationalTransferPageClient() {
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
-              {international?.MainTitle}{" "}
+              {international?.MainTitle}{" "}<br />
+              {international?.MainTitle2}{" "}
             </h1>
             <div
               onClick={() => setModalOpen(true)}
