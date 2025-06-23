@@ -11,6 +11,7 @@ import { DownloadModal } from "../home/download-modal"
 
 interface Feature {
   title: string
+  titlehalf: string
   description: string
 }
 
@@ -24,18 +25,22 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
   const features: Feature[] = [
     {
       title: data.FeatHead1,
+      titlehalf: data.FeatHead1half,
       description: data.FeatHeadDes1,
     },
     {
       title: data.FeatHead2,
+      titlehalf: data.FeatHead2half,
       description: data.FeatHeadDes2,
     },
     {
       title: data.FeatHead3,
+      titlehalf: data.FeatHead3half,
       description: data.FeatHeadDes3,
     },
     {
       title: data.FeatHead4,
+      titlehalf: data.FeatHead4half,
       description: data.FeatHeadDes4,
     },
   ].filter(feature => feature.title && feature.description);
@@ -83,8 +88,10 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
       whileHover={{ y: -5 }}
       className="bg-[#F6F7F8] rounded-2xl py-3 lg:py-[35px] lg:pl-[26px] rtl:lg:pr-[25px] ltr:lg:pr-[100px] p-1  transition-all duration-300 lg:px-0 px-4"
     >
-      <h3 className="text-[14px] lg:text-[40px] ltr:pr-[105px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4">
+      <h3 className="text-[14px] lg:text-[40px] ltr:pr-[1px] lg:w-full font-extrabold text-[#EB644C] mb-2 lg:mb-4">
         {feature.title}
+        <br />
+        {feature.titlehalf}
       </h3>
       <p className="text-[#263244]  text-[12px] lg:text-[25px]">
         {feature.description}

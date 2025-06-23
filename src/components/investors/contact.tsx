@@ -6,7 +6,7 @@ interface ContactSectionProps{
 export default function ContactSection({data}:ContactSectionProps) {
   return (
     <section className="py-12 md:py-16 ">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="lg:max-w-5xl max-w-4xl mx-auto px-4 lg:px-0">
         <div className="text-left">
           <h2 className="text-[14px] rtl:text-right md:text-[30px] font-extrabold text-[#1F2E41] mb-4">{data?.Contact}</h2>
 

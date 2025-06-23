@@ -66,15 +66,15 @@ export function PaymentsPageClient() {
           </SectionHeading>
           <Carosel
             layout="default"
-            headsection="lg:mx-20 2xl:mx-auto"
+            headsection="lg:mx-20 lg:max-w-[1500px] 2xl:mx-auto"
             showButton={false}
-            classname="w-[70%] lg:w-[40%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
+            classname="w-[70%] lg:w-[50%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
             textstyle="flex lg:block items-center lg:space-y-6 lg:mt-0 mt-6"
             subheading="ltr:text-left rtl:text-right text-[12px]"
             arrows="text-sm gap-0 lg:gap-4"
             icon="w-4 h-4 lg:w-6 lg:h-6 "
             img1=" block lg:hidden"
-            img2="lg:block hidden w-[20%]"
+            img2="lg:block hidden w-full flex justify-end items-end"
             container="pl-6 lg:pl-0"
             slides={[
               {

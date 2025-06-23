@@ -90,7 +90,7 @@ export default function DynamicInfoSection({
                 <h3 className="lg:text-[27px] text-[18px] font-bold mb-6">
                   {card.title1} {card.title2 && <br />} {card.title2}
                 </h3>
-                <p className="lg:text-[20px] text-[12px] mt-auto lg:w-full w-[65%]">{card.description}</p>
+                <p className="lg:text-[20px] text-[12px] mt-auto lg:w-[85%] w-[65%]">{card.description}</p>
               </div>
             ))}
 

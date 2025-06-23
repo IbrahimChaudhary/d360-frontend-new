@@ -3,7 +3,7 @@
 import type React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TeamMemberCarousel } from "./team-member-carousel";
-import { useState, useCallback } from "react";
+import { useState, useCallback,useEffect } from "react";
 import type {
   BoardMember,
   ExecutiveMember,
@@ -76,6 +76,11 @@ export function TeamTabs({
       })
     | null
   >(null);
+  const [activeTab, setActiveTab] = useState("board");
+
+  useEffect(() => {
+    setSelectedMember(null);
+  }, [language]);
 
   const handleSelect = useCallback(
     (member: BoardMember | ExecutiveMember | ShariahMember) => {
@@ -418,7 +423,16 @@ export function TeamTabs({
   );
 
   return (
-    <Tabs defaultValue="board" className="w-full px-0 md:px-12 relative">
+<Tabs
+  defaultValue="board"
+  value={activeTab}
+  onValueChange={(value) => {
+    setActiveTab(value);
+    setSelectedMember(null); // Reset when tab changes
+  }}
+  className="w-full px-0 md:px-12 relative"
+>
+
       <div className={`mb-8 flex ${isRTL ? "flex-row" : "flex-row"}`}>
         <TabsList className="grid w-full max-w-lg grid-cols-3 bg-transparent p-0 gap-2">
           {orderedTabs.map((tab) => (

@@ -115,7 +115,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
             </div>
           </div>
 
-          <div className="flex-1 ">
+          <div className="flex-1 ml-4">
             <textarea
               {...register("message")}
               placeholder={isRTL ? "رسالتك" : "Message"}
@@ -159,7 +159,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
           <p> {data.outside}</p>
         </div>
         <div className="ltr:space-y-10 rtl:space-y-14 rtl:lg:space-y-7 ltr:lg:space-y-4 lg:space-y-0">
-          <div className="text-[#E74529] font-bold  items-center flex gap-2">
+          <div className="text-[#E74529]   items-center flex gap-2">
             <img
               src="/contact/globe.svg"
               className="w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]"
@@ -167,7 +167,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
             />{" "}
             <span> {data.insidePhone} </span>
           </div>
-          <div className="text-[#E74529] font-bold flex items-center gap-2">
+          <div className="text-[#E74529]  flex items-center gap-2">
             <img
               src="/contact/phone.svg"
               className="w-[15px] h-[15px] lg:w-[30px] lg:h-[30px] rtl:scale-x-[-1]"

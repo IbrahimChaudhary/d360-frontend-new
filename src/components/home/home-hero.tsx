@@ -55,7 +55,7 @@ export function HomeHero({ data }: HomeHeroProps) {
             {data.Heading} {data.HeadingB}
           </h1>
           <p
-            className={`text-sm sm:text-[37px] mb-4 md:mb-6 text-white leading-tight ${
+            className={`text-sm lg:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
               language === "ar"
                 ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
                 : "lg:w-full w-[70%]"

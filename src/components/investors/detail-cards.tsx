@@ -78,7 +78,7 @@ export default function InfoCards({ data }: InfoCardsProps) {
           {cardData.map((card, index) => (
             <div
               key={index}
-              className="relative overflow-hidden rounded-2xl w-full h-80 lg:w-[460px] group  transition-transform duration-300 hover:scale-[1.02]"
+              className="relative overflow-hidden rounded-2xl w-full h-90 lg:w-[480px] group  transition-transform duration-300 hover:scale-[1.02]"
             >
               {/* Background Image */}
               <div className="absolute inset-0">
@@ -97,11 +97,11 @@ export default function InfoCards({ data }: InfoCardsProps) {
               <div className="relative h-full flex flex-col  p-6">
                 <div className="space-y-3">
                   <h3
-                    className={`text-[16px] lg:w-full w-[40%] md:text-[40px] font-extrabold ${card.textColor} leading-tight`}
+                    className={`text-[16px] lg:w-[80%] w-[40%] md:text-[40px] font-bold ${card.textColor} leading-tight`}
                   >
                     {card.title}
                   </h3>
-                  <p className={`${card.textColor} text-sm md:text-[25px] lg:w-full w-[65%]`}>
+                  <p className={`${card.textColor} text-sm md:text-[25px] lg:w-[70%] w-[65%]`}>
                     {card.description}
                   </p>
                 </div>

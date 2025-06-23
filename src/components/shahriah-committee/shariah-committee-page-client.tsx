@@ -58,7 +58,7 @@ export function ShariahCommitteePageClient() {
         </Hero>
 
         <SectionHeading>
-          <p className="text-[25px] lg:text-[60px] lg:w-full w-[69%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
+          <p className="text-[25px] lg:text-[60px] lg:w-[95%] w-[69%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
             {shahriah?.Title2}
           </p>
         </SectionHeading>

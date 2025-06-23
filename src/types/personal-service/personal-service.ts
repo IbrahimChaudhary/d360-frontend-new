@@ -11,6 +11,17 @@ export interface PersonalServiceData {
     Title1: string
     Title2: string
     Title3: string
+
+    title1half:string
+    title2half:string
+    title3half:string
+    title4half:string
+    title5half:string
+    title6half:string
+    title7half:string
+    title8half:string
+
+    
   
     Title4: string
     Description4: string

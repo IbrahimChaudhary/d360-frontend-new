@@ -68,7 +68,7 @@ export default function InvestorRealtions() {
             }`}
           >
             <h1
-              className={`text-[25px]  items-center  lg:mt-32 lg:flex hidden leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
+              className={`text-[25px]  items-center  lg:mt-42 lg:flex hidden leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -76,7 +76,7 @@ export default function InvestorRealtions() {
               <br />
               {investor?.HeroTitle2}
             </h1>
-            <h1
+            {/* <h1
               className={`text-[25px] flex items-center  lg:mt-32 lg:hidden  leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
@@ -84,7 +84,7 @@ export default function InvestorRealtions() {
               Invest in 
               <br />
               D360 Bank
-            </h1>
+            </h1> */}
           </div>
         </Hero>
         <SectionHeading className="mt-16 pb-16 lg:py-16 px-4 mx-auto">

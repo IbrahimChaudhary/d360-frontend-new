@@ -38,16 +38,16 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="bg-white  flex  items-center-safe gap-6 rounded-xl p-4 text-left "
+              className="bg-white  flex gap-6 rounded-xl p-4 text-left "
             >
               <div className="text-8xl font-light  text-[#D9D9D9] ">
                 {step.number}
               </div>
               <div>
-              <h3 className="font-semibold text-[#1E293B] rtl:text-right ltr:text-left text-sm md:text-base mb-1">
+              <h3 className="font-semibold text-[#1E293B] rtl:text-right ltr:text-left text-sm md:text-[25px] mb-1">
                   {step.title}
                 </h3>
-                <p className="text-xs rtl:text-right ltr:text-left text-[#475569]">{step.description}</p>
+                <p className="text-xs lg:text-[20px] rtl:text-right ltr:text-left text-[#475569]">{step.description}</p>
               </div>
             </div>
           ))}

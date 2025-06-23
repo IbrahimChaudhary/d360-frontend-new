@@ -43,7 +43,7 @@ export function GalleryCarousel({ images }: GalleryCarouselProps) {
   }
 
   return (
-    <div className="relative w-full h-96 md:h-[500px] overflow-hidden bg-gray-100">
+    <div className="relative w-full h-96 md:h-[130vh] overflow-hidden bg-gray-100">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}

@@ -190,7 +190,7 @@ export function Carosel({
       </div>
 
       {/* Image Section */}
-      <div className={cn("relative w-full max-w-md h-[200px] lg:h-[300px]",img2)}>
+      <div className={cn("relative w-full max-w-sm flex justify-end items-end h-[200px] lg:h-[300px]",img2)}>
         <Image
           src={currentSlide.image || "/placeholder.svg"}
           alt={currentSlide.heading}

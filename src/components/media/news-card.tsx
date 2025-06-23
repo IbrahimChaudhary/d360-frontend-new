@@ -63,8 +63,8 @@ export function NewsCard({ article, index }: NewsCardProps) {
               </p>
             </div>
 
-            <div className="flex items-center text-[14px] text-[#293242] mt-auto">
-              <Calendar className="w-3 h-3 mr-1" />
+            <div className="flex items-center text-[14px] text-[#293242] gap-2 mt-auto">
+              <img src="/media/calender2.svg" className="w-[22px] h-[22px]" alt="" />
               <span>{formatDate(article.date)}</span>
             </div>
           </div>

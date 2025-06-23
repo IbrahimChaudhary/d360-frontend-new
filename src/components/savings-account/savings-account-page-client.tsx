@@ -70,6 +70,8 @@ export function SavingsAccountPageClient() {
           </div>
         </Hero>
         <Carosel
+        headsection="flex flex-col-reverse lg:flex-row max-w-[1100px] lg:max-w-[1200px]  mx-auto  items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0"
+        classname="text-[14px] lg:text-[20px] font-[400] lg:w-full lg:mb-2 text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]"
           layout="default"
           showButton={true}
           btnTxt={savings?.SavingBtn}

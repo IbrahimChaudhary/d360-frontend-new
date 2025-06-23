@@ -80,7 +80,7 @@ export default function InternationalTransferPageClient() {
           </div>
         </Hero>
         <SectionHeading className=" pt-6 lg:pt-16 ">
-          <p className="lg:text-[60px] text-[30px] px-4 lg:px-0 w-[90%] lg:w-[80%] mx-auto text-center font-extrabold ">
+          <p className="lg:text-[60px] text-[30px] px-2 lg:px-0 w-[90%] lg:w-full mx-auto text-center font-extrabold ">
             {international?.Title1}{" "}
           </p>
         </SectionHeading>

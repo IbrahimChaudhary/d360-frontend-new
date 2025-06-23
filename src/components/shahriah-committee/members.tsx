@@ -9,6 +9,8 @@ import { useState, useCallback } from "react"
 import { shariahMembersAr as arShariahMembers } from "@/data/team-member-ar"
 import { shariahMembers as enShariahMembers } from "@/data/team-member"
 import { cn } from "@/lib/utils"
+import { useEffect } from "react";
+
 
 interface TeamTabsProps {
   shariahMembers: (ShariahMember & { image?: string })[]
@@ -35,6 +37,11 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
   const handleClose = useCallback(() => {
     setSelectedMember(null)
   }, [])
+
+  useEffect(() => {
+    setSelectedMember(null);
+  }, [language]);
+  
 
   const tabs = [{ value: "advisors", label: isRTL ? "اللجنة الشرعية" : "Shariah Committee Members" }]
 
@@ -157,9 +164,14 @@ export function Members({ shariahMembers: initialShariahMembers }: TeamTabsProps
                               quality={100}
                               fill
                               className={cn(
-                                "object-cover transition-all duration-300",
-                                selectedMember && "hover:grayscale grayscale-0"
+                                "object-cover transition-all duration-300 hover:scale-110",
+                                selectedMember
+                                  ? selectedMember.id === member.id
+                                    ? "grayscale-0 hover:grayscale-0"
+                                    : "grayscale hover:grayscale-0"
+                                  : "grayscale-0 hover:grayscale-0"
                               )}
+                              
                               
                             />
 

@@ -6,7 +6,7 @@ interface AnnualReportsBannerProp {
 }
 export default function AnnualReportsBanner({ data }: AnnualReportsBannerProp) {
   return (
-    <section className="relative py-16 md:py-20 overflow-hidden">
+    <section className="relative py-16 md:py-40 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image

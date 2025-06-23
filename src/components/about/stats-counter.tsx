@@ -39,7 +39,7 @@ export function StatsCounter({ stats, container }: StatsCounterProps) {
               {stat.value}
             </span>
           )}
-          <span className="text-[14px] lg:text-[30px] text-center text-[#293242] mb-1">{stat.label}</span>
+          <span className="text-[14px] lg:text-[30px] text-center text-[#C0C6D0] mb-1">{stat.label}</span>
         </motion.div>
       ))}
     </div>

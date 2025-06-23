@@ -358,11 +358,11 @@ export default function InteractiveCardHero({
               <h2 className="text-[42.75px] font-extrabold mb-2">
                 {data.PhysicalCard}
               </h2>
-              <p className="text-[18px] max-w-md pl-5 pr-5 leading-tight">
+              <p className="text-[22.09px] max-w-md pl-5 pr-5 leading-tight">
                 {data.PhysicalCardDescription}
               </p>
               <button
-                className="mt-2 bg-white text-[#E74529] px-22 py-2 rounded-lg font-bold text-sm shadow-md"
+                className="mt-2 bg-white text-[#E74529] px-22 py-2 rounded-lg font-bold text-[14.25px] shadow-md"
                 onClick={() => setModalOpen(true)}
               >
                 {data.PhysicalCardCTA}
@@ -578,11 +578,11 @@ export default function InteractiveCardHero({
                   <h2 className="text-[42.75px] font-bold ">
                     {data.DigitalCard}
                   </h2>
-                  <p className="text-[18px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
+                  <p className="text-[22.09px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
                     {data.DigitalCardDescription}
                   </p>
                   <button
-                    className="bg-white font-bold text-[#E74529] text-sm rounded-lg px-12 py-2 mx-auto block"
+                    className="bg-white font-bold text-[#E74529] text-[14.25px] rounded-lg px-12 py-2 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
                     {data.DigitalCardCTA}

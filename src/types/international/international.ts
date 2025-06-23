@@ -13,6 +13,7 @@ export interface InternationalData {
     publishedAt: string; // ISO timestamp
     locale: string;
     MainTitle: string;
+    MainTitle2: string;
     Title1: string;
     Title2: string;
     Way1Head: string;
@@ -31,6 +32,11 @@ export interface InternationalData {
     CountriesHeadBold: string;
     FeatHead: string;
     FeatHead1: string;
+    FeatHead1half: string;
+    FeatHead2half: string;
+    FeatHead3half: string;
+    FeatHead4half: string;
+
     FeatHeadDes1: string;
     FeatHead2: string;
     FeatHeadDes2: string;
