@@ -311,7 +311,7 @@ export function TeamTabs({
 
       {/* Desktop */}
       <div className="hidden lg:block">
-        <div className="flex gap-6 relative overflow-hidden">
+        <div className="flex gap-6 relative ">
           <div className={`flex-1 min-w-0 ${isRTL ? "order-1" : "order-2"}`}>
             <motion.div
               layout
@@ -345,14 +345,15 @@ export function TeamTabs({
 
           <AnimatePresence mode="wait">
             {selectedMember && (
-              <motion.div
-                key="details-panel"
-                initial={{ x: isRTL ? -320 : -320, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: isRTL ? -320 : -320, opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className={`w-[300px] p-6 bg-[#F8F8F8] rounded-xl h-fit flex-shrink-0 `}
-              >
+            
+             <motion.div
+               key="details-panel"
+               initial={{ x: isRTL ? -320 : -320, opacity: 0 }}
+               animate={{ x: 0, opacity: 1 }}
+               exit={{ x: isRTL ? -320 : -320, opacity: 0 }}
+               transition={{ duration: 0.3, ease: "easeInOut" }}
+               className={`w-[300px] h-fit p-6 bg-[#F8F8F8] rounded-xl sticky top-24`}
+             >
                 <div
                   className={`flex justify-between items-start mb-4 ${
                     isRTL ? "flex-row" : "flex-row"
@@ -415,6 +416,7 @@ export function TeamTabs({
                   </div>
                 )}
               </motion.div>
+             
             )}
           </AnimatePresence>
         </div>
