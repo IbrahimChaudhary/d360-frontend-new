@@ -99,7 +99,7 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <AccordionContent className="overflow-hidden">
-              <div className="text-md text-[#263244] flex justify-between font-semibold border-b-[2px] border-black pb-3 mt-2 leading-relaxed">
+              <div className="text-[20px] text-[#263244] flex justify-between font-semibold border-b-[2px] border-black pb-3 mt-2 leading-relaxed">
                 <p>{item.header.label}</p>
                 <p>{item.header.value}</p>
               </div>
@@ -107,7 +107,7 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
                 {item.items.map((sub, idx) => (
                   <div
                     key={idx}
-                    className="flex justify-between py-2  last:border-none"
+                    className="text-[20px] flex justify-between py-2  last:border-none"
                   >
                     <span>{sub.description}</span>
                     <span className="text-right">{sub.value}</span>

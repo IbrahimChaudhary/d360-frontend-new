@@ -119,7 +119,7 @@ export function ContactInfo({
           <button
             onClick={() => setModalOpen(true)}
            
-             className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-xl font-bold cursor-pointer text-[20px]"
+             className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-xl font-bold cursor-pointer text-[20px] btn-14"
           >
             {data.download}{" "}
           </button>

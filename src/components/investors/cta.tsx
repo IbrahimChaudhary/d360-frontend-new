@@ -37,7 +37,7 @@ export default function AnnualReportsBanner({ data }: AnnualReportsBannerProp) {
           {data.ExploreHead}
         </h2>
         <Link href="/anuual-reports" className="">
-        <button className="bg-[#E74529]  text-white px-8  py-2 rounded-lg  font-bold text-[8px] lg:text-[20px] lg:rounded-xl lg:px-8">
+        <button className="bg-[#E74529]  text-white px-8  py-2 rounded-lg  font-bold text-[8px] lg:text-[20px] lg:rounded-xl lg:px-8 btn-14">
             {data.ExploreBtn}
           </button>
         </Link>

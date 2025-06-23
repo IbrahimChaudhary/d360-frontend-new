@@ -180,7 +180,7 @@ export function Carosel({
             {showButton && (
               <button
                
-              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 lg:mb-22 mb-0 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px]"
+              className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 lg:mb-22 mb-0 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px] btn-14"
             >
                 {btnTxt}
               </button>

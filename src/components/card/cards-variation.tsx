@@ -244,7 +244,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
               </h2>
               <p className="text-[#263244] text-[25px]">{t.subtitle}</p>
               <button
-                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold text-[20px]`} >
+                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold text-[20px] btn-14`} >
                 {t.button}
               </button>
             </div>

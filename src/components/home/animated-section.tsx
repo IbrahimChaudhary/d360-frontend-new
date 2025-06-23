@@ -578,7 +578,7 @@ export default function InteractiveCardHero({
                   <h2 className="text-[42.75px] font-bold ">
                     {data.DigitalCard}
                   </h2>
-                  <p className="text-[22.09px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
+                  <p className="text-[20px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
                     {data.DigitalCardDescription}
                   </p>
                   <button

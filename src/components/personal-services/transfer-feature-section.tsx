@@ -50,7 +50,7 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
               <div className="flex items-center justify-start">{item.icon}</div>
               <div>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#263244] leading-tight mb-4">{item.title}</h2>
-                <button className="bg-[#E74529]  text-white px-8 py-2 rounded-[10px] lg:rounded-xl font-bold text-[8px] lg:text-[20px]  transition-colors">
+                <button className="bg-[#E74529]  text-white px-8 py-2 rounded-[10px] lg:rounded-xl font-bold text-[8px] lg:text-[20px]  transition-colors btn-14">
                   {item.button}
                 </button>
             </div>

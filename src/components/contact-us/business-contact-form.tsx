@@ -146,7 +146,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
 
           <button
             type="submit"
-            className="mt-6 bg-[#E74529] lg:text-[20px] text-[8px] text-white  px-6 py-2 rounded-xl cursor-pointer lg:w-[20%] mx-auto"
+            className="mt-6 bg-[#E74529] lg:text-[20px] text-[8px] text-white  px-6 py-2 rounded-xl cursor-pointer lg:w-[20%] mx-auto btn-14"
           >
             {data.sendMsg}
           </button>
