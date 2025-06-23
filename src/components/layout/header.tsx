@@ -280,7 +280,7 @@ export function Header({ variant = "default" }: HeaderProps) {
             className={navColor}
           />
 
-          <div onClick={handleToggle} className="cursor-pointer hover:text-[#E74529]">
+          <div onClick={handleToggle} className="cursor-pointer font-trans hover:text-[#E74529]">
             {isRTL ? "English" : "عربي"}
           </div>
         </motion.nav>

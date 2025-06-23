@@ -131,3 +131,12 @@
     }
   }
 }
+
+html[dir="ltr"] .font-trans{
+  font-family: "Tajawal";
+}
+
+html[dir="rtl"] .font-trans{
+  font-family: "Lato";
+}
+
