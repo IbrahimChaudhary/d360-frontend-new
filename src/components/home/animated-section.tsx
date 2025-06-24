@@ -8,6 +8,7 @@ import englishContent from "@/data/home-en";
 import arabicContent from "@/data/home-ar";
 import { DownloadModal } from "./download-modal";
 import { HomePageData } from "@/types/home/home";
+import { useEffect } from "react";
 interface InteractiveCardHeroProps {
   data: HomePageData;
 }
@@ -18,8 +19,28 @@ export default function InteractiveCardHero({
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleAreaHover = (side: "left" | "right") => setHoveredSide(side);
+  const handleAreaClick = (side: "left" | "right") => {
+    if (!isMobile) return;
+    if (hoveredSide === side) {
+      // Clicked again on open side → reset to initial
+      setHoveredSide(null);
+    } else {
+      setHoveredSide(side);
+    }
+  };
+
   const resetHover = () => setHoveredSide(null);
 
   return (
@@ -27,15 +48,15 @@ export default function InteractiveCardHero({
       className="flex  relative w-full mt-10 h-[400px] lg:h-[650px] overflow-hidden bg-black"
       onMouseLeave={resetHover}
     >
-
-
       {/* Panels Container */}
-      <div className="absolute top-0 left-0 w-full h-full flex z-10">
+      <div className="absolute top-0 left-0 w-full h-full flex flex-row z-10">
+
         {/* LEFT SIDE (PHYSICAL) */}
         <motion.div
-          onMouseEnter={() => handleAreaHover("left")}
+          onMouseEnter={() => !isMobile && handleAreaHover("left")}
+          onClick={() => handleAreaClick("left")}
           animate={{
-            width:
+            flexBasis:
               hoveredSide === "left"
                 ? "100%"
                 : hoveredSide === "right"
@@ -43,7 +64,7 @@ export default function InteractiveCardHero({
                 : "50%",
           }}
           transition={{ duration: 0.6 }}
-          className="relative h-full overflow-hidden"
+          className="relative h-full overflow-hidden flex-grow-0"
         >
           <Image
             src="/home/red-bg.png"
@@ -73,7 +94,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 15 }}
                   transition={{ duration: 1.2 }}
-                  className="absolute top-[15%] left-[45%]"
+                  className="absolute top-[5%] lg:top-[15%] left-[45%]"
                 >
                   <Image
                     src="/home/lock.png"
@@ -86,7 +107,7 @@ export default function InteractiveCardHero({
                   initial={{ x: 0 }}
                   animate={{ x: -10 }}
                   transition={{ duration: 1.1 }}
-                  className="absolute top-[10%] right-[10%]"
+                  className="absolute  top-[10%] right-[10%]"
                 >
                   <Image
                     src="/home/shade.png"
@@ -99,7 +120,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: -20 }}
                   transition={{ duration: 1.3 }}
-                  className="absolute top-[30%] left-[15%]"
+                  className="absolute top-[30%] left-[5%] lg:left-[15%]"
                 >
                   <Image
                     src="/home/diamond.png"
@@ -151,7 +172,7 @@ export default function InteractiveCardHero({
                   initial={{ x: 0 }}
                   animate={{ x: -15 }}
                   transition={{ duration: 1.5 }}
-                  className="absolute bottom-[0%] left-[30%]  -z-50"
+                  className="absolute lg:block hidden bottom-[0%] left-[30%]  -z-50"
                 >
                   <Image
                     src="/home/case.png"
@@ -164,7 +185,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 10 }}
                   transition={{ duration: 1.4 }}
-                  className="absolute top-[50%] left-[3%]"
+                  className="absolute  top-[50%] left-[3%]"
                 >
                   <Image
                     src="/home/plane.png"
@@ -192,7 +213,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 10 }}
                   transition={{ duration: 1.4 }}
-                  className="absolute top-[10%] left-[3%]"
+                  className="absolute lg:block hidden top-[10%] left-[3%]"
                 >
                   <Image
                     src="/home/wallet.png"
@@ -205,7 +226,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 10 }}
                   transition={{ duration: 1.4 }}
-                  className="absolute top-[90%] left-[90%]"
+                  className="absolute lg:block hidden top-[90%] left-[90%]"
                 >
                   <Image
                     src="/home/blur-d.png"
@@ -219,7 +240,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 10 }}
                   transition={{ duration: 1.4 }}
-                  className="absolute top-[70%] left-[20%]"
+                  className="absolute lg:block hidden top-[70%] left-[20%]"
                 >
                   <Image
                     src="/home/shade.png"
@@ -232,7 +253,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 10 }}
                   transition={{ duration: 1.4 }}
-                  className="absolute top-[50%] left-[70%]"
+                  className="absolute top-[50%] left-[80%] lg:left-[70%]"
                 >
                   <Image
                     src="/home/dark-plane.png"
@@ -250,14 +271,14 @@ export default function InteractiveCardHero({
                   alt="aero"
                   width={90}
                   height={90}
-                  className="absolute top-[50%] left-[10%]"
+                  className="absolute top-[50%] left-[0%] lg:left-[10%]"
                 />
                 <Image
                   src="/home/lock.png"
                   alt="lock"
                   width={50}
                   height={50}
-                  className="absolute top-[25%] left-[45%]"
+                  className="absolute top-[25%] left-[25%] lg:block hidden lg:left-[45%]"
                 />
                 <Image
                   src="/home/shade.png"
@@ -271,7 +292,7 @@ export default function InteractiveCardHero({
                   alt="diamond"
                   width={50}
                   height={50}
-                  className="absolute top-[30%] left-[15%]"
+                  className="absolute top-[10%] lg:top-[30%] left-[15%]"
                 />
                 <Image
                   src="/home/pill.png"
@@ -299,14 +320,14 @@ export default function InteractiveCardHero({
                   alt="case"
                   width={90}
                   height={90}
-                  className="absolute bottom-[10%] left-[50%]"
+                  className="absolute lg:block hidden bottom-[10%] left-[50%]"
                 />
                 <Image
                   src="/home/plane.png"
                   alt="plane"
                   width={50}
                   height={50}
-                  className="absolute bottom-[10%] left-[35%]"
+                  className="absolute lg:block hidden bottom-[10%] left-[35%]"
                 />
                 <Image
                   src="/home/blur-d.png"
@@ -320,7 +341,7 @@ export default function InteractiveCardHero({
                   alt="plane"
                   width={100}
                   height={100}
-                  className="absolute top-[10%] left-[10%]"
+                  className="absolute lg:block hidden top-[10%] left-[10%]"
                 />
                 <Image
                   src="/home/dark-plane.png"
@@ -341,7 +362,7 @@ export default function InteractiveCardHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute bottom-5 w-full text-center text-white text-[75px] z-10 font-extrabold"
+                className="absolute bottom-6 lg:bottom-5 w-full text-center text-white text-[27px] lg:text-[75px] lg:z-10 z-[100] font-extrabold"
               >
                 {data.PhysicalCard}
               </motion.div>
@@ -355,16 +376,16 @@ export default function InteractiveCardHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 top-[65%] flex flex-col items-center  text-white text-center px-4"
+              className="absolute inset-0 top-[60%] lg:top-[65%] flex flex-col items-center  text-white text-center px-4"
             >
-              <h2 className="text-[42.75px] font-extrabold mb-2">
+              <h2 className="text-[25px] lg:text-[42.75px] font-extrabold mb-2">
                 {data.PhysicalCard}
               </h2>
-              <p className="text-[22.09px] max-w-md pl-5 pr-5 leading-tight">
+              <p className="text-[14px] lg:text-[22.09px] max-w-sm lg:w-full w-[70%] lg:max-w-md pl-5 pr-5 leading-tight">
                 {data.PhysicalCardDescription}
               </p>
               <button
-                className="mt-2 bg-white text-[#E74529] px-22 py-2 rounded-lg font-bold text-[14.25px] shadow-md"
+                className="mt-2 bg-white text-[#E74529] px-8 lg:px-22 py-2 rounded-lg font-bold text-[8px] lg:text-[14.25px] shadow-md"
                 onClick={() => setModalOpen(true)}
               >
                 {data.PhysicalCardCTA}
@@ -379,18 +400,20 @@ export default function InteractiveCardHero({
 
         {/* RIGHT SIDE (DIGITAL) */}
         <motion.div
-          onMouseEnter={() => handleAreaHover("right")}
-          animate={{
-            width:
-              hoveredSide === "right"
-                ? "100%"
-                : hoveredSide === "left"
-                ? "0%"
-                : "50%",
-          }}
-          transition={{ duration: 0.6 }}
-          className="relative h-full overflow-hidden"
-        >
+  onMouseEnter={() => !isMobile && handleAreaHover("right")}
+  onClick={() => handleAreaClick("right")}
+  animate={{
+    flexBasis:
+      hoveredSide === "right"
+        ? "100%"
+        : hoveredSide === "left"
+        ? "0%"
+        : "50%",
+  }}
+  transition={{ duration: 0.6 }}
+  className="relative h-full overflow-hidden flex-grow-0"
+>
+
           <Image
             src="/home/blue-bg.png"
             alt="Digital Card"
@@ -418,7 +441,7 @@ export default function InteractiveCardHero({
                   initial={{ x: 0 }}
                   animate={{ x: 20 }}
                   transition={{ duration: 1.2 }}
-                  className="absolute top-[15%] left-[70%]"
+                  className="absolute top-[3%] lg:top-[15%] left-[70%]"
                 >
                   <Image
                     src="/home/globe.png"
@@ -431,7 +454,7 @@ export default function InteractiveCardHero({
                   initial={{ y: 0 }}
                   animate={{ y: 20 }}
                   transition={{ duration: 1.3 }}
-                  className="absolute top-[30%] left-[25%]"
+                  className="absolute top-[30%] left-[10%] lg:left-[25%]"
                 >
                   <Image
                     src="/home/coin.png"
@@ -470,7 +493,7 @@ export default function InteractiveCardHero({
                   initial={{ x: 0 }}
                   animate={{ x: 15 }}
                   transition={{ duration: 1.5 }}
-                  className="absolute bottom-[10%] left-[60%]"
+                  className="absolute bottom-[10%] lg:left-[60%]"
                 >
                   <Image
                     src="/home/aero-blue.png"
@@ -488,7 +511,7 @@ export default function InteractiveCardHero({
                   alt="hex"
                   width={100}
                   height={100}
-                  className="absolute top-[60%] left-[30%]"
+                  className="absolute top-[60%] left-[10%] lg:left-[30%]"
                 />
                 <Image
                   src="/home/shade-blue.png"
@@ -502,7 +525,7 @@ export default function InteractiveCardHero({
                   alt="coin"
                   width={60}
                   height={60}
-                  className="absolute top-[30%] left-[30%]"
+                  className="absolute top-[10%] lg:top-[30%] left-[30%]"
                 />
                 <Image
                   src="/home/globe.png"
@@ -537,7 +560,7 @@ export default function InteractiveCardHero({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute left-[108px] z-10 bottom-6 w-full text-center text-white text-[75px]  font-extrabold rtl:left-[-2px]"
+                className="absolute  lg:left-[108px] lg:z-10 z-[100] bottom-6 w-full text-center text-white text-[27px]  lg:text-[75px]  font-extrabold rtl:left-[-2px]"
               >
                 {data.DigitalCard}
               </motion.div>
@@ -546,7 +569,7 @@ export default function InteractiveCardHero({
 
           {/* Mobile Mockup (Always Visible, But Moves) */}
           <motion.div
-            className="absolute w-[400px] h-[700px] top-18 z-10"
+            className="lg:block hidden absolute w-[400px] h-[700px] top-18 z-10"
             animate={{
               left:
                 hoveredSide === "right"
@@ -593,6 +616,52 @@ export default function InteractiveCardHero({
               )}
             </AnimatePresence>
           </motion.div>
+          <motion.div
+            className="block lg:hidden absolute w-[270px] h-[700px] -top-26 z-10"
+            animate={{
+              left:
+                hoveredSide === "right"
+                  ? "50%"
+                  : language === "ar"
+                  ? "-160%"
+                  : "-20%",
+              x: hoveredSide === "right" ? "-50%" : "60%",
+              opacity: 1,
+            }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Image
+              src="/home/mobile-mockup.png"
+              alt="Mobile Phone"
+              fill
+              className="object-contain"
+            />
+
+            {/* Only show content when fully open */}
+            <AnimatePresence>
+              {hoveredSide === "right" && (
+                <motion.div
+                  key="mobile-content"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.4 }}
+                  className="absolute top-[50%] w-full px-6 text-center text-white"
+                >
+                  <h2 className="text-[20px] font-bold ">{data.DigitalCard}</h2>
+                  <p className="text-[12px] px-1 mb-4 rtl:px-6 pl-5 pr-5 text-center ">
+                    {data.DigitalCardDescription}
+                  </p>
+                  <button
+                    className="bg-white font-bold text-[#E74529] text-[8px] rounded-lg px-8 py-2 mx-auto block"
+                    onClick={() => setModalOpen(true)}
+                  >
+                    {data.DigitalCardCTA}
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           {/* Trigger Red from left */}
           {hoveredSide === "right" && (
@@ -607,7 +676,7 @@ export default function InteractiveCardHero({
       {/* Center Card (Moves into mobile when right side opens) */}
       <motion.div
         key="center-card"
-        className="absolute z-20 pointer-events-none"
+        className="lg:block hidden absolute z-20 pointer-events-none w-[150px] h-[150px] lg:w-[300px] lg:h-[300px]"
         animate={{
           top: hoveredSide === "right" ? "25%" : "50%",
           left: "50%",
@@ -615,10 +684,28 @@ export default function InteractiveCardHero({
           y: hoveredSide === "right" ? "0%" : "-50%",
         }}
         transition={{ duration: 0, ease: "easeOut" }}
-        style={{
-          width: "300px",
-          height: "300px",
+      >
+        <Image
+          src={
+            hoveredSide === "right"
+              ? "/home/card-digital.png"
+              : "/home/card.png"
+          }
+          alt="Center Card"
+          fill
+          className="object-contain"
+        />
+      </motion.div>
+      <motion.div
+        key="center-card"
+        className="block lg:hidden absolute z-20 pointer-events-none w-[200px] h-[200px] "
+        animate={{
+          top: hoveredSide === "right" ? "15%" : "45%",
+          left: "50%",
+          x: "-50%",
+          y: hoveredSide === "right" ? "0%" : "-50%",
         }}
+        transition={{ duration: 0, ease: "easeOut" }}
       >
         <Image
           src={
@@ -634,6 +721,5 @@ export default function InteractiveCardHero({
 
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
-    
   );
 }
