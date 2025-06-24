@@ -24,7 +24,7 @@ export function PrivacyNoticePageClient() {
   return (
     <div className="w-full  flex flex-col justify-center items-center">
       <Header variant="about" />
-      <div className="max-w-[1728px] hidden  mt-12 px-10 md:flex flex-col justify-center items-center overflow-y-scroll  ">
+      <div className="max-w-[1728px] hidden  px-6 mx-auto mt-20 space-y-16 md:flex flex-col justify-center items-center ">
        {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
       </div>
       {/* mobile version  */}
@@ -34,10 +34,10 @@ export function PrivacyNoticePageClient() {
       {/* Page title & intro */}
       {privacy && (
   <div className="space-y-6">
-    <h1 className="text-[25px] lg:text-[70px] font-extrabold text-[#E74529]">
+    <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">
       {privacy.Heading}
     </h1>
-    <p className="text-[14px] lg:text-[25px]">{privacy.headingPara1}</p>
+    <p className="text-[14px] lg:text-[20px]">{privacy.headingPara1}</p>
 
     <p className="text-[#E74529] text-[10px] font-[900] underline">Read More</p>
   </div>

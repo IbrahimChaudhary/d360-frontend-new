@@ -85,9 +85,9 @@ export default function DesktopContentSectionSecurityAndAwareness() {
     <div className="max-w-[1228px] px-6 mx-auto mt-24 space-y-16">
       {/* Render optional Title1 and its descriptions */}
       <div>
-        <h1 className="lg:text-[60px] text-[#E74529] font-extrabold">{security.Title1}</h1>
-        <p className="mt-4 lg:text-[25px]">{security.Title1Des1}</p>
-        <p className="mt-2 lg:text-[25px]">{security.Title1Des2}</p>
+        <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">{security.Title1}</h1>
+        <p className="mt-4 lg:text-[20px]">{security.Title1Des1}</p>
+        <p className="mt-2 lg:text-[20px]">{security.Title1Des2}</p>
       </div>
 
       {/* Loop over each parsed section */}

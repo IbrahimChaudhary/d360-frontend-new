@@ -47,7 +47,7 @@ export default function CardPageClient() {
             {" "}
             {cardData?.Title1}
           </p>
-          <p className="text-[14px] lg:text-[25px] w-[86%] mx-auto pt-3 lg:pt-7">
+          <p className="text-[30px] lg:w-full w-[60%] leading-tight mx-auto lg:mx-0 lg:text-[50px] font-extrabold">
             {cardData?.Description1}
             {cardData?.Description2}
             {cardData?.Description3}

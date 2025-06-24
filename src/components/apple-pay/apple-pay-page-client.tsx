@@ -19,6 +19,8 @@ export default function ApplePayPageClient() {
   const isOverview = (tab: "overview" | "faq"): tab is "overview" => tab === "overview";
   const isFaq = (tab: "overview" | "faq"): tab is "faq" => tab === "faq";
 
+  const faqTxt = language === "ar" ? " الأسئلة الشائعة" : "FAQs";
+
   useEffect(() => {
     fetchApplePay(language)
       .then(setApplePay)
@@ -46,7 +48,7 @@ export default function ApplePayPageClient() {
               }`}
               onClick={() => setActiveTab("overview")}
             >
-              Apple Pay Overview
+              {applePay?.Title1}
             </button>
 
             <button
@@ -57,7 +59,7 @@ export default function ApplePayPageClient() {
               }`}
               onClick={() => setActiveTab("faq")}
             >
-              FAQs
+              {faqTxt}
             </button>
           </div>
           <div className="lg:block hidden">
@@ -82,7 +84,7 @@ export default function ApplePayPageClient() {
               }`}
               onClick={() => setActiveTab("overview")}
             >
-              Apple Pay Overview
+             {applePay?.Title1}
             </button>
 
             <button
@@ -93,7 +95,7 @@ export default function ApplePayPageClient() {
               }`}
               onClick={() => setActiveTab("faq")}
             >
-              FAQs
+              {faqTxt}
             </button>
           </div>
 

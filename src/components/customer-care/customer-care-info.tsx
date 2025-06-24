@@ -44,7 +44,7 @@ export function CustomerCareContactInfo({
     >
       {data.Feedbacks && (
         <h3
-        className={`text-[14px] lg:text-[40px] max-w-4xl text-center rtl:lg:text-right ltr:lg:text-left leading-tight  font-extrabold text-${
+        className={`text-[14px] lg:text-[35px] max-w-4xl text-center rtl:lg:text-right ltr:lg:text-left leading-tight  font-extrabold text-${
             language === "ar" ? "right" : "left"
           }`}
         >
