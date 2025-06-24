@@ -20,7 +20,7 @@ export function ShariahSection({ data }: ShariahSectionProps) {
 
   return (
     <section
-      className={`relative w-full h-[500px] lg:h-full mb-6 lg:mb-0 py-20 flex ${
+      className={`relative w-full h-[600px] lg:h-full mb-6 lg:mb-0 py-20 flex ${
         isRTL ? "" : "flex-row"
       } items-center justify-start text-white overflow-hidden`}
     >
@@ -46,7 +46,7 @@ export function ShariahSection({ data }: ShariahSectionProps) {
         <h2 className={`text-[30px]  md:text-[80px] uppercase font-extrabold leading-tight mb-6 ${isRTL?"lg:text-right text-center" : "lg:text-left text-center"}`}>
           {data.Shariah}{" "}
         </h2>
-        <p className={ `text-[25px]   md:text-[25px]   mb-8 ${isRTL?"lg:text-right text-center":"lg:text-left text-center"}`}>
+        <p className={ `text-[25px]   md:text-[25px] leading-tight  mb-8 ${isRTL?"lg:text-right text-center":"lg:text-left text-center"}`}>
           {data.ShariahDescription}
         </p>
         <div className={`flex  ${isRTL ? "justify-start" : "justify-start"}`}>

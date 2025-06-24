@@ -24,9 +24,11 @@ export default function InteractiveCardHero({
 
   return (
     <div
-      className="lg:flex hidden relative w-full mt-10 h-[650px] overflow-hidden bg-black"
+      className="flex  relative w-full mt-10 h-[400px] lg:h-[650px] overflow-hidden bg-black"
       onMouseLeave={resetHover}
     >
+
+
       {/* Panels Container */}
       <div className="absolute top-0 left-0 w-full h-full flex z-10">
         {/* LEFT SIDE (PHYSICAL) */}
@@ -632,5 +634,6 @@ export default function InteractiveCardHero({
 
       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </div>
+    
   );
 }

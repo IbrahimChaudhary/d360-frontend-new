@@ -66,9 +66,9 @@ export function CardCarosels({data}:CardCaroselsProps) {
       <div className="w-full max-w-md mx-auto space-y-6">
         <div className="space-y-2">
           <div className={`space-y-1 ${isRTL ? "text-right" : "text-left"} rtl:w-[50%]`}>
-            <h1 className="text-[30px] uppercase font-extrabold text-[#E74529]">{slides[current].heading}</h1>
+            <h1 className="text-[30px] uppercase font-extrabold leading-tight text-[#E74529]">{slides[current].heading}</h1>
             {slides[current].heading2 && (
-              <h2 className="text-[30px] uppercase font-extrabold text-[#E74529]">{slides[current].heading2}</h2>
+              <h2 className="text-[30px] uppercase font-extrabold leading-tight text-[#E74529]">{slides[current].heading2}</h2>
             )}
           </div>
 

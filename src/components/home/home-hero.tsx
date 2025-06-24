@@ -48,27 +48,27 @@ export function HomeHero({ data }: HomeHeroProps) {
           <h1
             className={`text-[25px] lg:text-[84px] font-extrabold pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${
               language === "ar"
-                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
+                ? " ml-[29%] lg:ml-0 lg:w-full"
                 : "lg:w-full w-[70%]"
             }`}
           >
-            {data.Heading} {data.HeadingB}
+            {data.Heading} <br /> {data.HeadingB}
           </h1>
           <p
-            className={`text-sm lg:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
+            className={`text-[16px] lg:text-[31px] mb-4 md:mb-6 text-white leading-tight ${
               language === "ar"
-                ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
+                ? "w-[60%] ml-[29%] lg:ml-0 lg:w-full"
                 : "lg:w-full w-[70%]"
             }`}
           >
             {data.Description}{" "}
           </p>
-          <Button
+          <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 md:py-6 rounded-[14px]"
+            className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 py-3 px-6  md:py-3 rounded-lg lg:rounded-[14px]"
           >
             {data.download}
-          </Button>
+          </button>
         </motion.div>
 
         <motion.div

@@ -86,7 +86,7 @@ export default function HomePage() {
         />
 
         {homeData && <InteractiveCardHero data={homeData}/>}
-        {homeData && <MobileAnimatedSection data={homeData}/>}
+        {/* {homeData && <MobileAnimatedSection data={homeData}/>} */}
         {homeData && <ShariahSection data={homeData}/>}
         {international && (
           <TransferSection
