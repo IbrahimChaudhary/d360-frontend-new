@@ -63,12 +63,12 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
       alt={title}
       className="mb-3 w-[33px] h-[23px] lg:w-[60px] lg:h-[60px] object-contain"
     />
-    <h4 className="text-[12px] lg:text-[25px] font-extrabold text-[#263244] mb-1 text-center leading-tight">
+    <h4 className="text-[12px] lg:text-[20px] font-extrabold text-[#263244] mb-1 text-center leading-tight">
       {title}
       <br />
       {titleHalf}
     </h4>
-    <p className="text-[12px] font-[400] lg:text-[16px] text-[#4B5563] text-center leading-snug">
+    <p className="text-[12px] font-[400] lg:text-[14px] text-[#4B5563] text-center leading-snug">
       {description}
     </p>
   </motion.div>
