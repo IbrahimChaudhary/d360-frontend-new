@@ -354,7 +354,7 @@ export default function InteractiveCardHero({
             )}
           </div>
 
-          {/* Fade-in Label */}
+         {/* Fadein label */}
           <AnimatePresence>
             {!hoveredSide && (
               <motion.div
