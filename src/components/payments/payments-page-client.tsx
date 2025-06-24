@@ -60,7 +60,7 @@ export function PaymentsPageClient() {
             </h1>
           </Hero>
           <SectionHeading className=" pt-6 lg:pt-16">
-            <h1 className="text-[30px] px-4 lg:px-0 lg:text-[60px] mx-auto w-[80%] font-extrabold ">
+            <h1 className="text-[30px] px-4 lg:px-0 lg:text-[50px] mx-auto w-[80%] font-extrabold ">
               {payment?.Title1}
             </h1>
           </SectionHeading>

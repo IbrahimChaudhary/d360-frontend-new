@@ -101,7 +101,7 @@ export default function InfoCards({ data }: InfoCardsProps) {
                   >
                     {card.title}
                   </h3>
-                  <p className={`${card.textColor} text-sm md:text-[25px] lg:w-[70%] w-[65%]`}>
+                  <p className={`${card.textColor} text-sm md:text-[20px] lg:w-[70%] w-[65%]`}>
                     {card.description}
                   </p>
                 </div>

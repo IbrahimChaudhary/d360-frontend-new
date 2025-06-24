@@ -52,7 +52,6 @@ export function ShariahSection({ data }: ShariahSectionProps) {
         <div className={`flex  ${isRTL ? "justify-start" : "justify-start"}`}>
           <Link
             href="/shariah-committee"
-            onClick={()=>setModalOpen(true)}
             className={`lg:w-[50%] flex items-center ${
               isRTL ? "flex-row" : "flex-row"
             } justify-between lg:gap-3 px-7 mx-auto lg:mx-0 font-bold lg:px-5 py-2 border border-white rounded-lg hover:bg-white hover:text-[#0B1B2B] transition text-[8px] lg:text-[20px] btn-14`}

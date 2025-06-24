@@ -62,7 +62,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("organization")}
                 placeholder={isRTL ? "اسم المؤسسة" : "Organization name"}
-                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[20px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.organization && (
                 <span className="text-sm text-red-500">
@@ -74,7 +74,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("fullName")}
                 placeholder={isRTL ? "الاسم الكامل" : "Full Name"}
-                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[20px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.fullName && (
                 <span className="text-sm text-red-500">
@@ -86,7 +86,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("phone")}
                 placeholder={isRTL ? "رقم الهاتف" : "Phone Number"}
-                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[20px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.phone && (
                 <span className="text-sm text-red-500">
@@ -98,7 +98,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("email")}
                 placeholder={isRTL ? "البريد الإلكتروني" : "Email Address"}
-                className="border-b border-[#293242] pb-4 lg:placeholder:text-[25px] focus:outline-none py-2 placeholder:text-[#293242]"
+                className="border-b border-[#293242] pb-4 lg:placeholder:text-[20px] focus:outline-none py-2 placeholder:text-[#293242]"
               />
               {errors.email && (
                 <span className="text-sm text-red-500">
@@ -110,7 +110,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input
                 {...register("website")}
                 placeholder={isRTL ? "الموقع الإلكتروني" : "Website"}
-                className="border-b border-[#293242] lg:placeholder:text-[25px] focus:outline-none py-2 pb-4 placeholder:text-[#293242]"
+                className="border-b border-[#293242] lg:placeholder:text-[20px] focus:outline-none py-2 pb-4 placeholder:text-[#293242]"
               />
             </div>
           </div>
@@ -119,7 +119,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
             <textarea
               {...register("message")}
               placeholder={isRTL ? "رسالتك" : "Message"}
-              className="bg-[#f8f8f8] p-4 rounded-xl w-full resize-none placeholder:text-[#293242] placeholder:text-[14px] lg:placeholder:text-[25px] h-[200px] lg:h-[440px]"
+              className="bg-[#f8f8f8] p-4 rounded-xl w-full resize-none placeholder:text-[#293242] placeholder:text-[14px] lg:placeholder:text-[20px] h-[200px] lg:h-[440px]"
             />
 
             {errors.message && (
@@ -133,8 +133,8 @@ export function BusinessForm({ data }: BusinessFormProps) {
         <div className="flex flex-col  ">
           <div className="mt-4 flex justify-center ">
             <label className="flex items-center rtl:flex-row rtl:gap-2 ">
-              <input type="checkbox" {...register("agree")} className="mr-2" />
-              <span className="text-[14px] lg:text-[30px]">
+              <input type="checkbox" {...register("agree")} className="mr-2 ch-20" />
+              <span className="text-[14px] lg:text-[20px]">
                 {data.privacy}{" "}
                 <span className="font-bold">{data.privacyBold}</span>
               </span>

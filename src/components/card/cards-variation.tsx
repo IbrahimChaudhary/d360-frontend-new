@@ -15,12 +15,12 @@ const translations = {
   en: {
     subtitle: "Ideal for everyday payments with full control.",
     button: "Get your card now",
-    footer: "Free for all D360 customers",
+    footer: "* Free for all D360  Bank customers.",
   },
   ar: {
     subtitle: "مثالي للمدفوعات اليومية مع تحكم كامل.",
     button: "احصل على بطاقتك الآن",
-    footer: "مجاني لجميع عملاء D360",
+    footer: " *مجانًا لجميع عملاء D360",
   },
 };
 
@@ -235,7 +235,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden lg:flex items-center justify-evenly gap-10">
+        <div className="hidden lg:flex justify-evenly gap-10">
           {/* Left Side */}
           <div>
             <div className="space-y-2">
@@ -266,7 +266,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
 
           {/* Right Features - Desktop */}
           <motion.div
-            className="flex-1 space-y-4 w-full max-w-[430px]"
+            className="flex-1 space-y-4 w-full pt-6 max-w-[430px]"
             initial={{ x: 50, opacity: 0 }}
             animate={animate ? { x: 0, opacity: 1 } : {}}
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}

@@ -33,7 +33,7 @@ export default function TransferSection({
         <h2 className="text-[30px] rtl:lg:text-right lg:text-[60px] w-full lg:w-[90%] font-extrabold text-center lg:text-left text-[#1F2E41] uppercase lg:normal-case leading-tight">
           {heading}
         </h2>
-        <p className="text-[14px] lg:text-[30px] w-full lg:w-[50%] text-[#263244] rtl:lg:text-right ltr:lg:text-left text-center mb-4">
+        <p className="text-[14px] lg:text-[25px] w-full lg:w-[100%] text-[#263244] rtl:lg:text-right ltr:lg:text-left text-center mb-4">
           {description}
         </p>
         {/* <p className="text-[30px] text-[#263244] text-center max-w-xs mx-auto mb-6">

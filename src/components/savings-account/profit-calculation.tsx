@@ -27,7 +27,7 @@ export default function ProfitCalculationSection({
         {points.map((text, i) => (
           <div key={i} className="relative ltr:pl-6 rtl:pr-6">
             {/* Bullet Circle */}
-            <div className="absolute ltr:-left-[34px] rtl:-right-[34px] top-1 w-4 h-4 rounded-full bg-[#E5E7EB] border border-white shadow-sm z-10" />
+            <div className="absolute ltr:-left-[33px] rtl:-right-[33px] top-1 w-4 h-4 rounded-full bg-[#E5E7EB] border border-white shadow-sm z-10" />
 
             <p className="text-[#263244] text-base lg:text-[20px] leading-relaxed">
               {text}

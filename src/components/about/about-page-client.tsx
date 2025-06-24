@@ -75,7 +75,7 @@ export default function AboutPageClient() {
               isRTL ? " items-start text-right" : "items-start text-left"
             }`}
           >
-            <h1 className={`text-[25px] flex   uppercase lg:text-[80px] font-extrabold text-[#263244] lg:leading-[5.5rem] ${isRTL?"justify-end":" "}`}>
+            <h1 className={`text-[25px] flex   uppercase lg:text-[80px] bold-900 text-[#263244] lg:leading-[5.5rem] ${isRTL?"justify-end":" "}`}>
               {aboutData?.Title1}
               <br />
               {aboutData?.Title2}

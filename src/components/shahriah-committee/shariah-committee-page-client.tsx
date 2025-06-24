@@ -46,7 +46,7 @@ export function ShariahCommitteePageClient() {
             }`}
           >
             <h1
-              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] font-extrabold text-white leading-tight lg:leading-[5.5rem]${
+              className={`text-[25px]  flex items-center  uppercase lg:text-[80px] bold-900 text-white leading-tight lg:leading-[5.5rem]${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
@@ -58,7 +58,7 @@ export function ShariahCommitteePageClient() {
         </Hero>
 
         <SectionHeading>
-          <p className="text-[25px] lg:text-[60px] lg:w-[95%] w-[69%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
+          <p className="text-[25px] lg:text-[50px] lg:w-[95%] w-[69%] font-extrabold  lg:px-0 py-2 lg:py-32 leading-tight mx-auto">
             {shahriah?.Title2}
           </p>
         </SectionHeading>

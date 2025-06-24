@@ -44,7 +44,7 @@ export function CustomerCareContactInfo({
     >
       {data.Feedbacks && (
         <h3
-        className={`text-[14px] lg:text-[40px] max-w-4xl text-center rtl:lg:text-right ltr:lg:text-left leading-tight  font-extrabold text-${
+        className={`text-[14px] lg:text-[35px] max-w-4xl text-center rtl:lg:text-right ltr:lg:text-left leading-tight  font-extrabold text-${
             language === "ar" ? "right" : "left"
           }`}
         >
@@ -86,17 +86,17 @@ export function CustomerCareContactInfo({
         <h4 className="text-[#EB644C] font-extrabold text-[14px] lg:text-[30px] mb-2">
           {data.Bank}
         </h4>
-        <p className="text-[#6D809C] font-bold mb-4 text-[14px] lg:text-[25px]">
+        <p className="text-[#6D809C] font-bold mb-4 text-[14px] lg:text-[20px]">
           {data.Reach}
         </p>
-        <ul className="list-disc leading-tight text-[10px] lg:text-[25px] font-medium list-inside space-y-1">
+        <ul className="list-disc leading-tight text-[10px] lg:text-[20px] font-medium list-inside space-y-1">
           <li>{data.ReachA}</li>
           <li>{data.ReachB}</li>
         </ul>
       </div>
 
-      <div className="lg:text-[25px] text-[14px] leading-tight">{data.complaint}</div>
-      <div className="lg:text-[25px] text-[14px] leading-tight">
+      <div className="lg:text-[20px] text-[14px] leading-tight">{data.complaint}</div>
+      <div className="lg:text-[20px] text-[14px] leading-tight">
         {data.Contact}
         <span className="text-[#EB644C] font-bold">{data.Email}</span>
       </div>

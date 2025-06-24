@@ -92,7 +92,7 @@ export function ContactInfo({
         <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
           {content.data.contact.appTitle}
         </h4>
-        <p className="text-[#293242] mb-2 text-[25px]">
+        <p className="text-[#293242] mb-2 text-[20px]">
           {content.data.contact.viaApp}
         </p>
         <ul className="list-disc list-inside space-y-1 hidden">
@@ -106,7 +106,7 @@ export function ContactInfo({
           <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
             {data.complaint}
           </h4>
-          <p className="text-[25px] leading-relaxed">{data.complaintDes}</p>
+          <p className="text-[20px] leading-relaxed">{data.complaintDes}</p>
         </div>
      
 

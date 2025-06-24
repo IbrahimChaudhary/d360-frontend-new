@@ -28,7 +28,7 @@ export default function ShariahCommittee({ data }: ShahriahCommitteeProps) {
 
         {/* Responsibilities List */}
         <div className="bg-[#F8F8F8] rounded-lg p-6 lg:p-8 ">
-        <ol className="list-decimal pl-6 lg:pl-10 space-y-4 text-[#496083] text-[14px] lg:text-[30px] rtl:pr-6 rtl:lg:pr-10 rtl:pl-0">
+        <ol className="list-decimal pl-6 lg:pl-10 space-y-4 text-[#496083] text-[14px] lg:text-[20px] rtl:pr-6 rtl:lg:pr-10 rtl:pl-0">
   {responsibilities.map((responsibility, index) => (
     <li
       key={index}

@@ -20,13 +20,13 @@ const mdComponents = {
     <h2 className="text-3xl font-bold mt-6 mb-4" {...props} />
   ),
   h3: (props: React.ComponentPropsWithoutRef<"h3">) => (
-    <h3 className="text-[25px] lg:text-[60px] font-extrabold mt-4 mb-6" {...props} />
+    <h3 className="text-[25px] lg:text-[30px] font-extrabold mt-4 mb-6" {...props} />
   ),
   h4: (props: React.ComponentPropsWithoutRef<"h4">) => (
     <h4 className="text-2xl font-bold mt-3 mb-4" {...props} />
   ),
   p: (props: React.ComponentPropsWithoutRef<"h4">) => (
-    <h4 className="text-[14px] lg:text-[25px] mt-3 mb-4" {...props} />
+    <h4 className="text-[14px] lg:text-[20px] mt-3 mb-4" {...props} />
   ),
 
   // Unordered lists
@@ -85,9 +85,9 @@ export default function DesktopContentSectionSecurityAndAwareness() {
     <div className="max-w-[1228px] px-6 mx-auto mt-24 space-y-16">
       {/* Render optional Title1 and its descriptions */}
       <div>
-        <h1 className="lg:text-[80px] text-[#E74529] font-extrabold">{security.Title1}</h1>
-        <p className="mt-4 lg:text-[25px]">{security.Title1Des1}</p>
-        <p className="mt-2 lg:text-[25px]">{security.Title1Des2}</p>
+        <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">{security.Title1}</h1>
+        <p className="mt-4 lg:text-[20px]">{security.Title1Des1}</p>
+        <p className="mt-2 lg:text-[20px]">{security.Title1Des2}</p>
       </div>
 
       {/* Loop over each parsed section */}

@@ -77,7 +77,7 @@ export default function HomePage() {
         </div>
         {homeData && <CardCarosels data={homeData}/>}
 
-        <SectionHeading className="mt-16 text-[27px] px-3  lg:text-[60px] font-extrabold">
+        <SectionHeading className="mt-16 text-[27px] px-3  lg:text-[50px] font-extrabold">
           {homeData?.Title4}
         </SectionHeading>
         <StatsCounter
@@ -97,7 +97,7 @@ export default function HomePage() {
             container="lg:flex justify-center items-start"
           />
         )}
-        {/* <TransferSection  /> */}
+        
       </main>
       <Footer />
     </div>
