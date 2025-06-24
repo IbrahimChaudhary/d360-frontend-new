@@ -5,14 +5,13 @@ type Language = 'en' | 'ar';
 
 type State = {
   language: Language;
-};
-
-type Actions = {
+  setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
 };
 
-export const useStore = create<State & Actions>((set) => ({
+export const useStore = create<State>((set) => ({
   language: 'en',
+  setLanguage: (lang) => set({ language: lang }),
   toggleLanguage: () =>
     set((state) => ({
       language: state.language === 'en' ? 'ar' : 'en',
