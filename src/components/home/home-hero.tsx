@@ -46,7 +46,7 @@ export function HomeHero({ data }: HomeHeroProps) {
           transition={{ duration: 0.5 }}
         >
           <h1
-            className={`text-[25px] lg:text-[84px] font-extrabold pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${
+            className={`text-[25px] lg:text-[80px] bold-900 pb-2 lg:mb-0 text-white lg:leading-[5.5rem] ${
               language === "ar"
                 ? "w-[70%] ml-[29%] lg:ml-0 lg:w-full"
                 : "lg:w-full w-[70%]"

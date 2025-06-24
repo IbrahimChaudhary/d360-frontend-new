@@ -265,7 +265,7 @@ export function Header({ variant = "default" }: HeaderProps) {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <DesktopDropdownMenu
-            label={isRTL ? "عن  D360" : "About D360"}
+            label={isRTL ? "عن بنك D360" : "About D360"}
             active={openMenu === "about"}
             onToggle={() => toggleMenu("about")}
             sections={aboutSections}

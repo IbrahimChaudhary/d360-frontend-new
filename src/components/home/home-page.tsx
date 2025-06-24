@@ -97,7 +97,7 @@ export default function HomePage() {
             container="lg:flex justify-center items-start"
           />
         )}
-        {/* <TransferSection  /> */}
+        
       </main>
       <Footer />
     </div>

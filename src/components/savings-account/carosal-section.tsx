@@ -92,7 +92,7 @@ export function Carosel({
         )}
       >
         <div className="space-y-4 flex  flex-col lg:justify-normal justify-center min-h-[280px]">
-          <h1 className="text-[30px] lg:pt-0 pt-8 lg:text-[60px] mb-8 lg:mb-12 text-center ltr:lg:text-left rtl:lg:text-right font-extrabold text-[#263244] leading-tight w-[80%] lg:w-full mx-auto">
+          <h1 className="text-[30px] lg:pt-0 pt-8 lg:text-[50px] mb-8 lg:mb-12 text-center ltr:lg:text-left rtl:lg:text-right font-extrabold text-[#263244] leading-tight w-[80%] lg:w-full mx-auto">
             {currentSlide.heading}
           </h1>
 

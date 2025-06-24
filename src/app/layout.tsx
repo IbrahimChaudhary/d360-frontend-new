@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 
 const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "700", "900"],
   display: "swap",
   variable: "--font-lato",
 });
 
 const tajawal = Tajawal({
   subsets: ["arabic"],
-  weight: ["400", "700"],
+  weight: ["400", "700", "900"],
   display: "swap",
   variable: "--font-tajawal",
 });

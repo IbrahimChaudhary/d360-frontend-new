@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "./ui/accordion";
+import { X, Plus } from "lucide-react";
 
 // Type definitions
 interface FAQItem {
@@ -44,7 +45,7 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
     >
       <AccordionTrigger
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[40px] [&>svg]:hidden`}
+        className={`flex  ${language === "ar" ? "flex-row text-right" : "flex-row text-left"} justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[10px] lg:text-[30px] [&>svg]:hidden`}
       >
         {item.question}
         <span className="ml-4 shrink-0 relative md:w-[38px] md:h-[39px] w-[24px] h-[24px] flex items-center justify-center">
@@ -58,7 +59,10 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
         transition={{ duration: 0.2 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <img src="/plus.svg" className="w-[10px] h-[11px] lg:w-[38px] lg:h-[39px]"  alt="" />
+      <X
+        size={28}
+        className="text-[#E74529] font-extrabold w-[80%]  h-full lg:w-full lg:h-full"
+      />
       </motion.div>
     ) : (
       <motion.div
@@ -69,7 +73,10 @@ function FAQMerged({ item, index }: FAQItemComponentProps) {
         transition={{ duration: 0.2 }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <img src="/+.svg" className="w-[10px] h-[11px] lg:w-[38px] lg:h-[39px]" alt="" />
+      <Plus
+        size={28}
+        className="text-[#C0C5CE] font-extrabold w-[80%] h-full  lg:w-full lg:h-full"
+      />
       </motion.div>
     )}
   </AnimatePresence>

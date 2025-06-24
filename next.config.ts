@@ -44,4 +44,4 @@
     //   NODE_OPTIONS: "--dns-result-order=ipv4first"
     // }
   };
-  module.exports = nextConfig;
+  module.exports = nextConfig;

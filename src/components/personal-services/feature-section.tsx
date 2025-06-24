@@ -44,7 +44,7 @@ export default function FeatureSection({ data }: FeatureSectionProps) {
 
   return (
     <section className=" lg:py-16 bg-white lg:px-4 px-1 ">
-      <SectionHeading className="lg:py-16 pt-16 lg:pt-0 text-[30px] leading-tight w-full lg:text-[60px] font-extrabold">
+      <SectionHeading className="lg:py-16 pt-16 lg:pt-0 text-[30px] leading-tight w-full lg:text-[50px] font-extrabold">
         {data.Title1} {data.Title2} {data.Title3}
       </SectionHeading>
 
