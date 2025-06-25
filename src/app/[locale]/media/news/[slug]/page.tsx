@@ -6,18 +6,19 @@ import { NewsArticleFetcher } from "@/components/media/new-cards-fetcher";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Generate metadata for the News Article page
 export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
   try {
     const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
     
     // Use the same direct fetch approach as in the client component
     const res = await fetch(
       `${apiUrl}/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
-        params.slug
+        slug
       )}&populate=*&locale=en`,
       { cache: 'no-store' } // Disable caching
     );
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: Props) {
     return generatePageMetadata({
       seoData,
       locale: "en",
-      path: `/media/news/${params.slug}`,
+      path: `/media/news/${slug}`,
       fallbackTitle: articleData.heading,
       fallbackDescription: articleData.shortDesc
     });
@@ -61,20 +62,21 @@ export async function generateMetadata({ params }: Props) {
     // Return fallback metadata
     return generatePageMetadata({
       locale: "en",
-      path: `/media/news/${params.slug}`,
+      path: `/media/news/${slug}`,
       fallbackTitle: "News Article - D360 Bank",
       fallbackDescription: "Read the latest news and updates from D360 Bank."
     });
   }
 }
 
-export default function NewsArticlePage({ params }: Props) {
+export default async function NewsArticlePage({ params }: Props) {
+  const { slug } = await params;
   return (
     <div className="flex min-h-screen flex-col">
       <Header variant="about"/>
       <main className="flex-1 lg:pt-40 ">
         {/* Our new client-side fetcher */}
-        <NewsArticleFetcher slug={params.slug} />
+        <NewsArticleFetcher slug={slug} />
       </main>
       <Footer />
     </div>

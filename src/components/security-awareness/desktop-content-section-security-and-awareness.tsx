@@ -79,7 +79,7 @@ export default function DesktopContentSectionSecurityAndAwareness() {
     return items;
   }, [security]);
 
-  if (!security) return <p>Loading…</p>;
+  if (!security) return <p></p>;
 
   return (
     <div className="max-w-[1228px] px-6 mx-auto mt-24 space-y-16">

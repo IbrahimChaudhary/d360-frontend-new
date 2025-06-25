@@ -3,7 +3,7 @@
 //     images: {
 //       domains: ["127.0.0.1"], // allow image domains by IPv4
 //     },
-//     // Force Node’s “localhost” to resolve to IPv4
+//     // Force Node's "localhost" to resolve to IPv4
 //     experimental: {
 //       serverActions: true
 //     },

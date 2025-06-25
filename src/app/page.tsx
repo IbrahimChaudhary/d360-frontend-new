@@ -9,12 +9,11 @@ export default function Home() {
 
   useEffect(() => {
     const lang = localStorage.getItem("lang") || "en";
-
-    // If already localized, do nothing
-    if (pathname.startsWith("/en") || pathname.startsWith("/ar")) return;
-    console.log(`/${lang}${pathname}`)
-    // Redirect to localized path
-    router.replace(`/${lang}${pathname}`);
+    
+    // Only handle root path redirect
+    if (pathname === "/") {
+      router.replace(`/${lang}`);
+    }
   }, [pathname, router]);
 
   return null;
