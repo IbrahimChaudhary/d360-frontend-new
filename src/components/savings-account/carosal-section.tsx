@@ -112,7 +112,7 @@ export function Carosel({
                   key={currentSlide.icon}
                   {...getSlideMotion(direction, 0.5)}
                   custom={direction}
-                  className="h-10 w-10 lg:w-14 lg:h-14 flex items-center justify-center rounded-full bg-[#E6E8EB]"
+                  className="h-10 w-10 lg:w-14 lg:h-14 flex items-center  justify-center rounded-full bg-[#E6E8EB]"
                 >
                   <Image
                     src={currentSlide.icon || "/placeholder.svg"}

@@ -67,7 +67,7 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
                   alt={item.title}
                   width={300}
                   height={700}
-                  className={`object-cover w-full lg:max-w-full flex h-[286px] lg:w-full lg:h-auto ${index === 1 ? "lg:scale-x-[1]" : "lg:scale-x-[1]"}`}
+                  className={`object-cover w-full lg:max-w-full flex h-[286px] lg:w-full lg:h-auto ${index === 1 ? "lg:scale-x-[1] scale-x-[-1]" : "lg:scale-x-[1] scale-x-[-1]"}`}
                   priority={index === 0}
                 />
               </div>

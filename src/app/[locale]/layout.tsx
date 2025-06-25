@@ -19,17 +19,17 @@ const tajawal = Tajawal({
   variable: "--font-tajawal",
 });
 
-export default  function RootLayout({
+export default function RootLayout({
   children,
   params,
 }: {
   children: ReactNode;
   params: { locale: "en" | "ar" };
 }) {
-  const locale =  "en";
+  const locale = params.locale;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${lato.variable} ${tajawal.variable}`}>
         <ClientLocaleSync locale={locale} />
         <LanguageHTMLUpdater locale={locale} />
