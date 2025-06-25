@@ -99,7 +99,9 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <AccordionContent className="overflow-hidden">
-              <div className="text-[20px] text-[#263244] flex justify-between font-semibold border-b-[2px] border-black pb-3 mt-2 leading-relaxed">
+              <div className={`text-[20px] text-[#263244] flex justify-between font-semibold 
+                ${item.header.label ? "border-b-[2px] border-black" : ""} 
+                 pb-3 mt-2 leading-relaxed`}>
                 <p>{item.header.label}</p>
                 <p>{item.header.value}</p>
               </div>
@@ -149,11 +151,12 @@ export function FeeFAQAccordion({
     {
       id: "2",
       title: `${data?.FAQTitle2}`,
-      header: {
-        label: `${data?.FAQ2DescriptionA}`,
-        value: `${data?.FAQ2DescriptionAValue}`,
-      },
+      header: {},
       items: [
+        {
+          description: `${data?.FAQ2DescriptionA}`,
+          value: `${data?.FAQ2DescriptionAValue}`,
+        },
         {
           description: `${data?.FAQ2SubDescriptionA}`,
           value: `${data?.FAQ2SubDescriptionAValue}`,
@@ -167,11 +170,12 @@ export function FeeFAQAccordion({
     {
       id: "3",
       title: `${data?.FAQTitle3}`,
-      header: {
-        label: `${data?.FAQ3DescriptionA}`,
-        value: `${data?.FAQ3DescriptionAValue}`,
-      },
+      header: {},
       items: [
+        {
+          description: `${data?.FAQ3DescriptionA}`,
+          value: `${data?.FAQ3DescriptionAValue}`,
+        },
         {
           description: `${data?.FAQ3SubDescriptionA}`,
           value: `${data?.FAQ3SubDescriptionAValue}`,
@@ -180,16 +184,70 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ3SubDescriptionB}`,
           value: `${data?.FAQ3SubDescriptionBValue}`,
         },
+        {
+          description: `${data?.FAQ3SubDescriptionC}`,
+          value: `${data?.FAQ3SubDescriptionCValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionD}`,
+          value: `${data?.FAQ3SubDescriptionDValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionE}`,
+          value: `${data?.FAQ3SubDescriptionEValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionF}`,
+          value: `${data?.FAQ3SubDescriptionFValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionG}`,
+          value: `${data?.FAQ3SubDescriptionGValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionH}`,
+          value: `${data?.FAQ3SubDescriptionHValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionI}`,
+          value: `${data?.FAQ3SubDescriptionIValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionJ}`,
+          value: `${data?.FAQ3SubDescriptionJValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionK}`,
+          value: `${data?.FAQ3SubDescriptionKValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionL}`,
+          value: `${data?.FAQ3SubDescriptionLValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionM}`,
+          value: `${data?.FAQ3SubDescriptionMValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionN}`,
+          value: `${data?.FAQ3SubDescriptionNValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionO}`,
+          value: `${data?.FAQ3SubDescriptionOValue}`,
+        },
+
       ],
     },
     {
       id: "4",
       title: `${data?.FAQTitle4}`,
-      header: {
-        label: `${data?.FAQ4DescriptionA}`,
-        value: `${data?.FAQ4DescriptionAValue}`,
-      },
+      header:{},
       items: [
+        {
+          description: `${data?.FAQ4DescriptionA}`,
+          value: `${data?.FAQ4DescriptionAValue}`,
+        },
         {
           description: `${data?.FAQ4SubDescriptionA}`,
           value: `${data?.FAQ4SubDescriptionAValue}`,
