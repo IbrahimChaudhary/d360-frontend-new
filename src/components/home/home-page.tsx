@@ -21,10 +21,12 @@ import { InternationalData } from "@/types/international/international";
 import { fetchInternational } from "@/api/international";
 
 
-export default function HomePage() {
+export default function HomePage({ locale }: { locale?: "en" | "ar" }) {
   const { language } = useStore();
-  const content = language === "en" ? englishContent : arabicContent;
-  const isRTL = language === "ar";
+  // Use the passed locale prop if available, otherwise fall back to store language
+  const currentLanguage = locale || language;
+  const content = currentLanguage === "en" ? englishContent : arabicContent;
+  const isRTL = currentLanguage === "ar";
   const [homeData, setHomeData] = useState<HomePageData | null>(null);
 
   const [international, setInternational] = useState<InternationalData | null>(
@@ -32,17 +34,17 @@ export default function HomePage() {
   );
 
   useEffect(() => {
-    fetchInternational(language)
+    fetchInternational(currentLanguage)
       .then((data) => setInternational(data))
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+  }, [currentLanguage]);
 
 
   useEffect(() => {
-    fetchHomePage(language)
+    fetchHomePage(currentLanguage)
       .then(setHomeData)
       .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+  }, [currentLanguage]);
   const stats = [
     { 
       label: homeData?.Title5 ?? '', 

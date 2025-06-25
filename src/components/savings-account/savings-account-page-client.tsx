@@ -33,7 +33,6 @@ export function SavingsAccountPageClient() {
       <Header variant="about" />
       <main className="flex-1">
         <Hero
-         
           backgroundImage={
             savings?.HeroImg?.formats?.large?.url ||
             savings?.HeroImg?.formats?.medium?.url ||
@@ -70,8 +69,12 @@ export function SavingsAccountPageClient() {
           </div>
         </Hero>
         <Carosel
-        headsection="flex flex-col-reverse lg:flex-row max-w-[1100px] lg:max-w-[1200px]  mx-auto  items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0"
-        classname="text-[14px] lg:text-[20px] font-[400] lg:w-full lg:mb-2 text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]"
+
+          arrows="flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10
+    absolute -bottom-8 left-[50%]  -translate-x-1/2
+    lg:static lg:translate-x-0 lg:justify-start lg:bottom-auto lg:left-auto"
+          headsection="flex flex-col-reverse lg:flex-row max-w-[1100px] lg:max-w-[1200px]  mx-auto  items-center px-4 lg:px-8 justify-center lg:py-24 pb-10 lg:pb-0 mt-10 lg:mt-0"
+          classname="text-[14px] lg:text-[20px] font-[400] lg:w-full lg:mb-2 text-center rtl:lg:text-right ltr:lg:text-left text-[#263244]"
           layout="default"
           showButton={true}
           btnTxt={savings?.SavingBtn}
@@ -148,7 +151,11 @@ export function SavingsAccountPageClient() {
         {savings && <SanabilRates data={savings} />}
         {savings && <ProfitCalculationSection data={savings} />}
 
-        <br /><br /><br /><br /><br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <MergedFAQAccordion
           faqItems={faqItems}
           sectionClassName="py-8 lg:py-0  px-4  w-full lg:flex lg:justify-center lg:items-center"
@@ -163,4 +170,4 @@ export function SavingsAccountPageClient() {
       <Footer />
     </div>
   );
-} 
+}
