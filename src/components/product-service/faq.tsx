@@ -13,6 +13,7 @@ import {
 } from "../ui/accordion";
 import { ApplePayData } from "@/types/apple-pay/apple-pay";
 import { FeesData } from "@/types/product-services/product-services";
+import { useStore } from "@/store/toggle-store";
 
 export interface FAQSubItem {
   description: string;
@@ -30,10 +31,11 @@ export interface FAQSection {
 }
 
 interface FAQItemComponentProps {
-  item: FAQSection;
+  item: FAQItem;
   index: number;
+  isOpen: boolean;
+  onToggle: () => void;
 }
-
 interface FeeFAQAccordionProps {
   data?: FeesData;
   title?: string;
@@ -41,8 +43,9 @@ interface FeeFAQAccordionProps {
   titleClassName?: string;
 }
 
-function FAQFee({ item, index }: FAQItemComponentProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+function FAQFee({ item, index, isOpen, onToggle  }: FAQItemComponentProps) {
+  const { language } = useStore();
+  const isRTL = language === "ar";
 
   return (
     <AccordionItem
@@ -50,7 +53,7 @@ function FAQFee({ item, index }: FAQItemComponentProps) {
       className="bg-[#F8F8F8] rounded-2xl mb-4 px-3 md:px-6 md:py-4 transition-shadow"
     >
       <AccordionTrigger
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={onToggle}
         className="flex justify-between items-center w-full hover:no-underline font-semibold md:font-extrabold text-[#263244] text-[15px] md:text-[30px] [&>svg]:hidden"
       >
         {item.title}
@@ -129,6 +132,15 @@ export function FeeFAQAccordion({
   sectionClassName = "bg-white",
   titleClassName = "text-4xl font-bold mb-8  text-[#293242]",
 }: FeeFAQAccordionProps) {
+
+  const {language} = useStore();
+  const isRTL = language === "ar";
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
   const faqItems: FAQSection[] = [
     {
       id: "1",
@@ -284,7 +296,12 @@ export function FeeFAQAccordion({
           className="w-full max-w-5xl mx-auto"
         >
           {faqItems.map((item: FAQSection, index: number) => (
-            <FAQFee key={item.id || index} item={item} index={index} />
+            <FAQFee 
+              key={item.id || index} 
+              item={item} 
+              index={index} 
+              isOpen={openIndex === index}
+              onToggle={() => handleToggle(index)}/>
           ))}
         </Accordion>
       </AnimatedSection>
