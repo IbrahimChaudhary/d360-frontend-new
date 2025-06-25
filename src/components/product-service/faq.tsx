@@ -23,7 +23,7 @@ export interface FAQSubItem {
 export interface FAQSection {
   id: string;
   title: string;
-  header: {
+  header?: {
     label: string;
     value: string;
   };
@@ -31,7 +31,7 @@ export interface FAQSection {
 }
 
 interface FAQItemComponentProps {
-  item: FAQItem;
+  item: FAQSection;
   index: number;
   isOpen: boolean;
   onToggle: () => void;
@@ -103,10 +103,10 @@ function FAQFee({ item, index, isOpen, onToggle  }: FAQItemComponentProps) {
           >
             <AccordionContent className="overflow-hidden">
               <div className={`text-[20px] text-[#263244] flex justify-between font-semibold 
-                ${item.header.label ? "border-b-[2px] border-black" : ""} 
+                ${item.header?.label ? "border-b-[2px] border-black" : ""} 
                  pb-3 mt-2 leading-relaxed`}>
-                <p>{item.header.label}</p>
-                <p>{item.header.value}</p>
+                <p>{item.header?.label}</p>
+                <p>{item.header?.value}</p>
               </div>
               <div className="mt-3">
                 {item.items.map((sub, idx) => (
@@ -163,7 +163,6 @@ export function FeeFAQAccordion({
     {
       id: "2",
       title: `${data?.FAQTitle2}`,
-      header: {},
       items: [
         {
           description: `${data?.FAQ2DescriptionA}`,
@@ -182,7 +181,6 @@ export function FeeFAQAccordion({
     {
       id: "3",
       title: `${data?.FAQTitle3}`,
-      header: {},
       items: [
         {
           description: `${data?.FAQ3DescriptionA}`,
@@ -196,65 +194,11 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ3SubDescriptionB}`,
           value: `${data?.FAQ3SubDescriptionBValue}`,
         },
-        {
-          description: `${data?.FAQ3SubDescriptionC}`,
-          value: `${data?.FAQ3SubDescriptionCValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionD}`,
-          value: `${data?.FAQ3SubDescriptionDValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionE}`,
-          value: `${data?.FAQ3SubDescriptionEValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionF}`,
-          value: `${data?.FAQ3SubDescriptionFValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionG}`,
-          value: `${data?.FAQ3SubDescriptionGValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionH}`,
-          value: `${data?.FAQ3SubDescriptionHValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionI}`,
-          value: `${data?.FAQ3SubDescriptionIValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionJ}`,
-          value: `${data?.FAQ3SubDescriptionJValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionK}`,
-          value: `${data?.FAQ3SubDescriptionKValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionL}`,
-          value: `${data?.FAQ3SubDescriptionLValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionM}`,
-          value: `${data?.FAQ3SubDescriptionMValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionN}`,
-          value: `${data?.FAQ3SubDescriptionNValue}`,
-        },
-        {
-          description: `${data?.FAQ3SubDescriptionO}`,
-          value: `${data?.FAQ3SubDescriptionOValue}`,
-        },
-
       ],
     },
     {
       id: "4",
       title: `${data?.FAQTitle4}`,
-      header:{},
       items: [
         {
           description: `${data?.FAQ4DescriptionA}`,

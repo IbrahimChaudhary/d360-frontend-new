@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function AboutPage({ params }: { params: { locale: string } }) {
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  await params; // Await the params Promise
   return <AboutPageClient />;
 }

@@ -4,19 +4,20 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchOfferPagesBySlug } from "@/api/offer";
 
 interface OfferPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 // Generate metadata for the Offer page
 export async function generateMetadata({ params }: OfferPageProps) {
+  const { slug } = await params;
   try {
-    const offerData = await fetchOfferPagesBySlug("en", params.slug);
+    const offerData = await fetchOfferPagesBySlug("en", slug);
     const seoData = extractSeoData(offerData[0]);
     
     return generatePageMetadata({
       seoData,
       locale: "en",
-      path: `/offers/${params.slug}`,
+      path: `/offers/${slug}`,
       fallbackTitle: offerData[0].MainTitle,
       fallbackDescription: offerData[0].Description1
     });
@@ -26,15 +27,16 @@ export async function generateMetadata({ params }: OfferPageProps) {
     // Return fallback metadata
     return generatePageMetadata({
       locale: "en",
-      path: `/offers/${params.slug}`,
+      path: `/offers/${slug}`,
       fallbackTitle: "D360 Bank Offer",
       fallbackDescription: "Check out this special offer from D360 Bank."
     });
   }
 }
 
-export default function OfferPage({ params }: OfferPageProps) {
-  return <OfferFetcher slug={params.slug} />;
+export default async function OfferPage({ params }: OfferPageProps) {
+  const { slug } = await params;
+  return <OfferFetcher slug={slug} />;
 }
 
 // if you still want SSG for all slugs:

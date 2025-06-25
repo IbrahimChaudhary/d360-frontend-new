@@ -1,75 +1,51 @@
-import type { HomePageData } from "@/types/home"
+import type { HomePageData } from "@/types/home/home"
 
 export const fallbackHomeData: HomePageData = {
-  hero: {
-    title: {
-      en: "Welcome to D360",
-      ar: "مرحبًا بك في D360",
-    },
-    subtitle: {
-      en: "A fully dynamic content platform powered by Strapi CMS",
-      ar: "منصة محتوى ديناميكية بالكامل مدعومة بواسطة Strapi CMS",
-    },
-    ctaText: {
-      en: "Get Started",
-      ar: "البدء",
-    },
-    image: {
-      url: "/modern-digital-platform.png",
-      alternativeText: "D360 Platform",
-    },
-  },
-  featuredContent: {
-    title: {
-      en: "Featured Content",
-      ar: "محتوى مميز",
-    },
-    items: [
-      {
-        id: "1",
-        title: {
-          en: "Digital Solutions",
-          ar: "حلول رقمية",
-        },
-        description: {
-          en: "Innovative digital solutions for modern businesses.",
-          ar: "حلول رقمية مبتكرة للشركات الحديثة.",
-        },
-        image: {
-          url: "/digital-solutions.png",
-          alternativeText: "Digital Solutions",
-        },
-      },
-      {
-        id: "2",
-        title: {
-          en: "Creative Design",
-          ar: "تصميم إبداعي",
-        },
-        description: {
-          en: "Eye-catching designs that capture your brand essence.",
-          ar: "تصاميم جذابة تعكس جوهر علامتك التجارية.",
-        },
-        image: {
-          url: "/abstract-creative-design.png",
-          alternativeText: "Creative Design",
-        },
-      },
-      {
-        id: "3",
-        title: {
-          en: "Content Strategy",
-          ar: "استراتيجية المحتوى",
-        },
-        description: {
-          en: "Strategic content planning for maximum engagement.",
-          ar: "تخطيط محتوى استراتيجي لأقصى قدر من المشاركة.",
-        },
-        image: {
-          url: "/content-strategy-brainstorm.png",
-          alternativeText: "Content Strategy",
-        },
-      },
-    ],
-  },
+  id: 1,
+  documentId: "fallback",
+  Heading: "Welcome to D360 Bank",
+  HeadingB: "First Digital Bank",
+  Description: "Saudi Arabia's first digital bank",
+  Title1: "Digital Banking",
+  Description1: "Experience the future of banking",
+  Title2: "Secure Transactions",
+  Description2: "Your security is our priority",
+  Title3: "24/7 Support",
+  Description3: "We're here when you need us",
+  Title4: "Innovation",
+  Title5: "Digital Solutions",
+  Description5: "Modern banking solutions",
+  Title6: "Global Reach",
+  Description6: "Bank anywhere, anytime",
+  Title7: "Customer First",
+  Description7: "Your success is our mission",
+  Title8: "Future Ready",
+  Description8: "Prepared for tomorrow",
+  heroVideo: { url: "/home/home-banner.mp4" },
+  PhysicalCard: "Physical Card",
+  PhysicalCardDescription: "Traditional banking card",
+  PhysicalCardCTA: "Get Card",
+  DigitalCardCTA: "Get Digital Card",
+  DigitalCard: "Digital Card",
+  DigitalCardDescription: "Virtual banking card",
+  SarihaBTN: "Shariah Compliant",
+  TransferHeading: "International Transfer",
+  TransferSubHeading: "Send money globally",
+  TransferDescription: "Fast and secure international transfers",
+  Sender: "Sender",
+  Recipient: "Recipient",
+  Fee: "Fee",
+  Conversion: "Conversion",
+  Shariah: "Shariah Compliant",
+  ShariahDescription: "Islamic banking principles",
+  download: "Download App",
+  Title1B: "Digital Banking B",
+  Title2B: "Secure Transactions B",
+  Title3B: "24/7 Support B",
+  Title8B: "Future Ready B",
+  SEO: [],
+  createdAt: "2024-01-01",
+  updatedAt: "2024-01-01",
+  publishedAt: "2024-01-01",
+  locale: "en"
 }
