@@ -19,14 +19,14 @@ const tajawal = Tajawal({
   variable: "--font-tajawal",
 });
 
-export default  function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: ReactNode;
-  params: { locale: "en" | "ar" };
+  params: Promise<{ locale: "en" | "ar" }>;
 }) {
-  const locale =  "en";
+  const { locale } = await params;
 
   return (
     <html lang={locale}>

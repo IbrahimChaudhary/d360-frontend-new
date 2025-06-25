@@ -6,6 +6,7 @@ type State = {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
+  syncFromUrl: (urlLocale: Language) => void;
 };
 
 const getInitialLang = (): Language => {
@@ -18,7 +19,7 @@ const getInitialLang = (): Language => {
 export const useStore = create<State>((set) => ({
   language: getInitialLang(),
   setLanguage: (lang) => {
-    console.log("i am in toogle store and 1st console", lang)
+    console.log("Toggle store: Setting language to:", lang);
     
     localStorage.setItem('lang', lang);
     set({ language: lang });
@@ -26,9 +27,14 @@ export const useStore = create<State>((set) => ({
   toggleLanguage: () => {
     set((state) => {
       const newLang = state.language === 'en' ? 'ar' : 'en';
-      console.log("i am in toogle store and 2nd console", newLang)
+      console.log("Toggle store: Toggling language to:", newLang);
       localStorage.setItem('lang', newLang);
       return { language: newLang };
     });
+  },
+  syncFromUrl: (urlLocale) => {
+    console.log("Toggle store: Syncing from URL locale:", urlLocale);
+    localStorage.setItem('lang', urlLocale);
+    set({ language: urlLocale });
   },
 }));
