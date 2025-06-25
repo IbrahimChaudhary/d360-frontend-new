@@ -1,45 +1,37 @@
-// app/[locale]/page.tsx
 import HomePage from "@/components/home/home-page";
-import {
-  generateMetadata as generatePageMetadata,
-  extractSeoData,
-} from "@/lib/metadata";
+import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchHomePage } from "@/api/home";
 
-// ✅ Accept `params` from the route
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: "en" | "ar" };
-}) {
+// Generate metadata for the home page
+export async function generateMetadata() {
   try {
-    const homeData = await fetchHomePage(params.locale);
+    const homeData = await fetchHomePage("en");
     const seoData = extractSeoData(homeData);
-
+    
     return generatePageMetadata({
       seoData,
-      locale: params.locale,
+      locale: "en",
       path: "",
       fallbackTitle: "D360 Bank",
-      fallbackDescription: "D360 Bank - Your Digital Banking Partner",
+      fallbackDescription: "D360 Bank - Your Digital Banking Partner"
     });
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
-
+    
+    // Return fallback metadata
     return generatePageMetadata({
-      locale: params.locale,
+      locale: "en",
       path: "",
       fallbackTitle: "D360 Bank",
-      fallbackDescription: "D360 Bank - Your Digital Banking Partner",
+      fallbackDescription: "D360 Bank - Your Digital Banking Partner"
     });
   }
 }
 
-// ✅ You can also access `params` in the component if needed
-export default function Home({
-  params,
-}: {
-  params: { locale: "en" | "ar" };
-}) {
-  return <HomePage />;
+export default function Home() {
+  return (
+    <>
+      <HomePage/>
+    </>
+  );
 }

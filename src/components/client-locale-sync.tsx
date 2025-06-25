@@ -1,3 +1,4 @@
+// src/components/client-locale-sync.tsx
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
