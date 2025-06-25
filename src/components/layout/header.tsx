@@ -10,6 +10,7 @@ import { useStore } from "@/store/toggle-store"
 import { DesktopDropdownMenu } from "./dropdown-menu"
 import { fetchHeader } from "@/api/header"
 import type { Header as HeaderType } from "@/types/header/header"
+import { useRouter, usePathname } from 'next/navigation';
 
 interface MenuSection {
   title?: string
@@ -33,6 +34,9 @@ export function Header({ variant = "default" }: HeaderProps) {
   const [scrollY, setScrollY] = useState(0)
   const [scrollDir, setScrollDir] = useState<"up" | "down" | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  
+const router = useRouter();
+const pathname = usePathname();
 
   useEffect(() => {
     const loadHeaderData = async () => {
@@ -48,8 +52,11 @@ export function Header({ variant = "default" }: HeaderProps) {
   }, [language])
 
   const handleToggle = useCallback(() => {
-    toggleLanguage()
-  }, [toggleLanguage])
+    const newLang = language === 'en' ? 'ar' : 'en';
+    const newPath = pathname.replace(`/${language}`, `/${newLang}`);
+    toggleLanguage();
+    router.push(newPath);
+  }, [language, pathname, toggleLanguage]);
 
   useEffect(() => {
     const handleScroll = () => setOpenMenu(null)
