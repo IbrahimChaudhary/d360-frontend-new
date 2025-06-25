@@ -90,7 +90,9 @@ export default function InternationalTransferPageClient() {
           classname="w-[70%] lg:w-[40%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
           textstyle="flex lg:block  items-center lg:space-y-6 lg:mt-0 mt-6"
           subheading="ltr:text-left rtl:text-right lg:text-[30px]"
-          arrows="text-sm gap-0 lg:gap-4"
+          arrows="text-sm gap-0 lg:gap-4 flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10
+    absolute bottom-4 -right-6 -translate-x-1/2
+    lg:static lg:translate-x-0 lg:justify-start lg:bottom-auto lg:left-auto"
           icon="w-[23px] h-[23px] lg:w-[34px] lg:h-[34px] "
           img1=" block lg:hidden"
           img2="lg:block hidden"

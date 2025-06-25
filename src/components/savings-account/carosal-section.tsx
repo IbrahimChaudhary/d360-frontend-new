@@ -106,6 +106,7 @@ export function Carosel({
           </div>
 
           <div className={cn("rtl:gap-2 lg:gap-0", textstyle)}>
+          
             <AnimatePresence mode="wait" custom={direction}>
               {currentSlide.icon && (
                 <motion.div
@@ -156,26 +157,22 @@ export function Carosel({
               </AnimatePresence>
             </div>
 
-            {/* Arrows */}
-            <div
-              className={cn(
-                "flex text-xl rtl:flex-row-reverse justify-center lg:py-0 py-4 rtl:lg:justify-end ltr:lg:justify-start gap-5 z-10",
-                arrows
-              )}
-            >
-              <button
-                onClick={prevSlide}
-                className=" text-[#263244] hover:text-[#E74529]"
-              >
-                <ArrowLeft />
-              </button>
-              <button
-                onClick={nextSlide}
-                className=" text-[#263244] hover:text-[#E74529]"
-              >
-                <ArrowRight />
-              </button>
-            </div>
+                       {/* Arrows */}
+                       <div
+  className={cn(
+    
+    arrows
+  )}
+>
+  <button className="text-[#263244] hover:text-[#E74529]" onClick={prevSlide}>
+    <ArrowLeft />
+  </button>
+  <button className="text-[#263244] hover:text-[#E74529]" onClick={nextSlide}>
+    <ArrowRight />
+  </button>
+</div>
+
+           
 
             {showButton && (
               <button
@@ -190,7 +187,7 @@ export function Carosel({
       </div>
 
       {/* Image Section */}
-      <div className={cn("relative w-full max-w-sm flex justify-end items-end h-[200px] lg:h-[300px]",img2)}>
+      <div className={cn("relative w-full max-w-sm flex   justify-end items-end h-[200px] lg:h-[300px]",img2)}>
         <Image
           src={currentSlide.image || "/placeholder.svg"}
           alt={currentSlide.heading}
