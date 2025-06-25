@@ -106,6 +106,7 @@ export function Carosel({
           </div>
 
           <div className={cn("rtl:gap-2 lg:gap-0", textstyle)}>
+          
             <AnimatePresence mode="wait" custom={direction}>
               {currentSlide.icon && (
                 <motion.div
@@ -156,7 +157,7 @@ export function Carosel({
               </AnimatePresence>
             </div>
 
-            {/* Arrows */}
+                       {/* Arrows */}
             <div
               className={cn(
                 "flex text-xl rtl:flex-row-reverse justify-center lg:py-0 py-4 rtl:lg:justify-end ltr:lg:justify-start gap-5 z-10",
@@ -176,6 +177,7 @@ export function Carosel({
                 <ArrowRight />
               </button>
             </div>
+           
 
             {showButton && (
               <button
