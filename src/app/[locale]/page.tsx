@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  await params; // Await the params Promise
+  const { locale } = await params;
   return (
     <>
-      <HomePage/>
+      <HomePage locale={locale as "en" | "ar"} />
     </>
   );
 }
