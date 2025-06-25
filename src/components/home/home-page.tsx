@@ -69,7 +69,7 @@ export default function HomePage({ locale }: { locale?: "en" | "ar" }) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header locale={currentLanguage} />
       <main className="flex-1">
         <div className="">
           {homeData && <HomeHero  data={homeData}/>}

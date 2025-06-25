@@ -25,10 +25,12 @@ interface HeaderProps {
   variant?: "default" | "about"
 }
 
-export function Header({ variant = "default" }: HeaderProps) {
+export function Header({ variant = "default", locale }: HeaderProps & { locale?: "en" | "ar" }) {
   const [openMenu, setOpenMenu] = useState<"about" | "personal" | null>(null)
   const { language, toggleLanguage } = useStore()
-  const isRTL = language === "ar"
+  // Use the passed locale prop if available, otherwise fall back to store language
+  const currentLanguage = locale || language;
+  const isRTL = currentLanguage === "ar"
   const [headerData, setHeaderData] = useState<HeaderType | null>(null)
   const [mobileSubMenu, setMobileSubMenu] = useState<"about" | "personal" | null>(null)
   const [scrollY, setScrollY] = useState(0)
@@ -41,7 +43,7 @@ const pathname = usePathname();
   useEffect(() => {
     const loadHeaderData = async () => {
       try {
-        const data = await fetchHeader(language)
+        const data = await fetchHeader(currentLanguage)
         setHeaderData(data)
       } catch (error) {
         console.error("Error fetching header data:", error)
@@ -49,7 +51,7 @@ const pathname = usePathname();
     }
 
     loadHeaderData()
-  }, [language])
+  }, [currentLanguage])
 
   const handleToggle = useCallback(() => {
     const newLang = language === 'en' ? 'ar' : 'en';
