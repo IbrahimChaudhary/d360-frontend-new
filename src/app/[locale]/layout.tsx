@@ -29,7 +29,7 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${lato.variable} ${tajawal.variable}`}>
         <ClientLocaleSync locale={locale} />
         <LanguageHTMLUpdater locale={locale} />

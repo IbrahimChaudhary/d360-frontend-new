@@ -52,7 +52,7 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
           <h2 className="lg:text-[50px] text-[25px] font-bold text-[#263244]">{data.FeatHead}</h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12 px-4 lg:px-0 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:mb-12 mb-6 px-4 lg:px-0 ">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} index={index} />
           ))}
@@ -61,7 +61,7 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
         <AnimatedSection direction="up" className="text-center">
           <button
           onClick={() => setModalOpen(true)}
-             className="bg-[#E74529]  text-white px-8 lg:px-8 py-3 lg:py-2 text-[8px] lg:text-[20px] font-bold rounded-lg lg:rounded-xl btn-14"
+             className="bg-[#EB644C] lg:mt-8 cursor-pointer  text-white font-bold py-2 px-6 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] "
           
           >
             {data.FeatBtn}

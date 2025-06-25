@@ -43,11 +43,11 @@ export default function CardPageClient() {
           </p>
         </Hero>
         <SectionHeading className="lg:pt-16 pt-8">
-          <p className="text-[30px] lg:w-full w-[60%] leading-tight mx-auto lg:mx-0 lg:text-[50px] font-extrabold">
+          <p className="text-[30px] lg:w-full w-[90%] leading-tight mx-auto lg:mx-0 lg:text-[50px] font-extrabold">
             {" "}
             {cardData?.Title1}
           </p>
-          <p className="text-[30px] lg:w-full w-[60%] leading-tight mx-auto lg:mx-0 lg:text-[50px] font-extrabold">
+          <p className="text-[30px] lgpx-0 px-2 w-full  leading-tight mx-auto lg:mx-0 lg:text-[50px] font-extrabold">
             {cardData?.Description1}
             {cardData?.Description2}
             {cardData?.Description3}
@@ -59,7 +59,9 @@ export default function CardPageClient() {
         
         {cardData && <CardVariants data={cardData} />}
 
-        <MergedFAQAccordion faqItems={faqItems} titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold lg:mb-8 mb-4  text-[#293242] lg:px-0 px-2"  />
+        <MergedFAQAccordion faqItems={faqItems}
+        sectionClassName="px-4"
+        titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold lg:mb-8 mb-4  text-[#293242] lg:px-0 px-2"  />
       </main>
       <Footer />
     </div>
