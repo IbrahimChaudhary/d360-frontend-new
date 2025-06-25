@@ -1,5 +1,4 @@
 import type { HomePageData } from "@/types/home/home"
-
 export const fallbackHomeData: HomePageData = {
   id: 1,
   documentId: "fallback",
