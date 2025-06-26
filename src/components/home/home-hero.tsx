@@ -62,6 +62,8 @@ export function HomeHero({ data }: HomeHeroProps) {
             }`}
           >
             {data.Description}{" "}
+            <br />
+            {data.DescriptionB}{" "}
           </p>
           <button
             onClick={() => setModalOpen(true)}
