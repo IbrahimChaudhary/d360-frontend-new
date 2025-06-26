@@ -17,7 +17,8 @@ interface CountriesSectionProps {
 }
 
 export function CountriesSection({ data }: CountriesSectionProps) {
-  const [activeContinent, setActiveContinent] = useState<"europe" | "africa" | "asia">("europe");
+  const [activeContinent, setActiveContinent] = useState<"europe" | "africa" | "asia" | "america" | "australia">("europe");
+
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchMode, setIsSearchMode] = useState(false);
   const [apiCountries, setApiCountries] = useState<CountryApi[]>([]);
@@ -44,26 +45,29 @@ export function CountriesSection({ data }: CountriesSectionProps) {
 
   // Convert API format into UI format
   const mappedCountries = useMemo(() => {
-    const mapped = apiCountries
+    const seen = new Set();
+    return apiCountries
       .filter((country) => country && country.countryName)
       .map((country) => {
         const name = country.countryName;
         const category = country.category?.name?.toLowerCase() || "";
         const flagUrl = country.countryFlag?.url || "";
-
+  
         return {
           id: country.id.toString(),
-          name: {
-            en: name,
-            ar: name,
-          },
+          name: { en: name, ar: name },
           flag: flagUrl.startsWith("http") ? flagUrl : `${process.env.NEXT_PUBLIC_STRAPI_URL}${flagUrl}`,
           continent: category,
         };
+      })
+      .filter((country) => {
+        const key = country.name.en + country.continent;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
       });
-    // console.log("Mapped countries:", mapped);
-    return mapped;
   }, [apiCountries]);
+  
 
   // Filter countries by search or continent
   const filteredCountries = useMemo(() => {
@@ -79,8 +83,9 @@ export function CountriesSection({ data }: CountriesSectionProps) {
 
   // Get 24 countries max, repeating if necessary
   const displayCountries = useMemo(() => {
-    return filteredCountries.slice(0, 24);
+    return filteredCountries;
   }, [filteredCountries]);
+  
 
   const handleTabClick = (continent: "europe" | "africa" | "asia") => {
     setActiveContinent(continent);
@@ -94,10 +99,14 @@ export function CountriesSection({ data }: CountriesSectionProps) {
   };
 
   const continents = [
-    { id: "europe", name: { en: "Europe", ar: "أوروبا" } },
-    { id: "africa", name: { en: "Africa", ar: "أفريقيا" } },
-    { id: "asia", name: { en: "Asia", ar: "آسيا" } },
-  ];
+   
+      { id: "europe", name: { en: "Europe", ar: "أوروبا" } },
+      { id: "africa", name: { en: "Africa", ar: "أفريقيا" } },
+      { id: "asia", name: { en: "Asia", ar: "آسيا" } },
+      { id: "america", name: { en: "America", ar: "أمريكا" } },
+      { id: "australia", name: { en: "Australia", ar: "أستراليا" } },
+    ];
+    
 
   return (
     <Section className="flex justify-center">
