@@ -68,7 +68,7 @@ export default function InvestorRealtions() {
             }`}
           >
             <h1
-              className={`text-[25px]  items-center  lg:mt-42 lg:flex hidden leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
+              className={`text-[25px]  items-center  lg:mt-42 lg:flex  leading-tight lg:leading-[5.5rem] uppercase lg:text-[80px] font-extrabold text-[#263244] ${
                 isRTL ? "justify-end" : " justify-center"
               }`}
             >
