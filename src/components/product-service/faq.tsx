@@ -112,7 +112,7 @@ function FAQFee({ item, index, isOpen, onToggle  }: FAQItemComponentProps) {
                 {item.items.map((sub, idx) => (
                   <div
                     key={idx}
-                    className="text-[20px] flex justify-between py-2  last:border-none"
+                    className={`text-[20px] flex justify-between py-2  last:border-none ${sub.description === "null" ? "hidden" : ""}`}
                   >
                     <span>{sub.description}</span>
                     <span className="text-right">{sub.value}</span>
@@ -242,10 +242,10 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ3SubDescriptionN}`,
           value: `${data?.FAQ3SubDescriptionNValue}`,
         },
-        // {
-        //   description: `${data?.FAQ3SubDescriptionO}`,
-        //   value: `${data?.FAQ3SubDescriptionOValue}`,
-        // },
+        {
+          description: `${data?.FAQ3SubDescriptionO}`,
+          value: `${data?.FAQ3SubDescriptionOValue}`,
+        },
       ],
     },
     {
@@ -280,14 +280,14 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ4SubDescriptionF}`,
           value: `${data?.FAQ4SubDescriptionFValue}`,
         },
-        // {
-        //   description: `${data?.FAQ4SubDescriptionG}`,
-        //   value: `${data?.FAQ4SubDescriptionGValue}`,
-        // },
-        // {
-        //   description: `${data?.FAQ4SubDescriptionH}`,
-        //   value: `${data?.FAQ4SubDescriptionHValue}`,
-        // },
+        {
+          description: `${data?.FAQ4SubDescriptionG}`,
+          value: `${data?.FAQ4SubDescriptionGValue}`,
+        },
+        {
+          description: `${data?.FAQ4SubDescriptionH}`,
+          value: `${data?.FAQ4SubDescriptionHValue}`,
+        },
 
       ],
     },

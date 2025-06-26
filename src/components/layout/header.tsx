@@ -347,7 +347,7 @@ const pathname = usePathname();
                       handleToggle()
                       closeMobileMenu()
                     }}
-                    className="text-[#293242] hover:text-[#E74529] text-left"
+                    className="text-[#293242] hover:text-[#E74529] font-trans text-left"
                   >
                     {isRTL ? "English" : "عربي"}
                   </button>
