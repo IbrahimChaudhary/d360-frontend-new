@@ -34,12 +34,7 @@ export function PrivacyNoticePageClient() {
       {/* Page title & intro */}
       {privacy && (
   <div className="space-y-6">
-    <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">
-      {privacy.Heading}
-    </h1>
-    <p className="text-[14px] lg:text-[20px]">{privacy.headingPara1}</p>
-
-    <p className="text-[#E74529] text-[10px] font-[900] underline">Read More</p>
+    {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
   </div>
 
 )}

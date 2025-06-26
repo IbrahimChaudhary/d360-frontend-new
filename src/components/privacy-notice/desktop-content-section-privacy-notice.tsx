@@ -52,9 +52,15 @@ const mdComponents = {
       </div>
 
       {/* Render the full markdown notice body */}
-      <div className="prose prose-lg dark:prose-invert">
+      <div className="prose hidden md:block prose-lg dark:prose-invert">
         <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
           {data.Title2}
+        </ReactMarkdown>
+      </div>
+
+      <div className="prose block  md:hidden prose-lg dark:prose-invert">
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
+          {data.Title2Mobile}
         </ReactMarkdown>
       </div>
     </div>
