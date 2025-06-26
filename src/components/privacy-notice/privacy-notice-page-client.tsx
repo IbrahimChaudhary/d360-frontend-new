@@ -40,7 +40,7 @@ export function PrivacyNoticePageClient() {
 )}
 
 
-       <MergedFAQAccordion faqItems={faqItems} title="hidden" />
+       {/*<MergedFAQAccordion faqItems={faqItems} title="hidden" />*/}
     </div>
     </div>
       <Footer/>
