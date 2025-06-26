@@ -37,6 +37,33 @@ export interface FeesData {
     FAQ3SubDescriptionAValue: string;
     FAQ3SubDescriptionB: string;
     FAQ3SubDescriptionBValue: string;
+    FAQ3SubDescriptionC: string;
+    FAQ3SubDescriptionCValue: string;
+    FAQ3SubDescriptionD: string;
+    FAQ3SubDescriptionDValue: string;
+    FAQ3SubDescriptionE: string;
+    FAQ3SubDescriptionEValue: string;
+    FAQ3SubDescriptionF: string;
+    FAQ3SubDescriptionFValue: string;
+    FAQ3SubDescriptionG: string;
+    FAQ3SubDescriptionGValue: string;
+    FAQ3SubDescriptionH: string;
+    FAQ3SubDescriptionHValue: string;
+    FAQ3SubDescriptionI: string;
+    FAQ34SubDescriptionIValue: string;
+    FAQ34SubDescriptionJ: string;
+    FAQ34SubDescriptionJValue: string;
+    FAQ34SubDescriptionK: string;
+    FAQ34SubDescriptionKValue: string;
+    FAQ34SubDescriptionL: string;
+    FAQ34SubDescriptionLValue: string;
+    FAQ34SubDescriptionM: string;
+    FAQ34SubDescriptionMValue: string;
+    FAQ34SubDescriptionN: string;
+    FAQ34SubDescriptionNValue: string;
+    FAQ34SubDescriptionO: string;
+    FAQ34SubDescriptionOValue: string;
+
   
     FAQTitle4: string;
     FAQ4DescriptionA: string;
@@ -57,6 +84,7 @@ export interface FeesData {
     FAQ4SubDescriptionGValue: string;
     FAQ4SubDescriptionH: string;
     FAQ4SubDescriptionHValue: string;
+
     SEO: SeoComponent[];
   }
   

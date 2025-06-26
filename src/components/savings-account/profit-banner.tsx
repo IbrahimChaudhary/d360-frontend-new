@@ -52,10 +52,10 @@ export default function ProfitBanner({ data }: ProfitBannerProps) {
         <div className="lg:max-w-7xl relative   mx-auto  lg:h-[209px] flex flex-col-reverse lg:flex-row  ">
           {/* Text Block */}
           <div className="lg:text-left text-center rtl:lg:mr-50 lg:pt-0 pt-10 max-w-md lg:ml-40 w-full">
-            <h3 className="lg:text-[60px] lg:px-0 px-6 text-[30px] w-[73%] mx-auto lg:w-full rtl:text-right font-extrabold  text-[#293242] leading-tight lg:leading-16">
+            <h3 className="lg:text-[60px] lg:px-0 px-6 text-[30px] w-[73%] mx-auto lg:w-full font-extrabold  text-[#293242] leading-tight lg:leading-16">
             {data.ProfitBannerHead}
             </h3>
-            <p className="lg:mt-6 mt-2 text-[14px] lg:text-[20px] lg:w-full w-[60%] mx-auto rtl:text-right text-[#293242]">
+            <p className="lg:mt-6 mt-2 text-[14px] lg:text-[20px] lg:w-full w-[60%] mx-auto text-[#293242]">
             {data.ProfitBannerDes}
             </p>
           </div>

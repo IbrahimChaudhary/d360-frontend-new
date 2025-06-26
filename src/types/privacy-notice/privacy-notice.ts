@@ -19,6 +19,7 @@ export interface PrivacyNoticeData {
 
   /** Full markdown content for the notice body */
   Title2: string;
+  Title2Mobile: string;
 
   /** FAQ section */
   FAQ: string;

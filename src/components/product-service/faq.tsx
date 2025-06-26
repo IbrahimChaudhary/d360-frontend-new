@@ -112,7 +112,7 @@ function FAQFee({ item, index, isOpen, onToggle  }: FAQItemComponentProps) {
                 {item.items.map((sub, idx) => (
                   <div
                     key={idx}
-                    className="text-[20px] flex justify-between py-2  last:border-none"
+                    className={`text-[20px] flex justify-between py-2  last:border-none ${sub.description === "null" ? "hidden" : ""}`}
                   >
                     <span>{sub.description}</span>
                     <span className="text-right">{sub.value}</span>
@@ -194,6 +194,58 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ3SubDescriptionB}`,
           value: `${data?.FAQ3SubDescriptionBValue}`,
         },
+        {
+          description: `${data?.FAQ3SubDescriptionC}`,
+          value: `${data?.FAQ3SubDescriptionCValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionD}`,
+          value: `${data?.FAQ3SubDescriptionDValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionE}`,
+          value: `${data?.FAQ3SubDescriptionEValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionF}`,
+          value: `${data?.FAQ3SubDescriptionFValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionG}`,
+          value: `${data?.FAQ3SubDescriptionGValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionH}`,
+          value: `${data?.FAQ3SubDescriptionHValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionI}`,
+          value: `${data?.FAQ3SubDescriptionIValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionJ}`,
+          value: `${data?.FAQ3SubDescriptionJValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionK}`,
+          value: `${data?.FAQ3SubDescriptionKValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionL}`,
+          value: `${data?.FAQ3SubDescriptionLValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionM}`,
+          value: `${data?.FAQ3SubDescriptionMValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionN}`,
+          value: `${data?.FAQ3SubDescriptionNValue}`,
+        },
+        {
+          description: `${data?.FAQ3SubDescriptionO}`,
+          value: `${data?.FAQ3SubDescriptionOValue}`,
+        },
       ],
     },
     {
@@ -228,6 +280,15 @@ export function FeeFAQAccordion({
           description: `${data?.FAQ4SubDescriptionF}`,
           value: `${data?.FAQ4SubDescriptionFValue}`,
         },
+        {
+          description: `${data?.FAQ4SubDescriptionG}`,
+          value: `${data?.FAQ4SubDescriptionGValue}`,
+        },
+        {
+          description: `${data?.FAQ4SubDescriptionH}`,
+          value: `${data?.FAQ4SubDescriptionHValue}`,
+        },
+
       ],
     },
   ];
