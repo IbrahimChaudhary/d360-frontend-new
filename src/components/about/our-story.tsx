@@ -24,7 +24,7 @@ export function OurStory({ data }: OurStoryProps) {
       <div
         className={`
           flex flex-col 
-          ${language === "ar" ? "md:flex-row-reverse" : "md:flex-row"} 
+          ${language === "ar" ? "md:flex-row" : "md:flex-row"} 
           items-center justify-center lg:px-24
         `}
       >
