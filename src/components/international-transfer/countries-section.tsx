@@ -10,6 +10,7 @@ import { useTranslations } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { fetchCountries } from "@/api/countries";
 import type { CountryApi } from "@/types/countries/countries";
+import type { UICountry } from "@/types/countries/countries";
 import { InternationalData } from "@/types/international/international";
 
 interface CountriesSectionProps {
@@ -20,8 +21,8 @@ export function CountriesSection({ data }: CountriesSectionProps) {
   const [activeContinent, setActiveContinent] = useState<"europe" | "africa" | "asia" | "america" | "australia">("europe");
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [isSearchMode, setIsSearchMode] = useState(false);
-  const [apiCountries, setApiCountries] = useState<CountryApi[]>([]);
+  const [apiCountries, setApiCountries] = useState<UICountry[]>([]);
+
   const [loading, setLoading] = useState(true);
   const { language } = useStore();
   const { t } = useTranslations();
@@ -31,7 +32,8 @@ export function CountriesSection({ data }: CountriesSectionProps) {
     async function loadCountries() {
       try {
         setLoading(true);
-        const res = await fetchCountries(language);
+        const res = await fetchCountries(); // No language param needed anymore
+
         setApiCountries(res);
       } catch (error) {
         console.error("Failed to fetch countries:", error);
@@ -46,32 +48,19 @@ export function CountriesSection({ data }: CountriesSectionProps) {
   // Convert API format into UI format
   const mappedCountries = useMemo(() => {
     const seen = new Set();
-    return apiCountries
-      .filter((country) => country && country.countryName)
-      .map((country) => {
-        const name = country.countryName;
-        const category = country.category?.name?.toLowerCase() || "";
-        const flagUrl = country.countryFlag?.url || "";
-  
-        return {
-          id: country.id.toString(),
-          name: { en: name, ar: name },
-          flag: flagUrl.startsWith("http") ? flagUrl : `${process.env.NEXT_PUBLIC_STRAPI_URL}${flagUrl}`,
-          continent: category,
-        };
-      })
-      .filter((country) => {
-        const key = country.name.en + country.continent;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
+    return apiCountries.filter((country) => {
+      const key = country.name.en + country.continent;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
   }, [apiCountries]);
+  
   
 
   // Filter countries by search or continent
   const filteredCountries = useMemo(() => {
-    if (isSearchMode && searchQuery) {
+    if ( searchQuery) {
       return mappedCountries.filter(
         (country) =>
           country.name.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -79,7 +68,7 @@ export function CountriesSection({ data }: CountriesSectionProps) {
       );
     }
     return mappedCountries.filter((country) => country.continent === activeContinent);
-  }, [mappedCountries, activeContinent, searchQuery, isSearchMode]);
+  }, [mappedCountries, activeContinent, searchQuery]);
 
   // Get 24 countries max, repeating if necessary
   const displayCountries = useMemo(() => {
@@ -89,14 +78,10 @@ export function CountriesSection({ data }: CountriesSectionProps) {
 
   const handleTabClick = (continent: "europe" | "africa" | "asia") => {
     setActiveContinent(continent);
-    setIsSearchMode(false);
     setSearchQuery("");
   };
 
-  const handleSearchFocus = () => setIsSearchMode(true);
-  const handleSearchBlur = () => {
-    if (!searchQuery) setIsSearchMode(false);
-  };
+ 
 
   const continents = [
    
@@ -126,14 +111,14 @@ export function CountriesSection({ data }: CountriesSectionProps) {
       <AnimatedSection direction="up" className="max-w-6xl mx-auto">
         {/* Tab Navigation */}
         <div className="flex lg:flex-row flex-col gap-4 items-center mb-8  w-full max-w-4xl mx-auto">
-          <div className="flex w-full gap-2">
+          <div className="lg:flex grid grid-cols-3 w-full gap-2">
             {continents.map((continent) => (
               <button
                 key={continent.id}
                 onClick={() => handleTabClick(continent.id as any)}
                 className={cn(
                   "flex-1 px-6 lg:py-2 py-2 rounded-md lg:rounded-xl cursor-pointer text-[8px] lg:text-base font-semibold transition-all text-center",
-                  activeContinent === continent.id && !isSearchMode
+                  activeContinent === continent.id 
                     ? "bg-[#E74529] text-white"
                     : "bg-[#F6F7F8] text-[#263244]"
                 )}
@@ -143,41 +128,22 @@ export function CountriesSection({ data }: CountriesSectionProps) {
             ))}
           </div>
 
-          <div className="relative w-full">
-            <button
-              onClick={handleSearchFocus}
-              className={cn(
-                "w-full px-6 lg:py-2 py-2 rounded-md lg:rounded-xl text-[8px] lg:text-base font-semibold flex items-center  gap-2 transition-all",
-                isSearchMode ? "bg-[#E74529] text-white" : "bg-[#FDF0ED] text-[#263244]"
-              )}
-            >
-              {language === "en" ? "Search" : "يبحث"}
-            </button>
+          <div className="w-full">
+  <Input
+    type="text"
+    placeholder={language === "en" ? "Search countries..." : "البحث عن البلدان..."}
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="w-full px-6 lg:py-2 py-2 rounded-md lg:rounded-xl text-[8px] lg:text-base font-bold bg-[#FDF0ED] text-[#263244]"
+  />
+</div>
 
-            {isSearchMode && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="absolute top-full left-0 right-0 mt-2 z-10"
-              >
-                <Input
-                  type="text"
-                  placeholder={language === "en" ? "Search countries..." : "البحث عن البلدان..."}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onBlur={handleSearchBlur}
-                  className="w-full"
-                  autoFocus
-                />
-              </motion.div>
-            )}
-          </div>
         </div>
 
         {/* Countries Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={`${activeContinent}-${isSearchMode}-${searchQuery}`}
+            key={`${activeContinent}-${searchQuery}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -195,7 +161,7 @@ export function CountriesSection({ data }: CountriesSectionProps) {
           </motion.div>
         </AnimatePresence>
 
-        {isSearchMode && searchQuery && filteredCountries.length === 0 && (
+        { searchQuery && filteredCountries.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

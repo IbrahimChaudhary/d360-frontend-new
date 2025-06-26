@@ -88,4 +88,14 @@ export interface StrapiMediaFormat {
     } | null;
     [key: string]: any;
   }
+
+  export interface UICountry {
+    id: string;
+    name: {
+      en: string;
+      ar: string;
+    };
+    flag: string; // Full image URL
+    continent: string; // Slug or category name in lowercase
+  }
   
