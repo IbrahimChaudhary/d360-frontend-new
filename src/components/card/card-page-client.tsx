@@ -60,7 +60,7 @@ export default function CardPageClient() {
         {cardData && <CardVariants data={cardData} />}
 
         <MergedFAQAccordion faqItems={faqItems}
-        sectionClassName="px-4"
+        sectionClassName="px-4 pb-4 lg:pb-0 md:py-16 w-full  flex lg:justify-center lg:items-center"
         titleClassName="mt-10 lg:mt-2 text-[30px] lg:text-[60px] font-extrabold lg:mb-8 mb-4  text-[#293242] lg:px-0 px-2"  />
       </main>
       <Footer />
