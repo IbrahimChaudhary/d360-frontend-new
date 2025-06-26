@@ -79,22 +79,8 @@ export function CountriesSection({ data }: CountriesSectionProps) {
 
   // Get 24 countries max, repeating if necessary
   const displayCountries = useMemo(() => {
-    if (isSearchMode && searchQuery) {
-      return filteredCountries;
-    }
-
-    const countriesForDisplay = filteredCountries.slice(0, 24);
-    while (countriesForDisplay.length < 24 && filteredCountries.length > 0) {
-      const remainingSlots = 24 - countriesForDisplay.length;
-      const toAdd = filteredCountries.slice(
-        0,
-        Math.min(remainingSlots, filteredCountries.length)
-      );
-      countriesForDisplay.push(...toAdd);
-    }
-
-    return countriesForDisplay.slice(0, 24);
-  }, [filteredCountries, isSearchMode, searchQuery]);
+    return filteredCountries.slice(0, 24);
+  }, [filteredCountries]);
 
   const handleTabClick = (continent: "europe" | "africa" | "asia") => {
     setActiveContinent(continent);
