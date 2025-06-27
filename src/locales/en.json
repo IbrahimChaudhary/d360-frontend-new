@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "about": "About D360",
+    "personal": "Personal"
+  },
+  "hero": {
+    "title": "ABOUT",
+    "description": "D360",
+    "downloadApp": "Download The App"
+  },
+  "ourStory": {
+    "title": "Our Story",
+    "paragraph1": "A Saudi digital bank, fully Sharia-compliant and dedicated to delivering the best banking experience for everyone in Saudi Arabia.",
+    "paragraph2": "It's not just about banking services, we're redefining what banking means. A bank that's close to you, adapts to your needs, designed for you, and always one step ahead. We're committed to innovation while adhering to Islamic Sharia. We are leading the next era of banking: smarter, faster, and always one step ahead.",
+    "paragraph3": "We believe banking should be easy, straightforward, and grounded in trust and transparency."
+  },
+  "investors": {
+    "title": "Our Main Investors",
+    "meetLeaders": "Meet our Leaders",
+    "tabs": {
+      "management": "Management Team",
+      "board": "Board",
+      "advisors": "Advisors",
+      "emptyBoard": "Board members information coming soon.",
+      "emptyAdvisors": "Advisors information coming soon."
+    }
+  },
+  "team": {
+    "members": {
+      "taha": {
+        "name": "Taha Al-Quweiz",
+        "title": "Chairman",
+        "description": "Taha is the Chairman of the Board at D360 Bank and plays a pivotal leadership role across financial sectors."
+      },
+      "zaki": {
+        "name": "Zaki Alshowaier",
+        "title": "Vice Chairman",
+        "description": "Zaki contributes extensive experience from leadership roles across multiple institutions."
+      },
+      "ibrahim": {
+        "name": "Ibrahim Al Jammaz",
+        "title": "Board Member",
+        "description": "Ibrahim brings a wealth of governance expertise and financial insight to the board."
+      },
+      "bassem": {
+        "name": "Bassem Al Sallom",
+        "title": "Board Member",
+        "description": "Bassem leads strategic growth with a strong background in investment and capital markets."
+      },
+      "fahad": {
+        "name": "Fahad AlJomaih",
+        "title": "Board Member",
+        "description": "Fahad supports D360 with his leadership in business development and financial transformation."
+      },
+      "nouf": {
+        "name": "Nouf AlOtaibi",
+        "title": "Board Member",
+        "description": "Nouf drives innovation and inclusion, and is a champion of customer-centric banking."
+      },
+      "tim": {
+        "name": "Tim Brooke",
+        "title": "Board Member",
+        "description": "Tim brings global experience in banking operations, digital transformation, and customer engagement."
+      },
+      "mudassir": {
+        "name": "Mudassir Sheikha",
+        "title": "Board Member",
+        "description": "Mudassir is known for building successful digital-first ventures and scaling innovation."
+      },
+      "faraz": {
+        "name": "Faraz Khalid",
+        "title": "Board Member",
+        "description": "Faraz brings digital retail and e-commerce expertise to the strategic direction of D360."
+      }
+    }
+  },
+  
+  "faqs": {
+    "title": "FAQs",
+    "items": {
+      "licensed": {
+        "question": "Is D360 Bank a licensed bank in Saudi Arabia?",
+        "answer": "Yes, D360 Bank is licensed by the Saudi Central Bank (SAMA) and operates under all applicable regulations."
+      },
+      "openAccount": {
+        "question": "How do I open an account with D360 Bank?",
+        "answer": "You can open an account easily through our mobile app. Download the app, follow the registration process, and verify your identity using Absher."
+      },
+      "shariah": {
+        "question": "Is D360 Bank compliant with Islamic Shariah principles?",
+        "answer": "Yes, all our products and services are fully compliant with Islamic Shariah principles and are approved by our Shariah Committee."
+      },
+      "benefits": {
+        "question": "How can I benefit from the bank's services?",
+        "answer": "Our services include digital banking, international transfers, investment opportunities, and more - all accessible through our user-friendly mobile app."
+      }
+    }
+  },
+  "contact": {
+    "title": "Helping you wherever you are",
+    "subtitle": "Your opinion matters because you are at the heart of everything we do. Have a question, feedback, or even a complaint? Our team is here for you.",
+    "reachUs": "How to Reach Us?",
+    "insideSaudi": "Inside Saudi Arabia",
+    "outsideSaudi": "Outside Saudi Arabia",
+    "email": "Email",
+    "viaApp": "Via the App",
+    "appDescription": "Reach out through the Help section. Send us a message or request a callback, and we'll be there for you.",
+    "downloadApp": "Download App"
+  },
+  "footer": {
+    "columns": {
+      "about": {
+        "title": "About Us",
+        "links": {
+          "story": "Our Story",
+          "team": "Our Team",
+          "careers": "Careers",
+          "news": "News"
+        }
+      },
+      "contact": {
+        "title": "Contact US",
+        "links": {
+          "support": "Customer Support",
+          "branches": "Branches",
+          "faqs": "FAQs",
+          "feedback": "Feedback"
+        }
+      },
+      "help": {
+        "title": "Help & Support",
+        "links": {
+          "security": "Security",
+          "terms": "Terms & Conditions",
+          "privacy": "Privacy Policy",
+          "howTo": "How to use the app"
+        }
+      },
+      "follow": {
+        "title": "Follow US"
+      }
+    },
+    "legal": {
+      "moneyTransfers": "International Money Transfers",
+      "moneyTransfersText": "Send Money to India | Send Money to Nigeria | Send Money to Poland | Send Money to Ghana | Send Money to Dubai | Send Money to the UK from India | Send Money to Saudi Arabia | Send Money to North Macedonia | Send Money to Kazakhstan",
+      "exchangeRates": "Exchange Rates",
+      "exchangeRatesText": "Convert SAR to GBP | Convert GBP to SAR | Convert SAR to CAD | Convert SAR to JPY | Convert SAR to SEK | Convert SAR to EGP | Convert 100 SAR to GBP | Convert 1000 SAR to CAD | Convert 100 SAR to INR | Convert 1000 SAR to GBP | Convert 1000 SAR to GBP | Compare Exchange Rates",
+      "copyright": "All rights reserved © D360 Bank | Regulated by the Saudi Central Bank | Closed Joint Stock Company with a Capital of SAR 1,650,000,000 |CR No. 1010822737 Licensed in accordance with the Council of Ministers decree No. 389 dated 14/07/1443H corresponding to 15/02/2022G | Subject to the supervision of the Saudi Central Bank | 3074 Prince Mohammed bin Abdulaziz Rd. Al Olaya Dist. 12213 Riyadh, Saudi Arabia | www.D360.com"
+    }
+  }
+}
