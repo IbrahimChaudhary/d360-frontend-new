@@ -61,7 +61,7 @@ export function FeaturesSection({data}:FeaturesSectionProps) {
         <AnimatedSection direction="up" className="text-center">
           <button
           onClick={() => setModalOpen(true)}
-             className="bg-[#EB644C] lg:mt-8 cursor-pointer  text-white font-bold py-2 px-6 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] "
+             className="bg-[#EB644C] lg:mt-8 cursor-pointer  text-white font-bold py-2 px-6 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] btn-14"
           
           >
             {data.FeatBtn}

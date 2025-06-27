@@ -31,19 +31,13 @@ export function SecurityAwarenessPageClient() {
       {/* Page title & intro */}
       {security && (
   <div className="space-y-6">
-    <h1 className="text-[25px] lg:text-[70px] font-extrabold text-[#E74529]">
-      {security.Title1}
-    </h1>
-    <p className="text-[14px] lg:text-[25px]">{security.Title1Des1}</p>
-    <p className="text-[14px] lg:text-[25px]">{security.Title1Des2}</p>
-
-    <p className="text-[#E74529] text-[10px] font-[900] underline">Read More</p>
+    <DesktopContentSectionSecurityAndAwareness/>
   </div>
 
 )}
 
 
-       <MergedFAQAccordion faqItems={faqItems} title="hidden" />
+       {/*<MergedFAQAccordion faqItems={faqItems} title="hidden" />*/}
     </div>
     
 </div>

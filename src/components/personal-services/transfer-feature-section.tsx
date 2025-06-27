@@ -35,7 +35,7 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
     },
   ];
   return (
-    <section className="bg-white py-12 px-4">
+    <section className="bg-white py-12 px-4 overflow-hidden">
     <div className="lg:max-w-3xl  mx-auto">
         {items.map((item, index) => (
           <motion.div
@@ -57,21 +57,26 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
             </div>
 
             <div
-              className={`flex ${
-                item.reverse ? "lg:order-1 justify-center  lg:justify-start" : "lg:order-2 rtl:justify-end ltr:justify-center lg:justify-end"
-              }`}
-            >
-              <div className="relative lg:h-full h-[286px] -mt-12 lg:-mt-0 lg:max-w-[500px]">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  width={300}
-                  height={700}
-                  className={`w-full lg:max-w-full rtl:pl-10 lg:rtl:pl-0 flex rtl:h-[250px] ltr:h-[286px] lg:w-full lg:h-auto ${index === 1 ? "lg:scale-x-[1] scale-x-[-1] rtl:mt-5" : "lg:scale-x-[1] scale-x-[-1]"}`}
-                  priority={index === 0}
-                />
-              </div>
-              </div>
+  className={`flex ${
+    item.reverse
+      ? "lg:order-1 justify-center lg:justify-start"
+      : "lg:order-2 rtl:justify-end ltr:justify-center lg:justify-end"
+  }`}
+>
+  <div className="relative flex justify-end lg:items-end  lg:h-[330px] h-[286px]  lg:max-w-[500px] w-full">
+    <div className="w-[90%] lg:w-full">
+      <Image
+        src={item.image || "/placeholder.svg"}
+        alt={item.title}
+        width={300}
+        height={700}
+        className={`w-full h-auto object-contain ${index === 1 ? " -mt-10 ltr:ml-15 rtl:lg:mr-0 rtl:mr-15 ltr:lg:ml-0 lg:-mt-0" : "-mt-15 lg:-mt-0 lg:ml-0 ltr:ml-10 rtl:lg:mr-0 rtl:mr-10" }`}
+        priority={index === 0}
+      />
+    </div>
+  </div>
+</div>
+
           </motion.div>
         ))}
       </div>
