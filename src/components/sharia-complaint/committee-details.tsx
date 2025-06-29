@@ -1,4 +1,4 @@
-import { ShariahCommitteeData } from "@/types/shahriah-committee/shahriah-committee";
+import { ShariahCommitteeData } from "@/types/sharia-complaint/sharia-complaint";
 
 interface ShahriahCommitteeProps {
   data: ShariahCommitteeData;

@@ -132,8 +132,8 @@ const pathname = usePathname();
           href: headerData?.link2Url || "/media",
         },
         {
-          label: headerData?.link3 || "Shariah Committee",
-          href: headerData?.link3Url || "/shariah-committee",
+          label: headerData?.link3 || "Sharia Complaint",
+          href: headerData?.link3Url || "/sharia-complaint",
         },
         {
           label: headerData?.link4 || "Investor Relations",

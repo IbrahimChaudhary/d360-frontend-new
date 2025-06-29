@@ -1,5 +1,5 @@
-import { fetchShariah } from "@/api/shahriah-committee";
-import { ShariahCommitteePageClient } from "@/components/shahriah-committee/shariah-committee-page-client";
+import { fetchShariah } from "@/api/sharia-complaint";
+import { ShariaComplaintPageClient } from "@/components/sharia-complaint/sharia-complaint-page-client";
 import { extractSeoData, generateMetadata as generatePageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata() {
@@ -25,8 +25,8 @@ export async function generateMetadata() {
     });
   }
 }
-export default function ShariahCommitteePage() {
+export default function ShariaComplaintPage() {
   return (
-    <ShariahCommitteePageClient />
+    <ShariaComplaintPageClient />
   );
 }
