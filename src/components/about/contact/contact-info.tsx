@@ -90,10 +90,10 @@ export function ContactInfo({
 
       <div>
         <h4 className="text-[#293242] font-extrabold text-[30px] mb-2">
-          {content.data.contact.appTitle}
+          {data.Title7}
         </h4>
         <p className="text-[#293242] mb-2 text-[20px]">
-          {content.data.contact.viaApp}
+          {data.viaDes}
         </p>
         <ul className="list-disc list-inside space-y-1 hidden">
           <li>{content.data.contact.viaApp1}</li>
