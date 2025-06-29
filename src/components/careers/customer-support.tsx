@@ -23,7 +23,7 @@ export default function CustomerSupport({ data }: CustomerSupportProps) {
   return (
     <section className="py-2 lg:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-[25px] lg:text-[60px] lg:w-full w-[70%] mx-auto lg:mx-0 font-extrabold text-[#293242] mb-6">
+        <h2 className="text-[25px] lg:text-[50px] lg:w-full w-[70%] mx-auto lg:mx-0 font-extrabold text-[#293242] mb-6">
           {data.HelpingHead}
         </h2>
 
@@ -36,7 +36,7 @@ export default function CustomerSupport({ data }: CustomerSupportProps) {
 
         <Link href="/contact-us">
         <button
-          className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-lg lg:rounded-xl font-bold text-[8px] lg:text-[20px]"
+          className="bg-[#E74529]  text-white px-6 lg:px-8 py-2 rounded-lg lg:rounded-xl font-bold text-[8px] lg:text-[14px] btn-14"
           
         >
           {data.HelpingBtn}

@@ -62,7 +62,7 @@ export function SavingsAccountPageClient() {
               <br />
               {savings?.MainTitle3}
             </h1>
-            <button  className="bg-[#EB644C] rounded-md px-8 py-2  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
+            <button  className="bg-[#EB644C] rounded-md hover:bg-[#d23e23] cursor-pointer px-8 py-2  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
               {savings?.HeroBtn}
             </button>
             <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white lg:leading-[5.5rem]">

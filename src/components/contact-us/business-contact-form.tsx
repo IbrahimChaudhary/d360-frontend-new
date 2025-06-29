@@ -48,7 +48,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center text-[30px] md:text-[60px] w-[83%] lg:w-full  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
+        className="text-center text-[30px] md:text-[50px] w-[83%] lg:w-full  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
       >
         {data.Title2}
       </motion.h2>
@@ -153,7 +153,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
       </form>
 
-      <div className="mt-16 flex justify-between  text-[14px] lg:text-[30px] text-[#263244]">
+      <div className="mt-16 flex justify-between  text-[14px] lg:text-[20px] text-[#263244]">
         <div className="rtl:space-y-7 ltr:space-y-4 lg:w-full w-[50%]">
           <p> {data.TollFree}</p>
           <p> {data.outside}</p>

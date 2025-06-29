@@ -56,7 +56,7 @@ export function GlobalCTA({
         </p>
         <a href="/contact-us">
         <button
-          className="bg-[#E74529] hover:bg-[#d23e23] text-white px-6 lg:px-8 py-2 rounded-xl font-bold text-[20px] btn-14"
+          className="bg-[#E74529] hover:bg-[#d23e23] text-white cursor-pointer px-6 lg:px-8 py-2 rounded-xl font-bold text-[20px] btn-14"
           
         >
           {ctaText}

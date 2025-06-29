@@ -133,6 +133,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
               {data.Description5}
             </p>
             <button
+              onClick={() => setModalOpen(true)}
               className={`${current.button} text-white px-6 py-3 rounded-lg font-bold text-[8px] `}
             >
               {data.getCard}
@@ -248,7 +249,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
               <p className="text-[#263244] text-[25px]">{t.subtitle}</p>
               <button
                 onClick={() => setModalOpen(true)}
-                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold text-[20px] btn-14`} >
+                 className={`${current.button} text-white hover:bg-[#d23e23] cursor-pointer px-5 py-2 rounded-xl font-bold text-[20px] btn-14`} >
                 {t.button}
               </button>
             </div>

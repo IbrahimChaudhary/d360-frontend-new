@@ -64,6 +64,8 @@ export default function CareersPageClient() {
           </p>
         </SectionHeading>
 
+        <br /><br /><br />
+
         
        {career && <WorkSection data={career}/>}
        {career && <OpenApplication data={career}/>}
