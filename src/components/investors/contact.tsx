@@ -10,7 +10,7 @@ export default function ContactSection({data}:ContactSectionProps) {
         <div className="text-left">
           <h2 className="text-[14px] rtl:text-right md:text-[30px] font-extrabold text-[#1F2E41] mb-4">{data?.Contact}</h2>
 
-          <p className="text-[#1F2E41] font-[400] rtl:text-right text-[14px] md:text-[25px] mb-8">{data?.ContactDes}</p>
+          <p className="text-[#1F2E41] font-[400] rtl:text-right text-[14px] md:text-[20px] mb-8">{data?.ContactDes}</p>
 
           <div className="space-y-4">
             {/* Phone */}
@@ -18,7 +18,7 @@ export default function ContactSection({data}:ContactSectionProps) {
               <div className="flex-shrink-0">
                 <img src="/investor/mail.svg"  className="  lg:w-[30px] w-[16px] h-[16px] lg:h-[30px]" alt="" />
               </div>
-              <a href="tel:+966111234567" className="text-[#1F2E41]  text-[14px] lg:text-[25px] hover:text-[#EB644C] transition-colors duration-200">
+              <a href="tel:+966111234567" className="text-[#1F2E41]  text-[14px] lg:text-[20px] hover:text-[#EB644C] transition-colors duration-200">
               {data?.Phone}
               </a>
             </div>
@@ -30,7 +30,7 @@ export default function ContactSection({data}:ContactSectionProps) {
               </div>
               <a
                 href="mailto:investor.relations@d360bank.com"
-                className="text-[#1F2E41] text-[14px] lg:text-[25px] hover:[#EB644C]transition-colors duration-200"
+                className="text-[#1F2E41] text-[14px] lg:text-[20px] hover:[#EB644C]transition-colors duration-200"
               >
                 {data?.email}
               </a>

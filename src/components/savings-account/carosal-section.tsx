@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { DownloadModal } from "../home/download-modal";
 
 type Slide = {
   heading: string;
@@ -74,6 +75,8 @@ export function Carosel({
       transition: { duration: 0.4 },
     },
   });
+
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <section
@@ -176,7 +179,7 @@ export function Carosel({
 
             {showButton && (
               <button
-               
+               onClick={() => setModalOpen(true)}
               className="  flex justify-center  px- lg:mx-0 mx-auto  lg:mt-10 bg-[#EB644C] rounded-md px-4 lg:mb-22 mb-0 font-bold text-white text-[8px] lg:text-[20px] py-2 lg:px-8 lg:py-2 lg:rounded-[14px] btn-14"
             >
                 {btnTxt}
@@ -195,6 +198,7 @@ export function Carosel({
           className="object-contain"
         />
       </div>
+       <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 }
