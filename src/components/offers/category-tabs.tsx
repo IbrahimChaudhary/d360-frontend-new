@@ -39,7 +39,7 @@ export function CategoryTabs({
             key={category.id}
             onClick={() => onCategoryChange(category.id)}
             className={cn(
-              "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[14px] transition",
+              "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[14px] transition cursor-pointer",
               activeCategory === category.id
                 ? "bg-[#EB644C] text-white"
                 : "bg-[#F6F7F8] text-[#263244]"

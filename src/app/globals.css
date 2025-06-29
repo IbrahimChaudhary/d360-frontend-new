@@ -132,6 +132,7 @@
   }
 }
 
+
 html[dir="ltr"] .font-trans{
   font-family: "Tajawal";
 }
@@ -147,6 +148,7 @@ html[dir="rtl"] .font-trans{
 .btn-14{
   font-size: 14px !important;
   font-weight: bold !important;
+  cursor: pointer;
 }
 
 .hideThis{display: none !important;}
@@ -155,3 +157,33 @@ html[dir="rtl"] .font-trans{
   width: 20px;
   height: 20px;
 }
+
+@media (min-width: 576px) {
+  html[dir="ltr"] .carousel-arrow{
+    position: absolute;
+    right: 0;
+  }
+
+  html[dir="rtl"] .carousel-arrow{
+    position: absolute;
+    left: 0;
+  }  
+}
+
+@media (min-width: 992px) {
+
+  html[dir="ltr"] .carousel-arrow{
+    position: unset;
+
+  }
+
+  html[dir="rtl"] .carousel-arrow{
+    position: unset;
+
+  }  
+
+
+}
+
+
+

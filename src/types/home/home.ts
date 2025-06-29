@@ -40,7 +40,6 @@ export interface HomePageData {
 
   Title8: string;
   Description8: string;
-  DescriptionB: string;
 
   heroVideo: HeroVideo;  
 

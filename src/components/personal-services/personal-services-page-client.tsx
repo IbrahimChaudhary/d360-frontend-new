@@ -54,7 +54,7 @@ export function PersonalServicesPageClient() {
 
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] text-white font-bold py-2 mt-4 lg:mt-6 cursor-pointer px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] text-white font-bold hover:bg-[#d23e23] py-2 mt-4 lg:mt-6 cursor-pointer px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
                   ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
                   : "lg:px-16"

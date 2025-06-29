@@ -89,7 +89,7 @@ function FAQMerged({ item, index, isOpen, onToggle }: FAQItemComponentProps) {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             <AccordionContent className={`overflow-hidden flex ${isRTL ? "flex-row" : "flex-row"}`}>
-              <p className={`text-[10px] lg:text-[25px] text-[#263244] mt-2 leading-relaxed ${isRTL ? "text-right" : "text-left"}`}>
+              <p className={`text-[10px] lg:text-[20px] text-[#263244] mt-2 leading-relaxed ${isRTL ? "text-right" : "text-left"}`}>
                 {item.answer}
               </p>
             </AccordionContent>
@@ -107,7 +107,7 @@ export function MergedFAQAccordion({
   para,
   sectionClassName = "pb-4 lg:pb-0 md:py-16 w-full  flex lg:justify-center lg:items-center",
   titleClassName = "text-[30px] lg:text-[60px] font-extrabold lg:mb-8   text-[#293242]",
-  paraClassName = "text-[#263244] text-[10px] lg:text-[25px] font-[500] py-2"
+  paraClassName = "text-[#263244] text-[10px] lg:text-[20px] font-[500] py-2"
 }: MergedFAQAccordionProps) {
   const {language} = useStore();
   const isRTL = language === "ar";

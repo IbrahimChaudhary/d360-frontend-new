@@ -385,7 +385,7 @@ export default function InteractiveCardHero({
                 {data.PhysicalCardDescription}
               </p>
               <button
-                className="mt-2 bg-white text-[#E74529] px-8 lg:px-22 py-2 rounded-lg font-bold text-[8px] lg:text-[14.25px] shadow-md"
+                className="mt-2 bg-white text-[#E74529] cursor-pointer px-8 lg:px-22 py-2 rounded-lg font-bold text-[8px] lg:text-[14.25px] shadow-md"
                 onClick={() => setModalOpen(true)}
               >
                 {data.PhysicalCardCTA}
@@ -607,7 +607,7 @@ export default function InteractiveCardHero({
                     {data.DigitalCardDescription}
                   </p>
                   <button
-                    className="bg-white font-bold text-[#E74529] text-[14.25px] rounded-lg px-12 py-2 mx-auto block"
+                    className="bg-white font-bold text-[#E74529] cursor-pointer text-[14.25px] rounded-lg px-12 py-2 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
                     {data.DigitalCardCTA}
@@ -653,7 +653,7 @@ export default function InteractiveCardHero({
                     {data.DigitalCardDescription}
                   </p>
                   <button
-                    className="bg-white font-bold text-[#E74529] text-[8px] rounded-lg px-8 py-2 mx-auto block"
+                    className="bg-white font-bold text-[#E74529] cursor-pointer text-[8px] rounded-lg px-8 py-2 mx-auto block"
                     onClick={() => setModalOpen(true)}
                   >
                     {data.DigitalCardCTA}

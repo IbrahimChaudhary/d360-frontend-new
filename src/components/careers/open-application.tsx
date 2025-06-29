@@ -14,17 +14,17 @@ export default function OpenApplication({ data }: OpenApplicationProps) {
               {data.Application}
             </h2>
 
-            <p className="text-[#293242] text-[14px] ltr:lg:text-left rtl:lg:text-right text-center md:text-[25px]  ">
+            <p className="text-[#293242] text-[14px] ltr:lg:text-left rtl:lg:text-right text-center md:text-[20px]  ">
               {data.ApplicationDes1}
             </p>
 
-            <p className="text-[#293242] text-[14px] ltr:lg:text-left rtl:lg:text-right text-center  md:text-[25px]  ">
+            <p className="text-[#293242] text-[14px] ltr:lg:text-left rtl:lg:text-right text-center  md:text-[20px]  ">
               {data.ApplicationDes2}
             </p>
 
             <div className="pt-4 lg:block flex justify-center">
               <a href="https://fa-erqw-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/D360BankCareerPage">
-              <button className="bg-[#293242]  hover:bg-[#2d3748] text-white text-[8px] lg:text-[20px] font-bold px-6 py-2 rounded-lg lg:rounded-xl transition-colors duration-300">
+              <button className="bg-[#293242]  hover:bg-[#2d3748] text-white text-[8px] lg:text-[14px] font-bold px-6 py-2 rounded-lg lg:rounded-xl transition-colors duration-300 btn-14">
                 {data.ApplicationBtn}
               </button>
             </a>
