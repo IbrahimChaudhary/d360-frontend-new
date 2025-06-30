@@ -340,7 +340,7 @@ const currentFooter = cardFooters[selected];
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <p className="text-[19px] font-bold text-[#263244]">
+                <p className="text-[18px] font-bold text-[#263244]">
                   {feature}
                 </p>
               </motion.div>

@@ -2,8 +2,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import ContentSection from "../content-section";
-import { SecurityAwarenessData } from "@/types/security-awareness/security-awareness";
-import { fetchSecurityAwareness } from "@/api/security-awareness";
+import { TermsConditionsData } from "@/types/terms-conditions/terms-conditions";
+import { fetchTermsConditions} from "@/api/terms-conditions";
 import { useStore } from "@/store/toggle-store";
 import remarkGfm from "remark-gfm";
 
@@ -38,16 +38,16 @@ const mdComponents = {
     <ol className="list-decimal  pl-4 space-y-2" type="a" {...props} />
   ),
   li: (props: React.ComponentPropsWithoutRef<"li">) => (
-    <li className="text-base md:text-lg leading-relaxed" {...props} />
+    <li className="text-[14px] lg:text-[20px] leading-relaxed" {...props} />
   ),
 };
 
-export default function DesktopContentSectionSecurityAndAwareness() {
+export default function DesktopContentSectionTermsConditions() {
   const { language } = useStore();
-  const [security, setSecurity] = useState<SecurityAwarenessData | null>(null);
+  const [security, setSecurity] = useState<TermsConditionsData | null>(null);
 
   useEffect(() => {
-    fetchSecurityAwareness(language)
+    fetchTermsConditions(language)
       .then((data) => setSecurity(data))
       .catch((err) => console.error(err));
   }, [language]);
@@ -57,7 +57,7 @@ export default function DesktopContentSectionSecurityAndAwareness() {
     if (!security) return [];
 
     // 1) grab the raw Markdown
-    const md = security.Title2;
+    const md = security.Title;
 
     // 2) split on ### headings
     //    result of split is [intro, "Password Security", body1, "Social Engineering", body2, ...]
@@ -85,15 +85,13 @@ export default function DesktopContentSectionSecurityAndAwareness() {
     <div className="max-w-[1228px] px-6 mx-auto mt-24 space-y-16">
       {/* Render optional Title1 and its descriptions */}
       <div>
-        <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">{security.Title1}</h1>
-        <p className="mt-4 lg:text-[20px]">{security.Title1Des1}</p>
-        <p className="mt-2 lg:text-[20px]">{security.Title1Des2}</p>
+        <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">{security.Title}</h1>
       </div>
 
       {/* Loop over each parsed section */}
       <div className="prose prose-lg dark:prose-invert">
         <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
-          {security.Title2}
+          {security.Content}
         </ReactMarkdown>
       </div>
     </div>

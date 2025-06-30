@@ -10,6 +10,7 @@ import { Phone, Globe } from "lucide-react";
 import { ContactPageData } from "@/types/contact-us/contact-us";
 import { useStore } from "@/store/toggle-store";
 import { toast } from "sonner";
+import Link from 'next/link'
 
 const formSchema = z.object({
   organization: z.string().nonempty("Organization name is required"),
@@ -167,7 +168,11 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input type="checkbox" {...register("agree")} className="mr-2 ch-20" />
               <span className="text-[14px] lg:text-[20px]">
                 {data.privacy}{" "}
-                <span className="font-bold">{data.privacyBold}</span>
+                <span className="font-bold">
+                  <Link href={isRTL ? "/ar/privacy-notice" : "/en/privacy-notice"}>                  
+                  {data.privacyBold}
+                </Link>
+                </span>
               </span>
             </label>
             {errors.agree && (
@@ -184,8 +189,8 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
       </form>
 
-      <div className="mt-16 flex justify-between  text-[14px] lg:text-[20px] text-[#263244]">
-        <div className="rtl:space-y-7 ltr:space-y-4 lg:w-full w-[50%]">
+      <div className="mt-16 flex justify-between px-4 text-[14px] lg:text-[20px] text-[#263244]">
+        <div className="rtl:space-y-7 ltr:space-y-4 w-[50%]">
           <p> {data.TollFree}</p>
           <p> {data.outside}</p>
         </div>

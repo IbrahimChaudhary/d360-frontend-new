@@ -76,7 +76,7 @@ export function CustomerCareContactInfo({
               <h4 className="text-[#6D809C] text-[14px] lg:text-[25px] font-bold">
                 {data.emailHead}
               </h4>
-              <p>{data.Email}</p>
+              
             </div>
           </>
         )}
@@ -98,7 +98,7 @@ export function CustomerCareContactInfo({
       <div className="lg:text-[20px] text-[14px] leading-tight">{data.complaint}</div>
       <div className="lg:text-[20px] text-[14px] leading-tight">
         {data.Contact}
-        <span className="text-[#EB644C] font-bold">{data.Email}</span>
+       
       </div>
     </div>
   );
