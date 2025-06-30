@@ -166,7 +166,7 @@ export function SavingsAccountPageClient() {
           titleClassName="lg:pb-0 text-[30px] lg:text-[60px] font-extrabold    text-[#293242]"
           para={
             language === "ar"
-              ? "ابحث عن إجابات لأكثر الأسئلة شيوعًا حول حساب التوفير سنابل."
+              ? "ابحث عن إجابات لأكثر الأسئلة شيوعًا حول حساب سنابل الإدّخاري"
               : "Find answers to the most frequently asked questions about the Sanabil Savings Account."
           }
         />

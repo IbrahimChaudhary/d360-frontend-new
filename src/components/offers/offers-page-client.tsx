@@ -61,17 +61,17 @@ export default function OffersPageClient() {
     isMobile && !isExpanded ? filteredOffers?.slice(0, 2) : filteredOffers;
   const offerCategories: OfferCategory[] = [
     {
-      id: "automative",
+      id: "active-offers",
       name: { en: `${offer?.Type1}`, ar: `${offer?.Type1}` },
     },
     {
-      id: "shopping",
+      id: "expired-offers",
       name: { en: `${offer?.Type2}`, ar: `${offer?.Type2}` },
     },
-    {
-      id: "Expired-offers",
-      name: { en: `${offer?.Type3}`, ar: `${offer?.Type3}` },
-    },
+    // {
+    //   id: "Expired-offers",
+    //   name: { en: `${offer?.Type3}`, ar: `${offer?.Type3}` },
+    // },
   ];
   return (
     <div className="flex min-h-screen flex-col">

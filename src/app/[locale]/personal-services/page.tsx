@@ -3,17 +3,20 @@ import { PersonalServicesPageClient } from "@/components/personal-services/perso
 import { extractSeoData, generateMetadata as generatePageMetadata } from "@/lib/metadata";
 
 // Generate metadata for the Personal Services page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+
   try {
-    const personalServiceData = await fetchPersonalService("en");
+    const personalServiceData = await fetchPersonalService(validatedLocale);
     const seoData = extractSeoData(personalServiceData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
-      path: "/personal-services",
-      fallbackTitle: seoData?.metaTitle || "Personal Services - D360 Bank",
-      fallbackDescription: seoData?.metaDescription || "Explore our personal banking services."
+      locale: validatedLocale,
+      path: "/personal-services",      
+      fallbackTitle: seoData?.metaTitle,
+      fallbackDescription: seoData?.metaDescription 
     });
   } catch (error) {
     console.error("Failed to fetch metadata for Personal Services:", error);

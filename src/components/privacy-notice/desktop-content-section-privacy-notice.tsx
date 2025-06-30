@@ -36,7 +36,7 @@ const mdComponents = {
     <ol className="list-decimal  p-4 space-y-2" type="a" {...props} />
   ),
   li: (props: React.ComponentPropsWithoutRef<"li">) => (
-    <li className="text-[14px] lg:text-[20px] leading-relaxed" {...props} />
+    <li className="text-base text-[14px] lg:text-[20px] md:text-lg leading-relaxed" {...props} />
   ),
 };
   return (
