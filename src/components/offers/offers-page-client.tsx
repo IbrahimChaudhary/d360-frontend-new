@@ -51,6 +51,7 @@ export default function OffersPageClient() {
   const filteredOffers = useMemo(() => {
     if (!offerCard) return [];
     if (activeCategory === "all") return offerCard;
+    console.log(" ", activeCategory);
     return offerCard.filter((o) => o.type === activeCategory);
   }, [offerCard, activeCategory]);
 
@@ -62,10 +63,18 @@ export default function OffersPageClient() {
   const offerCategories: OfferCategory[] = offer
     ? Object.keys(offer)
         .filter((key) => /^Type\d+$/.test(key))
-        .map((key) => ({
-          id: ((offer as any)[key] as string)?.toLowerCase()?.replace(/\s+/g, '-') + '-offers',
-          name: { en: (offer as any)[key], ar: (offer as any)[key] },
-        }))
+        .map((key) => {
+          const value = (offer as any)[key];
+          return language === 'en'
+            ? {
+                id: value?.toLowerCase()?.replace(/\s+/g, '-'),
+                name: { en: value, ar: value },
+              }
+            : {
+                id: value,
+                name: { en: value, ar: value },
+              };
+        })
     : [];
   return (
     <div className="flex min-h-screen flex-col">

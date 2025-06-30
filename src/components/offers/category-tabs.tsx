@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/context/language-context";
 import type { OfferCategory } from "@/types/offers";
 import { cn } from "@/lib/utils";
+import { useStore } from "@/store/toggle-store";
 
 interface CategoryTabsProps {
   categories: OfferCategory[];
@@ -16,7 +17,7 @@ export function CategoryTabs({
   activeCategory,
   onCategoryChange,
 }: CategoryTabsProps) {
-  const { language } = useLanguage();
+  const { language } = useStore();
 
   return (
     <div className="w-full md:w-64  rounded-lg p-4">
