@@ -50,19 +50,19 @@ export interface FeesData {
     FAQ3SubDescriptionH: string;
     FAQ3SubDescriptionHValue: string;
     FAQ3SubDescriptionI: string;
-    FAQ34SubDescriptionIValue: string;
-    FAQ34SubDescriptionJ: string;
-    FAQ34SubDescriptionJValue: string;
-    FAQ34SubDescriptionK: string;
-    FAQ34SubDescriptionKValue: string;
-    FAQ34SubDescriptionL: string;
-    FAQ34SubDescriptionLValue: string;
-    FAQ34SubDescriptionM: string;
-    FAQ34SubDescriptionMValue: string;
-    FAQ34SubDescriptionN: string;
-    FAQ34SubDescriptionNValue: string;
-    FAQ34SubDescriptionO: string;
-    FAQ34SubDescriptionOValue: string;
+    FAQ3SubDescriptionIValue: string;
+    FAQ3SubDescriptionJ: string;
+    FAQ3SubDescriptionJValue: string;
+    FAQ3SubDescriptionK: string;
+    FAQ3SubDescriptionKValue: string;
+    FAQ3SubDescriptionL: string;
+    FAQ3SubDescriptionLValue: string;
+    FAQ3SubDescriptionM: string;
+    FAQ3SubDescriptionMValue: string;
+    FAQ3SubDescriptionN: string;
+    FAQ3SubDescriptionNValue: string;
+    FAQ3SubDescriptionO: string;
+    FAQ3SubDescriptionOValue: string;
 
   
     FAQTitle4: string;

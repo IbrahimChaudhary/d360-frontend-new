@@ -1,7 +1,7 @@
-import { ShariahCommitteeData } from "@/types/sharia-complaint/sharia-complaint";
+import { ShariaComplaintData } from "@/types/sharia-complaint/sharia-complaint";
 
 interface ShahriahCommitteeProps {
-  data: ShariahCommitteeData;
+  data: ShariaComplaintData;
 }
 export default function ShariahCommittee({ data }: ShahriahCommitteeProps) {
   const responsibilities = data.ShariahPoints.split("\n")

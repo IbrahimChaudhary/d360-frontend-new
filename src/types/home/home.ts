@@ -17,6 +17,7 @@ export interface HomePageData {
   Heading: string;
   HeadingB: string;
   Description: string;
+  DescriptionB: string;
 
   Title1: string;
   Description1: string;

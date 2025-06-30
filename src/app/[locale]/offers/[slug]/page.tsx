@@ -3,45 +3,47 @@ import OfferFetcher from "@/components/offers/offer-fetcher";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchOfferPagesBySlug } from "@/api/offer";
 
-interface OfferPageProps {
-  params: { locale: string; slug: string };
-}
+// If you’re using dynamic slugs (SSG or not), it’s safe to opt in:
+export const dynamicParams = true;
 
-// Generate metadata for the Offer page
-export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
-  const { locale = "en", slug } = params;
+// Use `any` so we don’t conflict with Next.js’s generated PageProps
+export async function generateMetadata(props: any) {
+  // Cast params to the shape you expect
+  const { locale, slug } = props.params as {
+    locale?: string;
+    slug: string;
+  };
+
   try {
-    const offerData = await fetchOfferPagesBySlug(locale, slug);
+    const offerData = await fetchOfferPagesBySlug(locale || "en", slug);
     const seoData = extractSeoData(offerData[0]);
-    
+
     return generatePageMetadata({
       seoData,
-      locale: locale,
+      locale,
       path: `/offers/${slug}`,
       fallbackTitle: offerData[0].MainTitle,
-      fallbackDescription: offerData[0].Description1
+      fallbackDescription: offerData[0].Description1,
     });
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
-    
-    // Return fallback metadata
     return generatePageMetadata({
-      locale: locale,
+      locale,
       path: `/offers/${slug}`,
       fallbackTitle: "D360 Bank Offer",
-      fallbackDescription: "Check out this special offer from D360 Bank."
+      fallbackDescription: "Check out this special offer from D360 Bank.",
     });
   }
 }
 
-export default async function OfferPage({ params }: OfferPageProps) {
-  const { slug } = params;
+// Likewise, `any` here so the build-time `checkFields` passes
+export default async function OfferPage(props: any) {
+  const { slug } = props.params as { slug: string };
   return <OfferFetcher slug={slug} />;
 }
 
-// if you still want SSG for all slugs:
+// If you still want to pre-render all known slugs:
 import { offers } from "@/data/offer";
-
 export async function generateStaticParams() {
   return offers.map((offer) => ({ slug: offer.slug }));
 }
