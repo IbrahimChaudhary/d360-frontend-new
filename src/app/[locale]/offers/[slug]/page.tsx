@@ -4,19 +4,19 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchOfferPagesBySlug } from "@/api/offer";
 
 interface OfferPageProps {
-  params: Promise<{ slug: string }>;
+  params: { locale: string; slug: string };
 }
 
 // Generate metadata for the Offer page
-export async function generateMetadata({ params }: OfferPageProps) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
+  const { locale = "en", slug } = params;
   try {
-    const offerData = await fetchOfferPagesBySlug("en", slug);
+    const offerData = await fetchOfferPagesBySlug(locale, slug);
     const seoData = extractSeoData(offerData[0]);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: locale,
       path: `/offers/${slug}`,
       fallbackTitle: offerData[0].MainTitle,
       fallbackDescription: offerData[0].Description1
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: OfferPageProps) {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: locale,
       path: `/offers/${slug}`,
       fallbackTitle: "D360 Bank Offer",
       fallbackDescription: "Check out this special offer from D360 Bank."
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: OfferPageProps) {
 }
 
 export default async function OfferPage({ params }: OfferPageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   return <OfferFetcher slug={slug} />;
 }
 

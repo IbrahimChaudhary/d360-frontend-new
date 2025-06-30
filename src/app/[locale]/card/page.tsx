@@ -3,14 +3,16 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchCard } from "@/api/card";
 
 // Generate metadata for the Card page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
   try {
-    const cardData = await fetchCard("en");
+    const cardData = await fetchCard(validatedLocale);
     const seoData = extractSeoData(cardData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: validatedLocale,
       path: "/card",
       fallbackTitle: "D360 Cards - Digital Banking Cards",
       fallbackDescription: "Get your D360 Bank digital and physical cards for secure payments"
@@ -20,7 +22,7 @@ export async function generateMetadata() {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: validatedLocale,
       path: "/card",
       fallbackTitle: "D360 Cards - Digital Banking Cards",
       fallbackDescription: "Get your D360 Bank digital and physical cards for secure payments"

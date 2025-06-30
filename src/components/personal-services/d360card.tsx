@@ -5,6 +5,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
 import Link from "next/link"
+import { useStore } from "@/store/toggle-store";
 
 interface D360CardsProps{
   data:PersonalServiceData
@@ -37,6 +38,9 @@ export default function D360Cards({data}:D360CardsProps) {
   ]
 
   const activeCard = cards[activeIndex]
+
+  const { language } = useStore();
+  const isRTL = language === "ar";
 
 
   return (
@@ -78,8 +82,8 @@ export default function D360Cards({data}:D360CardsProps) {
   ))}
 </div>
 
-      <Link href="/card">     
-       <button className="bg-[#263244] cursor-pointer text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[20px] font-bold hover:bg-[#1e2d3b] transition btn-14">
+      <Link href={isRTL ? "/ar/card" : "/en/card"}>     
+       <button className="bg-[#263244] cursor-pointer text-white py-2 px-8 rounded-md lg:rounded-xl text-[8px] lg:text-[14px] font-bold hover:bg-[#1e2d3b] transition btn-14">
         {data.explore}
       </button>
       </Link>

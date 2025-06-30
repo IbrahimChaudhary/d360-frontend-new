@@ -3,14 +3,16 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchAnnualReport } from "@/api/annual-report";
 
 // Generate metadata for the annual reports page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
   try {
-    const annualData = await fetchAnnualReport("en");
+    const annualData = await fetchAnnualReport(validatedLocale);
     const seoData = extractSeoData(annualData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: validatedLocale,
       path: "/anuual-reports",
       fallbackTitle: "Annual Reports - D360 Bank",
       fallbackDescription: "Access D360 Bank's annual reports and financial statements"
@@ -20,7 +22,7 @@ export async function generateMetadata() {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: locale,
       path: "/anuual-reports",
       fallbackTitle: "Annual Reports - D360 Bank",
       fallbackDescription: "Access D360 Bank's annual reports and financial statements"

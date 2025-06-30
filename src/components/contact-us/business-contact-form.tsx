@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import { Phone, Globe } from "lucide-react";
 import { ContactPageData } from "@/types/contact-us/contact-us";
 import { useStore } from "@/store/toggle-store";
+import { toast } from "sonner";
+import Link from 'next/link'
 
 const formSchema = z.object({
   organization: z.string().nonempty("Organization name is required"),
@@ -38,8 +40,38 @@ export function BusinessForm({ data }: BusinessFormProps) {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Submitted:", data);
+  const onSubmit = async (formData: FormData) => {
+    try {
+      const response = await fetch("/api/partnership", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: "Partnership",
+          organizationName: formData.organization,
+          fullName: formData.fullName,
+          phoneNumber: formData.phone,
+          email: formData.email,
+          website: formData.website || "",
+          message: formData.message,
+        }),
+      });
+  
+      if (response.status === 200) {
+        toast.success(
+          isRTL ? "تم إرسال رسالتك بنجاح" : "Your message has been sent successfully!"
+        );
+      } else {
+        toast.error(
+          isRTL ? "فشل في إرسال الرسالة. الرجاء المحاولة لاحقًا." : "Failed to send message. Please try again."
+        );
+      }
+    } catch (err) {
+      toast.error(
+        isRTL ? "حدث خطأ في الشبكة. تحقق من الاتصال." : "Network error. Please check your connection."
+      );
+    }
   };
 
   return (
@@ -48,7 +80,7 @@ export function BusinessForm({ data }: BusinessFormProps) {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center text-[30px] md:text-[60px] w-[83%] lg:w-full  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
+        className="text-center text-[30px] md:text-[50px] w-[83%] lg:w-full  font-extrabold text-[#263244] max-w-5xl mx-auto mb-12 leading-tight"
       >
         {data.Title2}
       </motion.h2>
@@ -136,7 +168,11 @@ export function BusinessForm({ data }: BusinessFormProps) {
               <input type="checkbox" {...register("agree")} className="mr-2 ch-20" />
               <span className="text-[14px] lg:text-[20px]">
                 {data.privacy}{" "}
-                <span className="font-bold">{data.privacyBold}</span>
+                <span className="font-bold">
+                  <Link href={isRTL ? "/ar/privacy-notice" : "/en/privacy-notice"}>                  
+                  {data.privacyBold}
+                </Link>
+                </span>
               </span>
             </label>
             {errors.agree && (
@@ -153,8 +189,8 @@ export function BusinessForm({ data }: BusinessFormProps) {
         </div>
       </form>
 
-      <div className="mt-16 flex justify-between  text-[14px] lg:text-[30px] text-[#263244]">
-        <div className="rtl:space-y-7 ltr:space-y-4 lg:w-full w-[50%]">
+      <div className="mt-16 flex justify-between px-4 text-[14px] lg:text-[20px] text-[#263244]">
+        <div className="rtl:space-y-7 ltr:space-y-4 w-[50%]">
           <p> {data.TollFree}</p>
           <p> {data.outside}</p>
         </div>

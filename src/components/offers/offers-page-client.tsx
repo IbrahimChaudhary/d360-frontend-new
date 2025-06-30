@@ -18,7 +18,6 @@ import { OfferCardData } from "@/types/offer/offercard";
 import { useStore } from "@/store/toggle-store";
 
 export default function OffersPageClient() {
- 
   const [activeCategory, setActiveCategory] = useState("all");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -59,20 +58,15 @@ export default function OffersPageClient() {
 
   const visibleOffers =
     isMobile && !isExpanded ? filteredOffers?.slice(0, 2) : filteredOffers;
-  const offerCategories: OfferCategory[] = [
-    {
-      id: "automative",
-      name: { en: `${offer?.Type1}`, ar: `${offer?.Type1}` },
-    },
-    {
-      id: "shopping",
-      name: { en: `${offer?.Type2}`, ar: `${offer?.Type2}` },
-    },
-    {
-      id: "Expired-offers",
-      name: { en: `${offer?.Type3}`, ar: `${offer?.Type3}` },
-    },
-  ];
+
+  const offerCategories: OfferCategory[] = offer
+    ? Object.keys(offer)
+        .filter((key) => /^Type\d+$/.test(key))
+        .map((key) => ({
+          id: ((offer as any)[key] as string)?.toLowerCase()?.replace(/\s+/g, '-') + '-offers',
+          name: { en: (offer as any)[key], ar: (offer as any)[key] },
+        }))
+    : [];
   return (
     <div className="flex min-h-screen flex-col">
       <div className="hidden lg:block">
@@ -164,4 +158,4 @@ export default function OffersPageClient() {
       <Footer />
     </div>
   );
-} 
+}

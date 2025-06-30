@@ -39,18 +39,42 @@ export interface CardsData {
   FAQDescription4: string;
   MainTitle1: string;
   MainTitle2: string;
-  feat1: string;
-  feat2: string;
-  feat3: string;
-  feat4: string;
-  feat5: string;
-  feat6: string;
+  Card1Feat1: string;
+  Card1Feat2: string;
+  Card1Feat3: string;
+  Card1Feat4: string;
+  Card1Feat5: string;
+  Card1Feat6: string;
+  Card2Feat1: string;
+  Card2Feat2: string;
+  Card2Feat3: string;
+  Card2Feat4: string;
+  Card2Feat5: string;
+  Card2Feat6: string;
+  Card3Feat1: string;
+  Card3Feat2: string;
+  Card3Feat3: string;
+  Card3Feat4: string;
+  Card3Feat5: string;
+  Card3Feat6: string;
+  Card1Title:string;
+  Card1Description:string;
+  Card1Footer:string
+  Card2Title:string;
+  Card2Description:string;
+  Card2Footer:string
+  Card3Title:string;
+  Card3Description:string;
+  Card3Footer:string
   free:string
   getCard: string;
   imges: StrapiMediaData;
   imges1: StrapiMediaData;
   imges2: StrapiMediaData;
   imges3: StrapiMediaData;
+  Footer:string;
+  Subtitle:string;
+  ButtonText:string
   
   /** SEO data */
   SEO: SeoComponent[];

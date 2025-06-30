@@ -90,7 +90,8 @@ export default function HomePage({ locale }: { locale?: "en" | "ar" }) {
         {homeData && <InteractiveCardHero data={homeData}/>}
         {/* {homeData && <MobileAnimatedSection data={homeData}/>} */}
         {homeData && <ShariahSection data={homeData}/>}
-        {international && (
+
+        {/*{international && (
           <TransferSection
           data={international}
             heading={international?.InternationalHead}
@@ -98,7 +99,8 @@ export default function HomePage({ locale }: { locale?: "en" | "ar" }) {
             description={international?.InternationalDes}
             container="lg:flex justify-center items-start"
           />
-        )}
+          
+        )}*/}
         
       </main>
       <Footer />

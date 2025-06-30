@@ -6,12 +6,12 @@ import { NewsArticleFetcher } from "@/components/media/new-cards-fetcher";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: { locale: string; slug: string };
 }
 
 // Generate metadata for the News Article page
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale = "en", slug } = params;
   try {
     const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
     
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
     const res = await fetch(
       `${apiUrl}/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
         slug
-      )}&populate=*&locale=en`,
+      )}&populate=*&locale=${locale}`,
       { cache: 'no-store' } // Disable caching
     );
     
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props) {
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale,
       path: `/media/news/${slug}`,
       fallbackTitle: articleData.heading,
       fallbackDescription: articleData.shortDesc
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props) {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale,
       path: `/media/news/${slug}`,
       fallbackTitle: "News Article - D360 Bank",
       fallbackDescription: "Read the latest news and updates from D360 Bank."
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function NewsArticlePage({ params }: Props) {
-  const { slug } = await params;
+  const { slug } = params;
   return (
     <div className="flex min-h-screen flex-col">
       <Header variant="about"/>

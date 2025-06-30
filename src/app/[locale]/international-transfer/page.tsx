@@ -3,14 +3,16 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchInternational } from "@/api/international";
 
 // Generate metadata for the International Transfer page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
   try {
-    const internationalData = await fetchInternational("en");
+    const internationalData = await fetchInternational(validatedLocale);
     const seoData = extractSeoData(internationalData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: validatedLocale,
       path: "/international-transfer",
       fallbackTitle: "International Transfer - D360 Bank",
       fallbackDescription: "Send money internationally with D360 Bank's secure and fast transfer services."
@@ -20,7 +22,7 @@ export async function generateMetadata() {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: validatedLocale,
       path: "/international-transfer",
       fallbackTitle: "International Transfer - D360 Bank",
       fallbackDescription: "Send money internationally with D360 Bank's secure and fast transfer services."

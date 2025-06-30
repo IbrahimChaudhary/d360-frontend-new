@@ -69,7 +69,7 @@ export default function InternationalTransferPageClient() {
             </h1>
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] lg:mt-8 cursor-pointer mt-4 text-white font-bold py-2 px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] lg:mt-8 hover:bg-[#d23e23] cursor-pointer mt-4 text-white font-bold py-2 px-4 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
                   ? "lg:px-3 w-[30%] ml-[70%] lg:w-[40%] lg:ml-30"
                   : "lg:px-16"
@@ -90,9 +90,7 @@ export default function InternationalTransferPageClient() {
           classname="w-[70%] lg:w-[40%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
           textstyle="flex lg:block  items-center lg:space-y-6 lg:mt-0 mt-6"
           subheading="ltr:text-left rtl:text-right lg:text-[30px]"
-          arrows="text-sm gap-0 lg:gap-4 flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10
-    absolute bottom-4 -right-6 -translate-x-1/2
-    lg:static lg:translate-x-0 rtl:lg:justify-end ltr:lg:justify-start lg:bottom-auto lg:left-auto"
+          arrows="text-sm gap-0 lg:gap-4 text-sm gap-0 lg:gap-4 flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10 bottom-4 lg:static lg:translate-x-0 ltr:lg:justify-start rtl:lg:justify-end lg:bottom-auto lg:left-auto carousel-arrow"
           icon="w-[23px] h-[23px] lg:w-[34px] lg:h-[34px] "
           img1=" block lg:hidden"
           img2="lg:block hidden"
@@ -208,7 +206,8 @@ export default function InternationalTransferPageClient() {
             },
           ]}
         />
-        {international && (
+        
+{/*        {international && (
           <TransferSection
           data={international}
             heading={international?.InternationalHead}
@@ -216,7 +215,7 @@ export default function InternationalTransferPageClient() {
             description={international?.InternationalDes}
             container="lg:flex justify-center items-start"
           />
-        )}
+        )}*/}
 
         {international && <CountriesSection data={international}/>}
         {international && <FeaturesSection data={international}/>}

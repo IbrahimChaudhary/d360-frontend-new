@@ -31,14 +31,14 @@ const mdComponents = {
 
   // Unordered lists
   ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
-    <ul className="list-disc  pl-4 space-y-2" {...props} />
+    <ul className="list-disc  p-4 space-y-2" {...props} />
   ),
   // Ordered lists (alphabetical if the source uses 1. a) etc)
   ol: (props: React.ComponentPropsWithoutRef<"ol">) => (
     <ol className="list-decimal  pl-4 space-y-2" type="a" {...props} />
   ),
   li: (props: React.ComponentPropsWithoutRef<"li">) => (
-    <li className="text-base md:text-lg leading-relaxed" {...props} />
+    <li className="text-base text-[14px] lg:text-[20px] md:text-lg leading-relaxed" {...props} />
   ),
 };
 

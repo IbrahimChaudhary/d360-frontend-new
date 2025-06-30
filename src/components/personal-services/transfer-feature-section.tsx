@@ -4,6 +4,8 @@ import { motion } from "framer-motion"
 import { FaGlobe, FaExchangeAlt } from "react-icons/fa"
 import Image from "next/image"
 import { PersonalServiceData } from "@/types/personal-service/personal-service"
+import Link from 'next/link'
+import { useStore } from "@/store/toggle-store";
 
 
 interface TransfersFeatureSectionProps{
@@ -34,6 +36,10 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
       reverse: true,
     },
   ];
+
+  const { language } = useStore();
+  const isRTL = language === "ar";
+
   return (
     <section className="bg-white py-12 px-4 overflow-hidden">
     <div className="lg:max-w-3xl  mx-auto">
@@ -50,9 +56,11 @@ export default function TransfersFeatureSection({data}:TransfersFeatureSectionPr
               <div className="flex items-center justify-start">{item.icon}</div>
               <div>
                 <h2 className="text-3xl lg:text-4xl font-extrabold text-[#263244] leading-tight mb-4">{item.title}</h2>
-                <button className="bg-[#E74529]  text-white px-8 py-2 rounded-[10px] lg:rounded-xl font-bold text-[8px] lg:text-[20px]  transition-colors btn-14">
-                  {item.button}
-                </button>
+                <Link href={isRTL ? "/ar/international-transfer" : "/en/international-transfer"}>
+                  <button className="bg-[#E74529]  text-white px-8 py-2 rounded-[10px] lg:rounded-xl font-bold text-[8px] lg:text-[14px]  transition-colors btn-14">
+                    {item.button}
+                  </button>
+              </Link>
             </div>
             </div>
 

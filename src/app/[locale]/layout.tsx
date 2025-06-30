@@ -4,6 +4,7 @@ import LanguageHTMLUpdater from "@/components/language-html-updater";
 import FontSwitcher from "@/components/font-switcher";
 import ClientLocaleSync from "@/components/client-locale-sync";
 import "../globals.css";
+import { Toaster } from 'sonner';
 
 const lato = Lato({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${lato.variable} ${tajawal.variable}`}>
+      <Toaster richColors position="top-center" />
         <ClientLocaleSync locale={locale} />
         <LanguageHTMLUpdater locale={locale} />
         <FontSwitcher>{children}</FontSwitcher>

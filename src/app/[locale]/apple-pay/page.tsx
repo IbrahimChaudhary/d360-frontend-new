@@ -3,14 +3,16 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchApplePay } from "@/api/apple-pay";
 
 // Generate metadata for the Apple Pay page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
   try {
-    const applePayData = await fetchApplePay("en");
+    const applePayData = await fetchApplePay(validatedLocale);
     const seoData = extractSeoData(applePayData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: validatedLocale,
       path: "/apple-pay",
       fallbackTitle: "Apple Pay - D360 Bank",
       fallbackDescription: "Use Apple Pay with D360 Bank for secure and convenient payments"
@@ -20,7 +22,7 @@ export async function generateMetadata() {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: validatedLocale,
       path: "/apple-pay",
       fallbackTitle: "Apple Pay - D360 Bank",
       fallbackDescription: "Use Apple Pay with D360 Bank for secure and convenient payments"

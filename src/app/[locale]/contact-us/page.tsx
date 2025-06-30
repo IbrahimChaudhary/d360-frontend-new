@@ -3,14 +3,16 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 import { fetchContact } from "@/api/contact-us";
 
 // Generate metadata for the Contact Us page
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
   try {
-    const contactData = await fetchContact("en");
+    const contactData = await fetchContact(validatedLocale);
     const seoData = extractSeoData(contactData);
     
     return generatePageMetadata({
       seoData,
-      locale: "en",
+      locale: validatedLocale,
       path: "/contact-us",
       fallbackTitle: "Contact D360 Bank",
       fallbackDescription: "Contact D360 Bank for support, business inquiries, and more."
@@ -20,7 +22,7 @@ export async function generateMetadata() {
     
     // Return fallback metadata
     return generatePageMetadata({
-      locale: "en",
+      locale: validatedLocale,
       path: "/contact-us",
       fallbackTitle: "Contact D360 Bank",
       fallbackDescription: "Contact D360 Bank for support, business inquiries, and more."

@@ -14,12 +14,15 @@ import { SavingsData } from "@/types/savings-account/savings-account";
 import { useEffect, useState } from "react";
 import { fetchSavings } from "@/api/savings-account";
 import { extractFAQItems } from "@/lib/faq-extract";
+import { DownloadModal } from "../home/download-modal";
+
 
 export function SavingsAccountPageClient() {
   const { t } = useTranslations();
   const { language } = useStore();
   const isRTL = language === "ar";
   const [savings, setSavings] = useState<SavingsData | null>(null);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     fetchSavings(language)
@@ -27,6 +30,7 @@ export function SavingsAccountPageClient() {
       .catch((err) => console.error("Failed to load About D360:", err));
   }, [language]);
   const faqItems = savings ? extractFAQItems(savings) : [];
+
 
   return (
     <div className="flex  flex-col">
@@ -60,7 +64,7 @@ export function SavingsAccountPageClient() {
               <br />
               {savings?.MainTitle3}
             </h1>
-            <button className="bg-[#EB644C] rounded-md px-8 py-2  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
+            <button  onClick={() => setModalOpen(true)} className="bg-[#EB644C] rounded-md hover:bg-[#d23e23] cursor-pointer px-8 py-2  font-bold text-white text-[8px] lg:text-[20px] lg:px-8 lg:py-2 lg:rounded-[14px]">
               {savings?.HeroBtn}
             </button>
             <p className="text-[10px] lg:w-full w-[46%]  lg:text-[14px] font-medium py-3 lg:py-6 text-white lg:leading-[5.5rem]">
@@ -162,11 +166,14 @@ export function SavingsAccountPageClient() {
           titleClassName="lg:pb-0 text-[30px] lg:text-[60px] font-extrabold    text-[#293242]"
           para={
             language === "ar"
-              ? "ابحث عن إجابات لأكثر الأسئلة شيوعًا حول حساب التوفير سنابل."
+              ? "ابحث عن إجابات لأكثر الأسئلة شيوعًا حول حساب سنابل الإدّخاري"
               : "Find answers to the most frequently asked questions about the Sanabil Savings Account."
           }
         />
+
+        <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
       </main>
+     
       <Footer />
     </div>
   );

@@ -71,9 +71,7 @@ export function PaymentsPageClient() {
             classname="w-[70%] lg:w-[50%] rtl:text-right ltr:text-left text-[12px] lg:mt-3"
             textstyle="flex lg:block items-center lg:space-y-6 lg:mt-0 mt-6"
             subheading="ltr:text-left rtl:text-right text-[12px]"
-            arrows="text-sm gap-0 lg:gap-4 text-sm gap-0 lg:gap-4 flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10
-    absolute bottom-4 -right-6 -translate-x-1/2
-    lg:static lg:translate-x-0 ltr:lg:justify-start rtl:lg:justify-end lg:bottom-auto lg:left-auto"
+            arrows="text-sm gap-0 lg:gap-4 text-sm gap-0 lg:gap-4 flex text-xl rtl:flex-row-reverse justify-center gap-2 z-10 bottom-4 lg:static lg:translate-x-0 ltr:lg:justify-start rtl:lg:justify-end lg:bottom-auto lg:left-auto carousel-arrow"
             icon="w-4 h-4 lg:w-6 lg:h-6 "
             img1=" block lg:hidden"
             img2="lg:flex hidden w-full  justify-end items-end"

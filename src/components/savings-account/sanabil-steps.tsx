@@ -1,11 +1,15 @@
 "use client";
-
+import { useStore } from "@/store/toggle-store";
+import Link from 'next/link'
 import { SavingsData } from "@/types/savings-account/savings-account";
 
 interface SanabilStepsProps {
   data: SavingsData;
 }
 export default function SanabilSteps({ data }: SanabilStepsProps) {
+  const { language } = useStore();
+  const isRTL = language === "ar";
+
   const steps = [
     {
       number: `${data.Step1Num}`,
@@ -52,7 +56,9 @@ export default function SanabilSteps({ data }: SanabilStepsProps) {
             </div>
           ))}
            <p className="text-xs text-center rtl:lg:text-right ltr:lg:text-left text-[#64748B]  underline cursor-pointer">
-          {data.OpenTerms}
+            <Link href={isRTL ? "/ar/terms-and-conditions" : "/en/terms-and-conditions"} >
+              {data.OpenTerms}
+             </Link>
           </p>
         </div>
       </div>

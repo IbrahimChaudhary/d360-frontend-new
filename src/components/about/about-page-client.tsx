@@ -85,7 +85,7 @@ export default function AboutPageClient() {
 
             <div
               onClick={() => setModalOpen(true)}
-              className={`bg-[#EB644C] cursor-pointer text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
+              className={`bg-[#EB644C] hover:bg-[#d23e23] cursor-pointer text-white font-bold py-2 px-2 text-center text-[8px] lg:text-[20px] lg:py-2 rounded-md lg:rounded-[14px] ${
                 isRTL
                   ? "lg:px-3 w-[30%] ml-[70%] lg:w-[60%] lg:ml-30"
                   : "lg:px-16"

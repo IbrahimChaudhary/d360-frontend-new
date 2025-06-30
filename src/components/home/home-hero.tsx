@@ -67,7 +67,7 @@ export function HomeHero({ data }: HomeHeroProps) {
           </p>
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#EB644C] text-white text-[8px] font-bold lg:text-[20px] md:px-18 py-3 px-6  md:py-3 rounded-lg lg:rounded-[14px]"
+            className="bg-[#EB644C] text-white text-[8px] hover:bg-[#d23e23] cursor-pointer font-bold lg:text-[20px] md:px-18 py-3 px-6  md:py-3 rounded-lg lg:rounded-[14px]"
           >
             {data.download}
           </button>

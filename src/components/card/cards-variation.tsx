@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CardsData } from "@/types/card/card";
 import { useStore } from "@/store/toggle-store";
+import { DownloadModal } from "../home/download-modal";
 
 interface CardVariantsProps {
   data: CardsData;
@@ -28,20 +29,49 @@ export default function CardVariants({ data }: CardVariantsProps) {
   const [selected, setSelected] = useState(0);
   const [animate, setAnimate] = useState(false);
   const { language } = useStore();
+  const cardTitles = [data.Card1Title, data.Card2Title, data.Card3Title];
+const cardDescriptions = [data.Card1Description, data.Card2Description, data.Card3Description];
+const cardFooters = [data.Card1Footer, data.Card2Footer, data.Card3Footer];
+
+const currentTitle = cardTitles[selected];
+const currentDescription = cardDescriptions[selected];
+const currentFooter = cardFooters[selected];
+
 
   const t = translations[language] || translations.en;
   useEffect(() => {
     const timeout = setTimeout(() => setAnimate(true), 300);
     return () => clearTimeout(timeout);
   }, [selected]);
-  const features = [
-    `${data.feat1}`,
-    `${data.feat2}`,
-    `${data.feat3}`,
-    `${data.feat4}`,
-    `${data.feat5}`,
-    `${data.feat6}`,
+  const cardFeaturesMap = [
+    [
+      data.Card1Feat1,
+      data.Card1Feat2,
+      data.Card1Feat3,
+      data.Card1Feat4,
+      data.Card1Feat5,
+      data.Card1Feat6,
+    ],
+    [
+      data.Card2Feat1,
+      data.Card2Feat2,
+      data.Card2Feat3,
+      data.Card2Feat4,
+      data.Card2Feat5,
+      data.Card2Feat6,
+    ],
+    [
+      data.Card3Feat1,
+      data.Card3Feat2,
+      data.Card3Feat3,
+      data.Card3Feat4,
+      data.Card3Feat5,
+      data.Card3Feat6,
+    ],
   ];
+  
+  const features = cardFeaturesMap[selected];
+  
   const cards = [
     {
       image: `${process.env.NEXT_PUBLIC_STRAPI_URL}${
@@ -109,6 +139,8 @@ export default function CardVariants({ data }: CardVariantsProps) {
   ];
   const current = cards[selected];
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
   return (
     <section className={`${current.bg} py-6 lg:py-10 `}>
       <div className="max-w-7xl mx-auto px-4 lg:px-6">
@@ -119,7 +151,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
             <h2
               className={`text-[30px] sm:text-5xl  w-[65%] font-extrabold mb-2 ${current.text}`}
             >
-              {data.Title2}
+              {currentTitle}
             </h2>
             <h2
               className={`text-[30px] sm:text-5xl  w-[65%] font-extrabold mb-2 ${current.text}`}
@@ -127,9 +159,10 @@ export default function CardVariants({ data }: CardVariantsProps) {
               {data.Title3}
             </h2>
             <p className="text-[#263244] text-[14px] font-[400] mb-4">
-              {data.Description5}
+            {currentDescription}
             </p>
             <button
+              onClick={() => setModalOpen(true)}
               className={`${current.button} text-white px-6 py-3 rounded-lg font-bold text-[8px] `}
             >
               {data.getCard}
@@ -144,8 +177,8 @@ export default function CardVariants({ data }: CardVariantsProps) {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             {features.map((feature, i) => (
-              <motion.div
-                key={feature}
+  <motion.div key={`feature-${selected}-${i}`}
+
                 className={cn(
                   "flex  items-center gap-2 rounded-2xl px-2 py-1 lg:text-center",
                   current.border
@@ -240,12 +273,13 @@ export default function CardVariants({ data }: CardVariantsProps) {
           <div>
             <div className="space-y-2">
               <h2 className={`text-[60px] font-bold ${current.text}`}>
-                {data.Title2}
+              {currentTitle}
               </h2>
-              <p className="text-[#263244] text-[25px]">{t.subtitle}</p>
+              <p className="text-[#263244] text-[25px]">{currentDescription}</p>
               <button
-                 className={`${current.button} text-white px-5 py-2 rounded-xl font-bold text-[20px] btn-14`} >
-                {t.button}
+                onClick={() => setModalOpen(true)}
+                 className={`${current.button} text-white hover:bg-[#d23e23] cursor-pointer px-5 py-2 rounded-xl font-bold text-[20px] btn-14`} >
+                {data.ButtonText}
               </button>
             </div>
 
@@ -272,8 +306,8 @@ export default function CardVariants({ data }: CardVariantsProps) {
             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
           >
             {features.map((feature, i) => (
-              <motion.div
-                key={feature}
+  <motion.div key={`feature-${selected}-${i}`}
+
                 className={cn(
                   "flex items-center gap-4 rounded-full px-4 py-4",
                   current.border
@@ -306,7 +340,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
                     </motion.div>
                   </AnimatePresence>
                 </div>
-                <p className="text-[19px] font-bold text-[#263244]">
+                <p className="text-[18px] font-bold text-[#263244]">
                   {feature}
                 </p>
               </motion.div>
@@ -317,7 +351,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
         {/* Desktop Bottom Section */}
         <div className="hidden lg:flex justify-around items-center pt-10 lg:pt-26 ">
           <p className="text-[25px] w-full max-w-[430px] font-extrabold text-black">
-          {t.footer}
+          {currentFooter}
           </p>
 
           <div className="flex justify-end w-full max-w-[430px] gap-4 relative">
@@ -351,6 +385,7 @@ export default function CardVariants({ data }: CardVariantsProps) {
           </div>
         </div>
       </div>
+      <DownloadModal open={isModalOpen} onOpenChange={setModalOpen} />
     </section>
   );
 }

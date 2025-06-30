@@ -25,7 +25,7 @@ export default function ApplePayOverview({ data }: ApplePayProps) {
       <h4 className="text-2xl font-semibold mt-3 mb-4" {...props} />
     ),
     ul: (props: React.ComponentPropsWithoutRef<"ul">) => (
-      <ul className="list-disc  pl-4 space-y-2" {...props} />
+      <ul className="list-disc p-4 space-y-2" {...props} />
     ),
     li: (props: React.ComponentPropsWithoutRef<"li">) => (
       <li className="text-base md:text-lg leading-relaxed" {...props} />
