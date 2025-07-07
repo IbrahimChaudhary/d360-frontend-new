@@ -41,6 +41,7 @@ export function TermsConditionsPageClient({ initialTermsConditionsData }: TermsC
   </div>
 
 )}
+
        {/*<MergedFAQAccordion faqItems={faqItems} title="hidden" />*/}
     </div>
     
