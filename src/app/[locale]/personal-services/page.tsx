@@ -31,8 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function PersonalServicesPage() {
-  return (
-    <PersonalServicesPageClient />
-  );
+export default async function PersonalServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const personalServiceData = await fetchPersonalService(validatedLocale).catch(() => null);
+  
+  return <PersonalServicesPageClient initialPersonalServiceData={personalServiceData} />;
 }

@@ -2,7 +2,6 @@ import InternationalTransferPageClient from "@/components/international-transfer
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchInternational } from "@/api/international";
 
-// Generate metadata for the International Transfer page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/international-transfer",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function InternationalTransferPage() {
-  return <InternationalTransferPageClient />;
+export default async function InternationalTransferPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const internationalData = await fetchInternational(validatedLocale).catch(() => null);
+  
+  return <InternationalTransferPageClient initialInternationalData={internationalData} />;
 }

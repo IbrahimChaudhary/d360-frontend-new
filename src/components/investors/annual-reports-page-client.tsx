@@ -12,15 +12,25 @@ import { useEffect, useState } from "react";
 import { fetchAnnualReport } from "@/api/annual-report";
 import { AnnualReportsData } from "@/types/annual-report/annual-report";
 
-export default function AnnualReportsPageClient() {
-  const { language } = useStore();
-  const [annual, setAnnual] = useState<AnnualReportsData | null>(null);
+interface AnnualReportsPageClientProps {
+  initialAnnualData?: AnnualReportsData | null;
+}
 
+export default function AnnualReportsPageClient({ initialAnnualData }: AnnualReportsPageClientProps) {
+  const { language } = useStore();
+  
+  // Initialize state with server-side data if available
+  const [annual, setAnnual] = useState<AnnualReportsData | null>(initialAnnualData || null);
+
+  // Only fetch if we don't have initial data or if language changes
   useEffect(() => {
-    fetchAnnualReport(language)
-      .then((data) => setAnnual(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialAnnualData || language !== (initialAnnualData?.locale || language)) {
+      fetchAnnualReport(language)
+        .then((data) => setAnnual(data))
+        .catch((err) => console.error("Failed to load Annual Report:", err));
+    }
+  }, [language, initialAnnualData]);
+
   const isRTL = language === "ar";
   const customReportCards =
     annual?.reports.map((report) => ({

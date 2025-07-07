@@ -13,17 +13,23 @@ import { PaymentsData } from "@/types/payments/payments";
 import { fetchPayments } from "@/api/payments";
 import { extractFAQItems } from "@/lib/faq-extract";
 
-export function PaymentsPageClient() {
+interface PaymentsPageClientProps {
+  initialPaymentData?: PaymentsData | null;
+}
+
+export function PaymentsPageClient({ initialPaymentData }: PaymentsPageClientProps) {
   const { t } = useTranslations();
   const { language } = useStore();
   const isRTL = language === "ar";
-  const [payment, setPayment] = useState<PaymentsData | null>(null);
+  const [payment, setPayment] = useState<PaymentsData | null>(initialPaymentData || null);
 
   useEffect(() => {
-    fetchPayments(language)
-      .then(setPayment)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialPaymentData) {
+      fetchPayments(language)
+        .then(setPayment)
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialPaymentData]);
   
   console.log(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}${

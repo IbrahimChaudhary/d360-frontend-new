@@ -36,6 +36,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
-  await params; // Await the params Promise
-  return <AboutPageClient />;
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const aboutData = await fetchAboutD360(validatedLocale).catch(() => null);
+  
+  return <AboutPageClient initialAboutData={aboutData} />;
 }

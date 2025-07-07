@@ -10,15 +10,21 @@ import { ShariaComplaintData } from "@/types/sharia-complaint/sharia-complaint";
 import { useEffect, useState } from "react";
 import { fetchShariah } from "@/api/sharia-complaint";
 
-export function ShariaComplaintPageClient() {
+interface ShariaComplaintPageClientProps {
+  initialShariahData?: ShariaComplaintData | null;
+}
+
+export function ShariaComplaintPageClient({ initialShariahData }: ShariaComplaintPageClientProps) {
   const { language } = useStore();
-  const [shahriah, setShahriah] = useState<ShariaComplaintData | null>(null);
+  const [shahriah, setShahriah] = useState<ShariaComplaintData | null>(initialShariahData || null);
 
   useEffect(() => {
-    fetchShariah(language)
-      .then((data) => setShahriah(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialShariahData) {
+      fetchShariah(language)
+        .then((data) => setShahriah(data))
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialShariahData]);
   const isRTL = language === "ar";
 
   return (

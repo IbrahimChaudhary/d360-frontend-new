@@ -2,7 +2,6 @@ import CardPageClient from "@/components/card/card-page-client";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchCard } from "@/api/card";
 
-// Generate metadata for the Card page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/card",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function CardPage() {
-  return <CardPageClient />;
+export default async function CardPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const cardData = await fetchCard(validatedLocale).catch(() => null);
+  
+  return <CardPageClient initialCardData={cardData} />;
 }

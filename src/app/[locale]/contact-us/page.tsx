@@ -2,7 +2,6 @@ import ContactUsPageClient from "@/components/contact-us/contact-us-page-client"
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchContact } from "@/api/contact-us";
 
-// Generate metadata for the Contact Us page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/contact-us",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function ContactUsPage() {
-  return <ContactUsPageClient />;
+export default async function ContactUsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const contactData = await fetchContact(validatedLocale).catch(() => null);
+  
+  return <ContactUsPageClient initialContactData={contactData} />;
 }

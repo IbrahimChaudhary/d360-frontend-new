@@ -6,9 +6,7 @@ import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/
 
 export const dynamicParams = true;
 
-// ← Use `any` here to satisfy Next.js’s generated PageProps
 export async function generateMetadata(props: any): Promise<Metadata> {
-  // Cast to your known shape
   const { locale, slug } = (props.params as {
     locale?: string;
     slug: string;
@@ -57,15 +55,69 @@ export async function generateMetadata(props: any): Promise<Metadata> {
   }
 }
 
-// ← Also `any` here avoids the `PageProps` clash
 export default async function NewsArticlePage(props: any) {
-  const { slug } = (props.params as { slug: string });
+  const { slug, locale } = (props.params as { slug: string; locale?: string });
+  const validatedLocale = locale || "en";
+  
+  const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
+  
+  // Fetch main article server-side
+  const mainArticleRes = await fetch(
+    `${apiUrl}/api/news-cards?filters[slug][$eq]=${encodeURIComponent(
+      slug
+    )}&populate=*&locale=${validatedLocale}`,
+    { cache: "no-store" }
+  ).catch(() => null);
+  
+  let mainArticle = null;
+  if (mainArticleRes?.ok) {
+    const json = await mainArticleRes.json();
+    const items = Array.isArray(json.data) ? json.data : [];
+    if (items.length > 0) {
+      const hit = items[0];
+      const raw = hit.attributes ?? hit;
+      mainArticle = {
+        id: hit.id,
+        slug: raw.slug,
+        ...raw,
+      };
+    }
+  }
+  
+  // Fetch related articles server-side
+  const relatedRes = await fetch(
+    `${apiUrl}/api/news-cards?filters[slug][$ne]=${encodeURIComponent(
+      slug
+    )}&populate=*&pagination[limit]=2&locale=${validatedLocale}`,
+    { cache: "no-store" }
+  ).catch(() => null);
+  
+  let relatedArticles = [];
+  if (relatedRes?.ok) {
+    const json = await relatedRes.json();
+    const items = Array.isArray(json.data) ? json.data : [];
+    relatedArticles = items
+      .map((hit: any) => {
+        const raw = hit.attributes ?? hit;
+        if (typeof raw.slug !== "string") return null;
+        return {
+          id: hit.id,
+          slug: raw.slug,
+          ...raw,
+        };
+      })
+      .filter((x: any) => x !== null);
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header variant="about" />
       <main className="flex-1 lg:pt-40">
-        <NewsArticleFetcher slug={slug} />
+        <NewsArticleFetcher 
+          slug={slug} 
+          initialArticle={mainArticle}
+          initialRelatedArticles={relatedArticles}
+        />
       </main>
       <Footer />
     </div>

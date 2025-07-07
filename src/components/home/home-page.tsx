@@ -20,31 +20,42 @@ import TransferSection from "./international-transfers-mobile";
 import { InternationalData } from "@/types/international/international";
 import { fetchInternational } from "@/api/international";
 
+interface HomePageProps {
+  locale?: "en" | "ar";
+  initialHomeData?: HomePageData | null;
+  initialInternationalData?: InternationalData | null;
+}
 
-export default function HomePage({ locale }: { locale?: "en" | "ar" }) {
+export default function HomePage({ locale, initialHomeData, initialInternationalData }: HomePageProps) {
   const { language } = useStore();
   // Use the passed locale prop if available, otherwise fall back to store language
   const currentLanguage = locale || language;
   const content = currentLanguage === "en" ? englishContent : arabicContent;
   const isRTL = currentLanguage === "ar";
-  const [homeData, setHomeData] = useState<HomePageData | null>(null);
-
+  
+  // Initialize state with server-side data if available
+  const [homeData, setHomeData] = useState<HomePageData | null>(initialHomeData || null);
   const [international, setInternational] = useState<InternationalData | null>(
-    null
+    initialInternationalData || null
   );
 
+  // Only fetch if we don't have initial data or if language changes
   useEffect(() => {
-    fetchInternational(currentLanguage)
-      .then((data) => setInternational(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [currentLanguage]);
-
+    if (!initialInternationalData || currentLanguage !== locale) {
+      fetchInternational(currentLanguage)
+        .then((data) => setInternational(data))
+        .catch((err) => console.error("Failed to load International data:", err));
+    }
+  }, [currentLanguage, initialInternationalData, locale]);
 
   useEffect(() => {
-    fetchHomePage(currentLanguage)
-      .then(setHomeData)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [currentLanguage]);
+    if (!initialHomeData || currentLanguage !== locale) {
+      fetchHomePage(currentLanguage)
+        .then(setHomeData)
+        .catch((err) => console.error("Failed to load Home data:", err));
+    }
+  }, [currentLanguage, initialHomeData, locale]);
+
   const stats = [
     { 
       label: homeData?.Title5 ?? '', 

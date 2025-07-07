@@ -9,15 +9,21 @@ import { SecurityAwarenessData } from "@/types/security-awareness/security-aware
 import { fetchSecurityAwareness } from "@/api/security-awareness";
 import { extractFAQItems } from "@/lib/faq-extract";
 
-export function SecurityAwarenessPageClient() {
+interface SecurityAwarenessPageClientProps {
+  initialSecurityData?: SecurityAwarenessData | null;
+}
+
+export function SecurityAwarenessPageClient({ initialSecurityData }: SecurityAwarenessPageClientProps) {
   const { language } = useStore();
-  const [security, setSecurity] = useState<SecurityAwarenessData | null>(null);
+  const [security, setSecurity] = useState<SecurityAwarenessData | null>(initialSecurityData || null);
 
   useEffect(() => {
-    fetchSecurityAwareness(language)
-      .then((data) => setSecurity(data))
-      .catch((err) => console.error(err));
-  }, [language]);
+    if (!initialSecurityData) {
+      fetchSecurityAwareness(language)
+        .then((data) => setSecurity(data))
+        .catch((err) => console.error(err));
+    }
+  }, [language, initialSecurityData]);
   const faqItems = security ? extractFAQItems(security) : [];
   return (
     <div className="w-full  flex flex-col justify-center items-center">

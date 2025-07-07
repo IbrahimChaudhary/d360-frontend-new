@@ -31,7 +31,7 @@ export interface ContactPageData {
   insidePhone: string;
   outsidePhone: string;
   sendMsg: string;
-
+  locale: string;
   SEO: SeoComponent[];
 }
 

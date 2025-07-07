@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function PrivacyNoticePage() {
-  return (
-    <PrivacyNoticePageClient />
-  );
+export default async function PrivacyNoticePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const privacyNoticeData = await fetchPrivacyNotice(validatedLocale).catch(() => null);
+  
+  return <PrivacyNoticePageClient initialPrivacyNoticeData={privacyNoticeData} />;
 }

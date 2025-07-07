@@ -12,19 +12,25 @@ import { PersonalServiceData } from "@/types/personal-service/personal-service";
 import { useEffect, useState } from "react";
 import { fetchPersonalService } from "@/api/personal-service";
 
-export function PersonalServicesPageClient() {
+interface PersonalServicesPageClientProps {
+  initialPersonalServiceData?: PersonalServiceData | null;
+}
+
+export function PersonalServicesPageClient({ initialPersonalServiceData }: PersonalServicesPageClientProps) {
   const { language } = useStore();
   const { t } = useTranslations();
   const isRTL = language === "ar";
   const [isModalOpen, setModalOpen] = useState(false);
   const [personalService, setPersonalService] =
-    useState<PersonalServiceData | null>(null);
+    useState<PersonalServiceData | null>(initialPersonalServiceData || null);
 
   useEffect(() => {
-    fetchPersonalService(language)
-      .then(setPersonalService)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialPersonalServiceData) {
+      fetchPersonalService(language)
+        .then(setPersonalService)
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialPersonalServiceData]);
   return (
     <div className="flex min-h-screen flex-col">
       <Header variant="about" />

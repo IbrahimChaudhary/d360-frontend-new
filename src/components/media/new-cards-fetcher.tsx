@@ -9,16 +9,22 @@ import { useStore } from "@/store/toggle-store";
 
 interface Props {
   slug: string;
+  initialArticle?: NewsCardData | null;
+  initialRelatedArticles?: NewsCardData[];
 }
 
-export function NewsArticleFetcher({ slug }: Props) {
+export function NewsArticleFetcher({ slug, initialArticle, initialRelatedArticles }: Props) {
   const { language } = useStore();
-  const [article, setArticle] = useState<NewsCardData | null>(null);
-  const [related, setRelated] = useState<NewsCardData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [article, setArticle] = useState<NewsCardData | null>(initialArticle || null);
+  const [related, setRelated] = useState<NewsCardData[]>(initialRelatedArticles || []);
+  const [loading, setLoading] = useState(!initialArticle);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    if (initialArticle && initialRelatedArticles) {
+      return; // Don't fetch if we have initial data
+    }
+    
     async function fetchData() {
       const apiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://13.235.50.194:1337";
       try {
@@ -82,7 +88,7 @@ export function NewsArticleFetcher({ slug }: Props) {
     }
 
     fetchData();
-  }, [slug, language]);
+  }, [slug, language, initialArticle, initialRelatedArticles]);
 
   if (error) return <p className="text-red-500">Error: {error}</p>;
   if (!article) return <p></p>;

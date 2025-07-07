@@ -2,7 +2,6 @@ import MediaPageClient from "@/components/media/media-page-client";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchMedia } from "@/api/media";
 
-// Generate metadata for the Media page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/media",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function MediaPage() {
-  return <MediaPageClient />;
+export default async function MediaPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const mediaData = await fetchMedia(validatedLocale).catch(() => null);
+  
+  return <MediaPageClient initialMediaData={mediaData} />;
 }

@@ -35,6 +35,7 @@ export interface CustomerCareData {
     metaDescription?: string;
     shareImage?: StrapiMediaData;
   };
+  locale: string;
 }
 
 export interface CustomerCareDataResponse {

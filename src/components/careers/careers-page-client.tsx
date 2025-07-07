@@ -15,15 +15,23 @@ import { useEffect, useState } from "react";
 import { fetchCareer } from "@/api/careers";
 import { CareerData } from "@/types/careers/careers";
 
-export default function CareersPageClient() {
+interface CareersPageClientProps {
+  initialCareerData?: CareerData | null;
+}
+
+export default function CareersPageClient({ initialCareerData }: CareersPageClientProps) {
   const { language } = useStore();
-  const [career, setCareer] = useState<CareerData | null>(null);
+  
+  const [career, setCareer] = useState<CareerData | null>(initialCareerData || null);
 
   useEffect(() => {
-    fetchCareer(language)
-      .then((data) => setCareer(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialCareerData || language !== (initialCareerData?.locale || language)) {
+      fetchCareer(language)
+        .then((data) => setCareer(data))
+        .catch((err) => console.error("Failed to load Career data:", err));
+    }
+  }, [language, initialCareerData]);
+
   const isRTL = language === "ar";
   return (
     <div className="flex min-h-screen  flex-col">

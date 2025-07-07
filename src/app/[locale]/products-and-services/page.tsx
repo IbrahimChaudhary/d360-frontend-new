@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function ProductAndServicesFee() {
-  return (
-    <ProductServicesPageClient />
-  );
+export default async function ProductAndServicesFee({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const feeData = await fetchFee(validatedLocale).catch(() => null);
+  
+  return <ProductServicesPageClient initialFeeData={feeData} />;
 }

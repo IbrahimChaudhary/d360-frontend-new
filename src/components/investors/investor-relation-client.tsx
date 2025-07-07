@@ -12,15 +12,23 @@ import { useEffect, useState } from "react";
 import { InvestData } from "@/types/investor-relations/investor-relations";
 import { fetchInvestor } from "@/api/investor-relations";
 
-export default function InvestorRealtions() {
+interface InvestorRealtionsProps {
+  initialInvestorData?: InvestData | null;
+}
+
+export default function InvestorRealtions({ initialInvestorData }: InvestorRealtionsProps) {
   const { language } = useStore();
-  const [investor, setInvestor] = useState<InvestData | null>(null);
+  
+  const [investor, setInvestor] = useState<InvestData | null>(initialInvestorData || null);
 
   useEffect(() => {
-    fetchInvestor(language)
-      .then((data) => setInvestor(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialInvestorData || language !== (initialInvestorData?.locale || language)) {
+      fetchInvestor(language)
+        .then((data) => setInvestor(data))
+        .catch((err) => console.error("Failed to load Investor data:", err));
+    }
+  }, [language, initialInvestorData]);
+
   const isRTL = language === "ar";
   const customInfoCards = [
     {

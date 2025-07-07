@@ -14,20 +14,27 @@ import { CustomerCareData } from "@/types/customer-care/customer-care";
 import { fetchCustomerCare } from "@/api/customer-care";
 import { CustomerCareContactInfo } from "@/components/customer-care/customer-care-info";
 
-export default function CustomerCarePageClient() {
+interface CustomerCarePageClientProps {
+  initialCustomerCareData?: CustomerCareData | null;
+}
+
+export default function CustomerCarePageClient({ initialCustomerCareData }: CustomerCarePageClientProps) {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
+  
   const [customerCare, setCustomerCare] = useState<CustomerCareData | null>(
-    null
+    initialCustomerCareData || null
   );
   const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    fetchCustomerCare(language)
-      .then(setCustomerCare)
-      .catch((err) => console.error("Failed to load Customer Care:", err));
-  }, [language]);
+    if (!initialCustomerCareData || language !== (initialCustomerCareData?.locale || language)) {
+      fetchCustomerCare(language)
+        .then(setCustomerCare)
+        .catch((err) => console.error("Failed to load Customer Care:", err));
+    }
+  }, [language, initialCustomerCareData]);
   
   return (
     <div className="">

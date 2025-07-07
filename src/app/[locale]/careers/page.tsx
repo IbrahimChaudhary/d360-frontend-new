@@ -2,7 +2,6 @@ import CareersPageClient from "@/components/careers/careers-page-client";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchCareer } from "@/api/careers";
 
-// Generate metadata for the Careers page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/careers",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function CareersPage() {
-  return <CareersPageClient />;
+export default async function CareersPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const careerData = await fetchCareer(validatedLocale).catch(() => null);
+  
+  return <CareersPageClient initialCareerData={careerData} />;
 }

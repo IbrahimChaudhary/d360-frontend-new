@@ -9,15 +9,21 @@ import { TermsConditionsData } from "@/types/terms-conditions/terms-conditions";
 import { fetchTermsConditions } from "@/api/terms-conditions";
 import { extractFAQItems } from "@/lib/faq-extract";
 
-export function TermsConditionsPageClient() {
+interface TermsConditionsPageClientProps {
+  initialTermsConditionsData?: TermsConditionsData | null;
+}
+
+export function TermsConditionsPageClient({ initialTermsConditionsData }: TermsConditionsPageClientProps) {
   const { language } = useStore();
-  const [security, setSecurity] = useState<TermsConditionsData | null>(null);
+  const [security, setSecurity] = useState<TermsConditionsData | null>(initialTermsConditionsData || null);
 
   useEffect(() => {
-    fetchTermsConditions(language)
-      .then((data) => setSecurity(data))
-      .catch((err) => console.error(err));
-  }, [language]);
+    if (!initialTermsConditionsData) {
+      fetchTermsConditions(language)
+        .then((data) => setSecurity(data))
+        .catch((err) => console.error(err));
+    }
+  }, [language, initialTermsConditionsData]);
   const faqItems = security ? extractFAQItems(security) : [];
   return (
     <div className="w-full  flex flex-col justify-center items-center">
@@ -35,8 +41,6 @@ export function TermsConditionsPageClient() {
   </div>
 
 )}
-
-
        {/*<MergedFAQAccordion faqItems={faqItems} title="hidden" />*/}
     </div>
     

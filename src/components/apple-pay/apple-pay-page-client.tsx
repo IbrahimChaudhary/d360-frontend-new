@@ -11,10 +11,15 @@ import { extractFAQItems } from "@/lib/faq-extract";
 import { extractAppleFAQItems } from "@/lib/faq-extract";
 import { useStore } from "@/store/toggle-store";
 
-export default function ApplePayPageClient() {
+interface ApplePayPageClientProps {
+  initialApplePayData?: ApplePayData | null;
+}
+
+export default function ApplePayPageClient({ initialApplePayData }: ApplePayPageClientProps) {
   const {language} = useStore();
   const [activeTab, setActiveTab] = useState<"overview" | "faq">("faq");
-  const [applePay, setApplePay] = useState<ApplePayData | null>(null);
+  
+  const [applePay, setApplePay] = useState<ApplePayData | null>(initialApplePayData || null);
 
   const isOverview = (tab: "overview" | "faq"): tab is "overview" => tab === "overview";
   const isFaq = (tab: "overview" | "faq"): tab is "faq" => tab === "faq";
@@ -22,10 +27,13 @@ export default function ApplePayPageClient() {
   const faqTxt = language === "ar" ? " الأسئلة الشائعة" : "FAQs";
 
   useEffect(() => {
-    fetchApplePay(language)
-      .then(setApplePay)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialApplePayData || language !== (initialApplePayData?.locale || language)) {
+      fetchApplePay(language)
+        .then(setApplePay)
+        .catch((err) => console.error("Failed to load Apple Pay:", err));
+    }
+  }, [language, initialApplePayData]);
+
   const faqItems = applePay ? extractFAQItems(applePay) : [];
   const appleOverviewFaqs = applePay ? extractAppleFAQItems(applePay) : [];
 

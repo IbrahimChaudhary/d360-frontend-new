@@ -16,19 +16,24 @@ import { fetchSavings } from "@/api/savings-account";
 import { extractFAQItems } from "@/lib/faq-extract";
 import { DownloadModal } from "../home/download-modal";
 
+interface SavingsAccountPageClientProps {
+  initialSavingsData?: SavingsData | null;
+}
 
-export function SavingsAccountPageClient() {
+export function SavingsAccountPageClient({ initialSavingsData }: SavingsAccountPageClientProps) {
   const { t } = useTranslations();
   const { language } = useStore();
   const isRTL = language === "ar";
-  const [savings, setSavings] = useState<SavingsData | null>(null);
+  const [savings, setSavings] = useState<SavingsData | null>(initialSavingsData || null);
   const [isModalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    fetchSavings(language)
-      .then((data) => setSavings(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialSavingsData) {
+      fetchSavings(language)
+        .then((data) => setSavings(data))
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialSavingsData]);
   const faqItems = savings ? extractFAQItems(savings) : [];
 
 

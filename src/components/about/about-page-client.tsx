@@ -19,18 +19,27 @@ import { AboutD360Data } from "@/types/about/about";
 import { fetchAboutD360 } from "@/api/about";
 import { extractFAQItems } from "@/lib/faq-extract";
 
-export default function AboutPageClient() {
+interface AboutPageClientProps {
+  initialAboutData?: AboutD360Data | null;
+}
+
+export default function AboutPageClient({ initialAboutData }: AboutPageClientProps) {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
   const [isModalOpen, setModalOpen] = useState(false);
-  const [aboutData, setAboutData] = useState<AboutD360Data | null>(null);
+  
+  // Initialize state with server-side data if available
+  const [aboutData, setAboutData] = useState<AboutD360Data | null>(initialAboutData || null);
 
+  // Only fetch if we don't have initial data or if language changes
   useEffect(() => {
-    fetchAboutD360(language)
-      .then((data) => setAboutData(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialAboutData || language !== (initialAboutData?.locale || language)) {
+      fetchAboutD360(language)
+        .then((data) => setAboutData(data))
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialAboutData]);
 
   const faqItems = aboutData ? extractFAQItems(aboutData) : [];
   const stats = [

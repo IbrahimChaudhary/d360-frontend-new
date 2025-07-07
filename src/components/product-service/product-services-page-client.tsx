@@ -7,14 +7,20 @@ import { fetchFee } from "@/api/product-services";
 import { FeeFAQAccordion } from "@/components/product-service/faq";
 import { useStore } from "@/store/toggle-store";
 
-export function ProductServicesPageClient() {
-  const [feeData, setFeeData] = useState<FeesData | null>(null);
+interface ProductServicesPageClientProps {
+  initialFeeData?: FeesData | null;
+}
+
+export function ProductServicesPageClient({ initialFeeData }: ProductServicesPageClientProps) {
+  const [feeData, setFeeData] = useState<FeesData | null>(initialFeeData || null);
   const {language} = useStore()
   useEffect(() => {
-    fetchFee(language)
-      .then(setFeeData)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialFeeData) {
+      fetchFee(language)
+        .then(setFeeData)
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialFeeData]);
   return (
     <div className="w-full  flex flex-col justify-center px-4 items-center">
       <Header variant="about" />

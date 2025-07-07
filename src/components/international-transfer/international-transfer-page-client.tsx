@@ -16,21 +16,28 @@ import { arabicContent } from "@/data/about-ar";
 import { InternationalData } from "@/types/international/international";
 import { fetchInternational } from "@/api/international";
 
-export default function InternationalTransferPageClient() {
+interface InternationalTransferPageClientProps {
+  initialInternationalData?: InternationalData | null;
+}
+
+export default function InternationalTransferPageClient({ initialInternationalData }: InternationalTransferPageClientProps) {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
   const [isModalOpen, setModalOpen] = useState(false);
   const { t } = useTranslations();
+  
   const [international, setInternational] = useState<InternationalData | null>(
-    null
+    initialInternationalData || null
   );
 
   useEffect(() => {
-    fetchInternational(language)
-      .then((data) => setInternational(data))
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialInternationalData || language !== (initialInternationalData?.locale || language)) {
+      fetchInternational(language)
+        .then((data) => setInternational(data))
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialInternationalData]);
 
   return (
     <div className="flex min-h-screen  flex-col">

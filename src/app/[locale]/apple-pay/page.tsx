@@ -2,7 +2,6 @@ import ApplePayPageClient from "@/components/apple-pay/apple-pay-page-client";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchApplePay } from "@/api/apple-pay";
 
-// Generate metadata for the Apple Pay page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -20,7 +19,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/apple-pay",
@@ -30,6 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function ApplePayPage() {
-  return <ApplePayPageClient />;
+export default async function ApplePayPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const applePayData = await fetchApplePay(validatedLocale).catch(() => null);
+  
+  return <ApplePayPageClient initialApplePayData={applePayData} />;
 }

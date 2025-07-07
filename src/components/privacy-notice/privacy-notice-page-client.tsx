@@ -9,17 +9,21 @@ import { fetchPrivacyNotice } from "@/api/privacy-notice";
 import { useStore } from "@/store/toggle-store";
 import { extractFAQItems } from "@/lib/faq-extract";
 
+interface PrivacyNoticePageClientProps {
+  initialPrivacyNoticeData?: PrivacyNoticeData | null;
+}
 
+export function PrivacyNoticePageClient({ initialPrivacyNoticeData }: PrivacyNoticePageClientProps) {
 
-export function PrivacyNoticePageClient() {
-
-  const [privacy, setPrivacy] = useState<PrivacyNoticeData | null>(null);
+  const [privacy, setPrivacy] = useState<PrivacyNoticeData | null>(initialPrivacyNoticeData || null);
   const {language} = useStore()
   useEffect(() => {
-    fetchPrivacyNotice(language)
-      .then(setPrivacy)
-      .catch((err) => console.error("Failed to load media center:", err));
-  }, [language]);
+    if (!initialPrivacyNoticeData) {
+      fetchPrivacyNotice(language)
+        .then(setPrivacy)
+        .catch((err) => console.error("Failed to load media center:", err));
+    }
+  }, [language, initialPrivacyNoticeData]);
   const faqItems = privacy ? extractFAQItems(privacy) : [];
   return (
     <div className="w-full  flex flex-col justify-center items-center">

@@ -2,7 +2,6 @@ import OffersPageClient from "@/components/offers/offers-page-client";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchOffer } from "@/api/offer";
 
-// Generate metadata for the Offers page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -21,7 +20,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
     
-    // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
       path: "/offers",
@@ -31,6 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function OffersPage() {
-  return <OffersPageClient />;
+export default async function OffersPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const offerData = await fetchOffer(validatedLocale).catch(() => null);
+  
+  return <OffersPageClient initialOfferData={offerData} />;
 }

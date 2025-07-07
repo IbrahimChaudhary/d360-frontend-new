@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function TermsConditionsPage() {
-  return (
-    <TermsConditionsPageClient />
-  );
+export default async function TermsConditionsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const termsConditionsData = await fetchTermsConditions(validatedLocale).catch(() => null);
+  
+  return <TermsConditionsPageClient initialTermsConditionsData={termsConditionsData} />;
 }

@@ -75,9 +75,10 @@ export interface CardsData {
   Footer:string;
   Subtitle:string;
   ButtonText:string
-  
+  locale: string;
   /** SEO data */
   SEO: SeoComponent[];
+
 }
 
 /**

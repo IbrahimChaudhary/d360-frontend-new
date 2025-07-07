@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function SecurityAwarenessPage() {
-  return (
-    <SecurityAwarenessPageClient />
-  );
+export default async function SecurityAwarenessPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const securityData = await fetchSecurityAwareness(validatedLocale).catch(() => null);
+  
+  return <SecurityAwarenessPageClient initialSecurityData={securityData} />;
 }

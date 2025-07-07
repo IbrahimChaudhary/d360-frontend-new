@@ -28,8 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function SavingsAccountPage() {
-  return (
-    <SavingsAccountPageClient />
-  );
+export default async function SavingsAccountPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const savingsData = await fetchSavings(validatedLocale).catch(() => null);
+  
+  return <SavingsAccountPageClient initialSavingsData={savingsData} />;
 }

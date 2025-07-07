@@ -30,6 +30,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-export default function AnnualReportsPage() {
-  return <AnnualReportsPageClient />;
+export default async function AnnualReportsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const annualData = await fetchAnnualReport(validatedLocale).catch(() => null);
+  
+  return <AnnualReportsPageClient initialAnnualData={annualData} />;
 }

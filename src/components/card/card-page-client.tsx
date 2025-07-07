@@ -11,16 +11,24 @@ import { fetchCard } from "@/api/card";
 import { useStore } from "@/store/toggle-store";
 import { extractFAQItems } from "@/lib/faq-extract";
 
-export default function CardPageClient() {
+interface CardPageClientProps {
+  initialCardData?: CardsData | null;
+}
+
+export default function CardPageClient({ initialCardData }: CardPageClientProps) {
   const { language } = useStore();
   const isRTL = language === "ar";
-  const [cardData, setCardData] = useState<CardsData | null>(null);
+  
+  const [cardData, setCardData] = useState<CardsData | null>(initialCardData || null);
 
   useEffect(() => {
-    fetchCard(language)
-      .then(setCardData)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialCardData || language !== (initialCardData?.locale || language)) {
+      fetchCard(language)
+        .then(setCardData)
+        .catch((err) => console.error("Failed to load Card data:", err));
+    }
+  }, [language, initialCardData]);
+
   const faqItems = cardData ? extractFAQItems(cardData) : [];
 
   return (

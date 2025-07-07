@@ -27,8 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     });
   }
 }
-export default function ShariaComplaintPage() {
-  return (
-    <ShariaComplaintPageClient />
-  );
+
+export default async function ShariaComplaintPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const shariahData = await fetchShariah(validatedLocale).catch(() => null);
+  
+  return <ShariaComplaintPageClient initialShariahData={shariahData} />;
 }

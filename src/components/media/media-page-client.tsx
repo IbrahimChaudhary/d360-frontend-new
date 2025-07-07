@@ -12,16 +12,23 @@ import { useStore } from "@/store/toggle-store";
 import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 
-export default function MediaPageClient() {
+interface MediaPageClientProps {
+  initialMediaData?: MediaCenterData | null;
+}
+
+export default function MediaPageClient({ initialMediaData }: MediaPageClientProps) {
   const { language } = useStore();
   const { t } = useTranslations();
-  const [media, setMedia] = useState<MediaCenterData | null>(null);
+  
+  const [media, setMedia] = useState<MediaCenterData | null>(initialMediaData || null);
 
   useEffect(() => {
-    fetchMedia(language)
-      .then(setMedia)
-      .catch((err) => console.error("Failed to load media center:", err));
-  }, [language]);
+    if (!initialMediaData || language !== (initialMediaData?.locale || language)) {
+      fetchMedia(language)
+        .then(setMedia)
+        .catch((err) => console.error("Failed to load media center:", err));
+    }
+  }, [language, initialMediaData]);
 
   // derive an array of newsArticles from the news_cards relation
   const newsArticles = useMemo(() => {

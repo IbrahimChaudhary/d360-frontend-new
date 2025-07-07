@@ -17,20 +17,26 @@ import { OfferCategory } from "@/types/offers";
 import { OfferCardData } from "@/types/offer/offercard";
 import { useStore } from "@/store/toggle-store";
 
-export default function OffersPageClient() {
+interface OffersPageClientProps {
+  initialOfferData?: OfferData | null;
+}
+
+export default function OffersPageClient({ initialOfferData }: OffersPageClientProps) {
   const [activeCategory, setActiveCategory] = useState("all");
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [offer, setOffer] = useState<OfferData | null>(null);
+  const [offer, setOffer] = useState<OfferData | null>(initialOfferData || null);
   const [offerCard, setOfferCard] = useState<OfferCardData[] | null>(null);
   const { language } = useStore();
   const isRTL = language === "ar";
 
   useEffect(() => {
-    fetchOffer(language)
-      .then(setOffer)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialOfferData) {
+      fetchOffer(language)
+        .then(setOffer)
+        .catch((err) => console.error("Failed to load About D360:", err));
+    }
+  }, [language, initialOfferData]);
   useEffect(() => {
     fetchOfferCards(language)
       .then(setOfferCard)

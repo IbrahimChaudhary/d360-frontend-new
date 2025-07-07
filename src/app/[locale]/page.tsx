@@ -1,6 +1,7 @@
 import HomePage from "@/components/home/home-page";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchHomePage } from "@/api/home";
+import { fetchInternational } from "@/api/international";
 
 // Generate metadata for the home page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -37,9 +38,20 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const [homeData, internationalData] = await Promise.allSettled([
+    fetchHomePage(validatedLocale),
+    fetchInternational(validatedLocale)
+  ]);
+  
   return (
     <>
-      <HomePage locale={locale as "en" | "ar"} />
+      <HomePage 
+        locale={validatedLocale as "en" | "ar"} 
+        initialHomeData={homeData.status === 'fulfilled' ? homeData.value : null}
+        initialInternationalData={internationalData.status === 'fulfilled' ? internationalData.value : null}
+      />
     </>
   );
 }

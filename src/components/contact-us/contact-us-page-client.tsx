@@ -13,17 +13,25 @@ import { useStore } from "@/store/toggle-store";
 import { englishContent } from "@/data/about-en";
 import { arabicContent } from "@/data/about-ar";
 
-export default function ContactUsPageClient() {
+interface ContactUsPageClientProps {
+  initialContactData?: ContactPageData | null;
+}
+
+export default function ContactUsPageClient({ initialContactData }: ContactUsPageClientProps) {
   const { language } = useStore();
   const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
-  const [contact, setContact] = useState<ContactPageData | null>(null);
+  
+  const [contact, setContact] = useState<ContactPageData | null>(initialContactData || null);
 
   useEffect(() => {
-    fetchContact(language)
-      .then(setContact)
-      .catch((err) => console.error("Failed to load About D360:", err));
-  }, [language]);
+    if (!initialContactData || language !== (initialContactData?.locale || language)) {
+      fetchContact(language)
+        .then(setContact)
+        .catch((err) => console.error("Failed to load Contact data:", err));
+    }
+  }, [language, initialContactData]);
+
   return (
     <div className="flex flex-col">
       <Header variant="about" />

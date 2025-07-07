@@ -2,7 +2,7 @@ import { PaymentsPageClient } from "@/components/payments/payments-page-client";
 import { fetchPayments } from "@/api/payments";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 
-// Generate metadata for the Offers page
+// Generate metadata for the Payments page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const validatedLocale = locale === "ar" ? "ar" : "en";
@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     return generatePageMetadata({
       seoData,
       locale: validatedLocale,
-      path: "/offers",
+      path: "/payments",
       fallbackTitle: paymentData.SEO[0].metaTitle,
-      fallbackDescription: "Check out the latest offers and deals from D360 Bank."
+      fallbackDescription: "Discover convenient payment solutions from D360 Bank."
     });
   } catch (error) {
     console.error("Failed to fetch metadata:", error);
@@ -23,15 +23,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     // Return fallback metadata
     return generatePageMetadata({
       locale: validatedLocale,
-      path: "/offers",
-      fallbackTitle: "Offers - D360 Bank",
-      fallbackDescription: "Check out the latest offers and deals from D360 Bank."
+      path: "/payments",
+      fallbackTitle: "Payments - D360 Bank",
+      fallbackDescription: "Discover convenient payment solutions from D360 Bank."
     });
   }
 }
 
-export default function Payments() {
-  return (
-    <PaymentsPageClient/>
-  );
+export default async function Payments({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const paymentData = await fetchPayments(validatedLocale).catch(() => null);
+  
+  return <PaymentsPageClient initialPaymentData={paymentData} />;
 }

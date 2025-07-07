@@ -3,10 +3,10 @@ import OfferFetcher from "@/components/offers/offer-fetcher";
 import { generateMetadata as generatePageMetadata, extractSeoData } from "@/lib/metadata";
 import { fetchOfferPagesBySlug } from "@/api/offer";
 
-// If you’re using dynamic slugs (SSG or not), it’s safe to opt in:
+// If you're using dynamic slugs (SSG or not), it's safe to opt in:
 export const dynamicParams = true;
 
-// Use `any` so we don’t conflict with Next.js’s generated PageProps
+// Use `any` so we don't conflict with Next.js's generated PageProps
 export async function generateMetadata(props: any) {
   // Cast params to the shape you expect
   const { locale, slug } = props.params as {
@@ -38,8 +38,12 @@ export async function generateMetadata(props: any) {
 
 // Likewise, `any` here so the build-time `checkFields` passes
 export default async function OfferPage(props: any) {
-  const { slug } = props.params as { slug: string };
-  return <OfferFetcher slug={slug} />;
+  const { locale, slug } = props.params as { locale: string; slug: string };
+  const validatedLocale = locale === "ar" ? "ar" : "en";
+  
+  const offerData = await fetchOfferPagesBySlug(validatedLocale, slug).catch(() => null);
+  
+  return <OfferFetcher slug={slug} initialOfferData={offerData?.[0] || null} />;
 }
 
 // If you still want to pre-render all known slugs:

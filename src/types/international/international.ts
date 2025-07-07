@@ -71,6 +71,7 @@ export interface InternationalData {
       metaDescription?: string;
       shareImage?: StrapiMediaData;
     };
+    
   }
   
   /**
