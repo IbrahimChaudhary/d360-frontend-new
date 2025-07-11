@@ -12,9 +12,9 @@ import { CategoryTabs } from "@/components/offers/category-tabs";
 import { offers } from "@/data/offer";
 import { motion } from "framer-motion";
 import { OfferData } from "@/types/offer/offer";
-import { fetchOffer, fetchOfferCards } from "@/api/offer";
+import { fetchOffer, fetchOfferCards, fetchOfferCardsTypes } from "@/api/offer";
 import { OfferCategory } from "@/types/offers";
-import { OfferCardData } from "@/types/offer/offercard";
+import { OfferCardData, OfferCardType } from "@/types/offer/offercard";
 import { useStore } from "@/store/toggle-store";
 
 interface OffersPageClientProps {
@@ -27,6 +27,7 @@ export default function OffersPageClient({ initialOfferData }: OffersPageClientP
   const [isMobile, setIsMobile] = useState(false);
   const [offer, setOffer] = useState<OfferData | null>(initialOfferData || null);
   const [offerCard, setOfferCard] = useState<OfferCardData[] | null>(null);
+  const [offerCardTypes, setOfferCardTypes] = useState<any | null>(null);
   const { language } = useStore();
   const isRTL = language === "ar";
 
@@ -43,7 +44,13 @@ export default function OffersPageClient({ initialOfferData }: OffersPageClientP
 
       .catch((err) => console.error("Failed to load About D360:", err));
   }, [language]);
-  console.log(" hjakadkdkahdkahdkahdkahd", offerCard);
+  useEffect(() => {
+    fetchOfferCardsTypes(language)
+      .then(setOfferCardTypes)
+
+      .catch((err) => console.error("Failed to load About D360:", err));
+  }, [language]);
+  console.log(" hjakadkdkahdkahdkahdkahd", offerCardTypes);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
@@ -57,31 +64,19 @@ export default function OffersPageClient({ initialOfferData }: OffersPageClientP
   const filteredOffers = useMemo(() => {
     if (!offerCard) return [];
     if (activeCategory === "all") return offerCard;
-    console.log(" ", activeCategory);
-    return offerCard.filter((o) => o.type === activeCategory);
+    return offerCard.filter((o) => (o as any).offer_category?.category === activeCategory);
   }, [offerCard, activeCategory]);
-
-  console.log(" hehehehe", offers);
 
   const visibleOffers =
     isMobile && !isExpanded ? filteredOffers?.slice(0, 2) : filteredOffers;
 
-  const offerCategories: OfferCategory[] = offer
-    ? Object.keys(offer)
-        .filter((key) => /^Type\d+$/.test(key))
-        .map((key) => {
-          const value = (offer as any)[key];
-          return language === 'en'
-            ? {
-                id: value?.toLowerCase()?.replace(/\s+/g, '-'),
-                name: { en: value, ar: value },
-              }
-            : {
-                id: value,
-                name: { en: value, ar: value },
-              };
-        })
+  const offerCategories = offerCardTypes
+    ? offerCardTypes?.map((cat: any) => ({
+        id: cat.id,
+        name: cat.category,
+      }))
     : [];
+  console.log(" offerCategories", offerCategories);
   return (
     <div className="flex min-h-screen flex-col">
       <div className="hidden lg:block">
@@ -118,7 +113,7 @@ export default function OffersPageClient({ initialOfferData }: OffersPageClientP
           <div className="flex flex-col md:flex-row">
             <AnimatedSection direction="right" className="md:flex-shrink-0">
               <CategoryTabs
-                categories={offerCategories}
+                categories={offerCategories as any}
                 activeCategory={activeCategory}
                 onCategoryChange={(cat) => {
                   setActiveCategory(cat);

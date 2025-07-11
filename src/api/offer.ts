@@ -12,11 +12,18 @@ export async function fetchOffer(language: string): Promise<OfferData> {
 
 // ← Return an array, not a single object
 export async function fetchOfferCards(language: string): Promise<OfferCardData[]> {
-  const { data } = await api.get<OfferCardListResponse>(
-    `/offer-cards?locale=${language}&populate=image`
+  const response = await api.get<OfferCardListResponse>(
+    `/offer-cards?locale=${language}&populate=*`
   );
-  console.log(data);
-  return data.data;
+  console.log(JSON.stringify(response, null, 2));
+  return response.data.data;
+}
+export async function fetchOfferCardsTypes(language: string): Promise<OfferCardData[]> {
+  const response = await api.get<OfferCardListResponse>(
+    `/offer-categories?locale=${language}&populate=*`
+  );
+  console.log(JSON.stringify(response, null, 2));
+  return response.data.data;
 }
 
 // ← Return an array of pages (or change to fetch one by slug/id)
@@ -29,7 +36,7 @@ export async function fetchOfferPagesBySlug(
   language: string,
   slug?: string
 ): Promise<OfferPageData[]> {
-  let path = `/offerpages?locale=${language}&populate=*`;
+  let path = `/offer-cards?locale=${language}&populate=*`  ;
 
   if (slug) {
     path += `&filters[slug][$eq]=${encodeURIComponent(slug)}`;

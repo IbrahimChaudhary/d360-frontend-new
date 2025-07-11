@@ -82,8 +82,10 @@ export interface ImageFormats {
     documentId: string;
     MainTitle: string;
     Title1: string;
+    title: string;
     MainTitle1: string;
     Description1: string;
+    Description: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;

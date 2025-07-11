@@ -58,7 +58,17 @@ export interface ImageFormat {
     updatedAt: string;
     publishedAt: string;
     type: string;
-    image: OfferCardImage;
+    cardImage: OfferCardImage;
+    heroImage: OfferCardImage;
+  }
+  export interface OfferCardType {
+    id: number;
+    documentId: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    category: string;
+   
   }
   
   /**  

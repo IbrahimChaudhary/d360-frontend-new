@@ -5,9 +5,10 @@ import { useLanguage } from "@/context/language-context";
 import type { OfferCategory } from "@/types/offers";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/store/toggle-store";
+import { OfferCardType } from "@/types/offer/offercard";
 
 interface CategoryTabsProps {
-  categories: OfferCategory[];
+  categories: any[];
   activeCategory: string;
   onCategoryChange: (categoryId: string) => void;
 }
@@ -18,6 +19,7 @@ export function CategoryTabs({
   onCategoryChange,
 }: CategoryTabsProps) {
   const { language } = useStore();
+  console.log(" categories innnnnnn", categories);
 
   return (
     <div className="w-full md:w-64  rounded-lg p-4">
@@ -35,18 +37,18 @@ export function CategoryTabs({
           {language === "en" ? "All" : "الكل"}
         </button>
 
-        {categories.map((category) => (
+        {categories?.map((category) => (
           <button
             key={category.id}
-            onClick={() => onCategoryChange(category.id)}
+            onClick={() => onCategoryChange(category.name)}
             className={cn(
               "px-4 py-2 rounded-xl font-bold text-[8px] lg:text-[14px] transition cursor-pointer",
-              activeCategory === category.id
+              activeCategory === category.name
                 ? "bg-[#EB644C] text-white"
                 : "bg-[#F6F7F8] text-[#263244]"
             )}
           >
-            {language === "en" ? category.name.en : category.name.ar}
+            {language === "en" ? category.name : category.name}
           </button>
         ))}
       </div>
