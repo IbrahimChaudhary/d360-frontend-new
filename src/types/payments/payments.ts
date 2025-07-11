@@ -3,6 +3,12 @@ import { SeoComponent } from "../home/home";
 
 // types/payments.ts
 
+export interface FAQComponent {
+  id: number;
+  question: string;
+  answers: string;
+}
+
 /**
  * Represents the "payments" record returned by Strapi.
  */
@@ -12,14 +18,7 @@ export interface PaymentsData {
     MainTitle: string;
     Title1: string;
     Title2: string;
-    FAQTitle1: string;
-    FAQDescription1: string;
-    FAQTitle2: string;
-    FAQDescription2: string;
-    FAQTitle3: string;
-    FAQDescription3: string;
-    FAQTitle4: string;
-    FAQDescription4: string;
+    faqs?: FAQComponent[];
     createdAt: string;   // ISO timestamp, e.g. "2025-05-16T08:03:14.845Z"
     updatedAt: string;   // ISO timestamp
     publishedAt: string; // ISO timestamp

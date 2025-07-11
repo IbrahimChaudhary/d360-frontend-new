@@ -87,6 +87,13 @@ export interface Leader {
 /**
  * The "about-d360" single‐type attributes exactly as your JSON shows.
  */
+export interface FAQComponent {
+  id: number;
+  question: string;
+  answers: string; // Changed from "answer" to "answers" to match Strapi
+}
+
+// Rest of your interfaces stay the same...
 export interface AboutD360Data {
   id: number;
   documentId: string;
@@ -102,14 +109,9 @@ export interface AboutD360Data {
   Title5: string;
 
   FAQTitle: string;
-  FAQTitle1: string;
-  FAQDescription1: string;
-  FAQTitle2: string;
-  FAQDescription2: string;
-  FAQTitle3: string;
-  FAQDescription3: string;
-  FAQTitle4: string;
-  FAQDescription4: string;
+  
+  // FAQ Component (repeatable)
+  faqs: FAQComponent[];
 
   HelpingTitle: string;
   HelpingDescription: string;
@@ -141,7 +143,6 @@ export interface AboutD360Data {
   download: string;
   contact: string;
   sideImg: StrapiMediaData;
-  /** Directors array exactly as your JSON shows it */
   directors: Leader[];
   heroImage: StrapiMediaData;
   investorImg1: StrapiMediaData;
@@ -163,3 +164,6 @@ export interface AboutResponse {
   data: AboutD360Data;
   meta: Record<string, unknown>;
 }
+
+
+

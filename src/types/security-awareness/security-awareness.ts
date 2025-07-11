@@ -5,6 +5,12 @@ export interface SecurityAwarenessResponse {
     data: SecurityAwarenessData;
     meta: Record<string, any>;
   }
+
+  export interface FAQComponent {
+    id: number;
+    question: string;
+    answers: string;
+  }
   
   /** All the fields for the Security Awareness page Data */
   export interface SecurityAwarenessData {
@@ -19,14 +25,7 @@ export interface SecurityAwarenessResponse {
     Title1Des1:string
     Title1Des2:string
     Title2: string;
-    FAQTitle1: string;
-    FAQDescription1: string;
-    FAQTitle2: string;
-    FAQDescription2: string;
-    FAQTitle3: string;
-    FAQDescription3: string;
-    FAQTitle4: string;
-    FAQDescription4: string;
+    faqs?: FAQComponent[];
     FAQ: string;
     SEO: SeoComponent[];
 

@@ -46,9 +46,9 @@ const mdComponents = {
         <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">
           {data.Heading}
         </h1>
-        <p className="text-[14px] lg:text-[20px]">{data.headingPara1}</p>
+        {/* <p className="text-[14px] lg:text-[20px]">{data.headingPara1}</p>
         <p className="text-[14px] lg:text-[20px]">{data.headingPara2}</p>
-        <p className="text-[14px] lg:text-[20px]">{data.headingPara3}</p>
+        <p className="text-[14px] lg:text-[20px]">{data.headingPara3}</p> */}
       </div>
 
       {/* Render the full markdown notice body */}

@@ -10,6 +10,12 @@ export interface SeoComponent {
   shareImage: StrapiMediaData;
 }
 
+export interface FAQComponent {
+  id: number;
+  question: string;
+  answers: string;
+}
+
 /**
  * Represents the fields returned under `data` for the "D360 Cards" single‐type.
  */
@@ -29,14 +35,7 @@ export interface CardsData {
   Description4: string;
   Description5: string;
   FAQTitle: string;
-  FAQTitle1: string;
-  FAQDescription1: string;
-  FAQTitle2: string;
-  FAQDescription2: string;
-  FAQTitle3: string;
-  FAQDescription3: string;
-  FAQTitle4: string;
-  FAQDescription4: string;
+  faqs?: FAQComponent[];
   MainTitle1: string;
   MainTitle2: string;
   Card1Feat1: string;
