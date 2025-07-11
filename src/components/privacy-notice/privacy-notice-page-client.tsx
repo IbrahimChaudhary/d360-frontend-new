@@ -30,11 +30,11 @@ export function PrivacyNoticePageClient({ initialPrivacyNoticeData }: PrivacyNot
   return (
     <div className="w-full  flex flex-col justify-center items-center">
       <Header variant="about" />
-      <div className="max-w-[1728px] hidden  px-6 mx-auto mt-20 space-y-16 md:flex flex-col justify-center items-center ">
+      <div className="max-w-[1728px] lg:px-6 mx-auto mt-20 space-y-16 flex flex-col justify-center items-center ">
        {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
       </div>
       {/* mobile version  */}
-      <div className="w-full block md:hidden py-[60px]">
+      <div className="w-full hidden py-[60px]">
   <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-6">
     {privacy && (
       <>

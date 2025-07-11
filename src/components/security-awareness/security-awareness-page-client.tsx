@@ -28,11 +28,11 @@ export function SecurityAwarenessPageClient({ initialSecurityData }: SecurityAwa
   return (
     <div className="w-full  flex flex-col justify-center items-center">
       <Header variant="about"/>
-      <div className="max-w-[1728px] hidden lg:mt-10  md:flex flex-col justify-center items-center  ">
+      <div className="max-w-[1728px]  lg:mt-10  flex flex-col justify-center items-center  ">
        <DesktopContentSectionSecurityAndAwareness/>
       </div>
       {/* mobile version  */}
-      <div className=" w-full  block  md:hidden  py-[60px] ">
+      <div className=" w-full  hidden  py-[60px] ">
       <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
       {/* Page title & intro */}
       {security && (

@@ -40,7 +40,7 @@ const mdComponents = {
   ),
 };
   return (
-    <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-16">
+    <div className="max-w-[1228px] px-6 mx-auto mt-10 lg:space-y-16">
       {/* Page title & intro */}
       <div className="space-y-6">
         <h1 className="text-[25px] lg:text-[60px] font-extrabold text-[#E74529]">
