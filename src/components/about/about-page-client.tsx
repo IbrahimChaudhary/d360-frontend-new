@@ -7,14 +7,10 @@ import { ContactImage } from "@/components/about/contact/contact-image";
 import { ContactContent } from "@/components/about/contact/contact-content";
 import { Footer } from "@/components/layout/footer/footer";
 import { GlobalCTA } from "@/components/about/global-presence";
-import { StatsCounter } from "@/components/about/stats-counter";
-import { Button } from "@/components/ui/button";
 import { MergedFAQAccordion } from "@/components/faq-merged";
 import { useEffect, useState } from "react";
 import { DownloadModal } from "@/components/home/download-modal";
 import { useStore } from "@/store/toggle-store";
-import { englishContent } from "@/data/about-en";
-import { arabicContent } from "@/data/about-ar";
 import { AboutD360Data } from "@/types/about/about";
 import { fetchAboutD360 } from "@/api/about";
 import { extractFAQItems } from "@/lib/faq-extract";
@@ -25,7 +21,6 @@ interface AboutPageClientProps {
 
 export default function AboutPageClient({ initialAboutData }: AboutPageClientProps) {
   const { language } = useStore();
-  const content = language === "en" ? englishContent : arabicContent;
   const isRTL = language === "ar";
   const [isModalOpen, setModalOpen] = useState(false);
   
@@ -42,27 +37,7 @@ export default function AboutPageClient({ initialAboutData }: AboutPageClientPro
   }, [language, initialAboutData]);
 
   const faqItems = aboutData ? extractFAQItems(aboutData) : [];
-  const stats = [
-    {
-      label: isRTL ? "بنك سعودي رقمي" : "Saudi Digital Bank",
-      value: isRTL ? "اول" : "1st",
-      animated: false,
-    },
-    {
-      label: isRTL ? "المستخدمين" : "Users",
-      value: 1,
-      prefix: "+",
-      suffix: "M",
-      animated: true,
-    },
-    {
-      label: isRTL ? "الدول" : "Countries",
-      value: 70,
-      prefix: "+",
-      animated: true,
-    },
-  ];
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://127.0.0.1:1337";
+
 
   return (
     <div className="flex min-h-screen flex-col">

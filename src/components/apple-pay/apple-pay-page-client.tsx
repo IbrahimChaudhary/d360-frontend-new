@@ -70,7 +70,7 @@ export default function ApplePayPageClient({ initialApplePayData }: ApplePayPage
               {faqTxt}
             </button>
           </div>
-          <div className="lg:block hidden">
+          <div className="md:block hidden">
           {applePay && <ApplePayOverview data={applePay}/>}
           </div>
           <div className="  block  md:hidden w-full  ">
