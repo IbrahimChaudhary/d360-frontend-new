@@ -33,16 +33,15 @@ export function PrivacyNoticePageClient({ initialPrivacyNoticeData }: PrivacyNot
       <div className="max-w-[1728px] lg:px-6 mx-auto mt-20 space-y-16 flex flex-col justify-center items-center ">
        {privacy && <DesktopContentSectionPrivacyAndNotice data={privacy}/>}
       </div>
-      {/* mobile version  */}
+
       <div className="w-full hidden py-[60px]">
   <div className="max-w-[1228px] px-6 mx-auto mt-10 space-y-6">
     {privacy && (
       <>
-        {/* Heading & first paragraph */}
+     
         <h1 className="text-[25px] font-extrabold text-[#E74529]">{privacy.Heading}</h1>
         <p className="text-[14px]">{privacy.headingPara1}</p>
 
-        {/* Conditional extra paragraphs */}
         <AnimatePresence initial={false}>
   {showMore && (
     <motion.div
